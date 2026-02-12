@@ -71,7 +71,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin size={20} className="text-primary shrink-0 mt-1" />
-                <span>Grote Beer 138,<br />Amstelveen, Netherlands</span>
+                <span>Amstelveen, Netherlands</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={20} className="text-primary shrink-0" />
