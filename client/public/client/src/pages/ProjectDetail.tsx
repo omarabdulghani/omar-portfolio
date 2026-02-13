@@ -14,6 +14,7 @@ const projectsData: Record<string, any> = {
     year: "2025",
     client: "MOES Tuinen",
     clientLogo: "/images/moestuinenlogo.jpg",
+    clientWebsite: "https://moes-tuinen.nl/",
     role: "Design-Based Researcher & Communication Designer",
     primaryActionLabel: "Download Project's Report",
     primaryActionHref: "/images/moes-tuinen-report.pdf",
@@ -223,11 +224,27 @@ export default function ProjectDetail() {
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Client</h3>
                 {project.clientLogo ? (
                   <div className="mt-2 mb-2 min-h-[48px] flex items-center">
-                    <img
-                      src={project.clientLogo}
-                      alt={`${project.client} logo`}
-                      className="h-10 w-auto object-contain"
-                    />
+                    {project.clientWebsite ? (
+                      <a
+                        href={project.clientWebsite}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Visit ${project.client} website`}
+                        className="inline-flex items-center"
+                      >
+                        <img
+                          src={project.clientLogo}
+                          alt={`${project.client} logo`}
+                          className="h-10 w-auto object-contain"
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        src={project.clientLogo}
+                        alt={`${project.client} logo`}
+                        className="h-10 w-auto object-contain"
+                      />
+                    )}
                   </div>
                 ) : (
                   <p className="text-lg font-bold">{project.client}</p>
