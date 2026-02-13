@@ -15,6 +15,9 @@ const projectsData: Record<string, any> = {
     client: "MOES Tuinen",
     clientLogo: "/images/moestuinenlogo.jpg",
     role: "Design-Based Researcher & Communication Designer",
+    primaryActionLabel: "Download Project's Report",
+    primaryActionHref: "/images/moes-tuinen-report.pdf",
+    primaryActionDownload: true,
     description: "A Design-Based Research graduation project for MOES Tuinen focused on improving brand visibility, user engagement, and community outreach in Amstelveen. The final concept combined a physical brand activation at Pure Markt with a bilingual social media strategy and ready-to-use communication assets.",
     challenge: "As MOES Tuinen expanded, **brand awareness** stayed low among **expats and internationals**. Communication on-site was also too informal, making the customer journey less clear. The key priority became a more visible and **accessible brand presence** in Amstelveen.",
     solution: "I developed a **high-impact, low-barrier activation**: a branded pop-up stand, bilingual flyers, and cherry tomato grow-kit giveaways. This was supported by a focused **social media strategy** with an introduction video and a “Meet the Gardener” mini-series to improve reach and engagement.",
@@ -253,9 +256,22 @@ export default function ProjectDetail() {
               </div>
 
               <div className="pt-4 space-y-3">
-                <Button className="w-full gap-2">
-                  <ExternalLink size={18} /> View Live Project
-                </Button>
+                {project.primaryActionHref ? (
+                  <a
+                    href={project.primaryActionHref}
+                    target={project.primaryActionDownload ? undefined : "_blank"}
+                    rel={project.primaryActionDownload ? undefined : "noreferrer"}
+                    download={project.primaryActionDownload ? true : undefined}
+                  >
+                    <Button className="w-full gap-2">
+                      <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                    </Button>
+                  </a>
+                ) : (
+                  <Button className="w-full gap-2">
+                    <ExternalLink size={18} /> View Live Project
+                  </Button>
+                )}
                 <Button variant="outline" className="w-full gap-2">
                   <Play size={18} /> Watch Demo Video
                 </Button>
