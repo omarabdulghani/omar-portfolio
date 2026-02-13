@@ -50,6 +50,7 @@ type ProjectGalleryProps = {
 export default function ProjectGallery({ items }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const normalizedItems = useMemo(
@@ -58,6 +59,85 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
   );
 
   const activeItem = activeIndex !== null ? normalizedItems[activeIndex] : null;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const createVideoThumbnail = async (src: string): Promise<string | null> => {
+      return new Promise((resolve) => {
+        const video = document.createElement("video");
+        video.src = src;
+        video.preload = "metadata";
+        video.muted = true;
+        video.playsInline = true;
+        video.crossOrigin = "anonymous";
+
+        const cleanup = () => {
+          video.removeAttribute("src");
+          video.load();
+        };
+
+        const captureFrame = () => {
+          try {
+            const canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext("2d");
+            if (!ctx) {
+              cleanup();
+              resolve(null);
+              return;
+            }
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const data = canvas.toDataURL("image/jpeg", 0.9);
+            cleanup();
+            resolve(data);
+          } catch {
+            cleanup();
+            resolve(null);
+          }
+        };
+
+        video.addEventListener("loadeddata", () => {
+          const seekTime = Number.isFinite(video.duration) ? Math.min(0.75, video.duration / 3) : 0;
+          try {
+            video.currentTime = seekTime;
+          } catch {
+            captureFrame();
+          }
+        });
+
+        video.addEventListener("seeked", captureFrame);
+        video.addEventListener("error", () => {
+          cleanup();
+          resolve(null);
+        });
+      });
+    };
+
+    const missingVideoThumbs = normalizedItems.filter(
+      (item) => item.type === "video" && !item.poster && !videoThumbnails[item.src]
+    );
+
+    if (!missingVideoThumbs.length) return;
+
+    const run = async () => {
+      for (const item of missingVideoThumbs) {
+        const thumb = await createVideoThumbnail(item.src);
+        if (!thumb || cancelled) continue;
+        setVideoThumbnails((prev) => {
+          if (prev[item.src]) return prev;
+          return { ...prev, [item.src]: thumb };
+        });
+      }
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [normalizedItems, videoThumbnails]);
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -112,17 +192,25 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
             onClick={() => setActiveIndex(index)}
             className="group rounded-xl overflow-hidden border border-white/10 bg-card/35 hover:border-primary/40 transition-colors text-left"
           >
-            <div className="h-56 w-full flex items-center justify-center bg-background/20 p-2">
+            <div className="h-56 w-full overflow-hidden bg-background/20">
               {item.type === "video" ? (
-                <div className="relative max-h-full max-w-full">
-                  <video
-                    src={item.src}
-                    poster={item.poster}
-                    preload="metadata"
-                    muted
-                    playsInline
-                    className="max-h-[208px] max-w-full h-auto w-auto object-contain"
-                  />
+                <div className="relative h-full w-full">
+                  {item.poster || videoThumbnails[item.src] ? (
+                    <img
+                      src={item.poster || videoThumbnails[item.src]}
+                      alt={item.alt}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <video
+                      src={item.src}
+                      preload="metadata"
+                      muted
+                      playsInline
+                      className="h-full w-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="rounded-full bg-black/55 p-3 text-white">
                       <Play className="h-5 w-5" />
@@ -145,25 +233,36 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
       {activeItem && typeof document !== "undefined"
         ? createPortal(
             <div
-              className="fixed inset-0 z-[100] bg-white/45 dark:bg-background/80 backdrop-blur-md"
-              onClick={closeViewer}
+              className="fixed inset-0 z-[100] bg-white/45 dark:bg-background/80 backdrop-blur-md select-none caret-transparent"
             >
-              <div className="absolute inset-0 bg-black/20 dark:bg-black/30" />
-
               <button
                 type="button"
                 onClick={closeViewer}
-                className="absolute top-4 right-4 z-[101] rounded-full p-2 text-foreground bg-background/70 hover:bg-background transition-colors"
+                aria-label="Close media viewer"
+                className="absolute inset-0 z-[100] h-full w-full cursor-default"
+              />
+
+              <div className="absolute inset-0 bg-black/20 dark:bg-black/30 pointer-events-none" />
+
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  closeViewer();
+                }}
+                className="absolute top-4 right-4 z-[103] rounded-full p-2 text-foreground bg-background/70 hover:bg-background transition-colors"
                 aria-label="Close media viewer"
               >
                 <X className="h-5 w-5" />
               </button>
 
               <div
-                className="relative z-[101] min-h-screen flex items-center justify-center p-4"
-                onClick={(event) => event.stopPropagation()}
+                className="relative z-[102] min-h-screen flex items-center justify-center p-4 pointer-events-none"
               >
-                <div className="flex flex-col items-center gap-3">
+                <div
+                  className="flex flex-col items-center gap-3 pointer-events-auto"
+                  onClick={(event) => event.stopPropagation()}
+                >
                   {activeItem.type === "video" ? (
                     <>
                       <video

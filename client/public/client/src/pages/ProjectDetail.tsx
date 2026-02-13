@@ -34,7 +34,6 @@ const projectsData: Record<string, any> = {
       {
         type: "video",
         src: "/images/moes-intro-video.mp4",
-        poster: "/images/project-moes-tuinen.jpg",
         alt: "MOES intro video"
       }
     ]
