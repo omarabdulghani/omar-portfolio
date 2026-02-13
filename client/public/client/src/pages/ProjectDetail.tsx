@@ -15,8 +15,8 @@ const projectsData: Record<string, any> = {
     client: "MOES Tuinen",
     role: "Communication Designer & Strategist",
     description: "A Design-Based Research graduation project for MOES Tuinen focused on improving brand visibility, user engagement, and community outreach in Amstelveen. The final concept combined a physical brand activation at Pure Markt with a bilingual social media strategy and ready-to-use communication assets.",
-    challenge: "As MOES Tuinen scaled, four connected challenges emerged: low brand awareness among expats and internationals, informal on-site communication, uncertainty around a future staffless store concept, and the need for stronger community engagement. The immediate priority was increasing visibility in a clear and culturally accessible way.",
-    solution: "Using desk research, field research, surveys, interviews, and iterative testing, four design frames were explored and evaluated. The selected direction was a high-impact, low-barrier activation: a branded pop-up stand, bilingual flyers, cherry tomato grow-kit giveaways with planting instructions, and a supporting social campaign (including an introduction video and a 'Meet the Gardener' mini-series).",
+    challenge: "As MOES Tuinen expanded, **brand awareness** stayed low among **expats and internationals**. Communication on-site was also too informal, making the customer journey less clear. The key priority became a more visible and **accessible brand presence** in Amstelveen.",
+    solution: "I developed a **high-impact, low-barrier activation**: a branded pop-up stand, bilingual flyers, and cherry tomato grow-kit giveaways. This was supported by a focused **social media strategy** with an introduction video and a “Meet the Gardener” mini-series to improve reach and engagement.",
     impact: "The intervention strengthened MOES Tuinen's local visibility and digital presence, especially among internationals and younger audiences. The Pure Markt activation also revealed strong volunteer ambassador potential, with members actively engaging the public. Most importantly, MOES received a replicable outreach toolkit (pop-up format, design materials, and content templates) that can be reused for future campaigns and partnerships.",
     tags: ["Brand Activation", "Community Engagement", "Bilingual Communication", "Social Media Strategy"],
     tools: ["Design-Based Research", "Survey & Interviews", "Figma", "Canva", "Meta Business Suite"],
@@ -109,6 +109,16 @@ const projectsData: Record<string, any> = {
   }
 };
 
+function renderWithBold(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    return <span key={index}>{part}</span>;
+  });
+}
+
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const projectId = params?.id;
@@ -169,13 +179,13 @@ export default function ProjectDetail() {
               <div className="bg-card/50 p-6 rounded-xl border border-white/5">
                 <h3 className="text-xl font-bold mb-3 text-primary">The Challenge</h3>
                 <p className="text-muted-foreground">
-                  {project.challenge}
+                  {renderWithBold(project.challenge)}
                 </p>
               </div>
               <div className="bg-card/50 p-6 rounded-xl border border-white/5">
                 <h3 className="text-xl font-bold mb-3 text-primary">The Solution</h3>
                 <p className="text-muted-foreground">
-                  {project.solution}
+                  {renderWithBold(project.solution)}
                 </p>
               </div>
             </div>
