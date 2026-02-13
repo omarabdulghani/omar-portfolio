@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ExternalLink, Github, Play } from "lucide-react";
 import { Link, useRoute } from "wouter";
 import { useEffect } from "react";
+import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
 const projectsData: Record<string, any> = {
@@ -105,33 +106,21 @@ const projectsData: Record<string, any> = {
     tools: ["Figma", "Analytics Review", "UX Audit"],
     image: "/images/pphe-project.jpg",
     gallery: []
-  },
-  // Fallback for other projects
-  "default": {
-    title: "Project Detail",
-    subtitle: "Creative Project",
-    year: "2024",
-    client: "Client Name",
-    role: "Designer",
-    description: "Detailed project description goes here.",
-    challenge: "The challenge faced in this project.",
-    solution: "The solution implemented.",
-    impact: "The results achieved.",
-    tags: ["Design", "Strategy"],
-    tools: ["Figma", "Adobe CC"],
-    image: "/images/abstract-texture.png",
-    gallery: []
   }
 };
 
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
-  const projectId = params?.id || "default";
-  const project = projectsData[projectId] || projectsData["default"];
+  const projectId = params?.id;
+  const project = projectId ? projectsData[projectId] : undefined;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
+
+  if (!match || !project) {
+    return <NotFound />;
+  }
 
   return (
     <Layout>
