@@ -272,13 +272,14 @@ export default function ProjectDetail() {
                 </div>
               </div>
 
-              <div className="pt-4 space-y-3">
+              <div className="pt-4 flex flex-col gap-3">
                 {project.primaryActionHref ? (
                   <a
                     href={project.primaryActionHref}
                     target={project.primaryActionDownload ? undefined : "_blank"}
                     rel={project.primaryActionDownload ? undefined : "noreferrer"}
                     download={project.primaryActionDownload ? true : undefined}
+                    className="block w-full"
                   >
                     <Button className="w-full gap-2">
                       <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
