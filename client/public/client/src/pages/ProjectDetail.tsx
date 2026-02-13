@@ -213,7 +213,10 @@ export default function ProjectDetail() {
             {project.gallery && project.gallery.length > 0 && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-heading font-bold">Project Gallery</h2>
-                <ProjectGallery items={project.gallery as ProjectGalleryMedia[]} />
+                <ProjectGallery
+                  items={project.gallery as ProjectGalleryMedia[]}
+                  fallbackPoster={project.image}
+                />
               </div>
             )}
           </div>

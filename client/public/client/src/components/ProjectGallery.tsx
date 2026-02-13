@@ -45,9 +45,10 @@ function normalizeItem(item: ProjectGalleryMedia, index: number): NormalizedMedi
 
 type ProjectGalleryProps = {
   items: ProjectGalleryMedia[];
+  fallbackPoster?: string;
 };
 
-export default function ProjectGallery({ items }: ProjectGalleryProps) {
+export default function ProjectGallery({ items, fallbackPoster }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
@@ -70,7 +71,9 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
         video.preload = "metadata";
         video.muted = true;
         video.playsInline = true;
-        video.crossOrigin = "anonymous";
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "true");
+        video.setAttribute("webkit-playsinline", "true");
 
         const cleanup = () => {
           video.removeAttribute("src");
@@ -82,6 +85,11 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
             const canvas = document.createElement("canvas");
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
+            if (!canvas.width || !canvas.height) {
+              cleanup();
+              resolve(null);
+              return;
+            }
             const ctx = canvas.getContext("2d");
             if (!ctx) {
               cleanup();
@@ -98,16 +106,34 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
           }
         };
 
-        video.addEventListener("loadeddata", () => {
-          const seekTime = Number.isFinite(video.duration) ? Math.min(0.75, video.duration / 3) : 0;
+        video.addEventListener("loadedmetadata", () => {
+          const seekTime = Number.isFinite(video.duration) && video.duration > 0
+            ? Math.min(1, video.duration / 4)
+            : 0;
+
+          if (seekTime <= 0) {
+            captureFrame();
+            return;
+          }
+
+          const fallbackTimer = window.setTimeout(() => {
+            captureFrame();
+          }, 1200);
+
+          const onSeeked = () => {
+            window.clearTimeout(fallbackTimer);
+            captureFrame();
+          };
+
+          video.addEventListener("seeked", onSeeked, { once: true });
           try {
             video.currentTime = seekTime;
           } catch {
+            window.clearTimeout(fallbackTimer);
             captureFrame();
           }
         });
 
-        video.addEventListener("seeked", captureFrame);
         video.addEventListener("error", () => {
           cleanup();
           resolve(null);
@@ -195,9 +221,9 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
             <div className="h-56 w-full overflow-hidden bg-background/20">
               {item.type === "video" ? (
                 <div className="relative h-full w-full">
-                  {item.poster || videoThumbnails[item.src] ? (
+                  {item.poster || videoThumbnails[item.src] || fallbackPoster ? (
                     <img
-                      src={item.poster || videoThumbnails[item.src]}
+                      src={item.poster || videoThumbnails[item.src] || fallbackPoster}
                       alt={item.alt}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                       loading="lazy"
@@ -268,7 +294,7 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
                       <video
                         ref={videoRef}
                         src={activeItem.src}
-                        poster={activeItem.poster}
+                        poster={activeItem.poster || videoThumbnails[activeItem.src] || fallbackPoster}
                         controls
                         autoPlay
                         playsInline
