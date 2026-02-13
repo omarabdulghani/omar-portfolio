@@ -13,6 +13,7 @@ const projectsData: Record<string, any> = {
     subtitle: "Brand Awareness, Pop-up Activation & Social Media Strategy",
     year: "2025",
     client: "MOES Tuinen",
+    clientLogo: "/images/moes-tuinen gallery/moestuinenlogo.jpg",
     role: "Communication Designer & Strategist",
     description: "A Design-Based Research graduation project for MOES Tuinen focused on improving brand visibility, user engagement, and community outreach in Amstelveen. The final concept combined a physical brand activation at Pure Markt with a bilingual social media strategy and ready-to-use communication assets.",
     challenge: "As MOES Tuinen expanded, **brand awareness** stayed low among **expats and internationals**. Communication on-site was also too informal, making the customer journey less clear. The key priority became a more visible and **accessible brand presence** in Amstelveen.",
@@ -217,7 +218,15 @@ export default function ProjectDetail() {
             <div className="bg-card border border-white/10 rounded-xl p-6 space-y-6 sticky top-24">
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Client</h3>
-                <p className="text-lg font-bold">{project.client}</p>
+                {project.clientLogo ? (
+                  <img
+                    src={project.clientLogo}
+                    alt={`${project.client} logo`}
+                    className="h-10 w-auto object-contain"
+                  />
+                ) : (
+                  <p className="text-lg font-bold">{project.client}</p>
+                )}
               </div>
               
               <div>
