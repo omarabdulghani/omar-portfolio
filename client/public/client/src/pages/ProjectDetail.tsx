@@ -219,11 +219,13 @@ export default function ProjectDetail() {
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Client</h3>
                 {project.clientLogo ? (
-                  <img
-                    src={project.clientLogo}
-                    alt={`${project.client} logo`}
-                    className="h-10 w-auto object-contain"
-                  />
+                  <div className="mt-2 mb-2 min-h-[48px] flex items-center">
+                    <img
+                      src={project.clientLogo}
+                      alt={`${project.client} logo`}
+                      className="h-10 w-auto object-contain"
+                    />
+                  </div>
                 ) : (
                   <p className="text-lg font-bold">{project.client}</p>
                 )}
