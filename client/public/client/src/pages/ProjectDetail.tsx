@@ -14,6 +14,7 @@ const projectsData: Record<string, any> = {
     year: "2025",
     client: "MOES Tuinen",
     clientLogo: "/images/moestuinenlogo.jpg",
+    clientLogoDark: "/images/moestuinenlogo-darkmode.png",
     clientWebsite: "https://moes-tuinen.nl/",
     role: "Design-Based Researcher & Communication Designer",
     primaryActionLabel: "Download Project's Report",
@@ -232,18 +233,40 @@ export default function ProjectDetail() {
                         aria-label={`Visit ${project.client} website`}
                         className="inline-flex items-center"
                       >
+                        <>
+                          <img
+                            src={project.clientLogo}
+                            alt={`${project.client} logo`}
+                            className={`h-10 w-auto object-contain dark:hidden ${
+                              project.clientLogoDark ? "" : "dark:block"
+                            }`}
+                          />
+                          {project.clientLogoDark ? (
+                            <img
+                              src={project.clientLogoDark}
+                              alt={`${project.client} logo`}
+                              className="hidden h-10 w-auto object-contain dark:block"
+                            />
+                          ) : null}
+                        </>
+                      </a>
+                    ) : (
+                      <>
                         <img
                           src={project.clientLogo}
                           alt={`${project.client} logo`}
-                          className="h-10 w-auto object-contain"
+                          className={`h-10 w-auto object-contain dark:hidden ${
+                            project.clientLogoDark ? "" : "dark:block"
+                          }`}
                         />
-                      </a>
-                    ) : (
-                      <img
-                        src={project.clientLogo}
-                        alt={`${project.client} logo`}
-                        className="h-10 w-auto object-contain"
-                      />
+                        {project.clientLogoDark ? (
+                          <img
+                            src={project.clientLogoDark}
+                            alt={`${project.client} logo`}
+                            className="hidden h-10 w-auto object-contain dark:block"
+                          />
+                        ) : null}
+                      </>
                     )}
                   </div>
                 ) : (
