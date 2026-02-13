@@ -173,7 +173,7 @@ export default function ProjectDetail() {
       <div className="container py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
             <div>
               <h2 className="text-2xl font-heading font-bold mb-4">Overview</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -219,7 +219,7 @@ export default function ProjectDetail() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-8">
+          <div className="order-1 lg:order-2 space-y-8">
             <div className="bg-card border border-white/10 rounded-xl p-6 space-y-6 sticky top-24">
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Client</h3>
