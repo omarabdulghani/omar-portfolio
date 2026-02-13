@@ -16,6 +16,13 @@ export default function NotFound() {
 
       <div className="relative z-10 container flex min-h-screen items-center justify-center py-20">
         <div className="w-full max-w-3xl rounded-3xl border border-border/40 bg-card/65 p-8 text-center shadow-2xl backdrop-blur-md sm:p-12">
+          <div className="mb-6 text-center">
+            <span className="text-3xl font-heading font-bold tracking-tight text-foreground">
+              OMAR
+              <span className="text-primary">.</span>
+            </span>
+          </div>
+
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
             Error 404
           </p>
