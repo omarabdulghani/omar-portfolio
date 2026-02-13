@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ExternalLink, Github, Play } from "lucide-react";
+import { ArrowLeft, ExternalLink, Play } from "lucide-react";
 import { Link, useRoute } from "wouter";
 import { useEffect } from "react";
+import ProjectGallery, { type ProjectGalleryMedia } from "@/components/ProjectGallery";
 import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
@@ -28,8 +29,14 @@ const projectsData: Record<string, any> = {
     tools: ["Design-Based Research", "Survey & Interviews", "Figma", "Canva", "Meta Business Suite"],
     image: "/images/project-moes-tuinen.jpg",
     gallery: [
-      "/images/gallery-moes-1.jpg",
-      "/images/gallery-moes-2.jpg"
+      { type: "image", src: "/images/gallery-moes-2.jpg", alt: "MOES activation material" },
+      { type: "image", src: "/images/moes-test-image.jpeg", alt: "MOES project gallery image" },
+      {
+        type: "video",
+        src: "/images/moes-intro-video.mp4",
+        poster: "/images/project-moes-tuinen.jpg",
+        alt: "MOES intro video"
+      }
     ]
   },
   "amstelhof-connect": {
@@ -207,13 +214,7 @@ export default function ProjectDetail() {
             {project.gallery && project.gallery.length > 0 && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-heading font-bold">Project Gallery</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {project.gallery.map((img: string, index: number) => (
-                    <div key={index} className="rounded-xl overflow-hidden border border-white/10 aspect-video">
-                      <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-                    </div>
-                  ))}
-                </div>
+                <ProjectGallery items={project.gallery as ProjectGalleryMedia[]} />
               </div>
             )}
           </div>
