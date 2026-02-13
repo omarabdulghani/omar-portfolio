@@ -199,7 +199,7 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
                     <img
                       src={item.poster || videoThumbnails[item.src]}
                       alt={item.alt}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
                   ) : (
@@ -208,7 +208,7 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
                       preload="metadata"
                       muted
                       playsInline
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   )}
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -221,7 +221,7 @@ export default function ProjectGallery({ items }: ProjectGalleryProps) {
                 <img
                   src={item.src}
                   alt={item.alt}
-                  className="max-h-[208px] max-w-full h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
               )}
