@@ -1,44 +1,85 @@
-import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
-import { Pause, Play, RotateCcw, RotateCw, X } from "lucide-react";
+import { FileText, Pause, Play, RotateCcw, RotateCw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+type MediaType = "image" | "video" | "document";
 
 export type ProjectGalleryMedia =
   | string
   | {
-      type?: "image" | "video";
+      type?: MediaType;
       src: string;
       alt?: string;
       poster?: string;
+      title?: string;
     };
 
 type NormalizedMedia = {
-  type: "image" | "video";
+  id: string;
+  type: MediaType;
   src: string;
   alt: string;
+  title: string;
   poster?: string;
 };
 
 const VIDEO_EXTENSIONS = [".mp4", ".webm", ".ogg", ".mov", ".m4v"];
+const DOCUMENT_EXTENSIONS = [
+  ".pdf",
+  ".doc",
+  ".docx",
+  ".ppt",
+  ".pptx",
+  ".xls",
+  ".xlsx",
+  ".txt",
+  ".rtf",
+];
 
-function inferTypeFromSrc(src: string): "image" | "video" {
+function inferTypeFromSrc(src: string): MediaType {
   const normalized = src.split("?")[0].toLowerCase();
-  return VIDEO_EXTENSIONS.some((ext) => normalized.endsWith(ext)) ? "video" : "image";
+  if (VIDEO_EXTENSIONS.some((ext) => normalized.endsWith(ext))) return "video";
+  if (DOCUMENT_EXTENSIONS.some((ext) => normalized.endsWith(ext))) return "document";
+  return "image";
+}
+
+function titleFromSrc(src: string): string {
+  const rawFile = src.split("/").pop()?.split("?")[0] ?? "Media";
+  const decoded = decodeURIComponent(rawFile);
+  const noExt = decoded.replace(/\.[^/.]+$/, "");
+  const cleaned = noExt.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+  return cleaned || "Media";
 }
 
 function normalizeItem(item: ProjectGalleryMedia, index: number): NormalizedMedia {
   if (typeof item === "string") {
+    const type = inferTypeFromSrc(item);
+    const title = titleFromSrc(item);
     return {
-      type: inferTypeFromSrc(item),
+      id: `${index}-${item}`,
+      type,
       src: item,
-      alt: `Gallery item ${index + 1}`,
+      title,
+      alt: title,
     };
   }
 
+  const type = item.type ?? inferTypeFromSrc(item.src);
+  const title = item.title ?? titleFromSrc(item.src);
   return {
-    type: item.type ?? inferTypeFromSrc(item.src),
+    id: `${index}-${item.src}`,
+    type,
     src: item.src,
-    alt: item.alt ?? `Gallery item ${index + 1}`,
+    title,
+    alt: item.alt ?? title,
     poster: item.poster,
   };
 }
@@ -49,7 +90,7 @@ type ProjectGalleryProps = {
 };
 
 export type ProjectGalleryHandle = {
-  openBySrc: (src: string, options?: { alt?: string; poster?: string }) => void;
+  openBySrc: (src: string, options?: { alt?: string; poster?: string; title?: string }) => void;
 };
 
 const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(function ProjectGallery(
@@ -62,20 +103,33 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const normalizedItems = useMemo(() => {
+  const groupedMedia = useMemo(() => {
     const mapped = items.map((item, index) => normalizeItem(item, index));
     const videos = mapped.filter((item) => item.type === "video");
     const images = mapped.filter((item) => item.type === "image");
-    return [...videos, ...images];
+    const documents = mapped.filter((item) => item.type === "document");
+    return {
+      videos,
+      images,
+      documents,
+      ordered: [...videos, ...images, ...documents],
+    };
   }, [items]);
 
-  const activeItem = externalActiveItem ?? (activeIndex !== null ? normalizedItems[activeIndex] : null);
+  const orderedMedia = groupedMedia.ordered;
+  const activeItem =
+    externalActiveItem ?? (activeIndex !== null ? orderedMedia[activeIndex] : null);
 
   useImperativeHandle(
     ref,
     () => ({
-      openBySrc: (src: string, options?: { alt?: string; poster?: string }) => {
-        const index = normalizedItems.findIndex((item) => item.src === src);
+      openBySrc: (src: string, options?: { alt?: string; poster?: string; title?: string }) => {
+        if (inferTypeFromSrc(src) === "document") {
+          window.open(src, "_blank", "noopener,noreferrer");
+          return;
+        }
+
+        const index = orderedMedia.findIndex((item) => item.src === src);
         if (index >= 0) {
           setExternalActiveItem(null);
           setActiveIndex(index);
@@ -84,14 +138,16 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
 
         setActiveIndex(null);
         setExternalActiveItem({
+          id: `external-${src}`,
           type: inferTypeFromSrc(src),
           src,
-          alt: options?.alt ?? "Media item",
+          alt: options?.alt ?? titleFromSrc(src),
+          title: options?.title ?? titleFromSrc(src),
           poster: options?.poster,
         });
       },
     }),
-    [normalizedItems]
+    [orderedMedia]
   );
 
   useEffect(() => {
@@ -140,9 +196,8 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
         };
 
         video.addEventListener("loadedmetadata", () => {
-          const seekTime = Number.isFinite(video.duration) && video.duration > 0
-            ? Math.min(1, video.duration / 4)
-            : 0;
+          const seekTime =
+            Number.isFinite(video.duration) && video.duration > 0 ? Math.min(1, video.duration / 4) : 0;
 
           if (seekTime <= 0) {
             captureFrame();
@@ -174,7 +229,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       });
     };
 
-    const missingVideoThumbs = normalizedItems.filter(
+    const missingVideoThumbs = orderedMedia.filter(
       (item) => item.type === "video" && !item.poster && !videoThumbnails[item.src]
     );
 
@@ -196,10 +251,10 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     return () => {
       cancelled = true;
     };
-  }, [normalizedItems, videoThumbnails]);
+  }, [orderedMedia, videoThumbnails]);
 
   useEffect(() => {
-    if (activeIndex === null) {
+    if (!activeItem || activeItem.type === "document") {
       setIsPlaying(false);
       return;
     }
@@ -210,6 +265,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveIndex(null);
+        setExternalActiveItem(null);
       }
     };
 
@@ -218,7 +274,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [activeIndex]);
+  }, [activeItem]);
 
   const closeViewer = () => {
     setActiveIndex(null);
@@ -242,59 +298,105 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     }
   };
 
+  const openItem = (item: NormalizedMedia) => {
+    if (item.type === "document") {
+      window.open(item.src, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setExternalActiveItem(null);
+    setActiveIndex(orderedMedia.findIndex((entry) => entry.id === item.id));
+  };
+
+  const renderMediaCard = (item: NormalizedMedia) => (
+    <button
+      key={item.id}
+      type="button"
+      onClick={() => openItem(item)}
+      className="group rounded-xl overflow-hidden border border-white/10 bg-card/35 hover:border-primary/40 transition-colors text-left"
+    >
+      <div className="h-56 w-full overflow-hidden bg-background/20">
+        {item.type === "video" ? (
+          <div className="relative h-full w-full">
+            {item.poster || videoThumbnails[item.src] || fallbackPoster ? (
+              <img
+                src={item.poster || videoThumbnails[item.src] || fallbackPoster}
+                alt={item.alt}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                loading="lazy"
+              />
+            ) : (
+              <video
+                src={item.src}
+                preload="metadata"
+                muted
+                playsInline
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+            )}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="rounded-full bg-black/55 p-3 text-white">
+                <Play className="h-5 w-5" />
+              </span>
+            </div>
+          </div>
+        ) : item.type === "image" ? (
+          <img
+            src={item.src}
+            alt={item.alt}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            loading="lazy"
+          />
+        ) : (
+          <div className="h-full w-full flex flex-col items-center justify-center gap-3 px-4 text-center">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/15 text-primary">
+              <FileText className="h-7 w-7" />
+            </span>
+            <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+              {item.src.split("?")[0].split(".").pop()?.toUpperCase() || "FILE"}
+            </p>
+          </div>
+        )}
+      </div>
+      <div className="border-t border-white/10 px-3 py-2">
+        <p className="text-sm font-medium text-foreground line-clamp-2">{item.title}</p>
+      </div>
+    </button>
+  );
+
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {normalizedItems.map((item, index) => (
-          <button
-            key={`${item.src}-${index}`}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            className="group rounded-xl overflow-hidden border border-white/10 bg-card/35 hover:border-primary/40 transition-colors text-left"
-          >
-            <div className="h-56 w-full overflow-hidden bg-background/20">
-              {item.type === "video" ? (
-                <div className="relative h-full w-full">
-                  {item.poster || videoThumbnails[item.src] || fallbackPoster ? (
-                    <img
-                      src={item.poster || videoThumbnails[item.src] || fallbackPoster}
-                      alt={item.alt}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <video
-                      src={item.src}
-                      preload="metadata"
-                      muted
-                      playsInline
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                    />
-                  )}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="rounded-full bg-black/55 p-3 text-white">
-                      <Play className="h-5 w-5" />
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  loading="lazy"
-                />
-              )}
+      <div className="space-y-8">
+        {groupedMedia.videos.length > 0 ? (
+          <section className="space-y-3">
+            <h3 className="text-lg font-heading font-semibold">Videos</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {groupedMedia.videos.map(renderMediaCard)}
             </div>
-          </button>
-        ))}
+          </section>
+        ) : null}
+
+        {groupedMedia.images.length > 0 ? (
+          <section className="space-y-3">
+            <h3 className="text-lg font-heading font-semibold">Images</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {groupedMedia.images.map(renderMediaCard)}
+            </div>
+          </section>
+        ) : null}
+
+        {groupedMedia.documents.length > 0 ? (
+          <section className="space-y-3">
+            <h3 className="text-lg font-heading font-semibold">Documents</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {groupedMedia.documents.map(renderMediaCard)}
+            </div>
+          </section>
+        ) : null}
       </div>
 
-      {activeItem && typeof document !== "undefined"
+      {activeItem && activeItem.type !== "document" && typeof document !== "undefined"
         ? createPortal(
-            <div
-              className="fixed inset-0 z-[100] bg-white/45 dark:bg-background/80 backdrop-blur-md select-none caret-transparent"
-            >
+            <div className="fixed inset-0 z-[100] bg-white/45 dark:bg-background/80 backdrop-blur-md select-none caret-transparent">
               <button
                 type="button"
                 onClick={closeViewer}
@@ -316,9 +418,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
                 <X className="h-5 w-5" />
               </button>
 
-              <div
-                className="relative z-[102] min-h-screen flex items-center justify-center p-4 pointer-events-none"
-              >
+              <div className="relative z-[102] min-h-screen flex items-center justify-center p-4 pointer-events-none">
                 <div
                   className="flex flex-col items-center gap-3 pointer-events-auto"
                   onClick={(event) => event.stopPropagation()}

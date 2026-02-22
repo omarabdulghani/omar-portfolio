@@ -34,12 +34,23 @@ const projectsData: Record<string, any> = {
     tools: ["Design-Based Research", "Survey & Interviews", "Figma", "Canva", "Meta Business Suite"],
     image: "/images/project-moes-tuinen.jpg",
     gallery: [
-      { type: "image", src: "/images/gallery-moes-2.jpg", alt: "MOES activation material" },
-      { type: "image", src: "/images/moes-test-image.jpeg", alt: "MOES project gallery image" },
+      {
+        type: "image",
+        src: "/images/gallery-moes-2.jpg",
+        alt: "MOES activation material",
+        title: "Pop-up Stand Visual - MOES Tuinen"
+      },
+      {
+        type: "image",
+        src: "/images/moes-test-image.jpeg",
+        alt: "MOES project gallery image",
+        title: "Test Image - MOES Tuinen"
+      },
       {
         type: "video",
         src: "/images/moes-intro-video.mp4",
-        alt: "MOES intro video"
+        alt: "MOES intro video",
+        title: "Intro Video - MOES Tuinen"
       }
     ]
   },
