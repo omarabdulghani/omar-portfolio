@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Pause, Play, RotateCcw, RotateCw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,8 +48,16 @@ type ProjectGalleryProps = {
   fallbackPoster?: string;
 };
 
-export default function ProjectGallery({ items, fallbackPoster }: ProjectGalleryProps) {
+export type ProjectGalleryHandle = {
+  openBySrc: (src: string, options?: { alt?: string; poster?: string }) => void;
+};
+
+const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(function ProjectGallery(
+  { items, fallbackPoster },
+  ref
+) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [externalActiveItem, setExternalActiveItem] = useState<NormalizedMedia | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -59,7 +67,30 @@ export default function ProjectGallery({ items, fallbackPoster }: ProjectGallery
     [items]
   );
 
-  const activeItem = activeIndex !== null ? normalizedItems[activeIndex] : null;
+  const activeItem = externalActiveItem ?? (activeIndex !== null ? normalizedItems[activeIndex] : null);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      openBySrc: (src: string, options?: { alt?: string; poster?: string }) => {
+        const index = normalizedItems.findIndex((item) => item.src === src);
+        if (index >= 0) {
+          setExternalActiveItem(null);
+          setActiveIndex(index);
+          return;
+        }
+
+        setActiveIndex(null);
+        setExternalActiveItem({
+          type: inferTypeFromSrc(src),
+          src,
+          alt: options?.alt ?? "Media item",
+          poster: options?.poster,
+        });
+      },
+    }),
+    [normalizedItems]
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -189,6 +220,7 @@ export default function ProjectGallery({ items, fallbackPoster }: ProjectGallery
 
   const closeViewer = () => {
     setActiveIndex(null);
+    setExternalActiveItem(null);
   };
 
   const seekBy = (deltaSeconds: number) => {
@@ -360,4 +392,6 @@ export default function ProjectGallery({ items, fallbackPoster }: ProjectGallery
         : null}
     </>
   );
-}
+});
+
+export default ProjectGallery;

@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ExternalLink, Play } from "lucide-react";
 import { Link, useRoute } from "wouter";
-import { useEffect } from "react";
-import ProjectGallery, { type ProjectGalleryMedia } from "@/components/ProjectGallery";
+import { useEffect, useRef } from "react";
+import ProjectGallery, {
+  type ProjectGalleryHandle,
+  type ProjectGalleryMedia,
+} from "@/components/ProjectGallery";
 import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
@@ -21,6 +24,8 @@ const projectsData: Record<string, any> = {
     primaryActionLabel: "Download Project's Report",
     primaryActionHref: "/images/moes-tuinen-report.pdf",
     primaryActionDownload: true,
+    demoVideoSrc: "/images/moes-recap-video.mp4",
+    demoVideoLabel: "Watch Demo Video",
     description: "A Design-Based Research graduation project for MOES Tuinen focused on improving brand visibility, user engagement, and community outreach in Amstelveen. The final concept combined a physical brand activation at Pure Markt with a bilingual social media strategy and ready-to-use communication assets.",
     challenge: "As MOES Tuinen expanded, **brand awareness** stayed low among **expats and internationals**. Communication on-site was also too informal, making the customer journey less clear. The key priority became a more visible and **accessible brand presence** in Amstelveen.",
     solution: "I developed a **high-impact, low-barrier activation**: a branded pop-up stand, bilingual flyers, and cherry tomato grow-kit giveaways. This was supported by a focused **social media strategy** with an introduction video and a “Meet the Gardener” mini-series to improve reach and engagement.",
@@ -133,6 +138,7 @@ function renderWithBold(text: string) {
 
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
+  const galleryRef = useRef<ProjectGalleryHandle>(null);
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : undefined;
 
@@ -214,6 +220,7 @@ export default function ProjectDetail() {
               <div className="space-y-6">
                 <h2 className="text-2xl font-heading font-bold">Project Gallery</h2>
                 <ProjectGallery
+                  ref={galleryRef}
                   items={project.gallery as ProjectGalleryMedia[]}
                   fallbackPoster={project.image}
                 />
@@ -316,8 +323,18 @@ export default function ProjectDetail() {
                     <ExternalLink size={18} /> View Live Project
                   </Button>
                 )}
-                <Button variant="outline" className="w-full gap-2">
-                  <Play size={18} /> Watch Demo Video
+                <Button
+                  variant="outline"
+                  className="w-full gap-2"
+                  onClick={() => {
+                    if (!project.demoVideoSrc) return;
+                    galleryRef.current?.openBySrc(project.demoVideoSrc, {
+                      alt: `${project.title} demo video`,
+                      poster: project.image,
+                    });
+                  }}
+                >
+                  <Play size={18} /> {project.demoVideoLabel || "Watch Demo Video"}
                 </Button>
               </div>
             </div>
