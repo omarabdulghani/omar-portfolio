@@ -330,7 +330,6 @@ export default function ProjectDetail() {
                     if (!project.demoVideoSrc) return;
                     galleryRef.current?.openBySrc(project.demoVideoSrc, {
                       alt: `${project.title} demo video`,
-                      poster: project.image,
                     });
                   }}
                 >

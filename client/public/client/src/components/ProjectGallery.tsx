@@ -326,7 +326,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
                       <video
                         ref={videoRef}
                         src={activeItem.src}
-                        poster={activeItem.poster || videoThumbnails[activeItem.src] || fallbackPoster}
+                        poster={activeItem.poster || videoThumbnails[activeItem.src]}
                         controls
                         autoPlay
                         playsInline
