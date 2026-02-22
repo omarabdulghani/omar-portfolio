@@ -62,10 +62,12 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const normalizedItems = useMemo(
-    () => items.map((item, index) => normalizeItem(item, index)),
-    [items]
-  );
+  const normalizedItems = useMemo(() => {
+    const mapped = items.map((item, index) => normalizeItem(item, index));
+    const videos = mapped.filter((item) => item.type === "video");
+    const images = mapped.filter((item) => item.type === "image");
+    return [...videos, ...images];
+  }, [items]);
 
   const activeItem = externalActiveItem ?? (activeIndex !== null ? normalizedItems[activeIndex] : null);
 
