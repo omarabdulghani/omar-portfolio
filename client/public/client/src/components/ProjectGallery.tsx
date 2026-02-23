@@ -11,7 +11,6 @@ import { createPortal } from "react-dom";
 import {
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
   FileText,
   Pause,
   Play,
@@ -20,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PdfFlipbookModal from "@/components/PdfFlipbookModal";
 import pdfWorkerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
 type MediaType = "image" | "video" | "document";
@@ -140,6 +140,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
   const [autoVideoPosters, setAutoVideoPosters] = useState<Record<string, string | null>>({});
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
   const [documentThumbnails, setDocumentThumbnails] = useState<Record<string, string | null>>({});
+  const [activePdfItem, setActivePdfItem] = useState<NormalizedMedia | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const groupedMedia = useMemo(() => {
@@ -164,7 +165,17 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     () => ({
       openBySrc: (src: string, options?: { alt?: string; poster?: string; title?: string }) => {
         if (inferTypeFromSrc(src) === "document") {
-          window.open(src, "_blank", "noopener,noreferrer");
+          if (isPdfSrc(src)) {
+            setActivePdfItem({
+              id: `external-pdf-${src}`,
+              type: "document",
+              src,
+              alt: options?.alt ?? titleFromSrc(src),
+              title: options?.title ?? titleFromSrc(src),
+            });
+          } else {
+            window.open(src, "_blank", "noopener,noreferrer");
+          }
           return;
         }
 
@@ -407,17 +418,44 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
 
   const canNavigate = orderedMedia.length > 1 && activeIndex !== null;
 
+  const openDocument = useCallback((item: NormalizedMedia) => {
+    if (isPdfSrc(item.src)) {
+      setActivePdfItem(item);
+      return;
+    }
+    window.open(item.src, "_blank", "noopener,noreferrer");
+  }, []);
+
+  const openMediaByIndex = useCallback(
+    (index: number) => {
+      if (!orderedMedia.length) return;
+      const wrapped = (index + orderedMedia.length) % orderedMedia.length;
+      const item = orderedMedia[wrapped];
+      if (!item) return;
+
+      if (item.type === "document") {
+        setActiveIndex(null);
+        setExternalActiveItem(null);
+        openDocument(item);
+        return;
+      }
+
+      setActivePdfItem(null);
+      setExternalActiveItem(null);
+      setActiveIndex(wrapped);
+    },
+    [openDocument, orderedMedia]
+  );
+
   const goToPrevious = useCallback(() => {
     if (activeIndex === null || orderedMedia.length < 2) return;
-    setExternalActiveItem(null);
-    setActiveIndex((activeIndex - 1 + orderedMedia.length) % orderedMedia.length);
-  }, [activeIndex, orderedMedia.length]);
+    openMediaByIndex(activeIndex - 1);
+  }, [activeIndex, orderedMedia.length, openMediaByIndex]);
 
   const goToNext = useCallback(() => {
     if (activeIndex === null || orderedMedia.length < 2) return;
-    setExternalActiveItem(null);
-    setActiveIndex((activeIndex + 1) % orderedMedia.length);
-  }, [activeIndex, orderedMedia.length]);
+    openMediaByIndex(activeIndex + 1);
+  }, [activeIndex, orderedMedia.length, openMediaByIndex]);
 
   useEffect(() => {
     if (!activeItem || activeItem.type === "document") {
@@ -460,6 +498,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
   const closeViewer = () => {
     setActiveIndex(null);
     setExternalActiveItem(null);
+    setActivePdfItem(null);
   };
 
   const seekBy = (deltaSeconds: number) => {
@@ -481,11 +520,11 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
 
   const openItem = (item: NormalizedMedia) => {
     if (item.type === "document") {
-      window.open(item.src, "_blank", "noopener,noreferrer");
+      openDocument(item);
       return;
     }
-    setExternalActiveItem(null);
-    setActiveIndex(orderedMedia.findIndex((entry) => entry.id === item.id));
+    const itemIndex = orderedMedia.findIndex((entry) => entry.id === item.id);
+    openMediaByIndex(itemIndex);
   };
 
   const renderMediaCard = (item: NormalizedMedia) => (
@@ -584,7 +623,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
         ) : null}
       </div>
 
-      {activeItem && typeof document !== "undefined"
+      {activeItem && activeItem.type !== "document" && typeof document !== "undefined"
         ? createPortal(
             <div className="fixed inset-0 z-[100] bg-white/45 dark:bg-background/80 backdrop-blur-md select-none caret-transparent">
               <button
@@ -696,35 +735,6 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
                         </Button>
                       </div>
                     </>
-                  ) : activeItem.type === "document" ? (
-                    <div className="max-h-[88vh] max-w-[95vw] rounded-lg shadow-2xl overflow-hidden bg-background/85 border border-border/40">
-                      {isPdfSrc(activeItem.src) && getDocumentPreview(activeItem) ? (
-                        <img
-                          src={getDocumentPreview(activeItem) as string}
-                          alt={`${activeItem.alt} first page preview`}
-                          className="max-h-[78vh] max-w-[95vw] h-auto w-auto object-contain bg-white/50 dark:bg-background/40"
-                        />
-                      ) : (
-                        <div className="h-[50vh] w-[min(90vw,720px)] flex flex-col items-center justify-center gap-4 px-6 text-center">
-                          <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 text-primary">
-                            <FileText className="h-8 w-8" />
-                          </span>
-                          <p className="text-xl font-semibold">{activeItem.title}</p>
-                          <p className="text-sm text-muted-foreground">
-                            Preview unavailable for this document type.
-                          </p>
-                        </div>
-                      )}
-
-                      <div className="border-t border-border/50 p-4 flex justify-center">
-                        <a href={activeItem.src} target="_blank" rel="noreferrer">
-                          <Button type="button" className="gap-2">
-                            <ExternalLink className="h-4 w-4" />
-                            Open Document
-                          </Button>
-                        </a>
-                      </div>
-                    </div>
                   ) : (
                     <img
                       src={activeItem.src}
@@ -738,6 +748,13 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
             document.body
           )
         : null}
+
+      <PdfFlipbookModal
+        isOpen={!!activePdfItem}
+        pdfUrl={activePdfItem?.src ?? null}
+        title={activePdfItem?.title}
+        onClose={() => setActivePdfItem(null)}
+      />
     </>
   );
 });
