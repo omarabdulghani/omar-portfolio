@@ -1,4 +1,5 @@
 import {
+  useCallback,
   forwardRef,
   useEffect,
   useImperativeHandle,
@@ -7,7 +8,17 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
-import { FileText, Pause, Play, RotateCcw, RotateCw, X } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  FileText,
+  Pause,
+  Play,
+  RotateCcw,
+  RotateCw,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import pdfWorkerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
@@ -394,9 +405,26 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     return documentThumbnails[item.src] ?? null;
   };
 
+  const canNavigate = orderedMedia.length > 1 && activeIndex !== null;
+
+  const goToPrevious = useCallback(() => {
+    if (activeIndex === null || orderedMedia.length < 2) return;
+    setExternalActiveItem(null);
+    setActiveIndex((activeIndex - 1 + orderedMedia.length) % orderedMedia.length);
+  }, [activeIndex, orderedMedia.length]);
+
+  const goToNext = useCallback(() => {
+    if (activeIndex === null || orderedMedia.length < 2) return;
+    setExternalActiveItem(null);
+    setActiveIndex((activeIndex + 1) % orderedMedia.length);
+  }, [activeIndex, orderedMedia.length]);
+
   useEffect(() => {
     if (!activeItem || activeItem.type === "document") {
       setIsPlaying(false);
+    }
+
+    if (!activeItem) {
       return;
     }
 
@@ -407,6 +435,18 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       if (event.key === "Escape") {
         setActiveIndex(null);
         setExternalActiveItem(null);
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goToPrevious();
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goToNext();
       }
     };
 
@@ -415,7 +455,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [activeItem]);
+  }, [activeItem, goToNext, goToPrevious]);
 
   const closeViewer = () => {
     setActiveIndex(null);
@@ -544,7 +584,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
         ) : null}
       </div>
 
-      {activeItem && activeItem.type !== "document" && typeof document !== "undefined"
+      {activeItem && typeof document !== "undefined"
         ? createPortal(
             <div className="fixed inset-0 z-[100] bg-white/45 dark:bg-background/80 backdrop-blur-md select-none caret-transparent">
               <button
@@ -555,6 +595,33 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
               />
 
               <div className="absolute inset-0 bg-black/20 dark:bg-black/30 pointer-events-none" />
+
+              {canNavigate ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      goToPrevious();
+                    }}
+                    className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-[103] rounded-full p-2 text-foreground bg-background/70 hover:bg-background transition-colors"
+                    aria-label="Previous media item"
+                  >
+                    <ChevronLeft className="h-6 w-6" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      goToNext();
+                    }}
+                    className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[103] rounded-full p-2 text-foreground bg-background/70 hover:bg-background transition-colors"
+                    aria-label="Next media item"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
+                </>
+              ) : null}
 
               <button
                 type="button"
@@ -629,6 +696,35 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
                         </Button>
                       </div>
                     </>
+                  ) : activeItem.type === "document" ? (
+                    <div className="max-h-[88vh] max-w-[95vw] rounded-lg shadow-2xl overflow-hidden bg-background/85 border border-border/40">
+                      {isPdfSrc(activeItem.src) && getDocumentPreview(activeItem) ? (
+                        <img
+                          src={getDocumentPreview(activeItem) as string}
+                          alt={`${activeItem.alt} first page preview`}
+                          className="max-h-[78vh] max-w-[95vw] h-auto w-auto object-contain bg-white/50 dark:bg-background/40"
+                        />
+                      ) : (
+                        <div className="h-[50vh] w-[min(90vw,720px)] flex flex-col items-center justify-center gap-4 px-6 text-center">
+                          <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 text-primary">
+                            <FileText className="h-8 w-8" />
+                          </span>
+                          <p className="text-xl font-semibold">{activeItem.title}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Preview unavailable for this document type.
+                          </p>
+                        </div>
+                      )}
+
+                      <div className="border-t border-border/50 p-4 flex justify-center">
+                        <a href={activeItem.src} target="_blank" rel="noreferrer">
+                          <Button type="button" className="gap-2">
+                            <ExternalLink className="h-4 w-4" />
+                            Open Document
+                          </Button>
+                        </a>
+                      </div>
+                    </div>
                   ) : (
                     <img
                       src={activeItem.src}
