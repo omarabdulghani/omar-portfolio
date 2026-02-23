@@ -21,7 +21,7 @@ const projectsData: Record<string, any> = {
     clientLogoDark: "/images/moestuinenlogo-darkmode.png",
     clientWebsite: "https://moes-tuinen.nl/",
     role: "Design-Based Researcher & Communication Designer",
-    primaryActionLabel: "Download Project's Report",
+    primaryActionLabel: "View Project's Report",
     primaryActionHref: "/images/moes-tuinen-report.pdf",
     primaryActionDownload: true,
     demoVideoSrc: "/images/moes-tuinen gallery/MOESTuinen-recap-video.mp4",
@@ -208,6 +208,11 @@ function renderWithBold(text: string) {
   });
 }
 
+function isPdfHref(href?: string): boolean {
+  if (!href) return false;
+  return /\.pdf(\?|$)/i.test(href);
+}
+
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const galleryRef = useRef<ProjectGalleryHandle>(null);
@@ -379,17 +384,30 @@ export default function ProjectDetail() {
 
               <div className="pt-4 flex flex-col gap-3">
                 {project.primaryActionHref ? (
-                  <a
-                    href={project.primaryActionHref}
-                    target={project.primaryActionDownload ? undefined : "_blank"}
-                    rel={project.primaryActionDownload ? undefined : "noreferrer"}
-                    download={project.primaryActionDownload ? true : undefined}
-                    className="block w-full"
-                  >
-                    <Button className="w-full gap-2">
+                  isPdfHref(project.primaryActionHref) ? (
+                    <Button
+                      className="w-full gap-2"
+                      onClick={() => {
+                        galleryRef.current?.openBySrc(project.primaryActionHref, {
+                          title: project.primaryActionLabel || "Project Report",
+                        });
+                      }}
+                    >
                       <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
                     </Button>
-                  </a>
+                  ) : (
+                    <a
+                      href={project.primaryActionHref}
+                      target={project.primaryActionDownload ? undefined : "_blank"}
+                      rel={project.primaryActionDownload ? undefined : "noreferrer"}
+                      download={project.primaryActionDownload ? true : undefined}
+                      className="block w-full"
+                    >
+                      <Button className="w-full gap-2">
+                        <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                      </Button>
+                    </a>
+                  )
                 ) : (
                   <Button className="w-full gap-2">
                     <ExternalLink size={18} /> View Live Project
