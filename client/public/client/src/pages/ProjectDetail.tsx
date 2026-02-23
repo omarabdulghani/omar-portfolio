@@ -120,6 +120,8 @@ const projectsData: Record<string, any> = {
     subtitle: "Staff Operations, Personalization & Internal Communication App Concept",
     year: "2025",
     client: "Amstelhof Sport & Health Club",
+    clientLogo: "/images/amstelhof-connect gallery/amstelhof-logo light mode.png",
+    clientLogoDark: "/images/amstelhof-connect gallery/amstelhof-logo dark mode.png",
     role: "UX/UI Designer, Researcher & Concept Strategist",
     description: "Amstelhof Connect is a staff-first app concept for Amstelhof Sport & Health Club, developed to centralize communication, task coordination, and member follow-up. The project combined strategic marketing goals with iterative UX development to improve internal workflows and support more personalized member experiences.",
     challenge: "Amstelhof staff worked across **fragmented tools** for communication, scheduling, and feedback, which created **operational inefficiencies** and reduced team coordination. At the same time, staff found it difficult to scale **personalized member engagement** because member insights and follow-up actions were scattered.",
@@ -288,7 +290,7 @@ export default function ProjectDetail() {
             <div>
               <h2 className="text-2xl font-heading font-bold mb-4">Impact & Results</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {project.impact}
+                {renderWithBold(project.impact)}
               </p>
             </div>
 
