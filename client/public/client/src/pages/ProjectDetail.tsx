@@ -135,12 +135,12 @@ const projectsData: Record<string, any> = {
       mode: "static",
       showArrows: true,
       images: [
-        "/images/amstelhof-connect gallery/Amstelhof Connect images/5.png",
-        "/images/amstelhof-connect gallery/Amstelhof Connect images/6.png",
         "/images/amstelhof-connect gallery/Amstelhof Connect images/1.png",
         "/images/amstelhof-connect gallery/Amstelhof Connect images/2.png",
         "/images/amstelhof-connect gallery/Amstelhof Connect images/3.png",
-        "/images/amstelhof-connect gallery/Amstelhof Connect images/4.png"
+        "/images/amstelhof-connect gallery/Amstelhof Connect images/4.png",
+        "/images/amstelhof-connect gallery/Amstelhof Connect images/5.png",
+        "/images/amstelhof-connect gallery/Amstelhof Connect images/6.png"
       ],
     },
     description: "Amstelhof Connect is a staff-first app concept for Amstelhof Sport & Health Club, developed to centralize communication, task coordination, and member follow-up. This project was created in collaboration with my classmate Niklas Forget: I led the app concept and prototype design, while we worked together on research and early-stage ideation. The outcome combines strategic marketing goals with iterative UX development to improve internal workflows and support more personalized member experiences.",
