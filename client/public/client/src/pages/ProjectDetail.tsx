@@ -79,12 +79,6 @@ const projectsData: Record<string, any> = {
       },
       {
         type: "image",
-        src: "/images/gallery-moes-2.jpg",
-        alt: "MOES activation material",
-        title: "Pop-up Stand Visual - MOES Tuinen"
-      },
-      {
-        type: "image",
         src: "/images/moes-grow-kit-giveaway.jpg",
         alt: "MOES grow kit giveaway visual",
         title: "Grow Kit Giveaway - MOES Tuinen"
@@ -112,12 +106,6 @@ const projectsData: Record<string, any> = {
         src: "/images/moes-poster.png",
         alt: "MOES poster design",
         title: "Poster Design - MOES Tuinen"
-      },
-      {
-        type: "image",
-        src: "/images/moes-test-image.jpeg",
-        alt: "MOES project gallery image",
-        title: "Test Image - MOES Tuinen"
       },
       {
         type: "document",
