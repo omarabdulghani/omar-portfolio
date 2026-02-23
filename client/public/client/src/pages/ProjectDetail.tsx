@@ -8,6 +8,7 @@ import ProjectGallery, {
   type ProjectGalleryHandle,
   type ProjectGalleryMedia,
 } from "@/components/ProjectGallery";
+import DeviceMockup from "@/components/DeviceMockup";
 import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
@@ -122,8 +123,19 @@ const projectsData: Record<string, any> = {
     client: "Amstelhof Sport & Health Club",
     clientLogo: "/images/amstelhof-connect gallery/amstelhof-logo light mode.png",
     clientLogoDark: "/images/amstelhof-connect gallery/amstelhof-logo dark mode.png",
+    clientWebsite: "https://www.amstelhof.com/",
     role: "UX/UI Designer, Researcher & Concept Strategist",
-    description: "Amstelhof Connect is a staff-first app concept for Amstelhof Sport & Health Club, developed to centralize communication, task coordination, and member follow-up. The project combined strategic marketing goals with iterative UX development to improve internal workflows and support more personalized member experiences.",
+    primaryActionLabel: "View Figma Prototype",
+    primaryActionHref: "https://www.figma.com/design/wVKWBrwyRTkEJ3cJ9fuw2s/Amstelhof-Staff-App?node-id=0-1&t=ClzXrm3jcVdjVtiW-1",
+    demoVideoLabel: "View Project's Report",
+    demoVideoSrc: "/images/amstelhof-connect gallery/(Report) 16-12-24 - 628674 Omar Abdulghani -  689779 Niklas forget - UoS2 - Marketing of Value Creation_compressed.pdf",
+    deviceMockup: {
+      type: "desktop",
+      mode: "interactive",
+      iframeSrc: "https://embed.figma.com/design/wVKWBrwyRTkEJ3cJ9fuw2s/Amstelhof-Staff-App?node-id=0-1&embed-host=share",
+      iframeTitle: "Amstelhof Staff App Figma Prototype",
+    },
+    description: "Amstelhof Connect is a staff-first app concept for Amstelhof Sport & Health Club, developed to centralize communication, task coordination, and member follow-up. This project was created in collaboration with my classmate Niklas Forget: I led the app concept and prototype design, while we worked together on research and early-stage ideation. The outcome combines strategic marketing goals with iterative UX development to improve internal workflows and support more personalized member experiences.",
     challenge: "Amstelhof staff worked across **fragmented tools** for communication, scheduling, and feedback, which created **operational inefficiencies** and reduced team coordination. At the same time, staff found it difficult to scale **personalized member engagement** because member insights and follow-up actions were scattered.",
     solution: "Using an **iterative, user-centered process** (interviews, survey, focus group, and usability tests), we designed a modular prototype with four core layers: an **Email Center with AI support**, a **Happiness Index & Feedback Feed**, a **Member Interaction & Follow-Up Center**, and a **Staff Center** for tasks, scheduling, messaging, and role-based permissions.",
     impact: "The concept showed strong validation from research and testing: around **500 survey responses**, with **70%** indicating personalized interactions influence loyalty, **68%** saying recognition increases consistency, and **59%** showing interest in rewards-based engagement. The final prototype created a clear roadmap to streamline staff operations and strengthen member retention through proactive, data-informed communication.",
@@ -215,6 +227,11 @@ function isPdfHref(href?: string): boolean {
   return /\.pdf(\?|$)/i.test(href);
 }
 
+function isVideoHref(href?: string): boolean {
+  if (!href) return false;
+  return /\.(mp4|webm|ogg|mov|m4v)(\?|$)/i.test(href);
+}
+
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const galleryRef = useRef<ProjectGalleryHandle>(null);
@@ -293,6 +310,22 @@ export default function ProjectDetail() {
                 {renderWithBold(project.impact)}
               </p>
             </div>
+
+            {project.deviceMockup ? (
+              <div className="space-y-6">
+                <h2 className="text-2xl font-heading font-bold">Prototype Preview</h2>
+                <DeviceMockup
+                  type={project.deviceMockup.type}
+                  mode={project.deviceMockup.mode}
+                  images={project.deviceMockup.images}
+                  iframeSrc={project.deviceMockup.iframeSrc}
+                  iframeTitle={project.deviceMockup.iframeTitle}
+                  showArrows={project.deviceMockup.showArrows}
+                  enableTilt={project.deviceMockup.enableTilt}
+                  imageFit={project.deviceMockup.imageFit}
+                />
+              </div>
+            ) : null}
 
             {/* Gallery */}
             {project.gallery && project.gallery.length > 0 && (
@@ -420,13 +453,18 @@ export default function ProjectDetail() {
                   className="w-full gap-2"
                   onClick={() => {
                     if (!project.demoVideoSrc) return;
+                    const demoIsVideo = isVideoHref(project.demoVideoSrc);
                     galleryRef.current?.openBySrc(project.demoVideoSrc, {
-                      alt: `${project.title} demo video`,
-                      poster: project.demoVideoPoster,
+                      alt: demoIsVideo
+                        ? `${project.title} demo video`
+                        : `${project.title} project report`,
+                      poster: demoIsVideo ? project.demoVideoPoster : undefined,
+                      title: project.demoVideoLabel || undefined,
                     });
                   }}
                 >
-                  <Play size={18} /> {project.demoVideoLabel || "Watch Demo Video"}
+                  {isVideoHref(project.demoVideoSrc) ? <Play size={18} /> : <ExternalLink size={18} />}
+                  {project.demoVideoLabel || "Watch Demo Video"}
                 </Button>
               </div>
             </div>
