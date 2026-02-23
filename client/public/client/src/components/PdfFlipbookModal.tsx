@@ -102,9 +102,24 @@ export default function PdfFlipbookModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pages, setPages] = useState<string[]>([]);
-  const [bookSize, setBookSize] = useState({ width: 420, height: 560 });
+  const [sourcePageRatio, setSourcePageRatio] = useState(0.72);
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewport, setViewport] = useState({ width: 1280, height: 720 });
   const flipBookRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const applyViewport = () => {
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    applyViewport();
+    window.addEventListener("resize", applyViewport);
+    return () => {
+      window.removeEventListener("resize", applyViewport);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen || !pdfUrl) return;
@@ -126,20 +141,14 @@ export default function PdfFlipbookModal({
         const task = pdfjs.getDocument({ url: pdfUrl, withCredentials: false });
         const pdf = await task.promise;
         const renderedPages: string[] = [];
-        let nextSize = { width: 420, height: 560 };
+        let nextRatio = 0.72;
 
         for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
           const page = await pdf.getPage(pageNumber);
           const baseViewport = page.getViewport({ scale: 1 });
 
           if (pageNumber === 1) {
-            const ratio = baseViewport.width / baseViewport.height;
-            const targetHeight = 560;
-            const calculatedWidth = Math.round(targetHeight * ratio);
-            nextSize = {
-              width: Math.min(860, Math.max(320, calculatedWidth)),
-              height: targetHeight,
-            };
+            nextRatio = baseViewport.width / baseViewport.height;
           }
 
           const scale = Math.max(1.25, Math.min(2, 1400 / baseViewport.width));
@@ -158,7 +167,7 @@ export default function PdfFlipbookModal({
         await pdf.destroy();
 
         if (cancelled) return;
-        setBookSize(nextSize);
+        setSourcePageRatio(nextRatio);
         setPages(renderedPages);
       } catch {
         if (!cancelled) {
@@ -208,6 +217,36 @@ export default function PdfFlipbookModal({
   }, [isOpen, onClose]);
 
   const pageCount = pages.length;
+  const fittedBookSize = useMemo(() => {
+    const isMobile = viewport.width < 768;
+    const horizontalPadding = isMobile ? 36 : 110;
+    const verticalReserved = isMobile ? 250 : 230;
+    const availableWidth = Math.max(220, viewport.width - horizontalPadding);
+    const availableHeight = Math.max(280, viewport.height - verticalReserved);
+
+    // In desktop mode the open book has two pages, so each page should use roughly half width.
+    const maxPageWidthByViewport = isMobile
+      ? availableWidth - 8
+      : Math.floor((availableWidth - 24) / 2);
+
+    const clampedRatio = Number.isFinite(sourcePageRatio) && sourcePageRatio > 0
+      ? sourcePageRatio
+      : 0.72;
+
+    let width = Math.min(460, maxPageWidthByViewport);
+    let height = width / clampedRatio;
+
+    if (height > availableHeight) {
+      height = availableHeight;
+      width = height * clampedRatio;
+    }
+
+    width = Math.max(180, Math.floor(width));
+    height = Math.max(240, Math.floor(height));
+
+    return { width, height };
+  }, [sourcePageRatio, viewport.height, viewport.width]);
+
   const modalTitle = useMemo(() => {
     if (title) return title;
     if (!pdfUrl) return "PDF";
@@ -232,7 +271,7 @@ export default function PdfFlipbookModal({
 
       <div className="relative z-[121] min-h-screen flex items-center justify-center p-4 md:p-6">
         <div
-          className="w-full max-w-[1200px] rounded-2xl border border-white/20 bg-background/85 shadow-2xl backdrop-blur-md overflow-hidden"
+          className="w-full max-w-[1200px] max-h-[95vh] rounded-2xl border border-white/20 bg-background/85 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col"
           onClick={stopClose}
         >
           <div className="flex items-center justify-between gap-3 border-b border-border/50 px-4 py-3 md:px-5">
@@ -250,7 +289,7 @@ export default function PdfFlipbookModal({
             </div>
           </div>
 
-          <div className="px-3 py-4 md:px-5 md:py-5">
+          <div className="px-3 py-4 md:px-5 md:py-5 overflow-auto">
             {loading ? (
               <div className="h-[55vh] flex items-center justify-center text-muted-foreground">
                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
@@ -269,13 +308,13 @@ export default function PdfFlipbookModal({
                 <div className="flex items-center justify-center">
                   <HTMLFlipBook
                     ref={flipBookRef}
-                    width={bookSize.width}
-                    height={bookSize.height}
-                    size="stretch"
-                    minWidth={260}
-                    maxWidth={920}
-                    minHeight={360}
-                    maxHeight={1240}
+                    width={fittedBookSize.width}
+                    height={fittedBookSize.height}
+                    size="fixed"
+                    minWidth={fittedBookSize.width}
+                    maxWidth={fittedBookSize.width}
+                    minHeight={fittedBookSize.height}
+                    maxHeight={fittedBookSize.height}
                     maxShadowOpacity={0.35}
                     drawShadow
                     flippingTime={650}
@@ -326,4 +365,3 @@ export default function PdfFlipbookModal({
     document.body
   );
 }
-
