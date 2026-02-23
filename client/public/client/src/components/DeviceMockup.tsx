@@ -112,6 +112,11 @@ export default function DeviceMockup({
   const hasGalleryItems = images.length > 0;
 
   useEffect(() => {
+    if (!galleryRef.current) return;
+    galleryRef.current.scrollTo({ left: 0, top: 0, behavior: "auto" });
+  }, [images, mode, type, resolvedOrientation]);
+
+  useEffect(() => {
     const onFullscreenChange = () => {
       setIsFullscreen(document.fullscreenElement === rootRef.current);
     };
@@ -124,7 +129,7 @@ export default function DeviceMockup({
 
   const scrollGallery = (direction: "prev" | "next") => {
     if (!galleryRef.current) return;
-    const step = Math.max(160, Math.floor(galleryRef.current.clientWidth * 0.92));
+    const step = galleryRef.current.clientWidth;
     galleryRef.current.scrollBy({
       left: direction === "next" ? step : -step,
       behavior: "smooth",
