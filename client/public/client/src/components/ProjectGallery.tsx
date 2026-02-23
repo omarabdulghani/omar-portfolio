@@ -32,6 +32,7 @@ type NormalizedMedia = {
 };
 
 const VIDEO_EXTENSIONS = [".mp4", ".webm", ".ogg", ".mov", ".m4v"];
+const POSTER_EXTENSIONS = [".webp", ".jpg", ".jpeg", ".png"];
 const DOCUMENT_EXTENSIONS = [
   ".pdf",
   ".doc",
@@ -57,6 +58,26 @@ function titleFromSrc(src: string): string {
   const noExt = decoded.replace(/\.[^/.]+$/, "");
   const cleaned = noExt.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
   return cleaned || "Media";
+}
+
+function getPosterCandidatesFromVideoSrc(src: string): string[] {
+  const [pathname, query = ""] = src.split("?");
+  const base = pathname.replace(/\.[^/.]+$/, "");
+  const suffix = query ? `?${query}` : "";
+
+  // Convention for future galleries: /images/video-name.mp4 -> /images/video-name-poster.(webp|jpg|jpeg|png)
+  return POSTER_EXTENSIONS.map((ext) => `${base}-poster${ext}${suffix}`);
+}
+
+function checkImageExists(src: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.referrerPolicy = "no-referrer";
+    image.onload = () => resolve(true);
+    image.onerror = () => resolve(false);
+    image.src = src;
+  });
 }
 
 function normalizeItem(item: ProjectGalleryMedia, index: number): NormalizedMedia {
@@ -100,6 +121,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [externalActiveItem, setExternalActiveItem] = useState<NormalizedMedia | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [autoVideoPosters, setAutoVideoPosters] = useState<Record<string, string | null>>({});
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -149,6 +171,42 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     }),
     [orderedMedia]
   );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const findPosterForVideo = async (src: string): Promise<string | null> => {
+      const candidates = getPosterCandidatesFromVideoSrc(src);
+      for (const candidate of candidates) {
+        const exists = await checkImageExists(candidate);
+        if (exists) return candidate;
+      }
+      return null;
+    };
+
+    const videosToCheck = orderedMedia.filter(
+      (item) => item.type === "video" && !item.poster && autoVideoPosters[item.src] === undefined
+    );
+
+    if (!videosToCheck.length) return;
+
+    const run = async () => {
+      for (const item of videosToCheck) {
+        const poster = await findPosterForVideo(item.src);
+        if (cancelled) return;
+        setAutoVideoPosters((prev) => {
+          if (prev[item.src] !== undefined) return prev;
+          return { ...prev, [item.src]: poster };
+        });
+      }
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [orderedMedia, autoVideoPosters]);
 
   useEffect(() => {
     let cancelled = false;
@@ -229,9 +287,10 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       });
     };
 
-    const missingVideoThumbs = orderedMedia.filter(
-      (item) => item.type === "video" && !item.poster && !videoThumbnails[item.src]
-    );
+    const missingVideoThumbs = orderedMedia.filter((item) => {
+      if (item.type !== "video" || item.poster || videoThumbnails[item.src]) return false;
+      return autoVideoPosters[item.src] === null;
+    });
 
     if (!missingVideoThumbs.length) return;
 
@@ -251,7 +310,12 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     return () => {
       cancelled = true;
     };
-  }, [orderedMedia, videoThumbnails]);
+  }, [orderedMedia, videoThumbnails, autoVideoPosters]);
+
+  const getVideoPoster = (item: NormalizedMedia) => {
+    const autoPoster = autoVideoPosters[item.src] ?? undefined;
+    return item.poster || autoPoster || videoThumbnails[item.src] || fallbackPoster;
+  };
 
   useEffect(() => {
     if (!activeItem || activeItem.type === "document") {
@@ -317,9 +381,9 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       <div className="h-56 w-full overflow-hidden bg-background/20">
         {item.type === "video" ? (
           <div className="relative h-full w-full">
-            {item.poster || videoThumbnails[item.src] || fallbackPoster ? (
+            {getVideoPoster(item) ? (
               <img
-                src={item.poster || videoThumbnails[item.src] || fallbackPoster}
+                src={getVideoPoster(item)}
                 alt={item.alt}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 loading="lazy"
@@ -428,7 +492,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
                       <video
                         ref={videoRef}
                         src={activeItem.src}
-                        poster={activeItem.poster || videoThumbnails[activeItem.src]}
+                        poster={getVideoPoster(activeItem)}
                         controls
                         autoPlay
                         playsInline

@@ -25,6 +25,7 @@ const projectsData: Record<string, any> = {
     primaryActionHref: "/images/moes-tuinen-report.pdf",
     primaryActionDownload: true,
     demoVideoSrc: "/images/moes-recap-video.mp4",
+    demoVideoPoster: "/images/moes-recap-video-poster.jpg",
     demoVideoLabel: "Watch Demo Video",
     description: "A Design-Based Research graduation project for MOES Tuinen focused on improving brand visibility, user engagement, and community outreach in Amstelveen. The final concept combined a physical brand activation at Pure Markt with a bilingual social media strategy and ready-to-use communication assets.",
     challenge: "As MOES Tuinen expanded, **brand awareness** stayed low among **expats and internationals**. Communication on-site was also too informal, making the customer journey less clear. The key priority became a more visible and **accessible brand presence** in Amstelveen.",
@@ -35,10 +36,82 @@ const projectsData: Record<string, any> = {
     image: "/images/project-moes-tuinen.jpg",
     gallery: [
       {
+        type: "video",
+        src: "/images/moes-intro-video.mp4",
+        alt: "MOES intro video",
+        title: "Intro Video - MOES Tuinen",
+        poster: "/images/moes-intro-video-poster.jpg"
+      },
+      {
+        type: "video",
+        src: "/images/moes-pop-up-stand-design.mp4",
+        alt: "MOES pop-up stand design video",
+        title: "Pop-up Stand Design Video - MOES Tuinen",
+        poster: "/images/moes-pop-up-stand-design-poster.jpg"
+      },
+      {
+        type: "video",
+        src: "/images/moes-meet-cansu.mp4",
+        alt: "Meet Cansu video",
+        title: "Meet Cansu - MOES Tuinen",
+        poster: "/images/moes-meet-cansu-poster.jpg"
+      },
+      {
+        type: "video",
+        src: "/images/moes-meet-jasper.mp4",
+        alt: "Meet Jasper video",
+        title: "Meet Jasper - MOES Tuinen",
+        poster: "/images/moes-meet-jasper-poster.jpg"
+      },
+      {
+        type: "video",
+        src: "/images/moes-meet-margret.mp4",
+        alt: "Meet Margret video",
+        title: "Meet Margret - MOES Tuinen",
+        poster: "/images/moes-meet-margret-poster.jpg"
+      },
+      {
+        type: "video",
+        src: "/images/moes-meet-sascha.mp4",
+        alt: "Meet Sascha video",
+        title: "Meet Sascha - MOES Tuinen",
+        poster: "/images/moes-meet-sascha-poster.jpg"
+      },
+      {
         type: "image",
         src: "/images/gallery-moes-2.jpg",
         alt: "MOES activation material",
         title: "Pop-up Stand Visual - MOES Tuinen"
+      },
+      {
+        type: "image",
+        src: "/images/moes-grow-kit-giveaway.jpg",
+        alt: "MOES grow kit giveaway visual",
+        title: "Grow Kit Giveaway - MOES Tuinen"
+      },
+      {
+        type: "image",
+        src: "/images/moes-grow-kit-giveaway-production.jpg",
+        alt: "MOES grow kit giveaway production",
+        title: "Grow Kit Giveaway Production - MOES Tuinen"
+      },
+      {
+        type: "image",
+        src: "/images/moes-grow-kit-instructions.png",
+        alt: "MOES grow kit instructions visual",
+        title: "Grow Kit Instructions - MOES Tuinen"
+      },
+      {
+        type: "image",
+        src: "/images/moes-pop-up-stand-design.png",
+        alt: "MOES pop-up stand design visual",
+        title: "Pop-up Stand Design - MOES Tuinen"
+      },
+      {
+        type: "image",
+        src: "/images/moes-poster.png",
+        alt: "MOES poster design",
+        title: "Poster Design - MOES Tuinen"
       },
       {
         type: "image",
@@ -47,10 +120,10 @@ const projectsData: Record<string, any> = {
         title: "Test Image - MOES Tuinen"
       },
       {
-        type: "video",
-        src: "/images/moes-intro-video.mp4",
-        alt: "MOES intro video",
-        title: "Intro Video - MOES Tuinen"
+        type: "document",
+        src: "/images/moes-deliverables-timeline-budget.pdf",
+        alt: "MOES deliverables timeline and budget document",
+        title: "Deliverables, Timeline & Budget - MOES Tuinen"
       }
     ]
   },
@@ -341,6 +414,7 @@ export default function ProjectDetail() {
                     if (!project.demoVideoSrc) return;
                     galleryRef.current?.openBySrc(project.demoVideoSrc, {
                       alt: `${project.title} demo video`,
+                      poster: project.demoVideoPoster,
                     });
                   }}
                 >
