@@ -91,7 +91,7 @@ const projectsData: Record<string, any> = {
       },
       {
         type: "image",
-        src: "/images/moes-grow-kit-instructions.png",
+        src: "/images/moes-grow-kit-instructions.jpg",
         alt: "MOES grow kit instructions visual",
         title: "Grow Kit Instructions - MOES Tuinen"
       },
