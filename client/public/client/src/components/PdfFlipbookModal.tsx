@@ -289,14 +289,14 @@ export default function PdfFlipbookModal({
             </div>
           </div>
 
-          <div className="px-3 py-4 md:px-5 md:py-5 overflow-auto">
+          <div className="px-3 py-4 md:px-5 md:py-5 flex-1 overflow-hidden">
             {loading ? (
-              <div className="h-[55vh] flex items-center justify-center text-muted-foreground">
+              <div className="h-full min-h-[260px] flex items-center justify-center text-muted-foreground">
                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
                 Loading PDF...
               </div>
             ) : error ? (
-              <div className="h-[55vh] flex flex-col items-center justify-center text-center px-6">
+              <div className="h-full min-h-[260px] flex flex-col items-center justify-center text-center px-6">
                 <p className="font-semibold mb-2">Preview unavailable</p>
                 <p className="text-sm text-muted-foreground mb-4">{error}</p>
                 <a href={pdfUrl} target="_blank" rel="noreferrer">
@@ -304,8 +304,8 @@ export default function PdfFlipbookModal({
                 </a>
               </div>
             ) : (
-              <div className="space-y-4">
-                <div className="flex items-center justify-center">
+              <div className="h-full flex flex-col gap-4">
+                <div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden">
                   <HTMLFlipBook
                     ref={flipBookRef}
                     width={fittedBookSize.width}
