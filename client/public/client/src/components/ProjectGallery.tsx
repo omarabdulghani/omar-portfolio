@@ -9,6 +9,7 @@ import {
 import { createPortal } from "react-dom";
 import { FileText, Pause, Play, RotateCcw, RotateCw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import pdfWorkerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
 type MediaType = "image" | "video" | "document";
 
@@ -50,6 +51,10 @@ function inferTypeFromSrc(src: string): MediaType {
   if (VIDEO_EXTENSIONS.some((ext) => normalized.endsWith(ext))) return "video";
   if (DOCUMENT_EXTENSIONS.some((ext) => normalized.endsWith(ext))) return "document";
   return "image";
+}
+
+function isPdfSrc(src: string): boolean {
+  return src.split("?")[0].toLowerCase().endsWith(".pdf");
 }
 
 function titleFromSrc(src: string): string {
@@ -123,6 +128,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoVideoPosters, setAutoVideoPosters] = useState<Record<string, string | null>>({});
   const [videoThumbnails, setVideoThumbnails] = useState<Record<string, string>>({});
+  const [documentThumbnails, setDocumentThumbnails] = useState<Record<string, string | null>>({});
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const groupedMedia = useMemo(() => {
@@ -312,9 +318,80 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
     };
   }, [orderedMedia, videoThumbnails, autoVideoPosters]);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    const pdfItemsToRender = orderedMedia.filter(
+      (item) => item.type === "document" && isPdfSrc(item.src) && documentThumbnails[item.src] === undefined
+    );
+
+    if (!pdfItemsToRender.length) return;
+
+    const run = async () => {
+      const pdfjs = await import("pdfjs-dist/build/pdf.mjs");
+      if (pdfjs.GlobalWorkerOptions.workerSrc !== pdfWorkerSrc) {
+        pdfjs.GlobalWorkerOptions.workerSrc = pdfWorkerSrc;
+      }
+
+      for (const item of pdfItemsToRender) {
+        try {
+          const loadingTask = pdfjs.getDocument({
+            url: item.src,
+            withCredentials: false,
+          });
+          const pdf = await loadingTask.promise;
+          const page = await pdf.getPage(1);
+
+          const baseViewport = page.getViewport({ scale: 1 });
+          const maxThumbWidth = 900;
+          const scale = Math.max(0.5, Math.min(2, maxThumbWidth / baseViewport.width));
+          const viewport = page.getViewport({ scale });
+
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.floor(viewport.width);
+          canvas.height = Math.floor(viewport.height);
+          const context = canvas.getContext("2d");
+          if (!context) throw new Error("Canvas context unavailable");
+
+          await page.render({
+            canvasContext: context,
+            viewport,
+          }).promise;
+
+          const preview = canvas.toDataURL("image/jpeg", 0.85);
+          page.cleanup();
+          await pdf.destroy();
+
+          if (cancelled) return;
+          setDocumentThumbnails((prev) => {
+            if (prev[item.src] !== undefined) return prev;
+            return { ...prev, [item.src]: preview };
+          });
+        } catch {
+          if (cancelled) return;
+          setDocumentThumbnails((prev) => {
+            if (prev[item.src] !== undefined) return prev;
+            return { ...prev, [item.src]: null };
+          });
+        }
+      }
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [orderedMedia, documentThumbnails]);
+
   const getVideoPoster = (item: NormalizedMedia) => {
     const autoPoster = autoVideoPosters[item.src] ?? undefined;
     return item.poster || autoPoster || videoThumbnails[item.src] || fallbackPoster;
+  };
+
+  const getDocumentPreview = (item: NormalizedMedia) => {
+    if (!isPdfSrc(item.src)) return null;
+    return documentThumbnails[item.src] ?? null;
   };
 
   useEffect(() => {
@@ -411,14 +488,23 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
             loading="lazy"
           />
         ) : (
-          <div className="h-full w-full flex flex-col items-center justify-center gap-3 px-4 text-center">
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/15 text-primary">
-              <FileText className="h-7 w-7" />
-            </span>
-            <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-              {item.src.split("?")[0].split(".").pop()?.toUpperCase() || "FILE"}
-            </p>
-          </div>
+          getDocumentPreview(item) ? (
+            <img
+              src={getDocumentPreview(item) as string}
+              alt={`${item.alt} first page preview`}
+              className="h-full w-full object-contain bg-white/60 dark:bg-background/40 transition-transform duration-300 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+          ) : (
+            <div className="h-full w-full flex flex-col items-center justify-center gap-3 px-4 text-center">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/15 text-primary">
+                <FileText className="h-7 w-7" />
+              </span>
+              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                {item.src.split("?")[0].split(".").pop()?.toUpperCase() || "FILE"}
+              </p>
+            </div>
+          )
         )}
       </div>
       <div className="border-t border-white/10 px-3 py-2">
