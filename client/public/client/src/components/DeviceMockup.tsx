@@ -5,10 +5,12 @@ import { cn } from "@/lib/utils";
 
 export type DeviceMockupType = "ipad" | "iphone" | "desktop";
 export type DeviceMockupMode = "static" | "interactive";
+export type DeviceMockupOrientation = "portrait" | "landscape";
 
 type DeviceMockupProps = {
   type: DeviceMockupType;
   mode: DeviceMockupMode;
+  orientation?: DeviceMockupOrientation;
   images?: string[];
   iframeSrc?: string;
   iframeTitle?: string;
@@ -23,36 +25,62 @@ type DeviceStyleConfig = {
   frameClassName: string;
   screenClassName: string;
   notch?: "iphone" | "ipad";
+  notchClassName?: string;
   hasLaptopBase?: boolean;
 };
 
-const DEVICE_STYLES: Record<DeviceMockupType, DeviceStyleConfig> = {
-  iphone: {
-    shellClassName: "w-full max-w-[340px]",
-    frameClassName:
-      "rounded-[2.4rem] border border-white/20 bg-zinc-900 p-[10px] shadow-[0_18px_45px_rgba(2,6,23,0.35)]",
-    screenClassName: "relative aspect-[9/19.5] overflow-hidden rounded-[2rem] bg-black",
-    notch: "iphone",
-  },
-  ipad: {
-    shellClassName: "w-full max-w-[560px]",
-    frameClassName:
-      "rounded-[2rem] border border-white/20 bg-zinc-900 p-[12px] shadow-[0_18px_45px_rgba(2,6,23,0.35)]",
-    screenClassName: "relative aspect-[3/4] overflow-hidden rounded-[1.5rem] bg-black",
-    notch: "ipad",
-  },
-  desktop: {
+function getDeviceStyles(
+  type: DeviceMockupType,
+  orientation: DeviceMockupOrientation
+): DeviceStyleConfig {
+  if (type === "iphone") {
+    const isLandscape = orientation === "landscape";
+    return {
+      shellClassName: cn("w-full", isLandscape ? "max-w-[560px]" : "max-w-[340px]"),
+      frameClassName:
+        "rounded-[2.4rem] border border-white/20 bg-zinc-900 p-[10px] shadow-[0_18px_45px_rgba(2,6,23,0.35)]",
+      screenClassName: cn(
+        "relative overflow-hidden rounded-[2rem] bg-black",
+        isLandscape ? "aspect-[19.5/9]" : "aspect-[9/19.5]"
+      ),
+      notch: "iphone",
+      notchClassName: isLandscape
+        ? "pointer-events-none absolute right-2 top-1/2 z-20 h-20 w-5 -translate-y-1/2 rounded-full bg-black/85 ring-1 ring-white/10"
+        : "pointer-events-none absolute left-1/2 top-2 z-20 h-5 w-28 -translate-x-1/2 rounded-full bg-black/85 ring-1 ring-white/10",
+    };
+  }
+
+  if (type === "ipad") {
+    const isLandscape = orientation === "landscape";
+    return {
+      shellClassName: cn("w-full", isLandscape ? "max-w-[840px]" : "max-w-[560px]"),
+      frameClassName:
+        "rounded-[2rem] border border-white/20 bg-zinc-900 p-[12px] shadow-[0_18px_45px_rgba(2,6,23,0.35)]",
+      // iPad 9.7 screen ratio = 4:3 (2048x1536), portrait = 3:4
+      screenClassName: cn(
+        "relative overflow-hidden rounded-[1.5rem] bg-black",
+        isLandscape ? "aspect-[4/3]" : "aspect-[3/4]"
+      ),
+      notch: "ipad",
+      notchClassName: isLandscape
+        ? "pointer-events-none absolute right-2 top-1/2 z-20 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-zinc-700 ring-1 ring-white/20"
+        : "pointer-events-none absolute left-1/2 top-2 z-20 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-zinc-700 ring-1 ring-white/20",
+    };
+  }
+
+  return {
     shellClassName: "w-full max-w-[980px]",
     frameClassName:
       "rounded-[1.25rem] border border-white/20 bg-zinc-900 p-[12px] shadow-[0_18px_45px_rgba(2,6,23,0.35)]",
     screenClassName: "relative aspect-[16/10] overflow-hidden rounded-[0.9rem] bg-black",
     hasLaptopBase: true,
-  },
-};
+  };
+}
 
 export default function DeviceMockup({
   type,
   mode,
+  orientation,
   images = [],
   iframeSrc,
   iframeTitle,
@@ -62,7 +90,9 @@ export default function DeviceMockup({
   className,
 }: DeviceMockupProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
-  const style = DEVICE_STYLES[type];
+  const resolvedOrientation: DeviceMockupOrientation =
+    orientation ?? (type === "desktop" ? "landscape" : "portrait");
+  const style = getDeviceStyles(type, resolvedOrientation);
   const hasGalleryItems = images.length > 0;
 
   const scrollGallery = (direction: "prev" | "next") => {
@@ -86,12 +116,8 @@ export default function DeviceMockup({
     >
       <div className={style.frameClassName}>
         <div className={style.screenClassName}>
-          {style.notch === "iphone" ? (
-            <div className="pointer-events-none absolute left-1/2 top-2 z-20 h-5 w-28 -translate-x-1/2 rounded-full bg-black/85 ring-1 ring-white/10" />
-          ) : null}
-          {style.notch === "ipad" ? (
-            <div className="pointer-events-none absolute left-1/2 top-2 z-20 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-zinc-700 ring-1 ring-white/20" />
-          ) : null}
+          {style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
+          {style.notch === "ipad" ? <div className={style.notchClassName} /> : null}
 
           {mode === "interactive" ? (
             iframeSrc ? (
@@ -174,4 +200,3 @@ export default function DeviceMockup({
     </div>
   );
 }
-
