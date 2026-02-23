@@ -1,5 +1,5 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { ChevronLeft, ChevronRight, Maximize2, Minimize2 } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -77,6 +77,15 @@ function getDeviceStyles(
   };
 }
 
+function getDeviceScreenRatio(
+  type: DeviceMockupType,
+  orientation: DeviceMockupOrientation
+): number {
+  if (type === "iphone") return orientation === "landscape" ? 19.5 / 9 : 9 / 19.5;
+  if (type === "ipad") return orientation === "landscape" ? 4 / 3 : 3 / 4;
+  return 16 / 10;
+}
+
 export default function DeviceMockup({
   type,
   mode,
@@ -89,11 +98,29 @@ export default function DeviceMockup({
   imageFit = "cover",
   className,
 }: DeviceMockupProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
   const resolvedOrientation: DeviceMockupOrientation =
     orientation ?? (type === "desktop" ? "landscape" : "portrait");
   const style = getDeviceStyles(type, resolvedOrientation);
+  const screenRatio = useMemo(
+    () => getDeviceScreenRatio(type, resolvedOrientation),
+    [type, resolvedOrientation]
+  );
   const hasGalleryItems = images.length > 0;
+
+  useEffect(() => {
+    const onFullscreenChange = () => {
+      setIsFullscreen(document.fullscreenElement === rootRef.current);
+    };
+
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+    };
+  }, []);
 
   const scrollGallery = (direction: "prev" | "next") => {
     if (!galleryRef.current) return;
@@ -104,8 +131,29 @@ export default function DeviceMockup({
     });
   };
 
+  const toggleFullscreen = async () => {
+    if (!rootRef.current) return;
+
+    if (document.fullscreenElement === rootRef.current) {
+      await document.exitFullscreen().catch(() => undefined);
+      return;
+    }
+
+    await rootRef.current.requestFullscreen().catch(() => undefined);
+  };
+
+  const handleImageLoad = (src: string, width: number, height: number) => {
+    if (!width || !height) return;
+    const ratio = width / height;
+    setImageRatios((current) => {
+      if (current[src] === ratio) return current;
+      return { ...current, [src]: ratio };
+    });
+  };
+
   return (
     <div
+      ref={rootRef}
       className={cn(
         "mx-auto",
         style.shellClassName,
@@ -116,6 +164,19 @@ export default function DeviceMockup({
     >
       <div className={style.frameClassName}>
         <div className={style.screenClassName}>
+          {((mode === "interactive" && !!iframeSrc) || (mode === "static" && hasGalleryItems)) ? (
+            <Button
+              type="button"
+              size="icon"
+              variant="secondary"
+              className="absolute right-3 top-3 z-30 h-8 w-8 rounded-md bg-white/90 text-zinc-900 hover:bg-white"
+              onClick={toggleFullscreen}
+              aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+            >
+              {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+            </Button>
+          ) : null}
+
           {style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
           {style.notch === "ipad" ? <div className={style.notchClassName} /> : null}
 
@@ -145,15 +206,40 @@ export default function DeviceMockup({
               >
                 {images.map((src, index) => (
                   <div key={`${src}-${index}`} className="h-full w-full shrink-0 snap-start">
-                    <img
-                      src={src}
-                      alt={`${type} mockup slide ${index + 1}`}
-                      loading="lazy"
-                      className={cn(
-                        "h-full w-full",
-                        imageFit === "contain" ? "object-contain bg-black" : "object-cover"
-                      )}
-                    />
+                    {imageRatios[src] !== undefined && imageRatios[src] < screenRatio ? (
+                      <div className="h-full w-full overflow-y-auto overflow-x-hidden touch-pan-y overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                        <img
+                          src={src}
+                          alt={`${type} mockup slide ${index + 1}`}
+                          loading="lazy"
+                          onLoad={(event) =>
+                            handleImageLoad(
+                              src,
+                              event.currentTarget.naturalWidth,
+                              event.currentTarget.naturalHeight
+                            )
+                          }
+                          className="block w-full h-auto"
+                        />
+                      </div>
+                    ) : (
+                      <img
+                        src={src}
+                        alt={`${type} mockup slide ${index + 1}`}
+                        loading="lazy"
+                        onLoad={(event) =>
+                          handleImageLoad(
+                            src,
+                            event.currentTarget.naturalWidth,
+                            event.currentTarget.naturalHeight
+                          )
+                        }
+                        className={cn(
+                          "h-full w-full",
+                          imageFit === "contain" ? "object-contain bg-black" : "object-cover"
+                        )}
+                      />
+                    )}
                   </div>
                 ))}
               </div>
