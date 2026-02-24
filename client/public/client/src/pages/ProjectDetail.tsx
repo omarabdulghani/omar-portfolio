@@ -188,8 +188,10 @@ const projectsData: Record<string, any> = {
       orientation: "portrait",
       mode: "interactive",
       iframeSrc: "https://xd.adobe.com/embed/42819443-3895-426f-a706-cba6af4b7fd8-17d2/",
+      interactiveHref: "https://xd.adobe.com/view/42819443-3895-426f-a706-cba6af4b7fd8-17d2/",
       iframeTitle: "PatronApp Adobe XD prototype",
       showArrows: false,
+      disableEmbeddedNavigation: true,
       allowFullscreen: false
     },
     description: "PatronApp was developed with my classmates in **ZOOTS** (Zuzanna, Omar, Oliwia, Tamara, and Susanna) for Patronaat in Haarlem. Across the three module phases - **Creation, Justification, and Production** - we proposed three concepts, and **PatronApp (my concept)** was selected by the client for further development. I led the app ideation and designed the interactive prototype in Adobe XD.",
@@ -292,8 +294,10 @@ const projectsData: Record<string, any> = {
       mode: "interactive",
       orientation: "landscape",
       iframeSrc: "https://xd.adobe.com/embed/c1387df0-0e9c-4b18-8b55-0f7e6aea7d3f-946b/",
+      interactiveHref: "https://xd.adobe.com/view/c1387df0-0e9c-4b18-8b55-0f7e6aea7d3f-946b/",
       iframeTitle: "Pro Detailing prototype",
       showArrows: false,
+      disableEmbeddedNavigation: true,
       allowFullscreen: true
     },
     gallery: [
@@ -400,40 +404,12 @@ function isVideoHref(href?: string): boolean {
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const galleryRef = useRef<ProjectGalleryHandle>(null);
-  const pageUrlRef = useRef("");
-  const skippingEmbeddedHistoryRef = useRef(false);
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : undefined;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
-
-  useEffect(() => {
-    pageUrlRef.current = `${window.location.pathname}${window.location.search}`;
-  }, [projectId]);
-
-  useEffect(() => {
-    if (!project?.deviceMockup || project.deviceMockup.mode !== "interactive") return;
-
-    const onPopState = () => {
-      const currentUrl = `${window.location.pathname}${window.location.search}`;
-
-      // If Back navigates inside embedded prototype history (same page URL),
-      // skip that entry and continue to the previous website page.
-      if (currentUrl !== pageUrlRef.current) return;
-      if (skippingEmbeddedHistoryRef.current) return;
-
-      skippingEmbeddedHistoryRef.current = true;
-      window.history.go(-1);
-      window.setTimeout(() => {
-        skippingEmbeddedHistoryRef.current = false;
-      }, 0);
-    };
-
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, [projectId, project?.deviceMockup]);
 
   if (!match || !project) {
     return <NotFound />;
