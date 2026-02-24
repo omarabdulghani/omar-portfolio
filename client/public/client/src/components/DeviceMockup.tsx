@@ -104,7 +104,7 @@ export default function DeviceMockup({
   imageFit = "cover",
   screenAspectRatio,
   hideNotch = false,
-  disableEmbeddedNavigation = mode === "interactive",
+  disableEmbeddedNavigation = false,
   interactiveHref,
   className,
 }: DeviceMockupProps) {
@@ -115,7 +115,6 @@ export default function DeviceMockup({
   const resolvedOrientation: DeviceMockupOrientation =
     orientation ?? (type === "desktop" ? "landscape" : "portrait");
   const style = getDeviceStyles(type, resolvedOrientation);
-  const embeddedNavigationDisabled = mode === "interactive" && !!disableEmbeddedNavigation;
   const screenRatio = useMemo(
     () => getDeviceScreenRatio(type, resolvedOrientation),
     [type, resolvedOrientation]
@@ -207,7 +206,10 @@ export default function DeviceMockup({
                 loading="lazy"
                 allow="clipboard-read; clipboard-write; fullscreen"
                 allowFullScreen
-                className={cn("h-full w-full border-0 bg-black", embeddedNavigationDisabled ? "pointer-events-none" : "")}
+                className={cn(
+                  "h-full w-full border-0 bg-black",
+                  disableEmbeddedNavigation ? "pointer-events-none" : ""
+                )}
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-white/70">
@@ -294,14 +296,10 @@ export default function DeviceMockup({
             </div>
           )}
 
-          {mode === "interactive" && embeddedNavigationDisabled ? (
-            <div className="absolute inset-0 z-20" />
-          ) : null}
-
-          {mode === "interactive" && embeddedNavigationDisabled && (interactiveHref || iframeSrc) ? (
+          {mode === "interactive" && disableEmbeddedNavigation && interactiveHref ? (
             <div className="pointer-events-none absolute inset-0 z-30 flex items-end justify-center p-4">
               <a
-                href={interactiveHref || iframeSrc}
+                href={interactiveHref}
                 target="_blank"
                 rel="noreferrer"
                 className="pointer-events-auto"
