@@ -189,7 +189,8 @@ const projectsData: Record<string, any> = {
       mode: "interactive",
       iframeSrc: "https://xd.adobe.com/embed/42819443-3895-426f-a706-cba6af4b7fd8-17d2/",
       iframeTitle: "PatronApp Adobe XD prototype",
-      showArrows: false
+      showArrows: false,
+      allowFullscreen: false
     },
     description: "PatronApp was developed with my classmates in **ZOOTS** (Zuzanna, Omar, Oliwia, Tamara, and Susanna) for Patronaat in Haarlem. Across the three module phases - **Creation, Justification, and Production** - we proposed three concepts, and **PatronApp (my concept)** was selected by the client for further development. I led the app ideation and designed the interactive prototype in Adobe XD.",
     challenge: "Patronaat needed to improve **online communication and reach**, especially for **international visitors** who faced language and inclusion barriers. Existing communication felt too generic, while users asked for a more personal, interactive, and community-driven music venue experience.",
@@ -199,8 +200,36 @@ const projectsData: Record<string, any> = {
     tools: ["Adobe XD", "User Interviews", "Survey Research", "Ideation Methods", "Prototype Testing"],
     image: "/images/project-patronapp.jpg",
     gallery: [
-      "/images/gallery-patronapp-1.jpg",
-      "/images/gallery-patronapp-2.jpg"
+      {
+        type: "video",
+        src: "/images/patronapp gallery/PatronApp Promo 1.mp4",
+        alt: "PatronApp promo video 1",
+        title: "PatronApp Promo 1"
+      },
+      {
+        type: "video",
+        src: "/images/patronapp gallery/PatronApp Promo 2.mp4",
+        alt: "PatronApp promo video 2",
+        title: "PatronApp Promo 2"
+      },
+      {
+        type: "image",
+        src: "/images/patronapp gallery/PatronApp.jpg",
+        alt: "PatronApp concept visual",
+        title: "PatronApp Visual"
+      },
+      {
+        type: "document",
+        src: "/images/patronapp gallery/End Report - PatronApp.pdf",
+        alt: "End report document",
+        title: "End Report - PatronApp"
+      },
+      {
+        type: "document",
+        src: "/images/patronapp gallery/Debriefing Report.pdf",
+        alt: "Debriefing report document",
+        title: "Debriefing Report"
+      }
     ]
   },
   "hallencity": {
@@ -360,6 +389,7 @@ export default function ProjectDetail() {
                   iframeSrc={project.deviceMockup.iframeSrc}
                   iframeTitle={project.deviceMockup.iframeTitle}
                   showArrows={project.deviceMockup.showArrows}
+                  allowFullscreen={project.deviceMockup.allowFullscreen}
                   enableTilt={project.deviceMockup.enableTilt}
                   imageFit={project.deviceMockup.imageFit}
                 />

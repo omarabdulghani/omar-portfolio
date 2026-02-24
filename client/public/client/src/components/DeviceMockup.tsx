@@ -15,6 +15,7 @@ type DeviceMockupProps = {
   iframeSrc?: string;
   iframeTitle?: string;
   showArrows?: boolean;
+  allowFullscreen?: boolean;
   enableTilt?: boolean;
   imageFit?: "cover" | "contain";
   className?: string;
@@ -94,6 +95,7 @@ export default function DeviceMockup({
   iframeSrc,
   iframeTitle,
   showArrows = false,
+  allowFullscreen = true,
   enableTilt = true,
   imageFit = "cover",
   className,
@@ -169,7 +171,7 @@ export default function DeviceMockup({
     >
       <div className={style.frameClassName}>
         <div className={style.screenClassName}>
-          {((mode === "interactive" && !!iframeSrc) || (mode === "static" && hasGalleryItems)) ? (
+          {allowFullscreen && ((mode === "interactive" && !!iframeSrc) || (mode === "static" && hasGalleryItems)) ? (
             <Button
               type="button"
               size="icon"
