@@ -180,6 +180,17 @@ const projectsData: Record<string, any> = {
     clientLogoDark: "/images/patronapp gallery/patronaat logo.png",
     clientWebsite: "https://patronaat.nl/",
     role: "Concept Lead & UX/UI Designer (Adobe XD)",
+    primaryActionLabel: "View Adobe XD Prototype",
+    primaryActionHref: "https://xd.adobe.com/view/42819443-3895-426f-a706-cba6af4b7fd8-17d2/",
+    demoVideoSrc: "/images/patronapp gallery/PatronApp Promo 2.mp4",
+    deviceMockup: {
+      type: "iphone",
+      orientation: "portrait",
+      mode: "interactive",
+      iframeSrc: "https://xd.adobe.com/embed/42819443-3895-426f-a706-cba6af4b7fd8-17d2/",
+      iframeTitle: "PatronApp Adobe XD prototype",
+      showArrows: false
+    },
     description: "PatronApp was developed with my classmates in **ZOOTS** (Zuzanna, Omar, Oliwia, Tamara, and Susanna) for Patronaat in Haarlem. Across the three module phases - **Creation, Justification, and Production** - we proposed three concepts, and **PatronApp (my concept)** was selected by the client for further development. I led the app ideation and designed the interactive prototype in Adobe XD.",
     challenge: "Patronaat needed to improve **online communication and reach**, especially for **international visitors** who faced language and inclusion barriers. Existing communication felt too generic, while users asked for a more personal, interactive, and community-driven music venue experience.",
     solution: "I translated the concept into a fully interactive Adobe XD prototype focused on **usability, social connection, and immersion**. Core features included multilingual onboarding, agenda and ticket flow, Spotify/Apple Music-based recommendations, community matching and chat, in-venue games and rewards, and the **Patronaat+** membership layer with exclusive content and benefits.",
