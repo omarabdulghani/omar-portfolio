@@ -275,7 +275,50 @@ const projectsData: Record<string, any> = {
     tags: ["UX/UI Design", "Technical SEO", "A/B Testing", "Conversion Optimization"],
     tools: ["Figma", "WordPress", "Google Analytics", "Google Search Console", "GTmetrix", "Asana"],
     image: "/images/pphe-project.jpg",
-    gallery: []
+    gallery: [
+      {
+        type: "image",
+        src: "/images/pphe-hotel-group gallery/project images/Booking Panel Improvement.png",
+        alt: "Booking panel improvement",
+        title: "Booking Panel Improvement"
+      },
+      {
+        type: "image",
+        src: "/images/pphe-hotel-group gallery/project images/Park Plaza M&E Panel Improvement.png",
+        alt: "Park Plaza M&E panel improvement",
+        title: "Park Plaza M&E Panel Improvement"
+      },
+      {
+        type: "image",
+        src: "/images/pphe-hotel-group gallery/project images/artotel Booking Panel Mobile Improvement.png",
+        alt: "art'otel booking panel mobile improvement",
+        title: "art'otel Booking Panel Mobile Improvement"
+      },
+      {
+        type: "image",
+        src: "/images/pphe-hotel-group gallery/project images/artotel Destinations Desktop Improvement.png",
+        alt: "art'otel destinations desktop improvement",
+        title: "art'otel Destinations Desktop Improvement"
+      },
+      {
+        type: "image",
+        src: "/images/pphe-hotel-group gallery/project images/artotel Destinations Mobile Improvement.png",
+        alt: "art'otel destinations mobile improvement",
+        title: "art'otel Destinations Mobile Improvement"
+      },
+      {
+        type: "document",
+        src: "/images/pphe-hotel-group gallery/Personal Development Report 2.pdf",
+        alt: "Personal Development Report 2",
+        title: "Personal Development Report 2"
+      },
+      {
+        type: "document",
+        src: "/images/pphe-hotel-group gallery/Personal Development Report 1.pdf",
+        alt: "Personal Development Report 1",
+        title: "Personal Development Report 1"
+      }
+    ]
   }
 };
 
@@ -486,56 +529,56 @@ export default function ProjectDetail() {
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-col gap-3">
-                {project.primaryActionHref ? (
-                  isPdfHref(project.primaryActionHref) ? (
+              {(project.primaryActionHref || project.demoVideoSrc) ? (
+                <div className="pt-4 flex flex-col gap-3">
+                  {project.primaryActionHref ? (
+                    isPdfHref(project.primaryActionHref) ? (
+                      <Button
+                        className="w-full gap-2"
+                        onClick={() => {
+                          galleryRef.current?.openBySrc(project.primaryActionHref, {
+                            title: project.primaryActionLabel || "Project Report",
+                          });
+                        }}
+                      >
+                        <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                      </Button>
+                    ) : (
+                      <a
+                        href={project.primaryActionHref}
+                        target={project.primaryActionDownload ? undefined : "_blank"}
+                        rel={project.primaryActionDownload ? undefined : "noreferrer"}
+                        download={project.primaryActionDownload ? true : undefined}
+                        className="block w-full"
+                      >
+                        <Button className="w-full gap-2">
+                          <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                        </Button>
+                      </a>
+                    )
+                  ) : null}
+
+                  {project.demoVideoSrc ? (
                     <Button
+                      variant="outline"
                       className="w-full gap-2"
                       onClick={() => {
-                        galleryRef.current?.openBySrc(project.primaryActionHref, {
-                          title: project.primaryActionLabel || "Project Report",
+                        const demoIsVideo = isVideoHref(project.demoVideoSrc);
+                        galleryRef.current?.openBySrc(project.demoVideoSrc, {
+                          alt: demoIsVideo
+                            ? `${project.title} demo video`
+                            : `${project.title} project report`,
+                          poster: demoIsVideo ? project.demoVideoPoster : undefined,
+                          title: project.demoVideoLabel || undefined,
                         });
                       }}
                     >
-                      <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                      {isVideoHref(project.demoVideoSrc) ? <Play size={18} /> : <ExternalLink size={18} />}
+                      {project.demoVideoLabel || "Watch Demo Video"}
                     </Button>
-                  ) : (
-                    <a
-                      href={project.primaryActionHref}
-                      target={project.primaryActionDownload ? undefined : "_blank"}
-                      rel={project.primaryActionDownload ? undefined : "noreferrer"}
-                      download={project.primaryActionDownload ? true : undefined}
-                      className="block w-full"
-                    >
-                      <Button className="w-full gap-2">
-                        <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
-                      </Button>
-                    </a>
-                  )
-                ) : (
-                  <Button className="w-full gap-2">
-                    <ExternalLink size={18} /> View Live Project
-                  </Button>
-                )}
-                <Button
-                  variant="outline"
-                  className="w-full gap-2"
-                  onClick={() => {
-                    if (!project.demoVideoSrc) return;
-                    const demoIsVideo = isVideoHref(project.demoVideoSrc);
-                    galleryRef.current?.openBySrc(project.demoVideoSrc, {
-                      alt: demoIsVideo
-                        ? `${project.title} demo video`
-                        : `${project.title} project report`,
-                      poster: demoIsVideo ? project.demoVideoPoster : undefined,
-                      title: project.demoVideoLabel || undefined,
-                    });
-                  }}
-                >
-                  {isVideoHref(project.demoVideoSrc) ? <Play size={18} /> : <ExternalLink size={18} />}
-                  {project.demoVideoLabel || "Watch Demo Video"}
-                </Button>
-              </div>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
