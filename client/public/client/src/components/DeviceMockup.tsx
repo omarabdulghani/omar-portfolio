@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Maximize2, Minimize2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Maximize2, Minimize2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,9 @@ type DeviceMockupProps = {
   enableTilt?: boolean;
   imageFit?: "cover" | "contain";
   screenAspectRatio?: number;
+  hideNotch?: boolean;
+  disableEmbeddedNavigation?: boolean;
+  interactiveHref?: string;
   className?: string;
 };
 
@@ -100,6 +103,9 @@ export default function DeviceMockup({
   enableTilt = true,
   imageFit = "cover",
   screenAspectRatio,
+  hideNotch = false,
+  disableEmbeddedNavigation = false,
+  interactiveHref,
   className,
 }: DeviceMockupProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -189,8 +195,8 @@ export default function DeviceMockup({
             </Button>
           ) : null}
 
-          {style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
-          {style.notch === "ipad" ? <div className={style.notchClassName} /> : null}
+          {!hideNotch && style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
+          {!hideNotch && style.notch === "ipad" ? <div className={style.notchClassName} /> : null}
 
           {mode === "interactive" ? (
             iframeSrc ? (
@@ -200,7 +206,10 @@ export default function DeviceMockup({
                 loading="lazy"
                 allow="clipboard-read; clipboard-write; fullscreen"
                 allowFullScreen
-                className="h-full w-full border-0 bg-black"
+                className={cn(
+                  "h-full w-full border-0 bg-black",
+                  disableEmbeddedNavigation ? "pointer-events-none" : ""
+                )}
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-white/70">
@@ -286,6 +295,26 @@ export default function DeviceMockup({
               Add `images` to render static mode.
             </div>
           )}
+
+          {mode === "interactive" && disableEmbeddedNavigation && interactiveHref ? (
+            <div className="pointer-events-none absolute inset-0 z-30 flex items-end justify-center p-4">
+              <a
+                href={interactiveHref}
+                target="_blank"
+                rel="noreferrer"
+                className="pointer-events-auto"
+              >
+                <Button
+                  type="button"
+                  size="sm"
+                  className="gap-2 rounded-full bg-white/95 text-black hover:bg-white"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Open Interactive Prototype
+                </Button>
+              </a>
+            </div>
+          ) : null}
         </div>
       </div>
 
