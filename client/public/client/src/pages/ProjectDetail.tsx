@@ -239,6 +239,7 @@ const projectsData: Record<string, any> = {
     client: "De FilmHallen",
     clientLogo: "/images/hallencity gallery/logo-De-Filmhallen (light mode).png",
     clientLogoDark: "/images/hallencity gallery/logo-De-Filmhallen (dark mode).png",
+    clientLogoClass: "h-14",
     clientWebsite: "https://filmhallen.nl/",
     role: "Research & Concept Lead (Internal/External Analysis, Ideation, Adobe XD UX/UI Design)",
     description: "HallenCity+ was developed in a team project for De FilmHallen as an all-in-one cinema app concept designed to be inclusive for everyone. I was responsible for the internal and external research, ideation process, and the app concept design in Adobe XD.",
@@ -255,6 +256,7 @@ const projectsData: Record<string, any> = {
       iframeSrc: "https://xd.adobe.com/embed/29c63204-8788-48d1-b055-25073fbd86ba-7c95/",
       iframeTitle: "HallenCity+ prototype",
       showArrows: false,
+      screenAspectRatio: 428 / 817,
       allowFullscreen: true
     },
     gallery: [
@@ -485,6 +487,7 @@ export default function ProjectDetail() {
                   allowFullscreen={project.deviceMockup.allowFullscreen}
                   enableTilt={project.deviceMockup.enableTilt}
                   imageFit={project.deviceMockup.imageFit}
+                  screenAspectRatio={project.deviceMockup.screenAspectRatio}
                 />
               </div>
             ) : null}
@@ -522,7 +525,7 @@ export default function ProjectDetail() {
                           <img
                             src={logo.src}
                             alt={logo.alt || "Client logo"}
-                            className="h-10 w-auto object-contain"
+                            className={`${logo.logoClass || project.clientLogoClass || "h-10"} w-auto object-contain`}
                           />
                         </a>
                       ) : (
@@ -530,7 +533,7 @@ export default function ProjectDetail() {
                           key={`${logo.src}-${index}`}
                           src={logo.src}
                           alt={logo.alt || "Client logo"}
-                          className="h-10 w-auto object-contain"
+                          className={`${logo.logoClass || project.clientLogoClass || "h-10"} w-auto object-contain`}
                         />
                       )
                     )}
@@ -549,7 +552,7 @@ export default function ProjectDetail() {
                           <img
                             src={project.clientLogo}
                             alt={`${project.client} logo`}
-                            className={`h-10 w-auto object-contain dark:hidden ${
+                            className={`${project.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
                               project.clientLogoDark ? "" : "dark:block"
                             }`}
                           />
@@ -557,7 +560,7 @@ export default function ProjectDetail() {
                             <img
                               src={project.clientLogoDark}
                               alt={`${project.client} logo`}
-                              className="hidden h-10 w-auto object-contain dark:block"
+                              className={`hidden ${project.clientLogoClass || "h-10"} w-auto object-contain dark:block`}
                             />
                           ) : null}
                         </>
@@ -567,7 +570,7 @@ export default function ProjectDetail() {
                         <img
                           src={project.clientLogo}
                           alt={`${project.client} logo`}
-                          className={`h-10 w-auto object-contain dark:hidden ${
+                          className={`${project.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
                             project.clientLogoDark ? "" : "dark:block"
                           }`}
                         />
@@ -575,7 +578,7 @@ export default function ProjectDetail() {
                           <img
                             src={project.clientLogoDark}
                             alt={`${project.client} logo`}
-                            className="hidden h-10 w-auto object-contain dark:block"
+                            className={`hidden ${project.clientLogoClass || "h-10"} w-auto object-contain dark:block`}
                           />
                         ) : null}
                       </>

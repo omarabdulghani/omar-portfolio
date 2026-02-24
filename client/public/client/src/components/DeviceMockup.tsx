@@ -18,6 +18,7 @@ type DeviceMockupProps = {
   allowFullscreen?: boolean;
   enableTilt?: boolean;
   imageFit?: "cover" | "contain";
+  screenAspectRatio?: number;
   className?: string;
 };
 
@@ -98,6 +99,7 @@ export default function DeviceMockup({
   allowFullscreen = true,
   enableTilt = true,
   imageFit = "cover",
+  screenAspectRatio,
   className,
 }: DeviceMockupProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -170,7 +172,10 @@ export default function DeviceMockup({
       )}
     >
       <div className={style.frameClassName}>
-        <div className={style.screenClassName}>
+        <div
+          className={style.screenClassName}
+          style={screenAspectRatio ? { aspectRatio: `${screenAspectRatio}` } : undefined}
+        >
           {allowFullscreen && ((mode === "interactive" && !!iframeSrc) || (mode === "static" && hasGalleryItems)) ? (
             <Button
               type="button"
