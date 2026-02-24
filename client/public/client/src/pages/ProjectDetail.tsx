@@ -309,7 +309,7 @@ export default function ProjectDetail() {
             <div>
               <h2 className="text-2xl font-heading font-bold mb-4">Overview</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {project.description}
+                {renderWithBold(project.description)}
               </p>
             </div>
 
