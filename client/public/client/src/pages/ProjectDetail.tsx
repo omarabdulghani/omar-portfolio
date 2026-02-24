@@ -267,6 +267,18 @@ const projectsData: Record<string, any> = {
     subtitle: "UX/UI, SEO & Conversion Optimization Across Hotel Websites",
     year: "2024",
     client: "PPHE Hotel Group",
+    clientLogos: [
+      {
+        src: "/images/pphe-hotel-group gallery/pphe-logo.png",
+        href: "https://www.pphe.com/",
+        alt: "PPHE Hotel Group logo"
+      },
+      {
+        src: "/images/pphe-hotel-group gallery/artotel logo.png",
+        href: "https://artotel.com",
+        alt: "art'otel logo"
+      }
+    ],
     role: "Digital Marketing Intern (UX/UI & Web Optimization)",
     description: "During my internship at PPHE Hotel Group, I worked on UX/UI and web optimization initiatives across multiple hotel and venue websites. My scope combined hands-on interface improvements with technical performance analysis, supporting both user experience quality and business conversion goals.",
     challenge: "PPHE websites faced recurring **UX friction**, including booking-flow usability issues, missing or inconsistent multilingual content, and technical performance bottlenecks. The challenge was to improve **usability, speed, and conversion potential** while maintaining brand consistency across different teams and properties.",
@@ -308,15 +320,15 @@ const projectsData: Record<string, any> = {
       },
       {
         type: "document",
-        src: "/images/pphe-hotel-group gallery/Personal Development Report 2.pdf",
-        alt: "Personal Development Report 2",
-        title: "Personal Development Report 2"
-      },
-      {
-        type: "document",
         src: "/images/pphe-hotel-group gallery/Personal Development Report 1.pdf",
         alt: "Personal Development Report 1",
         title: "Personal Development Report 1"
+      },
+      {
+        type: "document",
+        src: "/images/pphe-hotel-group gallery/Personal Development Report 2.pdf",
+        alt: "Personal Development Report 2",
+        title: "Personal Development Report 2"
       }
     ]
   }
@@ -457,7 +469,35 @@ export default function ProjectDetail() {
             <div className="bg-card border border-white/10 rounded-xl p-6 space-y-6 sticky top-24">
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Client</h3>
-                {project.clientLogo ? (
+                {project.clientLogos?.length ? (
+                  <div className="mt-2 mb-2 min-h-[48px] flex flex-wrap items-center gap-3">
+                    {project.clientLogos.map((logo: any, index: number) =>
+                      logo.href ? (
+                        <a
+                          key={`${logo.src}-${index}`}
+                          href={logo.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Visit ${logo.alt || "client"} website`}
+                          className="inline-flex items-center"
+                        >
+                          <img
+                            src={logo.src}
+                            alt={logo.alt || "Client logo"}
+                            className="h-10 w-auto object-contain"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          key={`${logo.src}-${index}`}
+                          src={logo.src}
+                          alt={logo.alt || "Client logo"}
+                          className="h-10 w-auto object-contain"
+                        />
+                      )
+                    )}
+                  </div>
+                ) : project.clientLogo ? (
                   <div className="mt-2 mb-2 min-h-[48px] flex items-center">
                     {project.clientWebsite ? (
                       <a
