@@ -252,6 +252,9 @@ const projectsData: Record<string, any> = {
     subtitle: "Digital Marketing Plan, UX/UI Optimization & Conversion Strategy",
     year: "2024",
     client: "Pro Detailing",
+    clientLogo: "/images/pro-detailing gallery/pro-detailing-logo (light mode).png",
+    clientLogoDark: "/images/pro-detailing gallery/pro-detailing-logo (dark mode).png",
+    clientWebsite: "https://www.pro-detailing.de/",
     role: "UI/UX & Conversion Lead, Internal/External Analysis, KPI & SMART Goal Planning",
     description: "Developed in a team for my Digital Marketing minor at Rotterdam Business School, this project delivered a full Digital Marketing Plan for Pro Detailing. I focused on **UI/UX improvements and conversion optimization**, while also contributing to the **internal/external analysis** and defining **SMART goals with KPIs** to guide execution.",
     challenge: "Pro Detailing had **low social engagement**, weak conversion from social channels, and a website experience that needed clearer navigation, stronger product information, and more persuasive conversion paths.",
@@ -260,7 +263,23 @@ const projectsData: Record<string, any> = {
     tags: ["UI/UX Optimization", "Conversion Strategy", "Digital Marketing Plan", "SEO & Social Media"],
     tools: ["Adobe XD", "Customer Journey Mapping", "SWOT/TOWS", "SMART KPI Framework", "Google Analytics"],
     image: "/images/pro-detaling-project.jpg",
-    gallery: []
+    deviceMockup: {
+      type: "desktop",
+      mode: "interactive",
+      orientation: "landscape",
+      iframeSrc: "https://xd.adobe.com/embed/c1387df0-0e9c-4b18-8b55-0f7e6aea7d3f-946b/",
+      iframeTitle: "Pro Detailing prototype",
+      showArrows: false,
+      allowFullscreen: true
+    },
+    gallery: [
+      {
+        type: "image",
+        src: "/images/pro-detaling-project.jpg",
+        alt: "Imrpoved UI/UX visual",
+        title: "Imrpoved UI/UX visual"
+      }
+    ]
   },
   "pphe-hotel": {
     title: "PPHE Hotel Group",
