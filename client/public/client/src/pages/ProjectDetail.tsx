@@ -234,18 +234,37 @@ const projectsData: Record<string, any> = {
   },
   "hallencity": {
     title: "HallenCity+",
-    subtitle: "Cinema Experience App Concept",
+    subtitle: "Inclusive Cinema Experience App Concept",
     year: "2024",
     client: "De FilmHallen",
-    role: "UX/UI Designer",
-    description: "Reimagining the cinema experience through online ticketing, snack ordering, and social features.",
-    challenge: "Visitors experienced fragmented touchpoints across ticketing, concessions, and in-venue engagement. The challenge was to create one cohesive digital journey.",
-    solution: "I designed an app concept that combines seamless ticket booking, pre-ordering snacks, and social discovery features to improve convenience and engagement.",
-    impact: "The concept demonstrated how a unified app can streamline the cinema journey and increase user interaction before and during visits.",
-    tags: ["App Concept", "UX/UI Design", "Service Design", "Community Building"],
-    tools: ["Figma", "User Flows", "Wireframing"],
+    clientLogo: "/images/hallencity gallery/logo-De-Filmhallen (light mode).png",
+    clientLogoDark: "/images/hallencity gallery/logo-De-Filmhallen (dark mode).png",
+    clientWebsite: "https://filmhallen.nl/",
+    role: "Research & Concept Lead (Internal/External Analysis, Ideation, Adobe XD UX/UI Design)",
+    description: "HallenCity+ was developed in a team project for De FilmHallen as an all-in-one cinema app concept designed to be inclusive for everyone. I was responsible for the internal and external research, ideation process, and the app concept design in Adobe XD.",
+    challenge: "The cinema journey was fragmented across ticketing, snacks, venue information, and engagement touchpoints. Research showed users wanted a smoother end-to-end experience with better convenience, comfort, and accessible interactions while keeping the cinema experience welcoming for all visitors.",
+    solution: "We combined desk and field research methods, including stakeholder analysis, interviews, empathy mapping, persona and journey mapping, and concept testing. Based on these insights, I created HallenCity+: an app concept that unifies ticket booking, snack pre-order and pickup, activity discovery, venue navigation, and in-app incident reporting.",
+    impact: "User testing validated the concept's clear layout and ease of use, while feedback helped refine features such as map coverage and point-system clarity. The project delivered a practical concept roadmap that can reduce friction, improve customer experience, and strengthen engagement before, during, and after cinema visits.",
+    tags: ["App Concept", "Inclusive Design", "UX/UI Design", "Customer Journey Innovation"],
+    tools: ["Adobe XD", "Interview Research", "Empathy Mapping", "Journey Mapping", "Stakeholder Analysis"],
     image: "/images/hallen-city-app.png",
-    gallery: []
+    deviceMockup: {
+      type: "iphone",
+      mode: "interactive",
+      orientation: "portrait",
+      iframeSrc: "https://xd.adobe.com/embed/29c63204-8788-48d1-b055-25073fbd86ba-7c95/",
+      iframeTitle: "HallenCity+ prototype",
+      showArrows: false,
+      allowFullscreen: true
+    },
+    gallery: [
+      {
+        type: "image",
+        src: "/images/hallen-city-app.png",
+        alt: "HallenCity+ app concept visual",
+        title: "HallenCity+ App Visual"
+      }
+    ]
   },
   "pro-detailing": {
     title: "Pro Detailing",
