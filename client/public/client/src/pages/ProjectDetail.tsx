@@ -151,8 +151,24 @@ const projectsData: Record<string, any> = {
     tools: ["Figma", "Interviews", "Survey Analysis", "Focus Group", "Usability Testing"],
     image: "/images/project-amstelhof-connect.jpg",
     gallery: [
-      "/images/gallery-amstelhof-1.jpg",
-      "/images/gallery-amstelhof-2.jpg"
+      {
+        type: "image",
+        src: "/images/amstelhof-connect gallery/Members Center.jpg",
+        alt: "Amstelhof members center screen",
+        title: "Members Center"
+      },
+      {
+        type: "image",
+        src: "/images/amstelhof-connect gallery/Main Dashboard.png",
+        alt: "Amstelhof main dashboard screen",
+        title: "Main Dashboard"
+      },
+      {
+        type: "document",
+        src: "/images/amstelhof-connect gallery/Amstelhof Connect End Presentation.pdf",
+        alt: "Amstelhof Connect end presentation",
+        title: "Amstelhof Connect End Presentation"
+      }
     ]
   },
   "patronapp": {
