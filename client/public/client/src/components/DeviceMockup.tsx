@@ -486,8 +486,10 @@ export default function DeviceMockup({
       {shouldDeferIframeUntilPlay ? (
         <div
           className={cn(
-            "mb-3 flex w-full justify-end px-1 sm:px-0 overflow-hidden transition-all duration-200",
-            shouldRenderTopControls ? "max-h-12 opacity-100" : "max-h-0 opacity-0 pointer-events-none mb-0"
+            "flex w-full justify-end px-1 sm:px-0 transition-all duration-200",
+            shouldRenderTopControls
+              ? "mb-3 h-auto opacity-100 translate-y-0"
+              : "mb-0 h-0 opacity-0 -translate-y-1 pointer-events-none"
           )}
         >
           <div className="flex max-w-full flex-nowrap items-center justify-end gap-1.5 sm:gap-2">
