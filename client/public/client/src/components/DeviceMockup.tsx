@@ -24,6 +24,7 @@ type DeviceMockupProps = {
   interactiveHref?: string;
   requireInteractionToggle?: boolean;
   deferIframeUntilPlay?: boolean;
+  skipBackAfterStop?: boolean;
   lockBrowserBack?: boolean;
   onBrowserBack?: () => void;
   className?: string;
@@ -115,6 +116,7 @@ export default function DeviceMockup({
   interactiveHref,
   requireInteractionToggle = false,
   deferIframeUntilPlay = false,
+  skipBackAfterStop = true,
   lockBrowserBack,
   onBrowserBack,
   className,
@@ -124,6 +126,10 @@ export default function DeviceMockup({
   const backGuardInitializedRef = useRef(false);
   const isHandlingBackRef = useRef(false);
   const backGuardTokenRef = useRef(`device-mockup-${Math.random().toString(36).slice(2)}`);
+  const backSkipArmedRef = useRef(false);
+  const backSkipInitialKeyRef = useRef<string | null>(null);
+  const backSkipInProgressRef = useRef(false);
+  const backSkipAttemptsRef = useRef(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [interactionEnabled, setInteractionEnabled] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -138,6 +144,8 @@ export default function DeviceMockup({
   const hasGalleryItems = images.length > 0;
   const shouldDeferIframeUntilPlay =
     mode === "interactive" && !!iframeSrc && deferIframeUntilPlay;
+  const shouldSkipBackAfterStop =
+    mode === "interactive" && !!iframeSrc && shouldDeferIframeUntilPlay && skipBackAfterStop;
   const requiresInteractionToggle =
     mode === "interactive" && !!iframeSrc && requireInteractionToggle && !shouldDeferIframeUntilPlay;
   const shouldLockBrowserBack =
@@ -146,6 +154,30 @@ export default function DeviceMockup({
     (lockBrowserBack ?? true) &&
     !requiresInteractionToggle &&
     !shouldDeferIframeUntilPlay;
+  const backSkipMaxAttempts = 25;
+
+  const getCurrentLocationKey = () =>
+    `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+  const disarmBackSkipGuard = () => {
+    backSkipArmedRef.current = false;
+    backSkipInitialKeyRef.current = null;
+    backSkipInProgressRef.current = false;
+    backSkipAttemptsRef.current = 0;
+  };
+
+  const armBackSkipGuard = () => {
+    if (!shouldSkipBackAfterStop) return;
+    backSkipArmedRef.current = true;
+    backSkipAttemptsRef.current = 0;
+    backSkipInProgressRef.current = false;
+    backSkipInitialKeyRef.current = getCurrentLocationKey();
+  };
+
+  const handleStopPlaying = () => {
+    armBackSkipGuard();
+    setIsPlaying(false);
+  };
 
   useEffect(() => {
     if (!galleryRef.current) return;
@@ -175,11 +207,79 @@ export default function DeviceMockup({
   useEffect(() => {
     if (!shouldDeferIframeUntilPlay) {
       setIsPlaying(false);
+      disarmBackSkipGuard();
       return;
     }
 
     setIsPlaying(false);
+    disarmBackSkipGuard();
   }, [shouldDeferIframeUntilPlay, iframeSrc]);
+
+  useEffect(() => {
+    if (!shouldSkipBackAfterStop) {
+      disarmBackSkipGuard();
+      return;
+    }
+
+    const handlePopState = () => {
+      if (!backSkipArmedRef.current || backSkipInProgressRef.current) return;
+
+      const initialKey = backSkipInitialKeyRef.current;
+      if (!initialKey) {
+        disarmBackSkipGuard();
+        return;
+      }
+
+      const currentKey = getCurrentLocationKey();
+      if (currentKey !== initialKey) {
+        disarmBackSkipGuard();
+        return;
+      }
+
+      if (backSkipAttemptsRef.current >= backSkipMaxAttempts) {
+        disarmBackSkipGuard();
+        return;
+      }
+
+      backSkipInProgressRef.current = true;
+
+      const skipBack = () => {
+        if (!backSkipArmedRef.current) {
+          backSkipInProgressRef.current = false;
+          return;
+        }
+
+        const expectedKey = backSkipInitialKeyRef.current;
+        if (!expectedKey) {
+          disarmBackSkipGuard();
+          return;
+        }
+
+        const latestKey = getCurrentLocationKey();
+        if (latestKey !== expectedKey) {
+          disarmBackSkipGuard();
+          return;
+        }
+
+        if (backSkipAttemptsRef.current >= backSkipMaxAttempts) {
+          disarmBackSkipGuard();
+          return;
+        }
+
+        backSkipAttemptsRef.current += 1;
+        window.history.go(-1);
+        window.setTimeout(skipBack, 0);
+      };
+
+      window.setTimeout(skipBack, 0);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      disarmBackSkipGuard();
+    };
+  }, [shouldSkipBackAfterStop]);
 
   useEffect(() => {
     if (!shouldLockBrowserBack) return;
@@ -279,7 +379,7 @@ export default function DeviceMockup({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsPlaying(false);
+        handleStopPlaying();
       }
     };
 
@@ -372,7 +472,7 @@ export default function DeviceMockup({
                 "absolute top-3 z-30 h-8 rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white",
                 allowFullscreen ? "right-14" : "right-3"
               )}
-              onClick={() => setIsPlaying(false)}
+              onClick={handleStopPlaying}
             >
               Stop
             </Button>
