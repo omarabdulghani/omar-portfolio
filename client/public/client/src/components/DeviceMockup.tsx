@@ -22,6 +22,7 @@ type DeviceMockupProps = {
   hideNotch?: boolean;
   disableEmbeddedNavigation?: boolean;
   interactiveHref?: string;
+  requireInteractionToggle?: boolean;
   lockBrowserBack?: boolean;
   onBrowserBack?: () => void;
   className?: string;
@@ -111,6 +112,7 @@ export default function DeviceMockup({
   hideNotch = false,
   disableEmbeddedNavigation = false,
   interactiveHref,
+  requireInteractionToggle = false,
   lockBrowserBack,
   onBrowserBack,
   className,
@@ -121,6 +123,7 @@ export default function DeviceMockup({
   const isHandlingBackRef = useRef(false);
   const backGuardTokenRef = useRef(`device-mockup-${Math.random().toString(36).slice(2)}`);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [interactionEnabled, setInteractionEnabled] = useState(false);
   const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
   const resolvedOrientation: DeviceMockupOrientation =
     orientation ?? (type === "desktop" ? "landscape" : "portrait");
@@ -130,8 +133,10 @@ export default function DeviceMockup({
     [type, resolvedOrientation]
   );
   const hasGalleryItems = images.length > 0;
+  const requiresInteractionToggle =
+    mode === "interactive" && !!iframeSrc && requireInteractionToggle;
   const shouldLockBrowserBack =
-    mode === "interactive" && !!iframeSrc && (lockBrowserBack ?? true);
+    mode === "interactive" && !!iframeSrc && (lockBrowserBack ?? true) && !requiresInteractionToggle;
 
   useEffect(() => {
     if (!galleryRef.current) return;
@@ -148,6 +153,15 @@ export default function DeviceMockup({
       document.removeEventListener("fullscreenchange", onFullscreenChange);
     };
   }, []);
+
+  useEffect(() => {
+    if (!requiresInteractionToggle) {
+      setInteractionEnabled(false);
+      return;
+    }
+
+    setInteractionEnabled(false);
+  }, [requiresInteractionToggle, iframeSrc]);
 
   useEffect(() => {
     if (!shouldLockBrowserBack) return;
@@ -216,6 +230,32 @@ export default function DeviceMockup({
     };
   }, [shouldLockBrowserBack, onBrowserBack]);
 
+  useEffect(() => {
+    if (!requiresInteractionToggle || !interactionEnabled) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setInteractionEnabled(false);
+      }
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      if (!target || !rootRef.current) return;
+      if (!rootRef.current.contains(target)) {
+        setInteractionEnabled(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [requiresInteractionToggle, interactionEnabled]);
+
   const scrollGallery = (direction: "prev" | "next") => {
     if (!galleryRef.current) return;
     const step = galleryRef.current.clientWidth;
@@ -274,6 +314,22 @@ export default function DeviceMockup({
             </Button>
           ) : null}
 
+          {requiresInteractionToggle ? (
+            <Button
+              type="button"
+              size="sm"
+              variant="secondary"
+              className={cn(
+                "absolute top-3 z-30 h-8 rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white",
+                allowFullscreen ? "right-14" : "right-3"
+              )}
+              onClick={() => setInteractionEnabled((value) => !value)}
+              aria-pressed={interactionEnabled}
+            >
+              {interactionEnabled ? "Exit prototype" : "Try prototype"}
+            </Button>
+          ) : null}
+
           {!hideNotch && style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
           {!hideNotch && style.notch === "ipad" ? <div className={style.notchClassName} /> : null}
 
@@ -287,7 +343,13 @@ export default function DeviceMockup({
                 allowFullScreen
                 className={cn(
                   "h-full w-full border-0 bg-black",
-                  disableEmbeddedNavigation ? "pointer-events-none" : ""
+                  requiresInteractionToggle
+                    ? interactionEnabled
+                      ? "pointer-events-auto"
+                      : "pointer-events-none"
+                    : disableEmbeddedNavigation
+                      ? "pointer-events-none"
+                      : ""
                 )}
               />
             ) : (
@@ -375,7 +437,7 @@ export default function DeviceMockup({
             </div>
           )}
 
-          {mode === "interactive" && disableEmbeddedNavigation && interactiveHref ? (
+          {mode === "interactive" && disableEmbeddedNavigation && interactiveHref && !requiresInteractionToggle ? (
             <div className="pointer-events-none absolute inset-0 z-30 flex items-end justify-center p-4">
               <a
                 href={interactiveHref}
