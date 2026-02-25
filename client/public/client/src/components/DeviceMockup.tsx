@@ -43,7 +43,10 @@ function getDeviceStyles(
   if (type === "iphone") {
     const isLandscape = orientation === "landscape";
     return {
-      shellClassName: cn("w-full", isLandscape ? "max-w-[560px]" : "max-w-[340px]"),
+      shellClassName: cn(
+        "w-full",
+        isLandscape ? "max-w-[560px]" : "max-w-[clamp(220px,20vw,300px)]"
+      ),
       frameClassName:
         "rounded-[2.4rem] border border-white/20 bg-zinc-900 p-[10px] shadow-[0_18px_45px_rgba(2,6,23,0.35)]",
       screenClassName: cn(
