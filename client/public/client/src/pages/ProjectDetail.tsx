@@ -254,13 +254,9 @@ const projectsData: Record<string, any> = {
       mode: "interactive",
       orientation: "portrait",
       iframeSrc: "https://xd.adobe.com/embed/29c63204-8788-48d1-b055-25073fbd86ba-7c95/",
-      interactiveHref: "https://xd.adobe.com/view/29c63204-8788-48d1-b055-25073fbd86ba-7c95/",
       iframeTitle: "HallenCity+ prototype",
       showArrows: false,
-      screenAspectRatio: 428 / 817,
-      hideNotch: true,
-      disableEmbeddedNavigation: true,
-      allowFullscreen: true
+      allowFullscreen: false
     },
     gallery: [
       {
