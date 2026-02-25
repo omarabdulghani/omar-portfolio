@@ -145,6 +145,14 @@
   }
   body {
     @apply bg-background text-foreground;
+    caret-color: transparent;
+  }
+  input,
+  textarea,
+  [contenteditable=""],
+  [contenteditable="true"],
+  [contenteditable]:not([contenteditable="false"]) {
+    caret-color: auto;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

@@ -10,16 +10,31 @@ import { toast } from "sonner";
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast.success("Message sent successfully! I'll get back to you soon.");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const subject = String(formData.get("subject") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    const mailBody = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      "",
+      "Message:",
+      message,
+    ].join("\n");
+
+    const mailtoHref = `mailto:omarabdulgh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    window.location.href = mailtoHref;
+
+    toast.success("Opening your email app...");
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    form.reset();
   };
 
   return (
@@ -77,7 +92,7 @@ export default function Contact() {
                     <div>
                       <p className="text-sm text-muted-foreground">Location</p>
                       <p className="text-lg font-bold">
-                        Grote Beer 138, Amstelveen, NL
+                        Amstelveen, Netherlands
                       </p>
                     </div>
                   </CardContent>
@@ -101,22 +116,22 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</label>
-                    <Input id="name" placeholder="John Doe" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
+                    <Input id="name" name="name" placeholder="John Doe" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</label>
-                    <Input id="email" type="email" placeholder="john@example.com" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
+                    <Input id="email" name="email" type="email" placeholder="john@example.com" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <label htmlFor="subject" className="text-sm font-medium text-muted-foreground">Subject</label>
-                  <Input id="subject" placeholder="Project Inquiry" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
+                  <Input id="subject" name="subject" placeholder="Project Inquiry" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                 </div>
                 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
-                  <Textarea id="message" placeholder="Tell me about your project..." required className="min-h-[150px] bg-secondary/50 border-white/5 focus:border-primary/50 resize-none" />
+                  <Textarea id="message" name="message" placeholder="Tell me about your project..." required className="min-h-[150px] bg-secondary/50 border-white/5 focus:border-primary/50 resize-none" />
                 </div>
 
                 <Button type="submit" size="lg" className="w-full rounded-xl text-lg h-12" disabled={isSubmitting}>

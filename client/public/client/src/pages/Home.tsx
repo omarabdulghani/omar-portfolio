@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import { Badge } from "@/components/ui/badge";
+import { PdfFlipbookLink } from "@/components/PdfFlipbookModal";
 
 export default function Home() {
   const featuredProjects = [
@@ -72,7 +73,7 @@ export default function Home() {
             </div>
             
             <p className="mt-4 md:mt-0 text-xl md:text-2xl text-black dark:text-muted-foreground max-w-lg leading-relaxed">
-              <span className="text-primary font-semibold">Creative Business Specialist</span> bridging the gap between design, strategy, and digital marketing.
+              <span className="text-primary font-semibold">Creative Strategist</span> combining branding, UX/UI, and technology to turn ideas into meaningful experiences.
             </p>
             
             <div className="flex flex-wrap gap-4 mt-8 md:mt-4">
@@ -111,7 +112,11 @@ export default function Home() {
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once">
+              <PdfFlipbookLink
+                href="/CV.pdf"
+                title="Omar Abdulghani CV"
+                className="absolute bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
+              >
                 <div className="flex items-center gap-3">
                   <div className="bg-primary/20 p-2 rounded-lg text-primary">
                     <Download size={20} />
@@ -121,7 +126,7 @@ export default function Home() {
                     <p className="font-bold text-sm">Curriculum Vitae</p>
                   </div>
                 </div>
-              </div>
+              </PdfFlipbookLink>
             </div>
           </div>
         </div>
@@ -130,27 +135,30 @@ export default function Home() {
       {/* Value Proposition */}
       <section className="py-20 bg-[#efefef] dark:bg-white/[0.02]">
         <div className="container">
+          <div className="mb-10">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold">What I do</h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Strategic Design</h3>
-              <p className="text-black dark:text-muted-foreground">Transforming research and insights into meaningful user experiences that drive business goals.</p>
+              <h3 className="text-xl font-bold mb-2">Concept Development & Brand Experience</h3>
+              <p className="text-black dark:text-muted-foreground">Turning ideas into meaningful brand experiences, from early ideation to tangible concepts, activations, and digital solutions. I combine research, creativity, and strategy to create concepts that connect with audiences and support business goals.</p>
             </div>
             <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Digital Marketing</h3>
-              <p className="text-black dark:text-muted-foreground">Building effective strategies for creative products using SEO, analytics, and content creation.</p>
+              <h3 className="text-xl font-bold mb-2">UX/UI Design & Digital Product Strategy</h3>
+              <p className="text-black dark:text-muted-foreground">Designing intuitive digital experiences grounded in user research, behavior, and strategic thinking. I transform complex ideas into clear, user-centered interfaces that balance functionality, usability, and visual identity.</p>
             </div>
             <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Creative Problem Solving</h3>
-              <p className="text-black dark:text-muted-foreground">Delivering practical solutions that blend design thinking with measurable business impact.</p>
+              <h3 className="text-xl font-bold mb-2">Creative Technology, AI-Assisted Prototyping & Vibe Coding</h3>
+              <p className="text-black dark:text-muted-foreground">Using IT foundations and AI-assisted development tools such as Cursor, Claude Code, and CodeX to rapidly prototype websites, apps, and interactive concepts. This allows fast iteration, experimentation, and bringing ideas to life efficiently.</p>
             </div>
           </div>
         </div>
