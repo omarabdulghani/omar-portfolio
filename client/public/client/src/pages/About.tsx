@@ -10,26 +10,26 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-2xl blur-xl opacity-50" />
+          <div className="grid grid-cols-1 lg:grid-cols-[1.45fr_0.75fr] gap-8 lg:gap-10 items-start">
+            <div className="order-2 lg:order-2">
+              <div className="relative flex justify-center lg:justify-end pt-2 lg:pt-12">
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-primary/5 rounded-full blur-xl opacity-70" />
                 <img 
                   src="/images/CV%20Resume.png" 
                   alt="Omar Abdulghani" 
-                  className="relative rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-auto lg:mx-0"
+                  className="relative w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border border-white/15 shadow-2xl object-cover object-top"
                 />
               </div>
             </div>
             
-            <div className="order-1 lg:order-2 space-y-6">
+            <div className="order-1 lg:order-1 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
                 About Me
               </div>
               <h1 className="text-4xl md:text-5xl font-heading font-bold">
                 Bridging Creativity & <span className="text-primary">Business Strategy</span>
               </h1>
-              <div className="space-y-4 text-lg text-muted-foreground">
+              <div className="space-y-4 text-base md:text-[1.02rem] lg:text-[1.06rem] leading-7 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded-sm [&_span.text-foreground]:text-foreground [&_span.text-foreground]:font-semibold">
                 <p>
                   I didn't grow up with one clear passion. I grew up <strong className="text-foreground">curious about everything</strong>.
                 </p>
