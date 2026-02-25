@@ -6,7 +6,22 @@ import { useState } from "react";
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
 
-  const categories = ["All", "UX/UI Design", "Brand Activation", "Digital Marketing", "App Design"];
+  const categories = [
+    "All",
+    "UX/UI Design",
+    "Brand Activation",
+    "Digital Marketing",
+    "App Design",
+    "Brand Positioning",
+    "Artist Strategy",
+    "Export Strategy",
+    "Event Promotion",
+    "Poster Design",
+    "Music Strategy",
+    "Value Creation",
+    "Financial Planning",
+    "Market Research"
+  ];
 
   const projects = [
     {
@@ -61,26 +76,26 @@ export default function Portfolio() {
     {
       id: "burning-man-campaign",
       title: "Burning Man Brand Positioning",
-      category: "Brand Activation",
-      image: "/images/hero-bg.png",
+      category: "Brand Positioning",
+      image: "/images/burningman.jpg",
       description: "Brand positioning, event-promotion strategy, and poster design driven by audience research and competitive analysis.",
-      tags: ["Brand Positioning", "Event Promotion", "Poster Design"]
+      tags: ["Audience Research", "Event Promotion", "Poster Design"]
     },
     {
       id: "streaming-emotions-value-plan",
       title: "Jacob Drescher Value Plan",
-      category: "Digital Marketing",
-      image: "/images/hero-bg.png",
+      category: "Artist Strategy",
+      image: "/images/jacobdrescher.jpg",
       description: "Music audience analysis and value-creation strategy to support artist growth and stronger communication.",
       tags: ["Music Strategy", "Audience Insights", "Value Creation"]
     },
     {
       id: "beex-export-strategy",
       title: "BEEX Export Strategy",
-      category: "Digital Marketing",
-      image: "/images/hero-bg.png",
+      category: "Export Strategy",
+      image: "/images/beex.jpg",
       description: "Belgium market-entry strategy combining export research, financial planning, and operational recommendations.",
-      tags: ["Export Strategy", "Financial Planning", "Market Research"]
+      tags: ["Export Planning", "Financial Planning", "Market Research"]
     }
   ];
 

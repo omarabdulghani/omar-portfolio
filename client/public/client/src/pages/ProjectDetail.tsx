@@ -387,9 +387,9 @@ const projectsData: Record<string, any> = {
     challenge: "Burning Man needed sharper communication around **inclusivity, media exposure, and safety**, while still preserving its unique identity. The key challenge was turning broad brand values into **practical, audience-facing promotion assets**.",
     solution: "We conducted internal and external analysis, competitor comparison, and survey-based insight gathering. From this, we built a focused event-promotion concept and I developed the final poster direction to reflect **brand values, audience fit, and campaign clarity**.",
     impact: "The project delivered a reusable strategy-to-design workflow: from research question setup and survey analysis to creative execution. It produced concrete materials that strengthened how the event could communicate positioning and improve **awareness, consistency, and engagement**.",
-    tags: ["Brand Positioning", "Event Promotion", "Poster Design", "Audience Research"],
+    tags: ["Brand Positioning", "Audience Research", "Event Promotion", "Poster Design"],
     tools: ["Survey Research", "SWOT/PESTLE Analysis", "Competitor Analysis", "Creative Briefing", "Poster Design"],
-    image: "/images/hero-bg.png"
+    image: "/images/burningman.jpg"
   },
   "streaming-emotions-value-plan": {
     title: "Jacob Drescher Value Creation Strategy",
@@ -401,9 +401,9 @@ const projectsData: Record<string, any> = {
     challenge: "The artist needed a clearer path to grow visibility and engagement in a crowded music market. The challenge was turning fragmented qualitative and quantitative inputs into a **focused, actionable artist growth plan**.",
     solution: "We combined interview transcription analysis, genre and market research, audience segmentation, and value-creation planning. The final output aligned content direction, audience touchpoints, and brand communication into one coherent strategy framework.",
     impact: "The project delivered a structured roadmap for audience development and stronger artist positioning, including practical recommendations for content and engagement channels. It created a research-backed foundation for **sustainable audience growth** and more consistent brand communication.",
-    tags: ["Music Strategy", "Audience Insights", "Value Creation", "Data Analysis"],
+    tags: ["Artist Strategy", "Music Strategy", "Value Creation", "Audience Insights"],
     tools: ["Interview Analysis", "Market Research", "Audience Segmentation", "Value Proposition Design", "Strategic Planning"],
-    image: "/images/hero-bg.png"
+    image: "/images/jacobdrescher.jpg"
   },
   "beex-export-strategy": {
     title: "BEEX Belgium Export Strategy",
@@ -417,7 +417,7 @@ const projectsData: Record<string, any> = {
     impact: "The outcome provided BEEX with a practical roadmap for Belgium expansion, including strategic priorities, operational considerations, and financial scenarios. It improved decision confidence by connecting **market insights, risk awareness, and budget logic** in one coherent plan.",
     tags: ["Export Strategy", "Financial Planning", "Market Research", "International Expansion"],
     tools: ["Financial Modeling", "Export Research", "SWOT/PESTLE Analysis", "Operational Planning", "SMART KPI Framing"],
-    image: "/images/hero-bg.png"
+    image: "/images/beex.jpg"
   }
 };
 
