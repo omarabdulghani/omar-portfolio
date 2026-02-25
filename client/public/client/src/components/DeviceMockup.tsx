@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, ExternalLink, Maximize2, Minimize2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Maximize2, Minimize2, Play } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -23,6 +23,7 @@ type DeviceMockupProps = {
   disableEmbeddedNavigation?: boolean;
   interactiveHref?: string;
   requireInteractionToggle?: boolean;
+  deferIframeUntilPlay?: boolean;
   lockBrowserBack?: boolean;
   onBrowserBack?: () => void;
   className?: string;
@@ -113,6 +114,7 @@ export default function DeviceMockup({
   disableEmbeddedNavigation = false,
   interactiveHref,
   requireInteractionToggle = false,
+  deferIframeUntilPlay = false,
   lockBrowserBack,
   onBrowserBack,
   className,
@@ -124,6 +126,7 @@ export default function DeviceMockup({
   const backGuardTokenRef = useRef(`device-mockup-${Math.random().toString(36).slice(2)}`);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [interactionEnabled, setInteractionEnabled] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
   const resolvedOrientation: DeviceMockupOrientation =
     orientation ?? (type === "desktop" ? "landscape" : "portrait");
@@ -133,10 +136,16 @@ export default function DeviceMockup({
     [type, resolvedOrientation]
   );
   const hasGalleryItems = images.length > 0;
+  const shouldDeferIframeUntilPlay =
+    mode === "interactive" && !!iframeSrc && deferIframeUntilPlay;
   const requiresInteractionToggle =
-    mode === "interactive" && !!iframeSrc && requireInteractionToggle;
+    mode === "interactive" && !!iframeSrc && requireInteractionToggle && !shouldDeferIframeUntilPlay;
   const shouldLockBrowserBack =
-    mode === "interactive" && !!iframeSrc && (lockBrowserBack ?? true) && !requiresInteractionToggle;
+    mode === "interactive" &&
+    !!iframeSrc &&
+    (lockBrowserBack ?? true) &&
+    !requiresInteractionToggle &&
+    !shouldDeferIframeUntilPlay;
 
   useEffect(() => {
     if (!galleryRef.current) return;
@@ -162,6 +171,15 @@ export default function DeviceMockup({
 
     setInteractionEnabled(false);
   }, [requiresInteractionToggle, iframeSrc]);
+
+  useEffect(() => {
+    if (!shouldDeferIframeUntilPlay) {
+      setIsPlaying(false);
+      return;
+    }
+
+    setIsPlaying(false);
+  }, [shouldDeferIframeUntilPlay, iframeSrc]);
 
   useEffect(() => {
     if (!shouldLockBrowserBack) return;
@@ -256,6 +274,21 @@ export default function DeviceMockup({
     };
   }, [requiresInteractionToggle, interactionEnabled]);
 
+  useEffect(() => {
+    if (!shouldDeferIframeUntilPlay || !isPlaying) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsPlaying(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [shouldDeferIframeUntilPlay, isPlaying]);
+
   const scrollGallery = (direction: "prev" | "next") => {
     if (!galleryRef.current) return;
     const step = galleryRef.current.clientWidth;
@@ -330,28 +363,61 @@ export default function DeviceMockup({
             </Button>
           ) : null}
 
+          {shouldDeferIframeUntilPlay && isPlaying ? (
+            <Button
+              type="button"
+              size="sm"
+              variant="secondary"
+              className={cn(
+                "absolute top-3 z-30 h-8 rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white",
+                allowFullscreen ? "right-14" : "right-3"
+              )}
+              onClick={() => setIsPlaying(false)}
+            >
+              Stop
+            </Button>
+          ) : null}
+
           {!hideNotch && style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
           {!hideNotch && style.notch === "ipad" ? <div className={style.notchClassName} /> : null}
 
           {mode === "interactive" ? (
             iframeSrc ? (
-              <iframe
-                src={iframeSrc}
-                title={iframeTitle || `${type} prototype preview`}
-                loading="lazy"
-                allow="clipboard-read; clipboard-write; fullscreen"
-                allowFullScreen
-                className={cn(
-                  "h-full w-full border-0 bg-black",
-                  requiresInteractionToggle
-                    ? interactionEnabled
-                      ? "pointer-events-auto"
-                      : "pointer-events-none"
-                    : disableEmbeddedNavigation
-                      ? "pointer-events-none"
-                      : ""
-                )}
-              />
+              shouldDeferIframeUntilPlay && !isPlaying ? (
+                <div className="flex h-full w-full items-center justify-center bg-black">
+                  <div className="flex flex-col items-center gap-3">
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="secondary"
+                      className="h-16 w-16 rounded-full bg-white/95 text-black hover:bg-white"
+                      onClick={() => setIsPlaying(true)}
+                      aria-label="Play prototype"
+                    >
+                      <Play className="h-8 w-8 fill-current" />
+                    </Button>
+                    <p className="text-sm text-white/80">Play prototype</p>
+                  </div>
+                </div>
+              ) : (
+                <iframe
+                  src={iframeSrc}
+                  title={iframeTitle || `${type} prototype preview`}
+                  loading="lazy"
+                  allow="clipboard-read; clipboard-write; fullscreen"
+                  allowFullScreen
+                  className={cn(
+                    "h-full w-full border-0 bg-black",
+                    requiresInteractionToggle
+                      ? interactionEnabled
+                        ? "pointer-events-auto"
+                        : "pointer-events-none"
+                      : disableEmbeddedNavigation
+                        ? "pointer-events-none"
+                        : ""
+                  )}
+                />
+              )
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-white/70">
                 Add `iframeSrc` to render interactive mode.
