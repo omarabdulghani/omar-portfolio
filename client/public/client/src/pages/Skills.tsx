@@ -1,61 +1,73 @@
 import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Palette, Megaphone, Code, Search, Award, Users } from "lucide-react";
+import { Palette, Megaphone, Search, Award, Users, Briefcase, Globe } from "lucide-react";
 
 export default function Skills() {
   const skillCategories = [
     {
-      title: "Design & Creative",
+      title: "UX/UI & Product Design",
       icon: <Palette className="w-6 h-6 text-primary" />,
       skills: [
         "UX/UI Design",
-        "Branding & Visual Identity",
-        "Graphic Design",
-        "Web & App Prototyping",
-        "Video Editing & Motion Graphics",
-        "Visual Storytelling"
+        "User Flows & Information Architecture",
+        "Wireframing & Interactive Prototyping",
+        "Design Systems & Visual Consistency",
+        "Responsive Interface Design",
+        "Accessibility-Aware Design Decisions"
       ],
-      tools: ["Figma", "Framer", "Adobe XD", "Photoshop", "Illustrator", "Premiere Pro"]
+      tools: ["Figma", "Adobe XD", "Framer", "Miro", "Canva", "Adobe Photoshop", "Adobe Illustrator"]
     },
     {
-      title: "Marketing & Content",
+      title: "Digital Marketing & Growth",
       icon: <Megaphone className="w-6 h-6 text-primary" />,
       skills: [
-        "Digital Marketing Strategy",
-        "Content Creation & Copywriting",
+        "Digital Marketing Strategy & Planning",
+        "SEO (Technical & On-Page)",
         "Social Media Marketing",
-        "SEO, Analytics & Optimization",
-        "Email & Performance Marketing",
-        "Brand Positioning"
+        "Content Strategy & Campaign Messaging",
+        "Conversion Optimization",
+        "Performance Tracking & Reporting"
       ],
-      tools: ["Google Analytics", "Meta Ads", "Mailchimp", "Hootsuite", "SEMrush"]
+      tools: [
+        "Google Analytics 4",
+        "Adobe Analytics",
+        "Google Ads",
+        "Meta Ads Manager",
+        "Google Search Console",
+        "SEMrush",
+        "Hotjar",
+        "WordPress",
+        "GTmetrix"
+      ]
     },
     {
       title: "Research & Strategy",
       icon: <Search className="w-6 h-6 text-primary" />,
       skills: [
-        "User Research & Testing",
-        "Market & Trend Analysis",
-        "Consumer Insights",
-        "Behavior Mapping",
-        "Creative Consulting",
-        "Data-Driven Decision Making"
+        "User Interviews & Survey Design",
+        "Qualitative & Quantitative Analysis",
+        "Market & Competitor Research",
+        "Persona, Journey & Empathy Mapping",
+        "Value Creation & Positioning Strategy",
+        "Evidence-Based Decision Making"
       ],
-      tools: ["Miro", "Hotjar", "Typeform", "Google Trends"]
+      tools: ["Google Forms", "Typeform", "Miro", "Excel (Advanced)", "Tableau"]
     },
     {
-      title: "Technical & Management",
-      icon: <Code className="w-6 h-6 text-primary" />,
+      title: "Business, Planning & Delivery",
+      icon: <Briefcase className="w-6 h-6 text-primary" />,
       skills: [
-        "Project & Business Management",
-        "Cross-Team Collaboration",
+        "Project & Stakeholder Management",
+        "Cross-Functional Collaboration",
+        "Export & Market Entry Planning",
+        "Financial Planning & Budget Structuring",
+        "KPI & SMART Goal Frameworks",
+        "Client-Facing Presentation & Documentation",
         "HTML & CSS Fundamentals",
-        "SQL Fundamentals",
-        "Agile Methodologies",
-        "Client Relations"
+        "SQL Fundamentals"
       ],
-      tools: ["Notion", "Trello", "Jira", "Slack", "VS Code"]
+      tools: ["Asana", "Jira", "Notion", "Trello", "Slack", "Microsoft Office", "VS Code"]
     }
   ];
 
@@ -69,7 +81,7 @@ export default function Skills() {
             Skills & <span className="text-primary">Expertise</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Through creative and strategic approaches, I help businesses grow by combining design thinking with data-driven marketing.
+            A practical blend of UX/UI design, strategic research, and digital marketing execution built through real client projects across branding, product concepts, and growth optimization.
           </p>
         </div>
       </section>
@@ -118,28 +130,46 @@ export default function Skills() {
       {/* Certifications & Soft Skills */}
       <section className="py-20 bg-white/[0.02] border-t border-white/5">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Certifications */}
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <Award className="text-primary" size={28} />
                 <h2 className="text-3xl font-heading font-bold">Certifications</h2>
               </div>
+              <div className="space-y-3">
+                {[
+                  "Google Analytics 4 Certificate",
+                  "Google Fundamentals of Digital Marketing",
+                  "StartUP Campus - Entrepreneurship",
+                  "IELTS (English Language Testing)",
+                  "Dutch Language Certificate (B1-B2)"
+                ].map((certificate) => (
+                  <div key={certificate} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-white/5">
+                    <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                    <span className="font-medium">{certificate}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Languages */}
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <Globe className="text-primary" size={28} />
+                <h2 className="text-3xl font-heading font-bold">Languages</h2>
+              </div>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-card border border-white/5">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" className="w-8 h-8" />
-                  <div>
-                    <h3 className="font-bold">Google Digital Marketing</h3>
-                    <p className="text-sm text-muted-foreground">Certified Professional</p>
+                {[
+                  { name: "Arabic", level: "Native" },
+                  { name: "English", level: "Professional" },
+                  { name: "Dutch", level: "B1-B2" }
+                ].map((language) => (
+                  <div key={language.name} className="p-4 rounded-xl bg-card border border-white/5">
+                    <h3 className="font-bold">{language.name}</h3>
+                    <p className="text-sm text-muted-foreground">{language.level}</p>
                   </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-card border border-white/5">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Analytics_logo_icon.svg/1024px-Google_Analytics_logo_icon.svg.png" alt="GA4" className="w-8 h-8" />
-                  <div>
-                    <h3 className="font-bold">Google Analytics (GA4)</h3>
-                    <p className="text-sm text-muted-foreground">Advanced Certification</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -154,9 +184,10 @@ export default function Skills() {
                   "Creative Problem-Solving",
                   "Strategic Thinking",
                   "Communication",
+                  "Cross-Cultural Collaboration",
+                  "Stakeholder Management",
                   "Adaptability",
-                  "Teamwork",
-                  "Proactive Mindset"
+                  "Ownership & Proactive Execution"
                 ].map((skill) => (
                   <div key={skill} className="flex items-center gap-3 p-3 rounded-lg bg-secondary/30">
                     <div className="w-2 h-2 rounded-full bg-primary" />
