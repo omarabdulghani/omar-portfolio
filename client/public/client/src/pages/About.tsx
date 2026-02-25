@@ -10,63 +10,60 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.45fr_0.75fr] gap-8 lg:gap-10 items-start">
-            <div className="order-2 lg:order-2">
-              <div className="relative flex justify-center lg:justify-end pt-2 lg:pt-12">
+          <div className="max-w-6xl mx-auto space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              About Me
+            </div>
+            <h1 className="text-4xl md:text-5xl font-heading font-bold">
+              Bridging Creativity & <span className="text-primary">Business Strategy</span>
+            </h1>
+
+            <div className="space-y-4 text-base md:text-[1.02rem] lg:text-[1.06rem] leading-7 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded-sm [&_span.text-foreground]:text-foreground [&_span.text-foreground]:font-semibold">
+              <div className="relative mx-auto w-max md:w-auto md:float-right md:ml-8 md:mb-4 md:[shape-outside:circle(50%)]">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-primary/5 rounded-full blur-xl opacity-70" />
-                <img 
-                  src="/images/CV%20Resume.png" 
-                  alt="Omar Abdulghani" 
-                  className="relative w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border border-white/15 shadow-2xl object-cover object-top"
+                <img
+                  src="/images/CV%20Resume.png"
+                  alt="Omar Abdulghani"
+                  className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border border-white/15 shadow-2xl object-cover object-top"
                 />
               </div>
+
+              <p>
+                I didn't grow up with one clear passion. I grew up <strong className="text-foreground">curious about everything</strong>.
+              </p>
+              <p>
+                As a child, I was already experimenting with media and technology, filming short horror movies, directing and editing music videos, and exploring how ideas could become something visual and tangible. At the same time, I loved language and communication, which made choosing one study path difficult.
+              </p>
+              <p>
+                I first studied English teaching and gained knowledge in phonetics, psychology, and literature. Teaching still matters to me: I taught English to children in Syria and later taught Arabic to adults in the Netherlands. I then moved into Information Technology, building a foundation in <strong className="text-foreground">C#, HTML, SQL, Python, and UX/UI</strong>.
+              </p>
+              <p>
+                Everything came together when I discovered <strong className="text-foreground">International Creative Business</strong> at Inholland University of Applied Sciences in Haarlem, where I graduated in 2025 with a Bachelor's degree and a minor in <strong className="text-foreground">Digital Marketing</strong>. This was where I could combine strategy, branding, UX/UI, business thinking, and creativity into one multidisciplinary approach.
+              </p>
+              <p>
+                During my IT and Creative Business studies, I worked on real client projects with organizations such as <span className="text-foreground">Patronaat</span>, <span className="text-foreground">Amstelhof</span>, and <span className="text-foreground">De FilmHallen</span>. From briefing and research to final presentations and delivery, I helped turn concepts into tangible outcomes with measurable impact.
+              </p>
+              <p>
+                Recently, I have been exploring <strong className="text-foreground">vibe coding</strong> with AI-powered tools such as Cursor, Claude Code, and Codex to rapidly build websites, apps, and interactive concepts. With my technical background, I do not just experiment creatively; I understand the structure behind what I build.
+              </p>
+              <p>
+                Today, I specialize in <strong className="text-foreground">branding, UX/UI design, digital marketing, and concept development</strong>, especially in early-stage ideation, brand storytelling, and experiential thinking.
+              </p>
+              <p>
+                Fluent in Arabic, English, and at B1 level in Dutch, I bring a <strong className="text-foreground">cross-cultural perspective</strong>, technical understanding, and hands-on creativity to every collaboration.
+              </p>
+              <p>
+                If you are looking for someone who connects strategy with imagination and turns concepts into real experiences, let's create something impactful together.
+              </p>
             </div>
-            
-            <div className="order-1 lg:order-1 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                About Me
-              </div>
-              <h1 className="text-4xl md:text-5xl font-heading font-bold">
-                Bridging Creativity & <span className="text-primary">Business Strategy</span>
-              </h1>
-              <div className="space-y-4 text-base md:text-[1.02rem] lg:text-[1.06rem] leading-7 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded-sm [&_span.text-foreground]:text-foreground [&_span.text-foreground]:font-semibold">
-                <p>
-                  I didn't grow up with one clear passion. I grew up <strong className="text-foreground">curious about everything</strong>.
-                </p>
-                <p>
-                  As a child, I was already experimenting with media and technology, filming short horror movies, directing and editing music videos, and exploring how ideas could become something visual and tangible. At the same time, I loved language and communication, which made choosing one study path difficult.
-                </p>
-                <p>
-                  I first studied English teaching and gained knowledge in phonetics, psychology, and literature. Teaching still matters to me: I taught English to children in Syria and later taught Arabic to adults in the Netherlands. I then moved into Information Technology, building a foundation in <strong className="text-foreground">C#, HTML, SQL, Python, and UX/UI</strong>.
-                </p>
-                <p>
-                  Everything came together when I discovered <strong className="text-foreground">International Creative Business</strong> at Inholland University of Applied Sciences in Haarlem, where I graduated in 2025 with a Bachelor's degree and a minor in <strong className="text-foreground">Digital Marketing</strong>. This was where I could combine strategy, branding, UX/UI, business thinking, and creativity into one multidisciplinary approach.
-                </p>
-                <p>
-                  During my IT and Creative Business studies, I worked on real client projects with organizations such as <span className="text-foreground">Patronaat</span>, <span className="text-foreground">Amstelhof</span>, and <span className="text-foreground">De FilmHallen</span>. From briefing and research to final presentations and delivery, I helped turn concepts into tangible outcomes with measurable impact.
-                </p>
-                <p>
-                  Recently, I have been exploring <strong className="text-foreground">vibe coding</strong> with AI-powered tools such as Cursor, Claude Code, and Codex to rapidly build websites, apps, and interactive concepts. With my technical background, I do not just experiment creatively; I understand the structure behind what I build.
-                </p>
-                <p>
-                  Today, I specialize in <strong className="text-foreground">branding, UX/UI design, digital marketing, and concept development</strong>, especially in early-stage ideation, brand storytelling, and experiential thinking.
-                </p>
-                <p>
-                  Fluent in Arabic, English, and at B1 level in Dutch, I bring a <strong className="text-foreground">cross-cultural perspective</strong>, technical understanding, and hands-on creativity to every collaboration.
-                </p>
-                <p>
-                  If you are looking for someone who connects strategy with imagination and turns concepts into real experiences, let's create something impactful together.
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-4 pt-4">
-                <Button className="gap-2 rounded-full">
-                  <Download size={18} /> Download CV (English)
-                </Button>
-                <Button variant="outline" className="gap-2 rounded-full">
-                  <Download size={18} /> Download CV (Dutch)
-                </Button>
-              </div>
+
+            <div className="clear-both flex flex-wrap gap-4 pt-2">
+              <Button className="gap-2 rounded-full">
+                <Download size={18} /> Download CV (English)
+              </Button>
+              <Button variant="outline" className="gap-2 rounded-full">
+                <Download size={18} /> Download CV (Dutch)
+              </Button>
             </div>
           </div>
         </div>
