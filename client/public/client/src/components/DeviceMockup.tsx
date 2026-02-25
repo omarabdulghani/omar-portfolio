@@ -24,6 +24,7 @@ type DeviceMockupProps = {
   interactiveHref?: string;
   requireInteractionToggle?: boolean;
   deferIframeUntilPlay?: boolean;
+  backClosesPrototype?: boolean;
   skipBackAfterStop?: boolean;
   lockBrowserBack?: boolean;
   onBrowserBack?: () => void;
@@ -116,6 +117,7 @@ export default function DeviceMockup({
   interactiveHref,
   requireInteractionToggle = false,
   deferIframeUntilPlay = false,
+  backClosesPrototype = false,
   skipBackAfterStop = true,
   lockBrowserBack,
   onBrowserBack,
@@ -144,8 +146,14 @@ export default function DeviceMockup({
   const hasGalleryItems = images.length > 0;
   const shouldDeferIframeUntilPlay =
     mode === "interactive" && !!iframeSrc && deferIframeUntilPlay;
+  const shouldBackClosePrototype =
+    mode === "interactive" && !!iframeSrc && shouldDeferIframeUntilPlay && backClosesPrototype;
   const shouldSkipBackAfterStop =
-    mode === "interactive" && !!iframeSrc && shouldDeferIframeUntilPlay && skipBackAfterStop;
+    mode === "interactive" &&
+    !!iframeSrc &&
+    shouldDeferIframeUntilPlay &&
+    skipBackAfterStop &&
+    !shouldBackClosePrototype;
   const requiresInteractionToggle =
     mode === "interactive" && !!iframeSrc && requireInteractionToggle && !shouldDeferIframeUntilPlay;
   const shouldLockBrowserBack =
@@ -158,6 +166,8 @@ export default function DeviceMockup({
 
   const getCurrentLocationKey = () =>
     `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  const getCurrentLocationWithoutHash = () =>
+    `${window.location.pathname}${window.location.search}`;
 
   const disarmBackSkipGuard = () => {
     backSkipArmedRef.current = false;
@@ -175,8 +185,20 @@ export default function DeviceMockup({
   };
 
   const handleStopPlaying = () => {
-    armBackSkipGuard();
+    if (shouldBackClosePrototype) {
+      window.history.replaceState(null, "", getCurrentLocationWithoutHash());
+    } else {
+      armBackSkipGuard();
+    }
     setIsPlaying(false);
+  };
+
+  const handleStartPlaying = () => {
+    setIsPlaying(true);
+
+    if (shouldBackClosePrototype && window.location.hash !== "#prototype") {
+      window.location.hash = "prototype";
+    }
   };
 
   useEffect(() => {
@@ -280,6 +302,22 @@ export default function DeviceMockup({
       disarmBackSkipGuard();
     };
   }, [shouldSkipBackAfterStop]);
+
+  useEffect(() => {
+    if (!shouldBackClosePrototype || !isPlaying) return;
+
+    const handleHashChange = () => {
+      if (window.location.hash !== "#prototype") {
+        window.history.replaceState(null, "", getCurrentLocationWithoutHash());
+        setIsPlaying(false);
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [shouldBackClosePrototype, isPlaying]);
 
   useEffect(() => {
     if (!shouldLockBrowserBack) return;
@@ -491,7 +529,7 @@ export default function DeviceMockup({
                       size="icon"
                       variant="secondary"
                       className="h-16 w-16 rounded-full bg-white/95 text-black hover:bg-white"
-                      onClick={() => setIsPlaying(true)}
+                      onClick={handleStartPlaying}
                       aria-label="Play prototype"
                     >
                       <Play className="h-8 w-8 fill-current" />
