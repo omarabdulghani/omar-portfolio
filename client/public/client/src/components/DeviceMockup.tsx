@@ -25,9 +25,11 @@ type DeviceMockupProps = {
   requireInteractionToggle?: boolean;
   deferIframeUntilPlay?: boolean;
   backClosesPrototype?: boolean;
+  showExitNav?: boolean;
   skipBackAfterStop?: boolean;
   lockBrowserBack?: boolean;
   onBrowserBack?: () => void;
+  onExitToPortfolio?: () => void;
   className?: string;
 };
 
@@ -118,9 +120,11 @@ export default function DeviceMockup({
   requireInteractionToggle = false,
   deferIframeUntilPlay = false,
   backClosesPrototype = false,
+  showExitNav = true,
   skipBackAfterStop = true,
   lockBrowserBack,
   onBrowserBack,
+  onExitToPortfolio,
   className,
 }: DeviceMockupProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -162,6 +166,8 @@ export default function DeviceMockup({
     (lockBrowserBack ?? true) &&
     !requiresInteractionToggle &&
     !shouldDeferIframeUntilPlay;
+  const shouldShowExitNavButton =
+    shouldDeferIframeUntilPlay && isPlaying && showExitNav && !!onExitToPortfolio;
   const backSkipMaxAttempts = 25;
 
   const getCurrentLocationKey = () =>
@@ -199,6 +205,11 @@ export default function DeviceMockup({
     if (shouldBackClosePrototype && window.location.hash !== "#prototype") {
       window.location.hash = "prototype";
     }
+  };
+
+  const handleExitToPortfolio = () => {
+    handleStopPlaying();
+    onExitToPortfolio?.();
   };
 
   useEffect(() => {
@@ -502,18 +513,33 @@ export default function DeviceMockup({
           ) : null}
 
           {shouldDeferIframeUntilPlay && isPlaying ? (
-            <Button
-              type="button"
-              size="sm"
-              variant="secondary"
+            <div
               className={cn(
-                "absolute top-3 z-30 h-8 rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white",
+                "absolute top-3 z-30 flex items-center gap-2",
                 allowFullscreen ? "right-14" : "right-3"
               )}
-              onClick={handleStopPlaying}
             >
-              Stop
-            </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="secondary"
+                className="h-8 rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white"
+                onClick={handleStopPlaying}
+              >
+                Stop
+              </Button>
+              {shouldShowExitNavButton ? (
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="secondary"
+                  className="h-8 rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white"
+                  onClick={handleExitToPortfolio}
+                >
+                  Back to Portfolio
+                </Button>
+              ) : null}
+            </div>
           ) : null}
 
           {!hideNotch && style.notch === "iphone" ? <div className={style.notchClassName} /> : null}
@@ -662,6 +688,12 @@ export default function DeviceMockup({
           ) : null}
         </div>
       </div>
+
+      {shouldDeferIframeUntilPlay && isPlaying ? (
+        <p className="mt-3 text-center text-xs text-muted-foreground">
+          Tip: Use Stop or Back to Portfolio to exit prototype (browser Back may navigate inside prototype).
+        </p>
+      ) : null}
 
       {style.hasLaptopBase ? (
         <>

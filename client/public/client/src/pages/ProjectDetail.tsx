@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ExternalLink, Play } from "lucide-react";
-import { Link, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
 import { useEffect, useRef } from "react";
 import ProjectGallery, {
   type ProjectGalleryHandle,
@@ -399,6 +399,7 @@ function isVideoHref(href?: string): boolean {
 
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
+  const [, setLocation] = useLocation();
   const galleryRef = useRef<ProjectGalleryHandle>(null);
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : undefined;
@@ -497,6 +498,8 @@ export default function ProjectDetail() {
                   requireInteractionToggle={project.deviceMockup.requireInteractionToggle}
                   deferIframeUntilPlay={project.deviceMockup.deferIframeUntilPlay}
                   backClosesPrototype={project.deviceMockup.backClosesPrototype}
+                  showExitNav={project.deviceMockup.showExitNav}
+                  onExitToPortfolio={() => setLocation("/portfolio/")}
                 />
               </div>
             ) : null}
