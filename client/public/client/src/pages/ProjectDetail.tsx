@@ -392,8 +392,34 @@ const projectsData: Record<string, any> = {
     solution: "We conducted internal and external analysis, competitor comparison, and survey-based insight gathering. From this, we built a focused event-promotion concept and I developed the final poster direction to reflect **brand values, audience fit, and campaign clarity**.",
     impact: "The project delivered a reusable strategy-to-design workflow: from research question setup and survey analysis to creative execution. It produced concrete materials that strengthened how the event could communicate positioning and improve **awareness, consistency, and engagement**.",
     tags: ["Brand Positioning", "Audience Research", "Event Promotion", "Poster Design"],
-    tools: ["Survey Research", "SWOT/PESTLE Analysis", "Competitor Analysis", "Creative Briefing", "Poster Design"],
-    image: "/images/burningman.jpg"
+    tools: ["Survey Research", "SWOT/PESTLE Analysis", "Competitor Analysis", "Creative Briefing", "Poster Design", "Adobe Photoshop"],
+    image: "/images/burningman.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "/images/burningman gallery/Burning Man's Designed Poster.jpg",
+        alt: "Burning Man designed poster",
+        title: "Burning Man's Designed Poster"
+      },
+      {
+        type: "document",
+        src: "/images/burningman gallery/Brand Positioning Report.pdf",
+        alt: "Brand Positioning Report",
+        title: "Brand Positioning Report"
+      },
+      {
+        type: "document",
+        src: "/images/burningman gallery/Event Promotion Research.pdf",
+        alt: "Event Promotion Research",
+        title: "Event Promotion Research"
+      },
+      {
+        type: "document",
+        src: "/images/burningman gallery/Socially Engaged Event Research.pdf",
+        alt: "Socially Engaged Event Research",
+        title: "Socially Engaged Event Research"
+      }
+    ]
   },
   "streaming-emotions-value-plan": {
     title: "Jacob Drescher Value Creation Strategy",
@@ -410,7 +436,27 @@ const projectsData: Record<string, any> = {
     impact: "The project delivered a structured roadmap for audience development and stronger artist positioning, including practical recommendations for content and engagement channels. It created a research-backed foundation for **sustainable audience growth** and more consistent brand communication.",
     tags: ["Artist Strategy", "Music Strategy", "Value Creation", "Audience Insights"],
     tools: ["Interview Analysis", "Market Research", "Audience Segmentation", "Value Proposition Design", "Strategic Planning"],
-    image: "/images/jacobdrescher.jpg"
+    image: "/images/jacobdrescher.jpg",
+    gallery: [
+      {
+        type: "document",
+        src: "/images/jacobdrescher gallery/Data Analysis Report (Arcando).pdf",
+        alt: "Data Analysis Report (Arcando)",
+        title: "Data Analysis Report (Arcando)"
+      },
+      {
+        type: "document",
+        src: "/images/jacobdrescher gallery/Value Creation Report 1.pdf",
+        alt: "Value Creation Report 1",
+        title: "Value Creation Report 1"
+      },
+      {
+        type: "document",
+        src: "/images/jacobdrescher gallery/Value Creation Report 2.pdf",
+        alt: "Value Creation Report 2",
+        title: "Value Creation Report 2"
+      }
+    ]
   },
   "beex-export-strategy": {
     title: "BEEX Belgium Export Strategy",
@@ -427,7 +473,27 @@ const projectsData: Record<string, any> = {
     impact: "The outcome provided BEEX with a practical roadmap for Belgium expansion, including strategic priorities, operational considerations, and financial scenarios. It improved decision confidence by connecting **market insights, risk awareness, and budget logic** in one coherent plan.",
     tags: ["Export Strategy", "Financial Planning", "Market Research", "International Expansion"],
     tools: ["Financial Modeling", "Export Research", "SWOT/PESTLE Analysis", "Operational Planning", "SMART KPI Framing"],
-    image: "/images/beex.jpg"
+    image: "/images/beex.jpg",
+    gallery: [
+      {
+        type: "document",
+        src: "/images/beex gallery/Export Research.pdf",
+        alt: "Export Research",
+        title: "Export Research"
+      },
+      {
+        type: "document",
+        src: "/images/beex gallery/Export Plan.pdf",
+        alt: "Export Plan",
+        title: "Export Plan"
+      },
+      {
+        type: "document",
+        src: "/images/beex gallery/Financial Export Plan (Excel File).xlsx",
+        alt: "Financial Export Plan (Excel File)",
+        title: "Financial Export Plan (Excel File)"
+      }
+    ]
   }
 };
 
