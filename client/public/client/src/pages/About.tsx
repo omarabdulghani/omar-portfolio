@@ -31,13 +31,31 @@ export default function About() {
               </h1>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  I am a graduate in <strong className="text-foreground">International Creative Business</strong> from InHolland University of Applied Sciences, with a minor in <strong className="text-foreground">Digital Marketing</strong>.
+                  I didn't grow up with one clear passion. I grew up <strong className="text-foreground">curious about everything</strong>.
                 </p>
                 <p>
-                  My background bridges UX/UI design, branding, digital marketing, and content creation. I don't just design; I transform research and strategy into meaningful user experiences that drive results.
+                  As a child, I was already experimenting with media and technology, filming short horror movies, directing and editing music videos, and exploring how ideas could become something visual and tangible. At the same time, I loved language and communication, which made choosing one study path difficult.
                 </p>
                 <p>
-                  Throughout my studies, I've collaborated with real organizations such as <span className="text-foreground">Patronaat</span>, <span className="text-foreground">Amstelhof</span>, and <span className="text-foreground">De FilmHallen</span>, delivering creative solutions that blend design thinking with measurable business impact.
+                  I first studied English teaching and gained knowledge in phonetics, psychology, and literature. Teaching still matters to me: I taught English to children in Syria and later taught Arabic to adults in the Netherlands. I then moved into Information Technology, building a foundation in <strong className="text-foreground">C#, HTML, SQL, Python, and UX/UI</strong>.
+                </p>
+                <p>
+                  Everything came together when I discovered <strong className="text-foreground">International Creative Business</strong> at Inholland University of Applied Sciences in Haarlem, where I graduated in 2025 with a Bachelor's degree and a minor in <strong className="text-foreground">Digital Marketing</strong>. This was where I could combine strategy, branding, UX/UI, business thinking, and creativity into one multidisciplinary approach.
+                </p>
+                <p>
+                  During my IT and Creative Business studies, I worked on real client projects with organizations such as <span className="text-foreground">Patronaat</span>, <span className="text-foreground">Amstelhof</span>, and <span className="text-foreground">De FilmHallen</span>. From briefing and research to final presentations and delivery, I helped turn concepts into tangible outcomes with measurable impact.
+                </p>
+                <p>
+                  Recently, I have been exploring <strong className="text-foreground">vibe coding</strong> with AI-powered tools such as Cursor, Claude Code, and Codex to rapidly build websites, apps, and interactive concepts. With my technical background, I do not just experiment creatively; I understand the structure behind what I build.
+                </p>
+                <p>
+                  Today, I specialize in <strong className="text-foreground">branding, UX/UI design, digital marketing, and concept development</strong>, especially in early-stage ideation, brand storytelling, and experiential thinking.
+                </p>
+                <p>
+                  Fluent in Arabic, English, and at B1 level in Dutch, I bring a <strong className="text-foreground">cross-cultural perspective</strong>, technical understanding, and hands-on creativity to every collaboration.
+                </p>
+                <p>
+                  If you are looking for someone who connects strategy with imagination and turns concepts into real experiences, let's create something impactful together.
                 </p>
               </div>
               
@@ -75,9 +93,9 @@ export default function About() {
                     <h4 className="text-xl font-bold">International Creative Business</h4>
                     <Badge variant="secondary">2021 - 2025</Badge>
                   </div>
-                  <p className="text-primary font-medium mb-2">InHolland University of Applied Sciences</p>
+                  <p className="text-primary font-medium mb-2">Inholland University of Applied Sciences, Haarlem</p>
                   <p className="text-muted-foreground text-sm">
-                    Focus on creative leadership, media management, and business innovation.
+                    Bachelor's degree with a multidisciplinary focus on branding, UX/UI, strategy, and business innovation. Included a minor in Digital Marketing.
                   </p>
                 </CardContent>
               </Card>
@@ -85,12 +103,25 @@ export default function About() {
               <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-xl font-bold">Digital Marketing Minor</h4>
-                    <Badge variant="secondary">Minor</Badge>
+                    <h4 className="text-xl font-bold">Information Technology</h4>
+                    <Badge variant="secondary">2018 - 2020</Badge>
                   </div>
-                  <p className="text-primary font-medium mb-2">Rotterdam Business University</p>
+                  <p className="text-primary font-medium mb-2">Haarlem University of Applied Sciences</p>
                   <p className="text-muted-foreground text-sm">
-                    Specialized in SEO, SEA, content strategy, and data analytics.
+                    Built foundations in programming, systems thinking, and interface design (C#, HTML, SQL, Python, UX/UI basics).
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-xl font-bold">Teacher of English</h4>
+                    <Badge variant="secondary">2017 - 2018</Badge>
+                  </div>
+                  <p className="text-primary font-medium mb-2">Utrecht University of Applied Sciences</p>
+                  <p className="text-muted-foreground text-sm">
+                    Studied language teaching fundamentals including communication, pedagogy, and literature analysis.
                   </p>
                 </CardContent>
               </Card>
@@ -105,25 +136,42 @@ export default function About() {
                 <h3 className="text-2xl font-bold">Practical Experience</h3>
               </div>
               
-              <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors h-full">
-                <CardContent className="p-6 space-y-4">
-                  <p className="text-muted-foreground">
-                    Unlike traditional programs, my education was rooted in real-world application from day one.
+              <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-xl font-bold">Digital Marketing & Web Development Intern</h4>
+                    <Badge variant="secondary">2024</Badge>
+                  </div>
+                  <p className="text-primary font-medium mb-2">Park Plaza Hotel Group Europe (PPHE), Amsterdam</p>
+                  <p className="text-muted-foreground text-sm">
+                    Contributed to UX projects, supported technical and non-technical SEO initiatives, and analyzed website performance using Google Analytics and Adobe Analytics.
                   </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      <span className="text-sm">Worked with real companies and organizations throughout the degree.</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      <span className="text-sm">Delivered actual client projects, campaigns, and strategic proposals.</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      <span className="text-sm">Gained hands-on professional experience, functioning in real professional roles.</span>
-                    </li>
-                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-xl font-bold">Freelance Language Tutor</h4>
+                    <Badge variant="secondary">2019 - 2024</Badge>
+                  </div>
+                  <p className="text-primary font-medium mb-2">Amstelveen, The Netherlands</p>
+                  <p className="text-muted-foreground text-sm">
+                    Taught Arabic and English in one-to-one and small-group settings, adapting content to different learner backgrounds and goals.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-xl font-bold">Early Professional Roles</h4>
+                    <Badge variant="secondary">2014 - 2019</Badge>
+                  </div>
+                  <p className="text-primary font-medium mb-2">Netherlands & Syria</p>
+                  <p className="text-muted-foreground text-sm">
+                    Experience across software testing (Flavour x War Child), teacher assistant internship, interpreter/translator work, and kindergarten teaching.
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -142,6 +190,16 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-card border border-white/5 w-48 hover:border-primary/50 transition-colors">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
+                AR
+              </div>
+              <div>
+                <h3 className="font-bold">Arabic</h3>
+                <p className="text-sm text-muted-foreground">Native</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-card border border-white/5 w-48 hover:border-primary/50 transition-colors">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
                 EN
               </div>
               <div>
@@ -156,7 +214,7 @@ export default function About() {
               </div>
               <div>
                 <h3 className="font-bold">Dutch</h3>
-                <p className="text-sm text-muted-foreground">Professional Proficiency</p>
+                <p className="text-sm text-muted-foreground">B1 Level (Working Proficiency)</p>
               </div>
             </div>
           </div>
