@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PdfFlipbookLink } from "@/components/PdfFlipbookModal";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,7 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative pt-20 pb-10 md:pb-12 overflow-hidden">
         <div className="container relative z-10">
           <div className="max-w-6xl mx-auto space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
@@ -59,7 +59,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="clear-both flex flex-wrap gap-4 pt-4 md:pt-6">
+            <div className="clear-both flex justify-end pt-4 md:pt-6">
               <PdfFlipbookLink
                 href="/CV.pdf"
                 title="Omar Abdulghani CV"
@@ -69,7 +69,7 @@ export default function About() {
                 )}
               >
                 <Download size={18} />
-                Download CV
+                View CV
               </PdfFlipbookLink>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function About() {
       </section>
 
       {/* Education & Experience */}
-      <section className="py-20 bg-white/[0.02] border-y border-white/5">
+      <section className="pt-14 pb-20 bg-white/[0.02] border-y border-white/5">
         <div className="container">
           <h2 className="text-3xl font-heading font-bold mb-12 text-center">Education & Experience</h2>
           
