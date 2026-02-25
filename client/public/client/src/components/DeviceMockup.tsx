@@ -573,7 +573,9 @@ export default function DeviceMockup({
                     >
                       <Play className="h-8 w-8 fill-current" />
                     </Button>
-                    <p className="text-sm text-white/80">Play prototype</p>
+                    <p className="text-sm text-white/80 select-none caret-transparent pointer-events-none">
+                      Play prototype
+                    </p>
                   </div>
                 </div>
               ) : (
