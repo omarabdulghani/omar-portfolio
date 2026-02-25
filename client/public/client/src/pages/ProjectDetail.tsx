@@ -384,6 +384,7 @@ const projectsData: Record<string, any> = {
     client: "Burning Man (Academic Client Case)",
     clientLogo: "/images/burningman gallery/Burning_Man_Project_Logo (light mode).png",
     clientLogoDark: "/images/burningman gallery/Burning_Man_Project_Logo (dark mode).png",
+    clientLogoClass: "h-14",
     clientWebsite: "https://burningman.org/",
     role: "Researcher & Poster Designer (Group Project)",
     description: "This project combined **brand positioning research**, **event promotion strategy**, and **poster design** for Burning Man. Working in a team, I translated research insights into a clearer communication direction and designed visual outputs to support audience engagement.",
