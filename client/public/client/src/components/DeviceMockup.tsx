@@ -486,22 +486,22 @@ export default function DeviceMockup({
       {shouldDeferIframeUntilPlay ? (
         <div
           className={cn(
-            "mb-3 flex justify-end overflow-hidden transition-all duration-200",
+            "mb-3 flex w-full justify-end px-1 sm:px-0 overflow-hidden transition-all duration-200",
             shouldRenderTopControls ? "max-h-12 opacity-100" : "max-h-0 opacity-0 pointer-events-none mb-0"
           )}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-end gap-1.5 sm:gap-2">
             <div
               className={cn(
                 "overflow-hidden transition-all duration-200",
-                isPlaying ? "w-[78px] opacity-100" : "w-0 opacity-0"
+                isPlaying ? "w-[88px] opacity-100" : "w-0 opacity-0"
               )}
             >
               <Button
                 type="button"
                 size="sm"
                 variant="secondary"
-                className="h-8 w-[78px] rounded-md bg-white/90 text-zinc-900 hover:bg-white"
+                className="h-8 w-[88px] rounded-md bg-white/90 px-3 text-zinc-900 hover:bg-white whitespace-nowrap"
                 onClick={handleStopPlaying}
               >
                 Stop
@@ -511,7 +511,7 @@ export default function DeviceMockup({
               <Button
                 type="button"
                 size="sm"
-                className="h-8 rounded-md bg-primary px-3 text-primary-foreground hover:bg-primary/90"
+                className="h-8 rounded-md bg-primary px-2.5 sm:px-3 text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
                 onClick={handleExitToPortfolio}
               >
                 Back to Portfolio
