@@ -191,6 +191,7 @@ const projectsData: Record<string, any> = {
       iframeTitle: "PatronApp Adobe XD prototype",
       showArrows: false,
       deferIframeUntilPlay: true,
+      backClosesPrototype: true,
       allowFullscreen: false
     },
     description: "PatronApp was developed with my classmates in **ZOOTS** (Zuzanna, Omar, Oliwia, Tamara, and Susanna) for Patronaat in Haarlem. Across the three module phases - **Creation, Justification, and Production** - we proposed three concepts, and **PatronApp (my concept)** was selected by the client for further development. I led the app ideation and designed the interactive prototype in Adobe XD.",
@@ -258,6 +259,7 @@ const projectsData: Record<string, any> = {
       iframeTitle: "HallenCity+ prototype",
       showArrows: false,
       deferIframeUntilPlay: true,
+      backClosesPrototype: true,
       allowFullscreen: false
     },
     gallery: [
@@ -494,6 +496,7 @@ export default function ProjectDetail() {
                   interactiveHref={project.deviceMockup.interactiveHref}
                   requireInteractionToggle={project.deviceMockup.requireInteractionToggle}
                   deferIframeUntilPlay={project.deviceMockup.deferIframeUntilPlay}
+                  backClosesPrototype={project.deviceMockup.backClosesPrototype}
                 />
               </div>
             ) : null}
