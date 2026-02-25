@@ -1,7 +1,9 @@
 import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PdfFlipbookLink } from "@/components/PdfFlipbookModal";
+import { cn } from "@/lib/utils";
 import { Download, GraduationCap, Briefcase, Globe } from "lucide-react";
 
 export default function About() {
@@ -18,7 +20,7 @@ export default function About() {
               Bridging Creativity & <span className="text-primary">Business Strategy</span>
             </h1>
 
-            <div className="space-y-4 text-base md:text-[1.02rem] lg:text-[1.06rem] leading-7 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded-sm [&_span.text-foreground]:text-foreground [&_span.text-foreground]:font-semibold">
+            <div className="mt-3 md:mt-5 space-y-4 text-base md:text-[1.02rem] lg:text-[1.06rem] leading-7 text-muted-foreground caret-transparent [&_p]:text-justify [&_strong]:text-foreground [&_strong]:font-semibold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded-sm [&_span.text-foreground]:text-foreground [&_span.text-foreground]:font-semibold">
               <div className="relative mx-auto w-max md:w-auto md:float-right md:ml-8 md:mb-4 md:[shape-outside:circle(50%)]">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-primary/5 rounded-full blur-xl opacity-70" />
                 <img
@@ -57,13 +59,18 @@ export default function About() {
               </p>
             </div>
 
-            <div className="clear-both flex flex-wrap gap-4 pt-2">
-              <Button className="gap-2 rounded-full">
-                <Download size={18} /> Download CV (English)
-              </Button>
-              <Button variant="outline" className="gap-2 rounded-full">
-                <Download size={18} /> Download CV (Dutch)
-              </Button>
+            <div className="clear-both flex flex-wrap gap-4 pt-4 md:pt-6">
+              <PdfFlipbookLink
+                href="/CV.pdf"
+                title="Omar Abdulghani CV"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "h-12 gap-2 rounded-full px-8 text-base"
+                )}
+              >
+                <Download size={18} />
+                Download CV
+              </PdfFlipbookLink>
             </div>
           </div>
         </div>
