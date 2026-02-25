@@ -57,6 +57,30 @@ export default function Portfolio() {
       imageClassName: "object-top scale-[1.03]",
       description: "Reimagining the cinema experience through online ticketing, snack ordering, and social features.",
       tags: ["App Concept", "Community Building", "Service Design"]
+    },
+    {
+      id: "burning-man-campaign",
+      title: "Burning Man Brand Positioning",
+      category: "Brand Activation",
+      image: "/images/burning-man-campaign gallery/socially-engaged-infographic.png",
+      description: "Brand positioning, event-promotion strategy, and poster design driven by audience research and competitive analysis.",
+      tags: ["Brand Positioning", "Event Promotion", "Poster Design"]
+    },
+    {
+      id: "streaming-emotions-value-plan",
+      title: "Jacob Drescher Value Plan",
+      category: "Digital Marketing",
+      image: "/images/project-streaming-emotions-value-plan.svg",
+      description: "Music audience analysis and value-creation strategy to support artist growth and stronger communication.",
+      tags: ["Music Strategy", "Audience Insights", "Value Creation"]
+    },
+    {
+      id: "beex-export-strategy",
+      title: "BEEX Export Strategy",
+      category: "Digital Marketing",
+      image: "/images/project-beex-export-strategy.svg",
+      description: "Belgium market-entry strategy combining export research, financial planning, and operational recommendations.",
+      tags: ["Export Strategy", "Financial Planning", "Market Research"]
     }
   ];
 

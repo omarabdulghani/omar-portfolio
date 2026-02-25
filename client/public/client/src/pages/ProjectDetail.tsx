@@ -376,6 +376,138 @@ const projectsData: Record<string, any> = {
         title: "Personal Development Report 2"
       }
     ]
+  },
+  "burning-man-campaign": {
+    title: "Burning Man Brand Positioning & Event Promotion",
+    subtitle: "Audience Research, Event Promotion Strategy & Poster Design",
+    year: "2021-2022",
+    client: "Burning Man (Academic Client Case)",
+    role: "Researcher & Poster Designer (Group Project)",
+    primaryActionLabel: "View Project Report",
+    primaryActionHref: "/images/burning-man-campaign gallery/brand-positioning-report.pdf",
+    description: "This project combined **brand positioning research**, **event promotion strategy**, and **poster design** for Burning Man. Working in a team, I translated research insights into a clearer communication direction and designed visual outputs to support audience engagement.",
+    challenge: "Burning Man needed sharper communication around **inclusivity, media exposure, and safety**, while still preserving its unique identity. The key challenge was turning broad brand values into **practical, audience-facing promotion assets**.",
+    solution: "We conducted internal and external analysis, competitor comparison, and survey-based insight gathering. From this, we built a focused event-promotion concept and I developed the final poster direction to reflect **brand values, audience fit, and campaign clarity**.",
+    impact: "The project delivered a reusable strategy-to-design workflow: from research question setup and survey analysis to creative execution. It produced concrete materials that strengthened how the event could communicate positioning and improve **awareness, consistency, and engagement**.",
+    tags: ["Brand Positioning", "Event Promotion", "Poster Design", "Audience Research"],
+    tools: ["Survey Research", "SWOT/PESTLE Analysis", "Competitor Analysis", "Creative Briefing", "Poster Design"],
+    image: "/images/burning-man-campaign gallery/socially-engaged-infographic.png",
+    gallery: [
+      {
+        type: "image",
+        src: "/images/burning-man-campaign gallery/socially-engaged-infographic.png",
+        alt: "Socially engaged event infographic",
+        title: "Socially Engaged Event Infographic"
+      },
+      {
+        type: "document",
+        src: "/images/burning-man-campaign gallery/brand-positioning-report.pdf",
+        alt: "Brand positioning report",
+        title: "Brand Positioning Report"
+      },
+      {
+        type: "document",
+        src: "/images/burning-man-campaign gallery/event-promotion-creative-file.pdf",
+        alt: "Event promotion creative file",
+        title: "Event Promotion Creative File"
+      },
+      {
+        type: "document",
+        src: "/images/burning-man-campaign gallery/final-poster.pdf",
+        alt: "Final event promotion poster",
+        title: "Final Poster"
+      },
+      {
+        type: "document",
+        src: "/images/burning-man-campaign gallery/socially-engaged-report.pdf",
+        alt: "Socially engaged event report",
+        title: "Socially Engaged Event Report"
+      },
+      {
+        type: "document",
+        src: "/images/burning-man-campaign gallery/survey-results.xlsx",
+        alt: "Survey results spreadsheet",
+        title: "Survey Results"
+      }
+    ]
+  },
+  "streaming-emotions-value-plan": {
+    title: "Jacob Drescher Value Creation Strategy",
+    subtitle: "Music Data Analysis, Audience Insights & Growth Plan",
+    year: "2022",
+    client: "Jacob Drescher (.WAV Media Project)",
+    role: "Researcher (Group Project, .WAV Media)",
+    primaryActionLabel: "View Project Report",
+    primaryActionHref: "/images/streaming-emotions-value-plan gallery/value-creation-report.pdf",
+    description: "Developed in a team project for artist Jacob Drescher, this case focused on building a **value creation strategy** grounded in market and audience data. My contribution centered on research synthesis to shape practical growth recommendations.",
+    challenge: "The artist needed a clearer path to grow visibility and engagement in a crowded music market. The challenge was turning fragmented qualitative and quantitative inputs into a **focused, actionable artist growth plan**.",
+    solution: "We combined interview transcription analysis, genre and market research, audience segmentation, and value-creation planning. The final output aligned content direction, audience touchpoints, and brand communication into one coherent strategy framework.",
+    impact: "The project delivered a structured roadmap for audience development and stronger artist positioning, including practical recommendations for content and engagement channels. It created a research-backed foundation for **sustainable audience growth** and more consistent brand communication.",
+    tags: ["Music Strategy", "Audience Insights", "Value Creation", "Data Analysis"],
+    tools: ["Interview Analysis", "Market Research", "Audience Segmentation", "Value Proposition Design", "Strategic Planning"],
+    image: "/images/project-streaming-emotions-value-plan.svg",
+    gallery: [
+      {
+        type: "document",
+        src: "/images/streaming-emotions-value-plan gallery/data-analysis-report.pdf",
+        alt: "Streaming emotions data analysis report",
+        title: "Data Analysis Report"
+      },
+      {
+        type: "document",
+        src: "/images/streaming-emotions-value-plan gallery/value-creation-report.pdf",
+        alt: "Value creation report",
+        title: "Value Creation Report"
+      },
+      {
+        type: "document",
+        src: "/images/streaming-emotions-value-plan gallery/value-creation-slides.pdf",
+        alt: "Value creation presentation",
+        title: "Value Creation Presentation"
+      }
+    ]
+  },
+  "beex-export-strategy": {
+    title: "BEEX Belgium Export Strategy",
+    subtitle: "Export Research, Financial Planning & Market Entry Roadmap",
+    year: "2022-2023",
+    client: "BEEX Branding",
+    role: "Financial Manager & Research Lead (Group Project)",
+    primaryActionLabel: "View Export Plan",
+    primaryActionHref: "/images/beex-export-strategy gallery/export-plan-report.pdf",
+    description: "This project developed a full **export strategy** for BEEX Branding's expansion into Belgium. I led financial planning and contributed to market and organizational research to align strategic direction with operational feasibility.",
+    challenge: "BEEX needed a realistic market-entry plan balancing **commercial opportunity, operational setup, and financial viability**. The team had to translate research into decisions on market approach, risk handling, and measurable objectives.",
+    solution: "We produced an integrated package: export plan, export research, organizational analysis, and financial planning. My focus was building the financial foundation and supporting strategic analysis so recommendations remained data-backed and executable.",
+    impact: "The outcome provided BEEX with a practical roadmap for Belgium expansion, including strategic priorities, operational considerations, and financial scenarios. It improved decision confidence by connecting **market insights, risk awareness, and budget logic** in one coherent plan.",
+    tags: ["Export Strategy", "Financial Planning", "Market Research", "International Expansion"],
+    tools: ["Financial Modeling", "Export Research", "SWOT/PESTLE Analysis", "Operational Planning", "SMART KPI Framing"],
+    image: "/images/project-beex-export-strategy.svg",
+    gallery: [
+      {
+        type: "document",
+        src: "/images/beex-export-strategy gallery/export-plan-report.pdf",
+        alt: "Final export plan report",
+        title: "Export Plan Report"
+      },
+      {
+        type: "document",
+        src: "/images/beex-export-strategy gallery/export-research-report.pdf",
+        alt: "Export research report",
+        title: "Export Research Report"
+      },
+      {
+        type: "document",
+        src: "/images/beex-export-strategy gallery/organizational-report.pdf",
+        alt: "Organizational report",
+        title: "Organizational Report"
+      },
+      {
+        type: "document",
+        src: "/images/beex-export-strategy gallery/financial-plan.xlsx",
+        alt: "Financial plan spreadsheet",
+        title: "Financial Plan"
+      }
+    ]
   }
 };
 
