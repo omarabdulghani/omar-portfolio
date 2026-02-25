@@ -239,7 +239,7 @@ const projectsData: Record<string, any> = {
     client: "De FilmHallen",
     clientLogo: "/images/hallencity gallery/logo-De-Filmhallen (light mode).png",
     clientLogoDark: "/images/hallencity gallery/logo-De-Filmhallen (dark mode).png",
-    clientLogoClass: "h-14",
+    clientLogoClass: "h-24",
     clientWebsite: "https://filmhallen.nl/",
     role: "Research & Concept Lead (Internal/External Analysis, Ideation, Adobe XD UX/UI Design)",
     description: "HallenCity+ was developed in a team project for De FilmHallen as an all-in-one cinema app concept designed to be inclusive for everyone. I was responsible for the internal and external research, ideation process, and the app concept design in Adobe XD.",
