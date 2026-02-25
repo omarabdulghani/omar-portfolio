@@ -396,40 +396,12 @@ function isVideoHref(href?: string): boolean {
 export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const galleryRef = useRef<ProjectGalleryHandle>(null);
-  const pageUrlRef = useRef("");
-  const skippingEmbeddedHistoryRef = useRef(false);
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : undefined;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
-
-  useEffect(() => {
-    pageUrlRef.current = `${window.location.pathname}${window.location.search}`;
-  }, [projectId]);
-
-  useEffect(() => {
-    if (!project?.deviceMockup || project.deviceMockup.mode !== "interactive") return;
-
-    const onPopState = () => {
-      const currentUrl = `${window.location.pathname}${window.location.search}`;
-
-      // If Back navigates inside embedded prototype history (same page URL),
-      // skip that entry and continue to the previous website page.
-      if (currentUrl !== pageUrlRef.current) return;
-      if (skippingEmbeddedHistoryRef.current) return;
-
-      skippingEmbeddedHistoryRef.current = true;
-      window.history.go(-1);
-      window.setTimeout(() => {
-        skippingEmbeddedHistoryRef.current = false;
-      }, 0);
-    };
-
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, [projectId, project?.deviceMockup]);
 
   if (!match || !project) {
     return <NotFound />;

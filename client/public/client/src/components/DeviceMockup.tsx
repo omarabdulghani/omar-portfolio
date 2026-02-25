@@ -22,6 +22,8 @@ type DeviceMockupProps = {
   hideNotch?: boolean;
   disableEmbeddedNavigation?: boolean;
   interactiveHref?: string;
+  lockBrowserBack?: boolean;
+  onBrowserBack?: () => void;
   className?: string;
 };
 
@@ -106,10 +108,15 @@ export default function DeviceMockup({
   hideNotch = false,
   disableEmbeddedNavigation = false,
   interactiveHref,
+  lockBrowserBack,
+  onBrowserBack,
   className,
 }: DeviceMockupProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const backGuardInitializedRef = useRef(false);
+  const isHandlingBackRef = useRef(false);
+  const backGuardTokenRef = useRef(`device-mockup-${Math.random().toString(36).slice(2)}`);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
   const resolvedOrientation: DeviceMockupOrientation =
@@ -120,6 +127,8 @@ export default function DeviceMockup({
     [type, resolvedOrientation]
   );
   const hasGalleryItems = images.length > 0;
+  const shouldLockBrowserBack =
+    mode === "interactive" && !!iframeSrc && (lockBrowserBack ?? true);
 
   useEffect(() => {
     if (!galleryRef.current) return;
@@ -136,6 +145,73 @@ export default function DeviceMockup({
       document.removeEventListener("fullscreenchange", onFullscreenChange);
     };
   }, []);
+
+  useEffect(() => {
+    if (!shouldLockBrowserBack) return;
+
+    if (!backGuardInitializedRef.current) {
+      const currentState =
+        window.history.state && typeof window.history.state === "object"
+          ? window.history.state
+          : {};
+
+      // Add one sentinel entry once so Back can be intercepted while prototype is mounted.
+      if (currentState.__deviceMockupBackGuard !== backGuardTokenRef.current) {
+        window.history.pushState(
+          {
+            ...currentState,
+            __deviceMockupBackGuard: backGuardTokenRef.current,
+          },
+          "",
+          window.location.href
+        );
+      }
+
+      backGuardInitializedRef.current = true;
+    }
+
+    const resolveFallbackUrl = () => {
+      try {
+        if (document.referrer) {
+          const referrer = new URL(document.referrer);
+          const current = new URL(window.location.href);
+          const samePage =
+            referrer.pathname === current.pathname &&
+            referrer.search === current.search &&
+            referrer.hash === current.hash;
+
+          if (referrer.origin === current.origin && !samePage) {
+            return `${referrer.pathname}${referrer.search}${referrer.hash}`;
+          }
+        }
+      } catch {
+        // no-op
+      }
+
+      if (window.location.pathname.startsWith("/portfolio/")) return "/portfolio";
+      return "/";
+    };
+
+    const handlePopState = () => {
+      if (isHandlingBackRef.current) return;
+      isHandlingBackRef.current = true;
+
+      if (onBrowserBack) {
+        onBrowserBack();
+      } else {
+        window.location.assign(resolveFallbackUrl());
+      }
+
+      window.setTimeout(() => {
+        isHandlingBackRef.current = false;
+      }, 200);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [shouldLockBrowserBack, onBrowserBack]);
 
   const scrollGallery = (direction: "prev" | "next") => {
     if (!galleryRef.current) return;
