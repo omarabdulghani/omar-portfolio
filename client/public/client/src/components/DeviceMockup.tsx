@@ -490,10 +490,10 @@ export default function DeviceMockup({
             shouldRenderTopControls ? "max-h-12 opacity-100" : "max-h-0 opacity-0 pointer-events-none mb-0"
           )}
         >
-          <div className="flex items-center justify-end gap-1.5 sm:gap-2">
+          <div className="flex max-w-full flex-wrap items-center justify-end gap-1.5 sm:gap-2">
             <div
               className={cn(
-                "overflow-hidden transition-all duration-200",
+                "shrink-0 overflow-hidden transition-all duration-200",
                 isPlaying ? "w-[88px] opacity-100" : "w-0 opacity-0"
               )}
             >
@@ -511,7 +511,7 @@ export default function DeviceMockup({
               <Button
                 type="button"
                 size="sm"
-                className="h-8 rounded-md bg-primary px-2.5 sm:px-3 text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
+                className="h-8 shrink-0 rounded-md bg-primary px-2.5 sm:px-3 text-primary-foreground hover:bg-primary/90 whitespace-nowrap"
                 onClick={handleExitToPortfolio}
               >
                 Back to Portfolio
