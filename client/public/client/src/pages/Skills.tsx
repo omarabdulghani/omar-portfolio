@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Palette, Megaphone, Search, Award, Users, Briefcase, Globe } from "lucide-react";
+import { Palette, Megaphone, Search, Award, Users, Briefcase, Globe, Bot } from "lucide-react";
 
 export default function Skills() {
   const skillCategories = [
@@ -26,6 +26,8 @@ export default function Skills() {
         "SEO (Technical & On-Page)",
         "Social Media Marketing",
         "Content Strategy & Campaign Messaging",
+        "Brand Storytelling",
+        "Brand Activation & Experiential Concepts",
         "Conversion Optimization",
         "Performance Tracking & Reporting"
       ],
@@ -58,7 +60,9 @@ export default function Skills() {
       title: "Business, Planning & Delivery",
       icon: <Briefcase className="w-6 h-6 text-primary" />,
       skills: [
+        "Concept Creation (Ideas to Experiences)",
         "Project & Stakeholder Management",
+        "Client Briefing & Debriefing",
         "Cross-Functional Collaboration",
         "Export & Market Entry Planning",
         "Financial Planning & Budget Structuring",
@@ -68,6 +72,18 @@ export default function Skills() {
         "SQL Fundamentals"
       ],
       tools: ["Asana", "Jira", "Notion", "Trello", "Slack", "Microsoft Office", "VS Code"]
+    },
+    {
+      title: "AI-Assisted Creation & Vibe Coding",
+      icon: <Bot className="w-6 h-6 text-primary" />,
+      skills: [
+        "Vibe Coding",
+        "AI-Assisted Website/App Prototyping",
+        "Rapid Iteration from Idea to MVP",
+        "Prompt-Driven Development Workflows",
+        "Creative Experimentation with AI Tools"
+      ],
+      tools: ["Cursor", "OpenAI Codex", "Claude Code", "Vercel", "Aura", "Unity (Prototype Exploration)"]
     }
   ];
 
@@ -186,6 +202,7 @@ export default function Skills() {
                   "Communication",
                   "Cross-Cultural Collaboration",
                   "Stakeholder Management",
+                  "Teaching & Knowledge Transfer",
                   "Adaptability",
                   "Ownership & Proactive Execution"
                 ].map((skill) => (
