@@ -40,8 +40,8 @@ export default function Home() {
         {/* Background Elements */}
         <div className="absolute inset-0 z-0">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-70 dark:hidden"
-            style={{ backgroundImage: "url('/images/light-mode-bg-hero 1.png')" }}
+            className="absolute inset-0 bg-cover bg-center opacity-100 dark:hidden"
+            style={{ backgroundImage: "url('/images/light-mode-bg-hero 2.png')" }}
           />
           <div className="absolute inset-0 hidden dark:block bg-[url('/images/hero-bg.png')] bg-cover bg-center opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-20 dark:opacity-100" />
