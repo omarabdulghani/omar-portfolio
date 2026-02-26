@@ -146,21 +146,21 @@ export default function Home() {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Concept Development & Brand Experience</h3>
+              <h3 className="text-xl font-bold leading-tight [text-wrap:balance] mb-2">Concept Development & Brand Experience</h3>
               <p className="text-black dark:text-muted-foreground"><span className="font-semibold text-foreground">Turning ideas into meaningful brand experiences</span>, from early ideation to tangible concepts, activations, and digital solutions. I combine <span className="font-semibold text-foreground">research, creativity, and strategy</span> to create concepts that connect with audiences and support business goals.</p>
             </div>
             <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">UX/UI Design & Digital Product Strategy</h3>
+              <h3 className="text-xl font-bold leading-tight [text-wrap:balance] mb-2">UX/UI Design & Digital Product Strategy</h3>
               <p className="text-black dark:text-muted-foreground">Designing <span className="font-semibold text-foreground">intuitive digital experiences</span> grounded in user research, behavior, and strategic thinking. I transform complex ideas into <span className="font-semibold text-foreground">clear, user-centered interfaces</span> that balance functionality, usability, and visual identity.</p>
             </div>
             <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Creative Technology, AI-Assisted Prototyping & Vibe Coding</h3>
+              <h3 className="text-xl font-bold leading-tight [text-wrap:balance] mb-2">Creative Technology, AI-Assisted Prototyping & Vibe Coding</h3>
               <p className="text-black dark:text-muted-foreground">Using <span className="font-semibold text-foreground">IT foundations and AI-assisted development tools</span> such as Cursor, Claude Code, and CodeX to rapidly prototype websites, apps, and interactive concepts. This enables <span className="font-semibold text-foreground">fast iteration and efficient execution</span> from idea to prototype.</p>
             </div>
           </div>
