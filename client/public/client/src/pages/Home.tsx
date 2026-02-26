@@ -44,8 +44,8 @@ export default function Home() {
             style={{ backgroundImage: "url('/images/light-mode-bg-hero 2.png')" }}
           />
           <div className="absolute inset-0 hidden dark:block bg-[url('/images/hero-bg.png')] bg-cover bg-center opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-20 dark:opacity-100" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)] opacity-20 dark:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-10 dark:opacity-100" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)] opacity-10 dark:opacity-100" />
         </div>
 
         <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
