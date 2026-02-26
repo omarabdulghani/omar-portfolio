@@ -57,20 +57,29 @@ export default function About() {
               <p>
                 If you are looking for someone who connects strategy with imagination and turns concepts into real experiences, let's create something impactful together.
               </p>
-            </div>
 
-            <div className="clear-both flex justify-end pt-4 md:pt-6">
-              <PdfFlipbookLink
-                href="/CV.pdf"
-                title="Omar Abdulghani CV"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "h-12 gap-2 rounded-full px-8 text-base"
-                )}
-              >
-                <Download size={18} />
-                View CV
-              </PdfFlipbookLink>
+              <div className="pt-6 md:pt-8 flex flex-col sm:flex-row items-start gap-3">
+                <PdfFlipbookLink
+                  href="/CV.pdf"
+                  title="Omar Abdulghani CV"
+                  className={cn(
+                    buttonVariants({ size: "default" }),
+                    "inline-flex h-auto gap-2 rounded-xl px-6 py-3 text-sm md:text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105"
+                  )}
+                >
+                  <Download size={18} />
+                  View CV
+                </PdfFlipbookLink>
+                <a
+                  href="/contact"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "default" }),
+                    "inline-flex h-auto rounded-xl px-6 py-3 text-sm md:text-base font-semibold transition-all duration-200 hover:-translate-y-0.5"
+                  )}
+                >
+                  Contact Me
+                </a>
+              </div>
             </div>
           </div>
         </div>
