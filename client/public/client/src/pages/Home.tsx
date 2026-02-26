@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-[#efefef] dark:bg-white/[0.02]">
+      <section className="py-20 bg-[#faf9fc] dark:bg-white/[0.02]">
         <div className="container">
           <div className="mb-10">
             <h2 className="text-3xl md:text-4xl font-heading font-bold">What I do</h2>
