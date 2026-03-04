@@ -23,11 +23,13 @@ export default function About() {
             <div className="mt-3 md:mt-5 space-y-4 text-base md:text-[1.02rem] lg:text-[1.06rem] leading-7 text-muted-foreground caret-transparent [&_p]:text-justify [&_strong]:text-foreground [&_strong]:font-semibold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded-sm [&_span.text-foreground]:text-foreground [&_span.text-foreground]:font-semibold">
               <div className="relative mx-auto w-max md:w-auto md:float-right md:ml-8 md:mb-4 md:[shape-outside:circle(50%)]">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-primary/5 rounded-full blur-xl opacity-70" />
-                <img
-                  src="/images/CV%20Resume.png"
-                  alt="Omar Abdulghani"
-                  className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border border-white/15 shadow-2xl object-cover object-top"
-                />
+                <div className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border border-white/15 shadow-2xl overflow-hidden">
+                  <img
+                    src="/images/CV%20Resume.png"
+                    alt="Omar Abdulghani"
+                    className="w-full h-full object-cover object-top scale-[1.2]"
+                  />
+                </div>
               </div>
 
               <p>

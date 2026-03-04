@@ -6,6 +6,8 @@ import ProjectCard from "@/components/ProjectCard";
 import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
+  const heroPortraitVideoSrc = "/hero-video-1.mp4";
+
   const featuredProjects = [
     {
       id: "moes-tuinen",
@@ -67,10 +69,14 @@ export default function Home() {
                 </span>
               </h1>
               <div className="md:hidden absolute top-1 right-0 w-[120px] h-[120px] rounded-full overflow-hidden border border-white/20">
-                <img
-                  src="/images/CV%20Resume.png"
-                  alt="Omar Abdulghani"
-                  className="w-full h-full object-cover scale-125"
+                <video
+                  src={heroPortraitVideoSrc}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover scale-[1.14] opacity-90"
                 />
               </div>
             </div>
@@ -102,15 +108,18 @@ export default function Home() {
             <div className="relative w-full aspect-square max-w-md mx-auto">
               {/* Abstract decorative elements behind photo */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-full blur-3xl opacity-50 animate-pulse" />
-              <div className="absolute inset-0 border border-white/10 rounded-full rotate-12 scale-110" />
               <div className="absolute inset-0 border border-primary/20 rounded-full -rotate-6 scale-105" />
               
               {/* Photo Container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
-                <img 
-                  src="/images/CV%20Resume.png" 
-                  alt="Omar Abdulghani" 
-                  className="w-full h-full object-cover"
+                <video
+                  src={heroPortraitVideoSrc}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover scale-[1.14] opacity-90"
                 />
               </div>
               
