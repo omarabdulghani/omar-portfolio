@@ -62,7 +62,7 @@ export default function About() {
 
               <div className="pt-6 md:pt-8 flex flex-col sm:flex-row items-start gap-3">
                 <PdfFlipbookLink
-                  href="/CV.pdf"
+                  href="/Omar%20Abdulghani%20-%20CV.pdf"
                   title="Omar Abdulghani CV"
                   className={cn(
                     buttonVariants({ size: "default" }),

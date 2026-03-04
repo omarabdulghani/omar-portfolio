@@ -62,13 +62,13 @@ export default function Home() {
 
             <div className="mt-6 md:mt-0">
             <div className="relative md:block">
-              <h1 className="text-5xl md:text-7xl font-heading font-bold leading-tight tracking-tight pr-[132px] md:pr-0">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-bold leading-tight tracking-tight pr-[104px] sm:pr-[132px] md:pr-0">
                 Hello, I'm <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 dark:from-white dark:to-white/60">
+                <span className="inline-block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 dark:from-white dark:to-white/60">
                   Omar Abdulghani
                 </span>
               </h1>
-              <div className="md:hidden absolute top-1 right-0 w-[120px] h-[120px] rounded-full overflow-hidden border border-white/20">
+              <div className="md:hidden absolute -top-12 sm:top-1 right-0 w-[96px] h-[96px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border border-white/20">
                 <video
                   src={heroPortraitVideoSrc}
                   autoPlay
@@ -82,10 +82,12 @@ export default function Home() {
             </div>
             
             <p className="mt-4 md:mt-0 text-xl md:text-2xl text-black dark:text-muted-foreground max-w-lg leading-relaxed">
-              <span className="text-primary font-semibold">Creative Strategist</span> combining branding, UX/UI, and technology to turn ideas into meaningful experiences.
+              <span className="text-primary font-semibold">Creative Strategist</span>{" "}
+              combining branding, UX/UI, and technology to turn ideas into{" "}
+              <span className="whitespace-nowrap">meaningful experiences.</span>
             </p>
             
-            <div className="flex flex-wrap gap-4 mt-8 md:mt-4">
+            <div className="flex flex-wrap gap-4 mt-8 md:mt-12">
               <Link href="/portfolio">
                 <Button size="lg" className="flex items-center justify-center gap-2 rounded-full px-8 text-base h-14 shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300">
                   View My Work <ArrowRight className="h-4 w-4" />
@@ -125,7 +127,7 @@ export default function Home() {
               
               {/* Floating Badge */}
               <a
-                href="/CV.pdf"
+                href="/Omar%20Abdulghani%20-%20CV.pdf"
                 download
                 className="absolute bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
               >
