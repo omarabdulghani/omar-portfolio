@@ -64,7 +64,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)] opacity-10 dark:opacity-100" />
         </div>
 
-        <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container relative z-10 grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/10 border border-foreground/20 text-foreground/90 dark:bg-white/10 dark:border-white/20 dark:text-white text-sm font-medium">
               <span className="relative flex h-2 w-2">
@@ -76,13 +76,13 @@ export default function Home() {
 
             <div className="mt-6 md:mt-0">
             <div className="relative md:block">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-bold leading-tight tracking-tight pr-[104px] sm:pr-[132px] md:pr-0">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-heading font-bold leading-tight tracking-tight pr-[104px] sm:pr-[132px] md:pr-[200px] lg:pr-[230px] xl:pr-0">
                 Hello, I'm <br />
                 <span className="inline-block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 dark:from-white dark:to-white/60">
                   Omar Abdulghani
                 </span>
               </h1>
-              <div className="md:hidden absolute -top-12 sm:top-1 right-0 w-[96px] h-[96px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border border-white/20">
+              <div className="absolute -top-12 sm:top-1 md:-top-8 lg:-top-10 right-0 md:right-2 lg:right-0 xl:hidden w-[96px] h-[96px] sm:w-[120px] sm:h-[120px] md:w-[180px] md:h-[180px] lg:max-xl:w-[355px] lg:max-xl:h-[355px] rounded-full overflow-hidden border border-white/20">
                 {!isMobileHeroVideoLoaded && !hasMobileHeroVideoError && (
                   <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm">
                     <div className="relative h-7 w-7 sm:h-8 sm:w-8">
@@ -162,7 +162,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block animate-in fade-in slide-in-from-right-10 duration-1000 delay-200">
+          <div className="relative hidden xl:block animate-in fade-in slide-in-from-right-10 duration-1000 delay-200">
             <div className="relative w-full aspect-square max-w-md mx-auto">
               {/* Abstract decorative elements behind photo */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-full blur-3xl opacity-50 animate-pulse" />
