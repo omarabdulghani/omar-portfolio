@@ -4,9 +4,23 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import { Badge } from "@/components/ui/badge";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const heroPortraitVideoSrc = "/hero-video-1.mp4";
+  const [isMobileHeroVideoLoaded, setIsMobileHeroVideoLoaded] = useState(false);
+  const [isDesktopHeroVideoLoaded, setIsDesktopHeroVideoLoaded] = useState(false);
+  const [hasMobileHeroVideoError, setHasMobileHeroVideoError] = useState(false);
+  const [hasDesktopHeroVideoError, setHasDesktopHeroVideoError] = useState(false);
+
+  useEffect(() => {
+    const failSafeTimer = window.setTimeout(() => {
+      setIsMobileHeroVideoLoaded(true);
+      setIsDesktopHeroVideoLoaded(true);
+    }, 8000);
+
+    return () => window.clearTimeout(failSafeTimer);
+  }, []);
 
   const featuredProjects = [
     {
@@ -69,6 +83,24 @@ export default function Home() {
                 </span>
               </h1>
               <div className="md:hidden absolute -top-12 sm:top-1 right-0 w-[96px] h-[96px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border border-white/20">
+                {!isMobileHeroVideoLoaded && !hasMobileHeroVideoError && (
+                  <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm">
+                    <div className="relative h-7 w-7 sm:h-8 sm:w-8">
+                      <span className="absolute inset-0 rounded-full border border-primary/30" />
+                      <span className="absolute inset-0 rounded-full border-2 border-transparent border-t-primary animate-spin" />
+                    </div>
+                    <span className="mt-1 text-[10px] sm:text-[11px] font-medium tracking-wide text-primary/90">
+                      Loading
+                    </span>
+                  </div>
+                )}
+                {hasMobileHeroVideoError && (
+                  <img
+                    src="/images/CV%20Resume.png"
+                    alt="Omar Abdulghani"
+                    className="absolute inset-0 z-10 w-full h-full object-cover object-top"
+                  />
+                )}
                 <video
                   src={heroPortraitVideoSrc}
                   autoPlay
@@ -76,8 +108,32 @@ export default function Home() {
                   loop
                   playsInline
                   preload="auto"
-                  className="w-full h-full object-cover scale-[1.14] opacity-90"
+                  onLoadedMetadata={(event) => {
+                    setIsMobileHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onLoadedData={(event) => {
+                    setIsMobileHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onCanPlay={(event) => {
+                    setIsMobileHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onCanPlayThrough={(event) => {
+                    setIsMobileHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onError={() => {
+                    setHasMobileHeroVideoError(true);
+                    setIsMobileHeroVideoLoaded(true);
+                  }}
+                  className={`w-full h-full object-cover scale-[1.14] transition-opacity duration-500 ${
+                    isMobileHeroVideoLoaded && !hasMobileHeroVideoError ? "opacity-90" : "opacity-0"
+                  }`}
                 />
+                <div className="pointer-events-none absolute inset-0 z-[6] rounded-full dark:hidden bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_44%,rgba(255,255,255,0.06)_66%,rgba(255,255,255,0.14)_84%,rgba(255,255,255,0.22)_100%)]" />
+                <div className="pointer-events-none absolute inset-0 z-[6] hidden rounded-full dark:block bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_44%,rgba(0,0,0,0.10)_66%,rgba(0,0,0,0.20)_84%,rgba(0,0,0,0.32)_100%)]" />
               </div>
             </div>
             
@@ -114,6 +170,24 @@ export default function Home() {
               
               {/* Photo Container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
+                {!isDesktopHeroVideoLoaded && !hasDesktopHeroVideoError && (
+                  <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm">
+                    <div className="relative h-10 w-10">
+                      <span className="absolute inset-0 rounded-full border border-primary/30" />
+                      <span className="absolute inset-0 rounded-full border-2 border-transparent border-t-primary animate-spin" />
+                    </div>
+                    <span className="mt-2 text-xs font-medium tracking-wide text-primary/90">
+                      Loading video
+                    </span>
+                  </div>
+                )}
+                {hasDesktopHeroVideoError && (
+                  <img
+                    src="/images/CV%20Resume.png"
+                    alt="Omar Abdulghani"
+                    className="absolute inset-0 z-10 w-full h-full object-cover object-top"
+                  />
+                )}
                 <video
                   src={heroPortraitVideoSrc}
                   autoPlay
@@ -121,15 +195,39 @@ export default function Home() {
                   loop
                   playsInline
                   preload="auto"
-                  className="w-full h-full object-cover scale-[1.14] opacity-90"
+                  onLoadedMetadata={(event) => {
+                    setIsDesktopHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onLoadedData={(event) => {
+                    setIsDesktopHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onCanPlay={(event) => {
+                    setIsDesktopHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onCanPlayThrough={(event) => {
+                    setIsDesktopHeroVideoLoaded(true);
+                    void event.currentTarget.play().catch(() => undefined);
+                  }}
+                  onError={() => {
+                    setHasDesktopHeroVideoError(true);
+                    setIsDesktopHeroVideoLoaded(true);
+                  }}
+                  className={`w-full h-full object-cover scale-[1.14] transition-opacity duration-500 ${
+                    isDesktopHeroVideoLoaded && !hasDesktopHeroVideoError ? "opacity-90" : "opacity-0"
+                  }`}
                 />
+                <div className="pointer-events-none absolute inset-0 z-[6] rounded-full dark:hidden bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_44%,rgba(255,255,255,0.06)_66%,rgba(255,255,255,0.14)_84%,rgba(255,255,255,0.22)_100%)]" />
+                <div className="pointer-events-none absolute inset-0 z-[6] hidden rounded-full dark:block bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_44%,rgba(0,0,0,0.10)_66%,rgba(0,0,0,0.20)_84%,rgba(0,0,0,0.32)_100%)]" />
               </div>
               
               {/* Floating Badge */}
               <a
                 href="/Omar%20Abdulghani%20-%20CV.pdf"
                 download
-                className="absolute bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
+                className="absolute z-20 bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div className="bg-primary/20 p-2 rounded-lg text-primary">
