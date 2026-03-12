@@ -225,7 +225,7 @@ export default function Home() {
               
               {/* Floating Badge */}
               <a
-                href="/Omar%20Abdulghani%20-%20CV.pdf"
+                href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
                 download
                 className="absolute z-20 bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
               >
