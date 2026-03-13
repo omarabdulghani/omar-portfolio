@@ -165,6 +165,19 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+            <a
+              href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
+              download
+              className="mt-6 inline-flex items-center gap-3 md:hidden text-[1.05rem] font-medium text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-primary"
+              onClick={() => trackEvent("cv_download", { location: "home_hero_mobile", label: "download_cv_pdf" })}
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
+                <Download className="h-5 w-5" />
+              </span>
+              <span>
+                Download <span className="text-muted-foreground">CV (PDF)</span>
+              </span>
+            </a>
             </div>
           </div>
 
