@@ -14,6 +14,7 @@ import Portfolio from "./pages/Portfolio";
 import ProjectDetail from "./pages/ProjectDetail";
 import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
+import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 
 function AnalyticsRouteTracker() {
@@ -35,6 +36,7 @@ function Router() {
       <Route path="/portfolio/:id" component={ProjectDetail} />
       <Route path="/skills" component={Skills} />
       <Route path="/contact" component={Contact} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <Route component={NotFound} />
     </Switch>
   );
