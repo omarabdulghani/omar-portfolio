@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch, useLocation } from "wouter";
 import { trackPageView } from "@/lib/analytics";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { CookieConsentProvider } from "./contexts/CookieConsentContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 // Pages
@@ -43,11 +44,13 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="system" switchable>
-        <TooltipProvider>
-          <Toaster />
-          <AnalyticsRouteTracker />
-          <Router />
-        </TooltipProvider>
+        <CookieConsentProvider>
+          <TooltipProvider>
+            <Toaster />
+            <AnalyticsRouteTracker />
+            <Router />
+          </TooltipProvider>
+        </CookieConsentProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

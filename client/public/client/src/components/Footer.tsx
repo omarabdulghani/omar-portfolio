@@ -1,9 +1,11 @@
 import { Link } from "wouter";
 import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
 import { trackEvent } from "@/lib/analytics";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { openSettings } = useCookieConsent();
 
   return (
     <footer className="bg-transparent dark:bg-card border-t border-border/40 pt-16 pb-8">
@@ -94,7 +96,16 @@ export default function Footer() {
 
         <div className="border-t border-border/40 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>&copy; {currentYear} Omar Abdulghani. All rights reserved.</p>
-          <p>Designed & Built with React & Tailwind</p>
+          <div className="flex flex-col items-center gap-2 md:flex-row md:gap-5">
+            <button
+              type="button"
+              className="hover:text-foreground transition-colors"
+              onClick={openSettings}
+            >
+              Cookie Settings
+            </button>
+            <p>Designed & Built with React & Tailwind</p>
+          </div>
         </div>
       </div>
     </footer>
