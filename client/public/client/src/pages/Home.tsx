@@ -168,8 +168,8 @@ export default function Home() {
             <a
               href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
               download
-              className="mt-6 inline-flex items-center gap-3 md:hidden text-[1.05rem] font-medium text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-primary"
-              onClick={() => trackEvent("cv_download", { location: "home_hero_mobile", label: "download_cv_pdf" })}
+              className="mt-6 inline-flex items-center gap-3 xl:hidden text-[1.05rem] font-medium text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-primary"
+              onClick={() => trackEvent("cv_download", { location: "home_hero_compact", label: "download_cv_pdf" })}
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
                 <Download className="h-5 w-5" />
@@ -255,7 +255,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Download</p>
-                    <p className="font-bold text-sm">Curriculum Vitae</p>
+                    <p className="font-bold text-sm">CV (PDF)</p>
                   </div>
                 </div>
               </a>
