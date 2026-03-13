@@ -104,7 +104,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
     <CookieConsentContext.Provider value={contextValue}>
       {children}
 
-      {!hasStoredConsent ? (
+      {!hasStoredConsent && !isSettingsOpen ? (
         <div className="fixed inset-x-4 bottom-4 z-[130]">
           <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-white/20 bg-background/88 shadow-[0_18px_80px_-30px_rgba(15,23,42,0.55)] backdrop-blur-2xl dark:border-white/10 dark:bg-background/86">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(75,120,216,0.16),transparent_42%),radial-gradient(circle_at_bottom_left,rgba(75,120,216,0.08),transparent_38%)]" />
