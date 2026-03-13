@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
+import { trackEvent } from "@/lib/analytics";
 import { Mail, MapPin, Phone, Send, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -30,6 +31,12 @@ export default function Contact() {
     ].join("\n");
 
     const mailtoHref = `mailto:omarabdulgh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    trackEvent("contact_form_submit", {
+      location: "contact_page",
+      method: "mailto",
+      has_subject: Boolean(subject),
+      has_message: Boolean(message),
+    });
     window.location.href = mailtoHref;
 
     toast.success("Opening your email app...");
@@ -63,7 +70,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email Me</p>
-                      <a href="mailto:omarabdulgh@gmail.com" className="text-lg font-bold hover:text-primary transition-colors">
+                      <a href="mailto:omarabdulgh@gmail.com" className="text-lg font-bold hover:text-primary transition-colors" onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "email" })}>
                         omarabdulgh@gmail.com
                       </a>
                     </div>
@@ -77,7 +84,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Call Me</p>
-                      <a href="tel:+31636495599" className="text-lg font-bold hover:text-primary transition-colors">
+                      <a href="tel:+31636495599" className="text-lg font-bold hover:text-primary transition-colors" onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "phone" })}>
                         +31 6364 9 55 99
                       </a>
                     </div>

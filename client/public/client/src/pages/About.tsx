@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PdfFlipbookLink } from "@/components/PdfFlipbookModal";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Download, GraduationCap, Briefcase, Globe } from "lucide-react";
 
@@ -64,6 +65,7 @@ export default function About() {
                 <PdfFlipbookLink
                   href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
                   title="Omar Abdulghani CV"
+                  onClick={() => trackEvent("cv_open", { location: "about_hero", label: "view_cv" })}
                   className={cn(
                     buttonVariants({ size: "default" }),
                     "inline-flex h-auto gap-2 rounded-xl px-6 py-3 text-sm md:text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105"
@@ -74,6 +76,7 @@ export default function About() {
                 </PdfFlipbookLink>
                 <a
                   href="/contact"
+                  onClick={() => trackEvent("cta_click", { location: "about_hero", label: "contact_me", destination: "/contact" })}
                   className={cn(
                     buttonVariants({ variant: "outline", size: "default" }),
                     "inline-flex h-auto rounded-xl px-6 py-3 text-sm md:text-base font-semibold transition-all duration-200 hover:-translate-y-0.5"

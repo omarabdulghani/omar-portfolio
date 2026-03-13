@@ -9,6 +9,7 @@ import ProjectGallery, {
   type ProjectGalleryMedia,
 } from "@/components/ProjectGallery";
 import DeviceMockup from "@/components/DeviceMockup";
+import { trackEvent } from "@/lib/analytics";
 import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
@@ -528,6 +529,15 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0);
   }, [projectId]);
 
+  useEffect(() => {
+    if (!projectId || !project) return;
+
+    trackEvent("project_view", {
+      project_id: projectId,
+      project_title: project.title,
+    });
+  }, [projectId, project]);
+
   if (!match || !project) {
     return <NotFound />;
   }
@@ -544,7 +554,10 @@ export default function ProjectDetail() {
         />
         <div className="absolute inset-0 z-20 container flex flex-col justify-end pb-16">
           <Link href="/portfolio">
-            <a className="inline-flex items-center text-white/80 hover:text-primary mb-6 transition-colors">
+            <a
+              className="inline-flex items-center text-white/80 hover:text-primary mb-6 transition-colors"
+              onClick={() => trackEvent("nav_click", { location: "project_detail_hero", destination: "/portfolio" })}
+            >
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Portfolio
             </a>
           </Link>
@@ -619,7 +632,14 @@ export default function ProjectDetail() {
                   deferIframeUntilPlay={project.deviceMockup.deferIframeUntilPlay}
                   backClosesPrototype={project.deviceMockup.backClosesPrototype}
                   showExitNav={project.deviceMockup.showExitNav}
-                  onExitToPortfolio={() => setLocation("/portfolio/")}
+                  onExitToPortfolio={() => {
+                    trackEvent("cta_click", {
+                      location: "project_prototype",
+                      label: "back_to_portfolio",
+                      project_id: projectId ?? null,
+                    });
+                    setLocation("/portfolio/");
+                  }}
                 />
               </div>
             ) : null}
@@ -653,6 +673,7 @@ export default function ProjectDetail() {
                           rel="noreferrer"
                           aria-label={`Visit ${logo.alt || "client"} website`}
                           className="inline-flex items-center"
+                          onClick={() => trackEvent("external_link_click", { location: "project_client", project_id: projectId ?? null })}
                         >
                           <img
                             src={logo.src}
@@ -679,6 +700,7 @@ export default function ProjectDetail() {
                         rel="noreferrer"
                         aria-label={`Visit ${project.client} website`}
                         className="inline-flex items-center"
+                        onClick={() => trackEvent("external_link_click", { location: "project_client", project_id: projectId ?? null })}
                       >
                         <>
                           <img
@@ -749,6 +771,12 @@ export default function ProjectDetail() {
                       <Button
                         className="w-full gap-2"
                         onClick={() => {
+                          trackEvent("project_action_click", {
+                            location: "project_detail_sidebar",
+                            action: project.primaryActionLabel || "primary_action",
+                            project_id: projectId ?? null,
+                            type: "document",
+                          });
                           galleryRef.current?.openBySrc(project.primaryActionHref, {
                             title: project.primaryActionLabel || "Project Report",
                           });
@@ -763,6 +791,12 @@ export default function ProjectDetail() {
                         rel={project.primaryActionDownload ? undefined : "noreferrer"}
                         download={project.primaryActionDownload ? true : undefined}
                         className="block w-full"
+                        onClick={() => trackEvent("project_action_click", {
+                          location: "project_detail_sidebar",
+                          action: project.primaryActionLabel || "primary_action",
+                          project_id: projectId ?? null,
+                          type: project.primaryActionDownload ? "download" : "external_link",
+                        })}
                       >
                         <Button className="w-full gap-2">
                           <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
@@ -777,6 +811,12 @@ export default function ProjectDetail() {
                       className="w-full gap-2"
                       onClick={() => {
                         const demoIsVideo = isVideoHref(project.demoVideoSrc);
+                        trackEvent("project_action_click", {
+                          location: "project_detail_sidebar",
+                          action: project.demoVideoLabel || "demo_media",
+                          project_id: projectId ?? null,
+                          type: demoIsVideo ? "video" : "document",
+                        });
                         galleryRef.current?.openBySrc(project.demoVideoSrc, {
                           alt: demoIsVideo
                             ? `${project.title} demo video`

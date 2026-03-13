@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { ArrowUpRight } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
@@ -12,6 +13,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   className?: string;
+  analyticsContext?: string;
 }
 
 export default function ProjectCard({
@@ -23,10 +25,14 @@ export default function ProjectCard({
   description,
   tags,
   className,
+  analyticsContext,
 }: ProjectCardProps) {
   return (
     <Link href={`/portfolio/${id}`}>
-      <a className={cn("group block h-full", className)}>
+      <a
+        className={cn("group block h-full", className)}
+        onClick={() => trackEvent("project_card_click", { project_id: id, location: analyticsContext ?? "project_grid" })}
+      >
         <div className="relative h-full bg-card border border-border/50 rounded-xl overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_-10px_rgba(75,120,216,0.15)] hover:-translate-y-2 flex flex-col">
           {/* Image Container */}
           <div className="relative aspect-[4/3] overflow-hidden">

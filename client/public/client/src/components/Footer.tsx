@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,12 +24,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                onClick={() => trackEvent("social_click", { location: "footer", network: "linkedin" })}
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="mailto:omarabdulgh@gmail.com"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                onClick={() => trackEvent("contact_link_click", { location: "footer", method: "email" })}
               >
                 <Mail size={20} />
               </a>
@@ -40,27 +43,27 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href="/">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">Home</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/" })}>Home</a>
                 </Link>
               </li>
               <li>
                 <Link href="/about">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">About Me</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/about" })}>About Me</a>
                 </Link>
               </li>
               <li>
                 <Link href="/portfolio">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">Portfolio</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/portfolio" })}>Portfolio</a>
                 </Link>
               </li>
               <li>
                 <Link href="/skills">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">Skills & Expertise</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/skills" })}>Skills & Expertise</a>
                 </Link>
               </li>
               <li>
                 <Link href="/contact">
-                  <a className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/contact" })}>Contact</a>
                 </Link>
               </li>
             </ul>
@@ -75,13 +78,13 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={20} className="text-primary shrink-0" />
-                <a href="tel:+31636495599" className="hover:text-foreground transition-colors">
+                <a href="tel:+31636495599" className="hover:text-foreground transition-colors" onClick={() => trackEvent("contact_link_click", { location: "footer", method: "phone" })}>
                   +31 6364 9 55 99
                 </a>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Mail size={20} className="text-primary shrink-0" />
-                <a href="mailto:omarabdulgh@gmail.com" className="hover:text-foreground transition-colors">
+                <a href="mailto:omarabdulgh@gmail.com" className="hover:text-foreground transition-colors" onClick={() => trackEvent("contact_link_click", { location: "footer", method: "email" })}>
                   omarabdulgh@gmail.com
                 </a>
               </li>

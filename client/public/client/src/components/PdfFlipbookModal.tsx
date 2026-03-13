@@ -30,6 +30,7 @@ type PdfFlipbookLinkProps = PropsWithChildren<{
   href: string;
   title?: string;
   className?: string;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }>;
 
 type BookPageProps = {
@@ -64,6 +65,7 @@ export function PdfFlipbookLink({
   href,
   title,
   className,
+  onClick,
   children,
 }: PdfFlipbookLinkProps) {
   const [open, setOpen] = useState(false);
@@ -75,6 +77,8 @@ export function PdfFlipbookLink({
         href={href}
         className={className}
         onClick={(event) => {
+          onClick?.(event);
+          if (event.defaultPrevented) return;
           if (!shouldOpenFlipbook) return;
           event.preventDefault();
           setOpen(true);

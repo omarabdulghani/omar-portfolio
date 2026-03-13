@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 import { useState } from "react";
 
 export default function Portfolio() {
@@ -122,7 +123,12 @@ export default function Portfolio() {
               <Button
                 key={cat}
                 variant={filter === cat ? "default" : "outline"}
-                onClick={() => setFilter(cat)}
+                onClick={() => {
+                  if (filter !== cat) {
+                    trackEvent("portfolio_filter_select", { filter: cat });
+                  }
+                  setFilter(cat);
+                }}
                 className="rounded-full"
               >
                 {cat}
@@ -136,6 +142,7 @@ export default function Portfolio() {
               <ProjectCard
                 key={project.id}
                 {...project}
+                analyticsContext="portfolio_grid"
               />
             ))}
           </div>

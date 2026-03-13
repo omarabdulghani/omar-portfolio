@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import { Badge } from "@/components/ui/badge";
+import { trackEvent } from "@/lib/analytics";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -145,7 +146,11 @@ export default function Home() {
             
             <div className="flex flex-wrap gap-4 mt-8 md:mt-12">
               <Link href="/portfolio">
-                <Button size="lg" className="flex items-center justify-center gap-2 rounded-full px-8 text-base h-14 shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300">
+                <Button
+                  size="lg"
+                  className="flex items-center justify-center gap-2 rounded-full px-8 text-base h-14 shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300"
+                  onClick={() => trackEvent("cta_click", { location: "home_hero", label: "view_my_work", destination: "/portfolio" })}
+                >
                   View My Work <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
@@ -154,6 +159,7 @@ export default function Home() {
                   variant="outline"
                   size="lg"
                   className="rounded-full px-8 text-lg h-14 bg-foreground/5 border-foreground/15 text-foreground hover:bg-foreground/10 dark:bg-transparent dark:border-white/10 dark:hover:bg-white/5"
+                  onClick={() => trackEvent("cta_click", { location: "home_hero", label: "contact_me", destination: "/contact" })}
                 >
                   Contact Me
                 </Button>
@@ -228,6 +234,7 @@ export default function Home() {
                 href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
                 download
                 className="absolute z-20 bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
+                onClick={() => trackEvent("cv_download", { location: "home_hero", label: "curriculum_vitae" })}
               >
                 <div className="flex items-center gap-3">
                   <div className="bg-primary/20 p-2 rounded-lg text-primary">
@@ -287,7 +294,11 @@ export default function Home() {
               </p>
             </div>
             <Link href="/portfolio">
-              <Button variant="ghost" className="group">
+              <Button
+                variant="ghost"
+                className="group"
+                onClick={() => trackEvent("cta_click", { location: "home_featured_projects", label: "view_all_projects", destination: "/portfolio" })}
+              >
                 View All Projects <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
@@ -299,6 +310,7 @@ export default function Home() {
                 key={project.id}
                 {...project}
                 image={`/images/project-${project.id}.jpg`}
+                analyticsContext="home_featured_projects"
               />
             ))}
           </div>
@@ -316,7 +328,11 @@ export default function Home() {
             I'm currently open to new opportunities and collaborations. Let's discuss how I can help bring your vision to life.
           </p>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full px-10 py-8 text-xl shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all hover:scale-105">
+            <Button
+              size="lg"
+              className="rounded-full px-10 py-8 text-xl shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all hover:scale-105"
+              onClick={() => trackEvent("cta_click", { location: "home_cta_section", label: "lets_work_together", destination: "/contact" })}
+            >
               Let's Work Together
             </Button>
           </Link>

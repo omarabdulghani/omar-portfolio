@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -72,6 +73,7 @@ export default function Navigation() {
                     ? "text-black dark:text-primary"
                     : "text-black/75 dark:text-muted-foreground"
                 )}
+                onClick={() => trackEvent("nav_click", { location: "header_desktop", destination: link.href })}
               >
                 {link.name}
                 <span
@@ -86,7 +88,10 @@ export default function Navigation() {
           {switchable && toggleTheme && (
             <button
               type="button"
-              onClick={toggleTheme}
+              onClick={() => {
+                trackEvent("theme_toggle", { location: "header_desktop", theme: theme === "dark" ? "light" : "dark" });
+                toggleTheme();
+              }}
               className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
               aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
@@ -94,7 +99,12 @@ export default function Navigation() {
             </button>
           )}
           <Link href="/contact">
-            <Button variant="default" size="sm" className="rounded-full px-6">
+            <Button
+              variant="default"
+              size="sm"
+              className="rounded-full px-6"
+              onClick={() => trackEvent("cta_click", { location: "header_desktop", label: "lets_talk", destination: "/contact" })}
+            >
               Let's Talk
             </Button>
           </Link>
@@ -105,7 +115,10 @@ export default function Navigation() {
           {switchable && toggleTheme && (
             <button
               type="button"
-              onClick={toggleTheme}
+              onClick={() => {
+                trackEvent("theme_toggle", { location: "header_mobile", theme: theme === "dark" ? "light" : "dark" });
+                toggleTheme();
+              }}
               className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
               aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
@@ -114,7 +127,12 @@ export default function Navigation() {
           )}
           <button
             className="text-foreground p-2"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              if (!isOpen) {
+                trackEvent("mobile_menu_open", { location });
+              }
+              setIsOpen(!isOpen);
+            }}
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -143,7 +161,10 @@ export default function Navigation() {
                       "text-2xl font-heading font-bold transition-colors hover:text-primary",
                       location === link.href ? "text-primary" : "text-foreground"
                     )}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      trackEvent("nav_click", { location: "header_mobile", destination: link.href });
+                      setIsOpen(false);
+                    }}
                   >
                     {link.name}
                   </a>
@@ -153,7 +174,10 @@ export default function Navigation() {
                 <Button 
                   size="lg" 
                   className="mt-4 rounded-full px-8 text-lg"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    trackEvent("cta_click", { location: "header_mobile", label: "lets_talk", destination: "/contact" });
+                    setIsOpen(false);
+                  }}
                 >
                   Let's Talk
                 </Button>
