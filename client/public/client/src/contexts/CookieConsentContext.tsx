@@ -258,16 +258,8 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
 
               <div className="border-t border-border/50 px-6 py-5 md:px-8">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                  <div className="text-xs text-muted-foreground">
-                    Powered by{" "}
-                    <a
-                      href="https://www.mooveagency.com/wordpress-plugins/gdpr-cookie-compliance-plugin/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:text-primary/80"
-                    >
-                      GDPR Cookie Compliance
-                    </a>
+                  <div className="text-xs text-muted-foreground whitespace-nowrap">
+                    Privacy controls for GDPR compliance
                   </div>
 
                   <DialogFooter className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-end">
