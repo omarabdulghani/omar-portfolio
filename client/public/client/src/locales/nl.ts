@@ -318,7 +318,7 @@ export const nl: LocaleMessages = {
     projects: {
       moesTuinen: {
         description:
-          "Een uitgebreide brand activation-campagne met pop-upstands, social-mediaÂ­strategie en digitale marketingplanning.",
+          "Een uitgebreide brand activation-campagne met pop-upstands, social-mediastrategie en digitale marketingplanning.",
       },
       amstelhofConnect: {
         description:
@@ -330,7 +330,7 @@ export const nl: LocaleMessages = {
       },
       ppheHotel: {
         description:
-          "Verbetering van de UI/UX van meerdere webpaginaâ€™s binnen hotelmerken om gebruiksvriendelijkheid en conversie te optimaliseren.",
+          "Verbetering van de UI/UX van meerdere webpagina’s binnen hotelmerken om gebruiksvriendelijkheid en conversie te optimaliseren.",
       },
       proDetailing: {
         description:
@@ -350,7 +350,7 @@ export const nl: LocaleMessages = {
       },
       beexExportStrategy: {
         description:
-          "Strategie voor toetreding tot de Belgische markt, gebaseerd op exportonderzoek, financiÃ«le planning en operationele positionering.",
+          "Strategie voor toetreding tot de Belgische markt, gebaseerd op exportonderzoek, financiële planning en operationele positionering.",
       },
     },
     tags: {
