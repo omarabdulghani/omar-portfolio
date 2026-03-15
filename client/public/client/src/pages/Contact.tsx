@@ -4,12 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { trackEvent } from "@/lib/analytics";
+import { useLanguage } from "@/lib/i18n";
 import { Mail, MapPin, Phone, Send, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { messages } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,10 +57,10 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-                  Let's Work <span className="text-primary">Together</span>
+                  {messages.contact.hero.titlePrefix} <span className="text-primary">{messages.contact.hero.titleHighlight}</span>
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to drop me a message.
+                  {messages.contact.hero.description}
                 </p>
               </div>
 
@@ -69,7 +71,7 @@ export default function Contact() {
                       <Mail size={24} />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Email Me</p>
+                      <p className="text-sm text-muted-foreground">{messages.contact.info.emailMe}</p>
                       <a href="mailto:omarabdulgh@gmail.com" className="text-lg font-bold hover:text-primary transition-colors" onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "email" })}>
                         omarabdulgh@gmail.com
                       </a>
@@ -83,7 +85,7 @@ export default function Contact() {
                       <Phone size={24} />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Call Me</p>
+                      <p className="text-sm text-muted-foreground">{messages.contact.info.callMe}</p>
                       <a href="tel:+31636495599" className="text-lg font-bold hover:text-primary transition-colors" onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "phone" })}>
                         +31 6364 9 55 99
                       </a>
@@ -97,9 +99,9 @@ export default function Contact() {
                       <MapPin size={24} />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Location</p>
+                      <p className="text-sm text-muted-foreground">{messages.contact.info.location}</p>
                       <p className="text-lg font-bold">
-                        Amstelveen, Netherlands
+                        {messages.contact.info.cityCountry}
                       </p>
                     </div>
                   </CardContent>
@@ -118,27 +120,27 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="bg-card border border-white/10 rounded-3xl p-8 shadow-2xl">
-              <h3 className="text-2xl font-heading font-bold mb-6">Send a Message</h3>
+              <h3 className="text-2xl font-heading font-bold mb-6">{messages.contact.form.title}</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</label>
-                    <Input id="name" name="name" placeholder="John Doe" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
+                    <label htmlFor="name" className="text-sm font-medium text-muted-foreground">{messages.contact.form.nameLabel}</label>
+                    <Input id="name" name="name" placeholder={messages.contact.form.namePlaceholder} required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</label>
-                    <Input id="email" name="email" type="email" placeholder="john@example.com" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
+                    <label htmlFor="email" className="text-sm font-medium text-muted-foreground">{messages.contact.form.emailLabel}</label>
+                    <Input id="email" name="email" type="email" placeholder={messages.contact.form.emailPlaceholder} required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium text-muted-foreground">Subject</label>
-                  <Input id="subject" name="subject" placeholder="Project Inquiry" required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
+                  <label htmlFor="subject" className="text-sm font-medium text-muted-foreground">{messages.contact.form.subjectLabel}</label>
+                  <Input id="subject" name="subject" placeholder={messages.contact.form.subjectPlaceholder} required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
-                  <Textarea id="message" name="message" placeholder="Tell me about your project..." required className="min-h-[150px] bg-secondary/50 border-white/5 focus:border-primary/50 resize-none" />
+                  <label htmlFor="message" className="text-sm font-medium text-muted-foreground">{messages.contact.form.messageLabel}</label>
+                  <Textarea id="message" name="message" placeholder={messages.contact.form.messagePlaceholder} required className="min-h-[150px] bg-secondary/50 border-white/5 focus:border-primary/50 resize-none" />
                 </div>
 
                 <Button type="submit" size="lg" className="w-full rounded-xl text-lg h-12" disabled={isSubmitting}>
@@ -146,7 +148,7 @@ export default function Contact() {
                     "Sending..."
                   ) : (
                     <>
-                      Send Message <Send className="ml-2 h-4 w-4" />
+                      {messages.contact.form.submit} <Send className="ml-2 h-4 w-4" />
                     </>
                   )}
                 </Button>

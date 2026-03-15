@@ -124,6 +124,11 @@ function normalizeItem(item: ProjectGalleryMedia, index: number): NormalizedMedi
 type ProjectGalleryProps = {
   items: ProjectGalleryMedia[];
   fallbackPoster?: string;
+  sectionLabels?: {
+    videos: string;
+    images: string;
+    documents: string;
+  };
 };
 
 export type ProjectGalleryHandle = {
@@ -131,7 +136,7 @@ export type ProjectGalleryHandle = {
 };
 
 const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(function ProjectGallery(
-  { items, fallbackPoster },
+  { items, fallbackPoster, sectionLabels },
   ref
 ) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -597,7 +602,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       <div className="space-y-8">
         {groupedMedia.videos.length > 0 ? (
           <section className="space-y-3">
-            <h3 className="text-lg font-heading font-semibold">Videos</h3>
+            <h3 className="text-lg font-heading font-semibold">{sectionLabels?.videos ?? "Videos"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {groupedMedia.videos.map(renderMediaCard)}
             </div>
@@ -606,7 +611,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
 
         {groupedMedia.images.length > 0 ? (
           <section className="space-y-3">
-            <h3 className="text-lg font-heading font-semibold">Images</h3>
+            <h3 className="text-lg font-heading font-semibold">{sectionLabels?.images ?? "Images"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {groupedMedia.images.map(renderMediaCard)}
             </div>
@@ -615,7 +620,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
 
         {groupedMedia.documents.length > 0 ? (
           <section className="space-y-3">
-            <h3 className="text-lg font-heading font-semibold">Documents</h3>
+            <h3 className="text-lg font-heading font-semibold">{sectionLabels?.documents ?? "Documents"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {groupedMedia.documents.map(renderMediaCard)}
             </div>

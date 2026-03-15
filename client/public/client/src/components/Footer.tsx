@@ -1,11 +1,13 @@
-import { Link } from "wouter";
+﻿import { Link } from "wouter";
 import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useCookieConsent } from "@/contexts/CookieConsentContext";
 import { trackEvent } from "@/lib/analytics";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { openSettings } = useCookieConsent();
+  const { messages } = useLanguage();
 
   return (
     <footer className="bg-transparent dark:bg-card border-t border-border/40 pt-16 pb-8">
@@ -18,7 +20,7 @@ export default function Footer() {
               </a>
             </Link>
             <p className="text-muted-foreground max-w-md mb-6">
-              A Creative Business Specialist bridging the gap between design, strategy, and digital marketing to create meaningful user experiences.
+              {messages.footer.description}
             </p>
             <div className="flex gap-4">
               <a
@@ -41,42 +43,42 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-bold text-lg mb-6">Quick Links</h3>
+            <h3 className="font-heading font-bold text-lg mb-6">{messages.footer.quickLinks}</h3>
             <ul className="space-y-3">
               <li>
                 <Link href="/">
-                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/" })}>Home</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/" })}>{messages.footer.home}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/about">
-                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/about" })}>About Me</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/about" })}>{messages.footer.aboutMe}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/portfolio">
-                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/portfolio" })}>Portfolio</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/portfolio" })}>{messages.footer.portfolio}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/skills">
-                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/skills" })}>Skills & Expertise</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/skills" })}>{messages.footer.skillsExpertise}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/contact">
-                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/contact" })}>Contact</a>
+                  <a className="text-muted-foreground hover:text-primary transition-colors" onClick={() => trackEvent("nav_click", { location: "footer", destination: "/contact" })}>{messages.footer.contact}</a>
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-heading font-bold text-lg mb-6">Contact</h3>
+            <h3 className="font-heading font-bold text-lg mb-6">{messages.footer.contact}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin size={20} className="text-primary shrink-0 mt-1" />
-                <span>Amstelveen, Netherlands</span>
+                <span>{messages.footer.cityCountry}</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={20} className="text-primary shrink-0" />
@@ -95,19 +97,20 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-border/40 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>&copy; {currentYear} Omar Abdulghani. All rights reserved.</p>
+          <p>&copy; {currentYear} Omar Abdulghani. {messages.footer.rightsReserved}</p>
           <div className="flex flex-col items-center gap-2 md:flex-row md:gap-5">
             <button
               type="button"
               className="hover:text-foreground transition-colors"
               onClick={openSettings}
             >
-              Cookie Settings
+              {messages.footer.cookieSettings}
             </button>
-            <p>Designed & Built with React & Tailwind</p>
+            <p>{messages.footer.builtWith}</p>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+

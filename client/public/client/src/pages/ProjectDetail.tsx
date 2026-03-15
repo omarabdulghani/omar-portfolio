@@ -10,6 +10,7 @@ import ProjectGallery, {
 } from "@/components/ProjectGallery";
 import DeviceMockup from "@/components/DeviceMockup";
 import { trackEvent } from "@/lib/analytics";
+import { useLanguage } from "@/lib/i18n";
 import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
@@ -522,8 +523,18 @@ export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const [, setLocation] = useLocation();
   const galleryRef = useRef<ProjectGalleryHandle>(null);
+  const { messages } = useLanguage();
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : undefined;
+  const isMoesTuinen = projectId === "moes-tuinen";
+  const isAmstelhofConnect = projectId === "amstelhof-connect";
+  const isPatronApp = projectId === "patronapp";
+  const isPpheHotel = projectId === "pphe-hotel";
+  const isProDetailing = projectId === "pro-detailing";
+  const isHallenCity = projectId === "hallencity";
+  const isBurningManCampaign = projectId === "burning-man-campaign";
+  const isStreamingEmotionsValuePlan = projectId === "streaming-emotions-value-plan";
+  const isBeexExportStrategy = projectId === "beex-export-strategy";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -542,14 +553,264 @@ export default function ProjectDetail() {
     return <NotFound />;
   }
 
+  const localizedProject = isMoesTuinen
+    ? {
+        ...project,
+        subtitle: messages.projectDetails.moesTuinen.subtitle,
+        description: messages.projectDetails.moesTuinen.description,
+        challenge: messages.projectDetails.moesTuinen.challenge,
+        solution: messages.projectDetails.moesTuinen.solution,
+        impact: messages.projectDetails.moesTuinen.impact,
+        role: messages.projectDetails.moesTuinen.role,
+        primaryActionLabel: messages.projectDetails.moesTuinen.primaryActionLabel,
+        demoVideoLabel: messages.projectDetails.moesTuinen.demoVideoLabel,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Introduction Video": messages.projectDetails.moesTuinen.galleryTitles.introductionVideo,
+            "Pop-up Stand Design Video": messages.projectDetails.moesTuinen.galleryTitles.popUpStandDesignVideo,
+            "Meet Cansu": messages.projectDetails.moesTuinen.galleryTitles.meetCansu,
+            "Meet Jasper": messages.projectDetails.moesTuinen.galleryTitles.meetJasper,
+            "Meet Margret": messages.projectDetails.moesTuinen.galleryTitles.meetMargret,
+            "Meet Sascha": messages.projectDetails.moesTuinen.galleryTitles.meetSascha,
+            "Grow Kit Giveaway": messages.projectDetails.moesTuinen.galleryTitles.growKitGiveaway,
+            "Grow Kit Giveaway Production": messages.projectDetails.moesTuinen.galleryTitles.growKitGiveawayProduction,
+            "Grow Kit Contents": messages.projectDetails.moesTuinen.galleryTitles.growKitContents,
+            "Pop-up Stand Design": messages.projectDetails.moesTuinen.galleryTitles.popUpStandDesign,
+            "Poster Design": messages.projectDetails.moesTuinen.galleryTitles.posterDesign,
+            "Deliverables, Project Timeline & Budget": messages.projectDetails.moesTuinen.galleryTitles.deliverablesTimelineBudget,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isAmstelhofConnect
+    ? {
+        ...project,
+        subtitle: messages.projectDetails.amstelhofConnect.subtitle,
+        description: messages.projectDetails.amstelhofConnect.description,
+        challenge: messages.projectDetails.amstelhofConnect.challenge,
+        solution: messages.projectDetails.amstelhofConnect.solution,
+        impact: messages.projectDetails.amstelhofConnect.impact,
+        primaryActionLabel: messages.projectDetails.amstelhofConnect.primaryActionLabel,
+        demoVideoLabel: messages.projectDetails.amstelhofConnect.demoVideoLabel,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Members Center": messages.projectDetails.amstelhofConnect.galleryTitles.membersCenter,
+            "Main Dashboard": messages.projectDetails.amstelhofConnect.galleryTitles.mainDashboard,
+            "Amstelhof Connect End Presentation": messages.projectDetails.amstelhofConnect.galleryTitles.endPresentation,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isPatronApp
+    ? {
+        ...project,
+        subtitle: messages.projectDetails.patronApp.subtitle,
+        description: messages.projectDetails.patronApp.description,
+        challenge: messages.projectDetails.patronApp.challenge,
+        solution: messages.projectDetails.patronApp.solution,
+        impact: messages.projectDetails.patronApp.impact,
+        primaryActionLabel: messages.projectDetails.patronApp.primaryActionLabel,
+        demoVideoLabel: messages.projectDetails.patronApp.demoVideoLabel,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "PatronApp Promo 1": messages.projectDetails.patronApp.galleryTitles.promo1,
+            "PatronApp Promo 2": messages.projectDetails.patronApp.galleryTitles.promo2,
+            "PatronApp Visual": messages.projectDetails.patronApp.galleryTitles.visual,
+            "End Report - PatronApp": messages.projectDetails.patronApp.galleryTitles.endReport,
+            "Debriefing Report": messages.projectDetails.patronApp.galleryTitles.debriefingReport,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isPpheHotel
+    ? {
+        ...project,
+        subtitle: messages.projectDetails.ppheHotel.subtitle,
+        description: messages.projectDetails.ppheHotel.description,
+        challenge: messages.projectDetails.ppheHotel.challenge,
+        solution: messages.projectDetails.ppheHotel.solution,
+        impact: messages.projectDetails.ppheHotel.impact,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Booking Panel Improvement":
+              messages.projectDetails.ppheHotel.galleryTitles.bookingPanelImprovement,
+            "Park Plaza M&E Panel Improvement":
+              messages.projectDetails.ppheHotel.galleryTitles.parkPlazaPanelImprovement,
+            "art'otel Booking Panel Mobile Improvement":
+              messages.projectDetails.ppheHotel.galleryTitles.artotelBookingPanelMobileImprovement,
+            "art'otel Destinations Desktop Improvement":
+              messages.projectDetails.ppheHotel.galleryTitles.artotelDestinationsDesktopImprovement,
+            "art'otel Destinations Mobile Improvement":
+              messages.projectDetails.ppheHotel.galleryTitles.artotelDestinationsMobileImprovement,
+            "Personal Development Report 1":
+              messages.projectDetails.ppheHotel.galleryTitles.personalDevelopmentReport1,
+            "Personal Development Report 2":
+              messages.projectDetails.ppheHotel.galleryTitles.personalDevelopmentReport2,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isProDetailing
+    ? {
+        ...project,
+        subtitle: messages.projectDetails.proDetailing.subtitle,
+        description: messages.projectDetails.proDetailing.description,
+        challenge: messages.projectDetails.proDetailing.challenge,
+        solution: messages.projectDetails.proDetailing.solution,
+        impact: messages.projectDetails.proDetailing.impact,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Imrpoved UI/UX visual":
+              messages.projectDetails.proDetailing.galleryTitles.improvedUiUxVisual,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isHallenCity
+    ? {
+        ...project,
+        subtitle: messages.projectDetails.hallenCity.subtitle,
+        description: messages.projectDetails.hallenCity.description,
+        challenge: messages.projectDetails.hallenCity.challenge,
+        solution: messages.projectDetails.hallenCity.solution,
+        impact: messages.projectDetails.hallenCity.impact,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "HallenCity+ App Visual":
+              messages.projectDetails.hallenCity.galleryTitles.appVisual,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isBurningManCampaign
+    ? {
+        ...project,
+        title: messages.projectDetails.burningManCampaign.title,
+        subtitle: messages.projectDetails.burningManCampaign.subtitle,
+        description: messages.projectDetails.burningManCampaign.description,
+        challenge: messages.projectDetails.burningManCampaign.challenge,
+        solution: messages.projectDetails.burningManCampaign.solution,
+        impact: messages.projectDetails.burningManCampaign.impact,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Burning Man's Designed Poster":
+              messages.projectDetails.burningManCampaign.galleryTitles.designedPoster,
+            "Brand Positioning Report":
+              messages.projectDetails.burningManCampaign.galleryTitles.brandPositioningReport,
+            "Event Promotion Research":
+              messages.projectDetails.burningManCampaign.galleryTitles.eventPromotionResearch,
+            "Socially Engaged Event Research":
+              messages.projectDetails.burningManCampaign.galleryTitles.sociallyEngagedEventResearch,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isStreamingEmotionsValuePlan
+    ? {
+        ...project,
+        title: messages.projectDetails.streamingEmotionsValuePlan.title,
+        subtitle: messages.projectDetails.streamingEmotionsValuePlan.subtitle,
+        description: messages.projectDetails.streamingEmotionsValuePlan.description,
+        challenge: messages.projectDetails.streamingEmotionsValuePlan.challenge,
+        solution: messages.projectDetails.streamingEmotionsValuePlan.solution,
+        impact: messages.projectDetails.streamingEmotionsValuePlan.impact,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Data Analysis Report (Arcando)":
+              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles.dataAnalysisReport,
+            "Value Creation Report 1":
+              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles.valueCreationReport1,
+            "Value Creation Report 2":
+              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles.valueCreationReport2,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : isBeexExportStrategy
+    ? {
+        ...project,
+        title: messages.projectDetails.beexExportStrategy.title,
+        subtitle: messages.projectDetails.beexExportStrategy.subtitle,
+        description: messages.projectDetails.beexExportStrategy.description,
+        challenge: messages.projectDetails.beexExportStrategy.challenge,
+        solution: messages.projectDetails.beexExportStrategy.solution,
+        impact: messages.projectDetails.beexExportStrategy.impact,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Export Research":
+              messages.projectDetails.beexExportStrategy.galleryTitles.exportResearch,
+            "Export Plan":
+              messages.projectDetails.beexExportStrategy.galleryTitles.exportPlan,
+            "Financial Export Plan (Excel File)":
+              messages.projectDetails.beexExportStrategy.galleryTitles.financialExportPlan,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
+      }
+    : project;
+
   return (
     <Layout>
       {/* Hero Banner */}
       <div className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
         <img 
-          src={project.image} 
-          alt={project.title} 
+          src={localizedProject.image} 
+          alt={localizedProject.title} 
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 z-20 container flex flex-col justify-end pb-16">
@@ -558,21 +819,21 @@ export default function ProjectDetail() {
               className="inline-flex items-center text-white/80 hover:text-primary mb-6 transition-colors"
               onClick={() => trackEvent("nav_click", { location: "project_detail_hero", destination: "/portfolio" })}
             >
-              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Portfolio
+              <ArrowLeft className="mr-2 h-4 w-4" /> {(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.backToPortfolio : "Back to Portfolio"}
             </a>
           </Link>
           <div className="flex flex-wrap gap-3 mb-4">
-            {project.tags.map((tag: string) => (
+            {localizedProject.tags.map((tag: string) => (
               <Badge key={tag} className="bg-white/90 text-black hover:bg-white border-transparent">
                 {tag}
               </Badge>
             ))}
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-2">
-            {project.title}
+            {localizedProject.title}
           </h1>
           <p className="text-xl md:text-2xl text-white/80 font-light">
-            {project.subtitle}
+            {localizedProject.subtitle}
           </p>
         </div>
       </div>
@@ -582,37 +843,41 @@ export default function ProjectDetail() {
           {/* Main Content */}
           <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
             <div>
-              <h2 className="text-2xl font-heading font-bold mb-4">Overview</h2>
+              <h2 className="text-2xl font-heading font-bold mb-4">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.overview : "Overview"}</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {renderWithBold(project.description)}
+                {renderWithBold(localizedProject.description)}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-card/50 p-6 rounded-xl border border-white/5">
-                <h3 className="text-xl font-bold mb-3 text-primary">The Challenge</h3>
+                <h3 className="text-xl font-bold mb-3 text-primary">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.challenge : "The Challenge"}</h3>
                 <p className="text-muted-foreground">
-                  {renderWithBold(project.challenge)}
+                  {renderWithBold(localizedProject.challenge)}
                 </p>
               </div>
               <div className="bg-card/50 p-6 rounded-xl border border-white/5">
-                <h3 className="text-xl font-bold mb-3 text-primary">The Solution</h3>
+                <h3 className="text-xl font-bold mb-3 text-primary">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.solution : "The Solution"}</h3>
                 <p className="text-muted-foreground">
-                  {renderWithBold(project.solution)}
+                  {renderWithBold(localizedProject.solution)}
                 </p>
               </div>
             </div>
 
             <div>
-              <h2 className="text-2xl font-heading font-bold mb-4">Impact & Results</h2>
+              <h2 className="text-2xl font-heading font-bold mb-4">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.impactResults : "Impact & Results"}</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {renderWithBold(project.impact)}
+                {renderWithBold(localizedProject.impact)}
               </p>
             </div>
 
             {project.deviceMockup ? (
               <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-bold">Prototype Preview</h2>
+                <h2 className="text-2xl font-heading font-bold">
+                  {(isAmstelhofConnect || isPatronApp || isProDetailing || isHallenCity)
+                    ? messages.projectDetails.common.prototypePreview
+                    : "Prototype Preview"}
+                </h2>
                 <DeviceMockup
                   type={project.deviceMockup.type}
                   mode={project.deviceMockup.mode}
@@ -645,13 +910,14 @@ export default function ProjectDetail() {
             ) : null}
 
             {/* Gallery */}
-            {project.gallery && project.gallery.length > 0 && (
+            {localizedProject.gallery && localizedProject.gallery.length > 0 && (
               <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-bold">Project Gallery</h2>
+                <h2 className="text-2xl font-heading font-bold">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.projectGallery : "Project Gallery"}</h2>
                 <ProjectGallery
                   ref={galleryRef}
-                  items={project.gallery as ProjectGalleryMedia[]}
-                  fallbackPoster={project.image}
+                  items={localizedProject.gallery as ProjectGalleryMedia[]}
+                  fallbackPoster={localizedProject.image}
+                  sectionLabels={(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.gallerySections : undefined}
                 />
               </div>
             )}
@@ -661,10 +927,10 @@ export default function ProjectDetail() {
           <div className="order-1 lg:order-2 space-y-8">
             <div className="bg-card border border-white/10 rounded-xl p-6 space-y-6 sticky top-24">
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Client</h3>
-                {project.clientLogos?.length ? (
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.client : "Client"}</h3>
+                {localizedProject.clientLogos?.length ? (
                   <div className="mt-2 mb-2 min-h-[48px] flex flex-wrap items-center gap-3">
-                    {project.clientLogos.map((logo: any, index: number) =>
+                    {localizedProject.clientLogos.map((logo: any, index: number) =>
                       logo.href ? (
                         <a
                           key={`${logo.src}-${index}`}
@@ -691,72 +957,72 @@ export default function ProjectDetail() {
                       )
                     )}
                   </div>
-                ) : project.clientLogo ? (
+                ) : localizedProject.clientLogo ? (
                   <div className="mt-2 mb-2 min-h-[48px] flex items-center">
-                    {project.clientWebsite ? (
+                    {localizedProject.clientWebsite ? (
                       <a
-                        href={project.clientWebsite}
+                        href={localizedProject.clientWebsite}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`Visit ${project.client} website`}
+                        aria-label={`Visit ${localizedProject.client} website`}
                         className="inline-flex items-center"
                         onClick={() => trackEvent("external_link_click", { location: "project_client", project_id: projectId ?? null })}
                       >
                         <>
                           <img
-                            src={project.clientLogo}
-                            alt={`${project.client} logo`}
-                            className={`${project.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
-                              project.clientLogoDark ? "" : "dark:block"
+                            src={localizedProject.clientLogo}
+                            alt={`${localizedProject.client} logo`}
+                            className={`${localizedProject.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
+                              localizedProject.clientLogoDark ? "" : "dark:block"
                             }`}
                           />
-                          {project.clientLogoDark ? (
+                          {localizedProject.clientLogoDark ? (
                             <img
-                              src={project.clientLogoDark}
-                              alt={`${project.client} logo`}
-                              className={`hidden ${project.clientLogoClass || "h-10"} w-auto object-contain dark:block`}
+                              src={localizedProject.clientLogoDark}
+                              alt={`${localizedProject.client} logo`}
+                              className={`hidden ${localizedProject.clientLogoClass || "h-10"} w-auto object-contain dark:block`}
                             />
                           ) : null}
                         </>
                       </a>
                     ) : (
-                      <>
-                        <img
-                          src={project.clientLogo}
-                          alt={`${project.client} logo`}
-                          className={`${project.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
-                            project.clientLogoDark ? "" : "dark:block"
-                          }`}
-                        />
-                        {project.clientLogoDark ? (
+                        <>
                           <img
-                            src={project.clientLogoDark}
-                            alt={`${project.client} logo`}
-                            className={`hidden ${project.clientLogoClass || "h-10"} w-auto object-contain dark:block`}
+                            src={localizedProject.clientLogo}
+                            alt={`${localizedProject.client} logo`}
+                            className={`${localizedProject.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
+                              localizedProject.clientLogoDark ? "" : "dark:block"
+                            }`}
+                          />
+                        {localizedProject.clientLogoDark ? (
+                          <img
+                            src={localizedProject.clientLogoDark}
+                            alt={`${localizedProject.client} logo`}
+                            className={`hidden ${localizedProject.clientLogoClass || "h-10"} w-auto object-contain dark:block`}
                           />
                         ) : null}
                       </>
                     )}
                   </div>
                 ) : (
-                  <p className="text-lg font-bold">{project.client}</p>
+                  <p className="text-lg font-bold">{localizedProject.client}</p>
                 )}
               </div>
               
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Year</h3>
-                <p className="text-lg font-bold">{project.year}</p>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.year : "Year"}</h3>
+                <p className="text-lg font-bold">{localizedProject.year}</p>
               </div>
               
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">My Role</h3>
-                <p className="text-lg font-bold">{project.role}</p>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.myRole : "My Role"}</h3>
+                <p className="text-lg font-bold">{localizedProject.role}</p>
               </div>
               
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Tools Used</h3>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.toolsUsed : "Tools Used"}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {project.tools.map((tool: string) => (
+                  {localizedProject.tools.map((tool: string) => (
                     <span key={tool} className="text-sm border border-white/10 px-2 py-1 rounded bg-secondary/50">
                       {tool}
                     </span>
@@ -764,70 +1030,70 @@ export default function ProjectDetail() {
                 </div>
               </div>
 
-              {(project.primaryActionHref || project.demoVideoSrc) ? (
+              {(localizedProject.primaryActionHref || localizedProject.demoVideoSrc) ? (
                 <div className="pt-4 flex flex-col gap-3">
-                  {project.primaryActionHref ? (
-                    isPdfHref(project.primaryActionHref) ? (
+                  {localizedProject.primaryActionHref ? (
+                    isPdfHref(localizedProject.primaryActionHref) ? (
                       <Button
                         className="w-full gap-2"
                         onClick={() => {
                           trackEvent("project_action_click", {
                             location: "project_detail_sidebar",
-                            action: project.primaryActionLabel || "primary_action",
+                            action: localizedProject.primaryActionLabel || "primary_action",
                             project_id: projectId ?? null,
                             type: "document",
                           });
-                          galleryRef.current?.openBySrc(project.primaryActionHref, {
-                            title: project.primaryActionLabel || "Project Report",
+                          galleryRef.current?.openBySrc(localizedProject.primaryActionHref, {
+                            title: localizedProject.primaryActionLabel || "Project Report",
                           });
                         }}
                       >
-                        <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                        <ExternalLink size={18} /> {localizedProject.primaryActionLabel || "View Live Project"}
                       </Button>
                     ) : (
                       <a
-                        href={project.primaryActionHref}
-                        target={project.primaryActionDownload ? undefined : "_blank"}
-                        rel={project.primaryActionDownload ? undefined : "noreferrer"}
-                        download={project.primaryActionDownload ? true : undefined}
+                        href={localizedProject.primaryActionHref}
+                        target={localizedProject.primaryActionDownload ? undefined : "_blank"}
+                        rel={localizedProject.primaryActionDownload ? undefined : "noreferrer"}
+                        download={localizedProject.primaryActionDownload ? true : undefined}
                         className="block w-full"
                         onClick={() => trackEvent("project_action_click", {
                           location: "project_detail_sidebar",
-                          action: project.primaryActionLabel || "primary_action",
+                          action: localizedProject.primaryActionLabel || "primary_action",
                           project_id: projectId ?? null,
-                          type: project.primaryActionDownload ? "download" : "external_link",
+                          type: localizedProject.primaryActionDownload ? "download" : "external_link",
                         })}
                       >
                         <Button className="w-full gap-2">
-                          <ExternalLink size={18} /> {project.primaryActionLabel || "View Live Project"}
+                          <ExternalLink size={18} /> {localizedProject.primaryActionLabel || "View Live Project"}
                         </Button>
                       </a>
                     )
                   ) : null}
 
-                  {project.demoVideoSrc ? (
+                  {localizedProject.demoVideoSrc ? (
                     <Button
                       variant="outline"
                       className="w-full gap-2"
                       onClick={() => {
-                        const demoIsVideo = isVideoHref(project.demoVideoSrc);
+                        const demoIsVideo = isVideoHref(localizedProject.demoVideoSrc);
                         trackEvent("project_action_click", {
                           location: "project_detail_sidebar",
-                          action: project.demoVideoLabel || "demo_media",
+                          action: localizedProject.demoVideoLabel || "demo_media",
                           project_id: projectId ?? null,
                           type: demoIsVideo ? "video" : "document",
                         });
-                        galleryRef.current?.openBySrc(project.demoVideoSrc, {
+                        galleryRef.current?.openBySrc(localizedProject.demoVideoSrc, {
                           alt: demoIsVideo
-                            ? `${project.title} demo video`
-                            : `${project.title} project report`,
-                          poster: demoIsVideo ? project.demoVideoPoster : undefined,
-                          title: project.demoVideoLabel || undefined,
+                            ? `${localizedProject.title} demo video`
+                            : `${localizedProject.title} project report`,
+                          poster: demoIsVideo ? localizedProject.demoVideoPoster : undefined,
+                          title: localizedProject.demoVideoLabel || undefined,
                         });
                       }}
                     >
-                      {isVideoHref(project.demoVideoSrc) ? <Play size={18} /> : <ExternalLink size={18} />}
-                      {project.demoVideoLabel || "Watch Demo Video"}
+                      {isVideoHref(localizedProject.demoVideoSrc) ? <Play size={18} /> : <ExternalLink size={18} />}
+                      {localizedProject.demoVideoLabel || "Watch Demo Video"}
                     </Button>
                   ) : null}
                 </div>

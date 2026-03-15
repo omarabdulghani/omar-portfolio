@@ -2,107 +2,127 @@ import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
+import { useLanguage } from "@/lib/i18n";
 import { useState } from "react";
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState("All");
+  const { messages } = useLanguage();
+  const [filter, setFilter] = useState("all");
 
   const categories = [
-    "All",
-    "UX/UI Design",
-    "Brand Activation",
-    "Digital Marketing",
-    "App Design",
-    "Brand Positioning",
-    "Artist Strategy",
-    "Export Strategy",
-    "Event Promotion",
-    "Poster Design",
-    "Music Strategy",
-    "Value Creation",
-    "Financial Planning",
-    "Market Research"
+    { value: "all", label: messages.portfolio.filters.all },
+    { value: "ux-ui-design", label: messages.portfolio.filters.uxUiDesign },
+    { value: "brand-activation", label: messages.portfolio.filters.brandActivation },
+    { value: "digital-marketing", label: messages.portfolio.filters.digitalMarketing },
+    { value: "app-design", label: messages.portfolio.filters.appDesign },
+    { value: "brand-positioning", label: messages.portfolio.filters.brandPositioning },
+    { value: "artist-strategy", label: messages.portfolio.filters.artistStrategy },
+    { value: "export-strategy", label: messages.portfolio.filters.exportStrategy },
+    { value: "event-promotion", label: messages.portfolio.filters.eventPromotion },
+    { value: "poster-design", label: messages.portfolio.filters.posterDesign },
+    { value: "music-strategy", label: messages.portfolio.filters.musicStrategy },
+    { value: "value-creation", label: messages.portfolio.filters.valueCreation },
+    { value: "financial-planning", label: messages.portfolio.filters.financialPlanning },
+    { value: "market-research", label: messages.portfolio.filters.marketResearch }
   ];
 
   const projects = [
     {
       id: "moes-tuinen",
       title: "MOES Tuinen",
-      category: "Brand Activation",
+      categoryValue: "brand-activation",
+      category: messages.portfolio.filters.brandActivation,
       image: "/images/project-moes-tuinen.jpg",
-      description: "A comprehensive brand activation campaign including pop-up stands, social media strategy, and digital marketing planning.",
-      tags: ["Brand Activation", "Social Media", "Digital Marketing"]
+      description: messages.portfolio.projects.moesTuinen.description,
+      tags: [messages.portfolio.tags.brandActivation, messages.portfolio.tags.socialMedia, messages.portfolio.tags.digitalMarketing],
+      tagValues: ["brand-activation", "social-media", "digital-marketing"]
     },
     {
       id: "amstelhof-connect",
       title: "Amstelhof Connect",
-      category: "App Design",
+      categoryValue: "app-design",
+      category: messages.portfolio.filters.appDesign,
       image: "/images/project-amstelhof-connect.jpg",
-      description: "Internal staff application designed to streamline operations and enhance employee engagement through AI-powered features.",
-      tags: ["UX/UI Design", "App Concept", "Process Optimization"]
+      description: messages.portfolio.projects.amstelhofConnect.description,
+      tags: [messages.portfolio.filters.uxUiDesign, messages.portfolio.tags.appConcept, messages.portfolio.tags.processOptimization],
+      tagValues: ["ux-ui-design", "app-concept", "process-optimization"]
     },
     {
       id: "patronapp",
       title: "PatronApp",
-      category: "UX/UI Design",
+      categoryValue: "ux-ui-design",
+      category: messages.portfolio.filters.uxUiDesign,
       image: "/images/project-patronapp.jpg",
-      description: "Concert experience app enhancing the connection between visitors and the venue through personalized recommendations.",
-      tags: ["UX Research", "Prototyping", "User Strategy"]
+      description: messages.portfolio.projects.patronApp.description,
+      tags: [messages.portfolio.tags.uxResearch, messages.portfolio.tags.prototyping, messages.portfolio.tags.userStrategy],
+      tagValues: ["ux-research", "prototyping", "user-strategy"]
     },
     {
       id: "pphe-hotel",
       title: "PPHE Hotel Group",
-      category: "UX/UI Design",
+      categoryValue: "ux-ui-design",
+      category: messages.portfolio.filters.uxUiDesign,
       image: "/images/pphe-project.jpg",
-      description: "Improved UI/UX of multiple website pages across hotel brands to enhance usability and conversion flow.",
-      tags: ["Web Design", "Conversion Optimization", "Analytics"]
+      description: messages.portfolio.projects.ppheHotel.description,
+      tags: [messages.portfolio.tags.webDesign, messages.portfolio.tags.conversionOptimization, messages.portfolio.tags.analytics],
+      tagValues: ["web-design", "conversion-optimization", "analytics"]
     },
     {
       id: "pro-detailing",
       title: "Pro Detailing",
-      category: "Digital Marketing",
+      categoryValue: "digital-marketing",
+      category: messages.portfolio.filters.digitalMarketing,
       image: "/images/pro-detaling-project.jpg",
-      description: "Digital marketing strategy and website redesign for local visibility and customer engagement.",
-      tags: ["Web Design", "SEO", "Local Marketing"]
+      description: messages.portfolio.projects.proDetailing.description,
+      tags: [messages.portfolio.tags.webDesign, messages.portfolio.tags.seo, messages.portfolio.tags.localMarketing],
+      tagValues: ["web-design", "seo", "local-marketing"]
     },
     {
       id: "hallencity",
       title: "HallenCity+",
-      category: "App Design",
+      categoryValue: "app-design",
+      category: messages.portfolio.filters.appDesign,
       image: "/images/hallen-city-app.png",
       imageClassName: "object-top scale-[1.03]",
-      description: "Reimagining the cinema experience through online ticketing, snack ordering, and social features.",
-      tags: ["App Concept", "Community Building", "Service Design"]
+      description: messages.portfolio.projects.hallenCity.description,
+      tags: [messages.portfolio.tags.appConcept, messages.portfolio.tags.communityBuilding, messages.portfolio.tags.serviceDesign],
+      tagValues: ["app-concept", "community-building", "service-design"]
     },
     {
       id: "burning-man-campaign",
       title: "Burning Man Brand Positioning",
-      category: "Brand Positioning",
+      categoryValue: "brand-positioning",
+      category: messages.portfolio.filters.brandPositioning,
       image: "/images/burningman.jpg",
-      description: "Brand positioning, event-promotion strategy, and poster design driven by audience research and competitive analysis.",
-      tags: ["Audience Research", "Event Promotion", "Poster Design"]
+      description: messages.portfolio.projects.burningManCampaign.description,
+      tags: [messages.portfolio.tags.audienceResearch, messages.portfolio.tags.eventPromotion, messages.portfolio.tags.posterDesign],
+      tagValues: ["audience-research", "event-promotion", "poster-design"]
     },
     {
       id: "streaming-emotions-value-plan",
       title: "Jacob Drescher Value Plan",
-      category: "Artist Strategy",
+      categoryValue: "artist-strategy",
+      category: messages.portfolio.filters.artistStrategy,
       image: "/images/jacobdrescher.jpg",
-      description: "Music audience analysis and value-creation strategy to support artist growth and stronger communication.",
-      tags: ["Music Strategy", "Audience Insights", "Value Creation"]
+      description: messages.portfolio.projects.streamingEmotionsValuePlan.description,
+      tags: [messages.portfolio.tags.musicStrategy, messages.portfolio.tags.audienceInsights, messages.portfolio.tags.valueCreation],
+      tagValues: ["music-strategy", "audience-insights", "value-creation"]
     },
     {
       id: "beex-export-strategy",
       title: "BEEX Export Strategy",
-      category: "Export Strategy",
+      categoryValue: "export-strategy",
+      category: messages.portfolio.filters.exportStrategy,
       image: "/images/beex.jpg",
-      description: "Belgium market-entry strategy combining export research, financial planning, and operational recommendations.",
-      tags: ["Export Planning", "Financial Planning", "Market Research"]
+      description: messages.portfolio.projects.beexExportStrategy.description,
+      tags: [messages.portfolio.tags.exportPlanning, messages.portfolio.tags.financialPlanning, messages.portfolio.tags.marketResearch],
+      tagValues: ["export-planning", "financial-planning", "market-research"]
     }
   ];
 
-  const filteredProjects = filter === "All" 
+  const filteredProjects = filter === "all" 
     ? projects 
-    : projects.filter(project => project.category === filter || project.tags.includes(filter));
+    : projects.filter(project => project.categoryValue === filter || project.tagValues.includes(filter));
 
   return (
     <Layout>
@@ -110,10 +130,10 @@ export default function Portfolio() {
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-              Selected <span className="text-primary">Works</span>
+              {messages.portfolio.hero.titlePrefix} <span className="text-primary">{messages.portfolio.hero.titleHighlight}</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              A collection of projects where I've applied design thinking, strategic marketing, and creative problem-solving.
+              {messages.portfolio.hero.description}
             </p>
           </div>
 
@@ -121,17 +141,17 @@ export default function Portfolio() {
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map((cat) => (
               <Button
-                key={cat}
-                variant={filter === cat ? "default" : "outline"}
+                key={cat.value}
+                variant={filter === cat.value ? "default" : "outline"}
                 onClick={() => {
-                  if (filter !== cat) {
-                    trackEvent("portfolio_filter_select", { filter: cat });
+                  if (filter !== cat.value) {
+                    trackEvent("portfolio_filter_select", { filter: cat.value });
                   }
-                  setFilter(cat);
+                  setFilter(cat.value);
                 }}
                 className="rounded-full"
               >
-                {cat}
+                {cat.label}
               </Button>
             ))}
           </div>
