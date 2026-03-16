@@ -20,56 +20,105 @@ export interface LocaleMessages {
     rightsReserved: string;
     cookieSettings: string;
     builtWith: string;
+    cityCountry: string;
   };
   about: {
     hero: {
       badge: string;
       titlePrefix: string;
       titleHighlight: string;
-      paragraph1: {
-        beforeHighlight: string;
-        highlight: string;
-        afterHighlight: string;
+      name: string;
+      description: string;
+      ctaViewWork: string;
+      ctaDownloadCv: string;
+    };
+    workflow: {
+      title: string;
+      steps: {
+        understand: {
+          title: string;
+          description: string;
+        };
+        design: {
+          title: string;
+          description: string;
+        };
+        prototype: {
+          title: string;
+          description: string;
+        };
+        testIterate: {
+          title: string;
+          description: string;
+        };
+        deliver: {
+          title: string;
+          description: string;
+        };
       };
-      paragraph2: string;
-      paragraph3: {
-        beforeHighlight: string;
-        highlight: string;
-        afterHighlight: string;
+    };
+    overview: {
+      focusTitle: string;
+      focusItems: {
+        brandStrategy: {
+          title: string;
+          description: string;
+        };
+        uxUiDesign: {
+          title: string;
+          description: string;
+        };
+        aiPrototyping: {
+          title: string;
+          description: string;
+        };
       };
-      paragraph4: {
-        beforeHighlight1: string;
-        highlight1: string;
-        middle: string;
-        highlight2: string;
-        afterHighlight2: string;
+      highlightsTitle: string;
+      highlights: {
+        organizations: string;
+        interactivePrototypes: string;
+        crossCulturalCommunication: string;
+        multilingualPerspective: string;
       };
-      paragraph5: {
-        beforeClient1: string;
-        client1: string;
-        betweenClient1And2: string;
-        client2: string;
-        betweenClient2And3: string;
-        client3: string;
-        afterClient3: string;
+    };
+    story: {
+      title: string;
+      sections: {
+        background: {
+          title: string;
+          paragraph1: string;
+          paragraph2: string;
+        };
+        crossCulturalExperience: {
+          title: string;
+          paragraph1: string;
+          paragraph2: string;
+        };
+        technologyDesign: {
+          title: string;
+          paragraph1: string;
+          paragraph2: string;
+        };
+        creativeBusinessClientWork: {
+          title: string;
+          paragraph1: string;
+          paragraph2: string;
+        };
+        aiPrototyping: {
+          title: string;
+          paragraph1: string;
+          paragraph2: string;
+        };
+        focusToday: {
+          title: string;
+          paragraph1: string;
+        };
+        languages: {
+          title: string;
+          paragraph1: string;
+        };
       };
-      paragraph6: {
-        beforeHighlight: string;
-        highlight: string;
-        afterHighlight: string;
-      };
-      paragraph7: {
-        beforeHighlight: string;
-        highlight: string;
-        afterHighlight: string;
-      };
-      paragraph8: {
-        beforeHighlight: string;
-        highlight: string;
-        afterHighlight: string;
-      };
-      paragraph9: string;
-      paragraph10: string;
+      closingLine: string;
       ctaViewCv: string;
       ctaContact: string;
     };

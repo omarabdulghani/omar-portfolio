@@ -30,66 +30,114 @@ export const nl: LocaleMessages = {
       badge: "Over mij",
       titlePrefix: "Creativiteit en",
       titleHighlight: "Business Strategy",
-      paragraph1: {
-        beforeHighlight: "",
-        highlight: "Ideeën vertalen naar betekenisvolle merkervaringen",
-        afterHighlight:
-          ", van vroege conceptontwikkeling tot tastbare concepten, activaties en digitale oplossingen. Ik combineer onderzoek, creativiteit en strategie om concepten te ontwikkelen die verbinding maken met doelgroepen en bijdragen aan zakelijke doelstellingen.",
+      name: "Omar Abdulghani",
+      description:
+        "Ideeën vertalen naar **betekenisvolle merkervaringen**, van **vroege conceptontwikkeling** tot tastbare concepten, activaties en digitale oplossingen. Ik combineer **onderzoek, creativiteit en strategie** om concepten te ontwikkelen die verbinding maken met doelgroepen en bijdragen aan **zakelijke doelstellingen**.",
+      ctaViewWork: "Bekijk mijn werk",
+      ctaDownloadCv: "Download CV",
+    },
+    workflow: {
+      title: "Hoe ik werk",
+      steps: {
+        understand: {
+          title: "Ontdekken",
+          description: "Onderzoek & Strategie",
+        },
+        design: {
+          title: "Concept",
+          description: "Ideeën & Ervaring",
+        },
+        prototype: {
+          title: "Design",
+          description: "Brand & UX/UI",
+        },
+        testIterate: {
+          title: "Prototype",
+          description: "Test & Valideer",
+        },
+        deliver: {
+          title: "Activeren",
+          description: "Lancering & Impact",
+        },
       },
-      paragraph2:
-        "Ik ben een Creative Strategist met een multidisciplinaire achtergrond in branding, UX/UI-design, digitale marketing en technologie. Mijn werk richt zich op het vertalen van ideeën naar duidelijke concepten en ervaringen die zowel creatief aansprekend als strategisch onderbouwd zijn.",
-      paragraph3: {
-        beforeHighlight:
-          "Mijn professionele pad combineert",
-        highlight: "communicatie, technologie en creatief denken",
-        afterHighlight:
-          ". Voordat ik naar Nederland verhuisde, gaf ik Engelse les aan kinderen in Syrië, waar ik al vroeg sterke communicatie- en presentatievaardigheden ontwikkelde. Nadat ik op mijn 19e naar Nederland verhuisde, bleef ik mijn interesse in taal en onderwijs verder ontwikkelen door de studie Engels Docent te volgen aan de HU University of Applied Sciences in Utrecht.",
+    },
+    overview: {
+      focusTitle: "Waar ik mij op focus",
+      focusItems: {
+        brandStrategy: {
+          title: "Brand & Experience Strategie",
+          description:
+            "Concepten ontwikkelen die merkideeën vertalen naar **betekenisvolle ervaringen** via **storytelling, activaties en digitale touchpoints**.",
+        },
+        uxUiDesign: {
+          title: "UX/UI & Digitaal Productdesign",
+          description:
+            "**Intuïtieve digitale ervaringen** ontwerpen die **gebruikersbehoeften** verbinden met heldere **productlogica en interaction design**.",
+        },
+        aiPrototyping: {
+          title: "AI-ondersteunde Prototyping & Conceptontwikkeling",
+          description:
+            "Ideeën snel verkennen via **prototypes, experimenten en nieuwe tools** om **vroege concepten** om te zetten in **tastbare ervaringen**.",
+        },
       },
-      paragraph4: {
-        beforeHighlight1:
-          "Naast mijn studie werkte ik als vrijwillig vertaler en cultureel bemiddelaar voor organisaties zoals",
-        highlight1: "VluchtelingenWerk",
-        middle:
-          "en de",
-        highlight2: "Gemeente Amstelveen",
-        afterHighlight2:
-          ". Ik ondersteunde bij vertalingen tussen Nederlands, Engels en Arabisch en hielp bij workshops waarin nieuwkomers kennismaakten met de Nederlandse samenleving en kernwaarden. Deze ervaringen hebben mijn cross-culturele communicatieve vaardigheden versterkt en mijn vermogen ontwikkeld om complexe ideeën helder over te brengen aan verschillende doelgroepen.",
+      highlightsTitle: "Highlights",
+      highlights: {
+        organizations: "5+ organisaties",
+        interactivePrototypes: "Interactieve prototypes",
+        crossCulturalCommunication: "Cross-culturele communicatie",
+        multilingualPerspective: "Vloeiend Arabisch & Engels, B1 Nederlands",
       },
-      paragraph5: {
-        beforeClient1:
-          "Later behaalde ik mijn Bachelor International Creative Business aan Inholland in Haarlem, waar ik in 2025 afstudeerde met een minor in Digital Marketing. Tijdens mijn studie werkte ik aan echte projecten voor organisaties zoals",
-        client1: "Patronaat",
-        betweenClient1And2: ",",
-        client2: "Amstelhof",
-        betweenClient2And3: " en",
-        client3: "De FilmHallen",
-        afterClient3:
-          ", waarbij ik betrokken was bij het volledige proces: van briefing en onderzoek tot conceptontwikkeling en eindpresentatie.",
+    },
+    story: {
+      title: "Mijn verhaal",
+      sections: {
+        background: {
+          title: "Mijn achtergrond",
+          paragraph1:
+            "Ik ben een Creative Strategist met een multidisciplinaire achtergrond in **branding, UX/UI-design, digitale marketing en technologie**. Mijn werk richt zich op het vertalen van ideeën naar duidelijke concepten en ervaringen die zowel creatief aansprekend als strategisch onderbouwd zijn.",
+          paragraph2:
+            "Mijn professionele pad combineert **communicatie, technologie en creatief denken**. Voordat ik naar Nederland verhuisde, gaf ik Engelse les aan kinderen in Syrië, waar ik al vroeg sterke communicatie- en presentatievaardigheden ontwikkelde.",
+        },
+        crossCulturalExperience: {
+          title: "Cross-culturele ervaring",
+          paragraph1:
+            "Nadat ik op mijn 19e naar Nederland verhuisde, bleef ik mijn interesse in taal en onderwijs verder ontwikkelen door de studie **Engels Docent aan de HU University of Applied Sciences in Utrecht** te volgen.",
+          paragraph2:
+            "Naast mijn studie werkte ik als vrijwillig vertaler en cultureel bemiddelaar voor organisaties zoals **VluchtelingenWerk** en **de Gemeente Amstelveen**. Ik ondersteunde bij vertalingen tussen Nederlands, Engels en Arabisch en hielp bij workshops waarin nieuwkomers kennismaakten met de Nederlandse samenleving en kernwaarden.",
+        },
+        technologyDesign: {
+          title: "Technologie & Design",
+          paragraph1:
+            "Mijn interesse in technologie bracht mij ertoe **Information Technology aan Hogeschool Inholland in Haarlem** te studeren, waar ik een technische basis opbouwde in **C#, HTML, SQL, Python en UX/UI**.",
+          paragraph2:
+            "Door zowel de creatieve als de technische kant van digitale producten te begrijpen, kan ik **de brug slaan tussen ideeën, design en realisatie**.",
+        },
+        creativeBusinessClientWork: {
+          title: "Creative Business & klantprojecten",
+          paragraph1:
+            "Later behaalde ik mijn **Bachelor International Creative Business** aan Inholland in Haarlem, waar ik in 2025 afstudeerde met een minor in **Digital Marketing**.",
+          paragraph2:
+            "Tijdens mijn studie werkte ik aan echte projecten voor organisaties zoals **Patronaat**, **Amstelhof** en **De FilmHallen**, waarbij ik betrokken was bij het volledige proces: van briefing en onderzoek tot conceptontwikkeling en eindpresentatie.",
+        },
+        aiPrototyping: {
+          title: "AI & Prototyping",
+          paragraph1:
+            "Naast mijn werk in design en strategie experimenteer ik met **AI-ondersteunde ontwikkeling** met tools zoals **Cursor, Claude Code en Codex** om snel websites, apps en interactieve concepten te prototypen.",
+          paragraph2:
+            "Dankzij mijn technische achtergrond gebruik ik deze tools niet alleen creatief, maar begrijp ik ook **de systemen en structuur erachter**.",
+        },
+        focusToday: {
+          title: "Waar ik mij vandaag op focus",
+          paragraph1:
+            "Vandaag richt ik mij op **branding, UX/UI-design, digitale marketing en conceptontwikkeling**, met een sterke focus op vroege ideefases, brand storytelling en experience-gedreven denken.",
+        },
+        languages: {
+          title: "Talen",
+          paragraph1:
+            "Ik spreek vloeiend **Arabisch en Engels** en beheers **Nederlands op B1-niveau**. Met mijn internationale achtergrond breng ik een **cross-cultureel perspectief, technische kennis en hands-on creativiteit** in elke samenwerking.",
+        },
       },
-      paragraph6: {
-        beforeHighlight:
-          "Mijn interesse in technologie bracht mij ertoe Information Technology te studeren aan Hogeschool Inholland in Haarlem, waar ik een technische basis opbouwde in",
-        highlight: "C#, HTML, SQL, Python en UX/UI",
-        afterHighlight:
-          ". Door zowel de creatieve als de technische kant van digitale producten te begrijpen, kan ik de brug slaan tussen ideeën, design en realisatie.",
-      },
-      paragraph7: {
-        beforeHighlight:
-          "Naast mijn werk in design en strategie experimenteer ik met AI-ondersteunde ontwikkeling met tools zoals",
-        highlight: "Cursor, Claude Code en Codex",
-        afterHighlight:
-          "om snel websites, apps en interactieve concepten te prototypen. Dankzij mijn technische achtergrond gebruik ik deze tools niet alleen creatief, maar begrijp ik ook de systemen en structuur erachter.",
-      },
-      paragraph8: {
-        beforeHighlight: "Vandaag richt ik mij op",
-        highlight:
-          "branding, UX/UI-design, digitale marketing en conceptontwikkeling",
-        afterHighlight:
-          ", met een sterke focus op vroege ideefases, brand storytelling en experience-gedreven denken.",
-      },
-      paragraph9:
-        "Ik spreek vloeiend Arabisch en Engels en beheers Nederlands op B1-niveau. Met mijn internationale achtergrond breng ik een cross-cultureel perspectief, technische kennis en hands-on creativiteit in elke samenwerking.",
-      paragraph10:
+      closingLine:
         "Ben je op zoek naar iemand die strategie, creativiteit en technologie verbindt om ideeën om te zetten in betekenisvolle ervaringen? Dan kom ik graag in contact.",
       ctaViewCv: "Bekijk CV",
       ctaContact: "Neem contact op",
@@ -122,7 +170,7 @@ export const nl: LocaleMessages = {
       title: "Praktische ervaring",
       item1: {
         title: "Digital Marketing & Web Development Intern",
-        company: "Park Plaza Hotel Group Europe (PPHE), Amsterdam",
+        company: "Park Plaza Hotel Group Europe (PPHE)",
         description:
           "Bijgedragen aan UX-projecten, ondersteuning geboden bij technische en niet-technische SEO-initiatieven en websiteprestaties geanalyseerd met Google Analytics en Adobe Analytics.",
       },

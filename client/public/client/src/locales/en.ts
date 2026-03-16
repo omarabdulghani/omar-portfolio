@@ -28,67 +28,114 @@ export const en: LocaleMessages = {
       badge: "About Me",
       titlePrefix: "Bridging Creativity &",
       titleHighlight: "Business Strategy",
-      paragraph1: {
-        beforeHighlight: "",
-        highlight: "Turning ideas into meaningful brand experiences",
-        afterHighlight:
-          ", from early ideation to tangible concepts, activations, and digital solutions. I combine research, creativity, and strategy to create concepts that connect with audiences and support business goals.",
+      name: "Omar Abdulghani",
+      description:
+        "Turning ideas into **meaningful brand experiences**, from **early ideation** to tangible concepts, activations, and digital solutions. I combine **research, creativity, and strategy** to create concepts that connect with audiences and support **business goals**.",
+      ctaViewWork: "View My Work",
+      ctaDownloadCv: "Download CV",
+    },
+    workflow: {
+      title: "How I Work",
+      steps: {
+        understand: {
+          title: "Discover",
+          description: "Research & Strategy",
+        },
+        design: {
+          title: "Concept",
+          description: "Ideas & Experience",
+        },
+        prototype: {
+          title: "Design",
+          description: "Brand & UX/UI",
+        },
+        testIterate: {
+          title: "Prototype",
+          description: "Test & Validate",
+        },
+        deliver: {
+          title: "Activate",
+          description: "Launch & Impact",
+        },
       },
-      paragraph2:
-        "I’m a Creative Strategist with a multidisciplinary background in branding, UX/UI design, digital marketing, and technology. My work focuses on translating ideas into clear concepts and experiences that are both creatively engaging and strategically grounded.",
-      paragraph3: {
-        beforeHighlight:
-          "My professional path combines",
-        highlight: "communication, technology, and creative thinking",
-        afterHighlight:
-          ". Before moving to the Netherlands, I taught English to children in Syria, where I developed strong communication and presentation skills early on. After moving to the Netherlands at the age of 19, I continued developing this interest in language and education by studying English Teaching at HU University of Applied Sciences in Utrecht.",
+    },
+    overview: {
+      focusTitle: "What I Focus On",
+      focusItems: {
+        brandStrategy: {
+          title: "Brand & Experience Strategy",
+          description:
+            "Developing concepts that translate brand ideas into **meaningful experiences** through **storytelling, activations, and digital touchpoints**.",
+        },
+        uxUiDesign: {
+          title: "UX/UI & Digital Product Design",
+          description:
+            "Designing **intuitive digital experiences** that connect **user needs** with clear **product thinking and interaction design**.",
+        },
+        aiPrototyping: {
+          title: "AI-Assisted Prototyping & Concept Development",
+          description:
+            "Rapidly exploring ideas through **prototypes, experiments, and emerging tools** to turn **early concepts** into **tangible experiences**.",
+        },
       },
-      paragraph4: {
-        beforeHighlight1:
-          "Alongside my studies, I worked as a voluntary translator and cultural mediator with organizations such as",
-        highlight1: "VluchtelingenWerk",
-        middle:
-          "and",
-        highlight2: "the Municipality of Amstelveen",
-        afterHighlight2:
-          ". I assisted with translation between Dutch, English, and Arabic, and supported workshops that introduced newcomers to Dutch society and core values. These experiences strengthened my cross-cultural communication skills and my ability to explain complex ideas clearly to diverse audiences.",
+      highlightsTitle: "Highlights",
+      highlights: {
+        organizations: "5+ Organizations",
+        interactivePrototypes: "Interactive Prototypes",
+        crossCulturalCommunication: "Cross-Cultural Communication",
+        multilingualPerspective: "Fluent Arabic & English, B1 Dutch",
       },
-      paragraph5: {
-        beforeClient1:
-          "I later completed my Bachelor's degree in International Creative Business at Inholland in Haarlem, graduating in 2025 with a minor in Digital Marketing. During this time, I worked on real client projects for organizations such as",
-        client1: "Patronaat",
-        betweenClient1And2: ",",
-        client2: "Amstelhof",
-        betweenClient2And3: ", and",
-        client3: "De FilmHallen",
-        afterClient3:
-          ", contributing to projects from briefing and research to concept development and final presentation.",
+    },
+    story: {
+      title: "My Story",
+      sections: {
+        background: {
+          title: "My Background",
+          paragraph1:
+            "I’m a Creative Strategist with a multidisciplinary background in **branding, UX/UI design, digital marketing, and technology**. My work focuses on translating ideas into clear concepts and experiences that are both creatively engaging and strategically grounded.",
+          paragraph2:
+            "My professional path combines **communication, technology, and creative thinking**. Before moving to the Netherlands, I taught English to children in Syria, where I developed strong communication and presentation skills early on.",
+        },
+        crossCulturalExperience: {
+          title: "Cross-Cultural Experience",
+          paragraph1:
+            "After moving to the Netherlands at the age of 19, I continued developing this interest in language and education by studying **English Teaching at HU University of Applied Sciences in Utrecht**.",
+          paragraph2:
+            "Alongside my studies, I worked as a voluntary translator and cultural mediator with organizations such as **VluchtelingenWerk** and **the Municipality of Amstelveen**. I assisted with translation between Dutch, English, and Arabic, and supported workshops that introduced newcomers to Dutch society and core values.",
+        },
+        technologyDesign: {
+          title: "Technology & Design",
+          paragraph1:
+            "My interest in technology led me to study **Information Technology at Inholland University of Applied Sciences in Haarlem**, where I built a technical foundation in **C#, HTML, SQL, Python, and UX/UI**.",
+          paragraph2:
+            "Understanding both the creative and technical sides of digital products allows me to **bridge the gap between ideas, design, and implementation**.",
+        },
+        creativeBusinessClientWork: {
+          title: "Creative Business & Client Work",
+          paragraph1:
+            "I later completed my **Bachelor's degree in International Creative Business** at Inholland in Haarlem, graduating in 2025 with a minor in **Digital Marketing**.",
+          paragraph2:
+            "During this time, I worked on real client projects for organizations such as **Patronaat**, **Amstelhof**, and **De FilmHallen**, contributing to projects from briefing and research to concept development and final presentation.",
+        },
+        aiPrototyping: {
+          title: "AI & Prototyping",
+          paragraph1:
+            "Alongside my design and strategy work, I have been exploring **AI-assisted development** using tools such as **Cursor, Claude Code, and Codex** to rapidly prototype websites, apps, and interactive concepts.",
+          paragraph2:
+            "With my technical background, I approach these tools not only creatively but also with a **solid understanding of the systems behind them**.",
+        },
+        focusToday: {
+          title: "What I Focus On Today",
+          paragraph1:
+            "Today, I focus on **branding, UX/UI design, digital marketing, and concept development**, particularly in early-stage ideation, brand storytelling, and experience-driven thinking.",
+        },
+        languages: {
+          title: "Languages",
+          paragraph1:
+            "Fluent in **Arabic and English** and conversational in **Dutch (B1)**, I bring a **cross-cultural perspective, technical understanding, and hands-on creativity** to every collaboration.",
+        },
       },
-      paragraph6: {
-        beforeHighlight:
-          "My interest in technology led me to study Information Technology at Inholland University of Applied Sciences in Haarlem, where I built a technical foundation in",
-        highlight: "C#, HTML, SQL, Python, and UX/UI",
-        afterHighlight:
-          ". Understanding both the creative and technical sides of digital products allows me to bridge the gap between ideas, design, and implementation.",
-      },
-      paragraph7: {
-        beforeHighlight:
-          "Alongside my design and strategy work, I have been exploring AI-assisted development using tools such as",
-        highlight:
-          "Cursor, Claude Code, and Codex",
-        afterHighlight:
-          "to rapidly prototype websites, apps, and interactive concepts. With my technical background, I approach these tools not only creatively but also with a solid understanding of the systems behind them.",
-      },
-      paragraph8: {
-        beforeHighlight: "Today, I focus on",
-        highlight:
-          "branding, UX/UI design, digital marketing, and concept development",
-        afterHighlight:
-          ", particularly in early-stage ideation, brand storytelling, and experience-driven thinking.",
-      },
-      paragraph9:
-        "Fluent in Arabic and English and conversational in Dutch (B1), I bring a cross-cultural perspective, technical understanding, and hands-on creativity to every collaboration.",
-      paragraph10:
+      closingLine:
         "If you're looking for someone who connects strategy, creativity, and technology to turn ideas into meaningful experiences, I’d be happy to connect.",
       ctaViewCv: "View CV",
       ctaContact: "Contact Me",
@@ -121,13 +168,13 @@ export const en: LocaleMessages = {
       title: "Practical Experience",
       item1: {
         title: "Digital Marketing & Web Development Intern",
-        company: "Park Plaza Hotel Group Europe (PPHE), Amsterdam",
+        company: "Park Plaza Hotel Group Europe (PPHE)",
         description:
           "Contributed to UX projects, supported technical and non-technical SEO initiatives, and analyzed website performance using Google Analytics and Adobe Analytics.",
       },
       item2: {
         title: "Freelance Language Tutor",
-        company: "Amstelveen, The Netherlands",
+        company: "Amstelveen, Netherlands",
         description:
           "Taught Arabic and English in one-to-one and small-group settings, adapting content to different learner backgrounds and goals.",
       },
