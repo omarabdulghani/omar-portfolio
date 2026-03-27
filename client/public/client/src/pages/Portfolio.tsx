@@ -11,6 +11,7 @@ export default function Portfolio() {
 
   const categories = [
     { value: "all", label: messages.portfolio.filters.all },
+    { value: "e-commerce-validation", label: messages.portfolio.filters.eCommerceValidation },
     { value: "ux-ui-design", label: messages.portfolio.filters.uxUiDesign },
     { value: "brand-activation", label: messages.portfolio.filters.brandActivation },
     { value: "digital-marketing", label: messages.portfolio.filters.digitalMarketing },
@@ -27,6 +28,21 @@ export default function Portfolio() {
   ];
 
   const projects = [
+    {
+      id: "theraneck-ecommerce",
+      title: messages.projectDetails.theraNeckEcommerce.title,
+      categoryValue: "e-commerce-validation",
+      category: messages.portfolio.filters.eCommerceValidation,
+      image: "/images/theraneck-gallery/theraneck%20thumbnail-updated.jpg",
+      description: messages.portfolio.projects.theraNeckEcommerce.description,
+      tags: [
+        messages.portfolio.tags.eCommerce,
+        messages.portfolio.tags.productValidation,
+        messages.portfolio.tags.conversionOptimization,
+        messages.portfolio.tags.behaviouralAnalytics,
+      ],
+      tagValues: ["e-commerce", "product-validation", "conversion-optimization", "behavioural-analytics"],
+    },
     {
       id: "moes-tuinen",
       title: "MOES Tuinen",

@@ -15,6 +15,64 @@ import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
 const projectsData: Record<string, any> = {
+  "theraneck-ecommerce": {
+    title: "TheraNeck | E-commerce Product",
+    subtitle: "E-commerce Validation & Conversion Smoke Test",
+    year: "2026",
+    client: "Self-Initiated",
+    clientLogo: "/images/theraneck-gallery/theranecklogo.png",
+    clientLogoClass: "h-13 rounded-xl dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.38)]",
+    clientWebsite: "https://www.trytheraneck.com",
+    overviewLinkHref: "https://www.trytheraneck.com",
+    overviewLinkLabel: "www.trytheraneck.com",
+    role: "UX/UI Designer, Conversion Strategist, Product Researcher, E-commerce Builder",
+    description:
+      "TheraNeck is a **self-initiated e-commerce validation project** created to gain hands-on experience in launching and testing a real digital product concept in a live environment.\n\nThe project focused on designing and building a **conversion-oriented storefront** for a wellness product while measuring genuine user demand before committing to a full operational launch.\n\nRather than approaching the work purely as a visual design exercise, the objective was to understand the broader mechanics of e-commerce, including **behavioural analytics, funnel performance, payment setup, demand validation, and early-stage growth experimentation**.\n\nTo enable **data-driven learning**, user behaviour across key CTAs and pages was tracked using privacy-focused analytics tooling, allowing real interaction signals to guide iteration.",
+    challenge:
+      "Transitioning from theoretical UX knowledge to a functioning e-commerce experiment introduced several practical challenges:\n\n- Designing a product experience that communicates **value and credibility within seconds**\n- Understanding **real purchase-intent behaviour** instead of relying on assumptions or mock testing\n- Setting up a technically functional **payment and funnel infrastructure**\n- Measuring interest before investing in **inventory, logistics, or scaling** efforts\n- Managing design, development, analytics, and marketing responsibilities as a **solo operator**\n\nThe project required balancing execution speed with sufficient realism to generate meaningful behavioural insights.",
+    solution:
+      "A **fully functional dropshipping storefront** was designed and developed as a controlled experimentation environment.",
+    solutionSections: [
+      {
+        title: "Conversion-focused product experience",
+        body: "The landing and product experience were structured around proven conversion principles:\n\n- Clear benefit-driven messaging **above the fold**\n- Strong visual hierarchy guiding users toward **primary actions**\n- Trust and reassurance patterns reducing perceived risk\n- Friction-reduction strategies in navigation and interaction flows\n- Demand validation via a **smoke-test funnel**",
+      },
+      {
+        title: "Demand validation via smoke test",
+        body: "Instead of immediately enabling purchases, a structured smoke-test mechanism was implemented to quantify real buying intent.\n\nUsers clicking the primary purchase CTA were redirected to a researched **out-of-stock restock page** designed to encourage high-intent visitors to leave their email for priority access.\n\nThis approach enabled measurement of:\n\n- CTA interaction behaviour\n- Funnel progression and drop-off points\n- Strength of demand signals",
+      },
+      {
+        title: "Behavioural analytics and internal tooling",
+        body: "User activity across pages and CTAs was tracked using **Umami** to monitor engagement patterns and validate assumptions.\n\nAdditionally, a simple internal admin interface was created to review captured waitlist emails and restock-page visits, providing a lightweight operational dashboard for early validation tracking.",
+      },
+      {
+        title: "End-to-end e-commerce experimentation",
+        body: "To simulate a realistic product launch scenario, the project also included:\n\n- Trend-based product research informed by personal product experience\n- Payment infrastructure configuration using **Stripe**\n- Store development supported by **AI-assisted coding workflows**\n- Creation of social media accounts and initial promotional content\n- Iterative refinement of messaging, layout, and interaction cues\n\nThis enabled exploration of both design execution and product decision-making under real market conditions.",
+      },
+    ],
+    solutionAsideImage: "/images/theraneck-gallery/card-image.png",
+    impact:
+      "While not positioned as a fully scaled commercial launch, the project generated meaningful applied learning outcomes:\n\n- Developed practical understanding of dropshipping setup and operational workflows\n- Gained experience implementing **behavioural analytics** and interpreting funnel signals\n- Strengthened intuition for **conversion psychology** and intent measurement\n- Validated interest using observable user actions rather than hypothetical feedback\n- Built confidence in independently initiating, shipping, and evaluating product experiments\n\nOverall, the project accelerated the transition from conceptual UX thinking toward **market-oriented product experimentation** and growth awareness.",
+    tags: ["E-commerce", "UX/UI Design", "Conversion Optimization", "Web Design"],
+    tools: [
+      "Figma",
+      "UX Audits",
+      "Analytics Review",
+      "Prototyping",
+      "Umami",
+      "AI-assisted Development (Cursor / CodeX / ChatGPT)",
+      "Stripe",
+    ],
+    image: "/images/theraneck-gallery/theraneck%20thumbnail-updated.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "/images/theraneck-gallery/gallery-hero.png",
+        alt: "TheraNeck storefront hero section",
+        title: "Storefront Hero",
+      },
+    ],
+  },
   "moes-tuinen": {
     title: "MOES Tuinen",
     subtitle: "Brand Awareness, Pop-up Activation & Social Media Strategy",
@@ -499,13 +557,56 @@ const projectsData: Record<string, any> = {
   }
 };
 
-function renderWithBold(text: string) {
+function renderInlineWithBold(text: string, keyPrefix: string) {
   const parts = text.split(/(\*\*.*?\*\*)/g);
   return parts.map((part, index) => {
+    const key = `${keyPrefix}-${index}`;
     if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={index}>{part.slice(2, -2)}</strong>;
+      return <strong key={key}>{part.slice(2, -2)}</strong>;
     }
-    return <span key={index}>{part}</span>;
+    return <span key={key}>{part}</span>;
+  });
+}
+
+function renderRichText(text: string) {
+  const blocks = text
+    .split(/\n{2,}/g)
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  return blocks.map((block, blockIndex) => {
+    const lines = block
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    const isBulletList = lines.length > 1 && lines.every((line) => line.startsWith("- "));
+
+    if (isBulletList) {
+      return (
+        <ul key={`block-${blockIndex}`} className="list-disc pl-5 space-y-2">
+          {lines.map((line, lineIndex) => (
+            <li key={`block-${blockIndex}-li-${lineIndex}`}>
+              {renderInlineWithBold(
+                line.replace(/^- /, ""),
+                `block-${blockIndex}-li-${lineIndex}`
+              )}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    return (
+      <p key={`block-${blockIndex}`}>
+        {lines.map((line, lineIndex) => (
+          <span key={`block-${blockIndex}-line-${lineIndex}`}>
+            {renderInlineWithBold(line, `block-${blockIndex}-line-${lineIndex}`)}
+            {lineIndex < lines.length - 1 ? <br /> : null}
+          </span>
+        ))}
+      </p>
+    );
   });
 }
 
@@ -526,6 +627,7 @@ export default function ProjectDetail() {
   const { messages } = useLanguage();
   const projectId = params?.id;
   const project = projectId ? projectsData[projectId] : undefined;
+  const isTheraNeckEcommerce = projectId === "theraneck-ecommerce";
   const isMoesTuinen = projectId === "moes-tuinen";
   const isAmstelhofConnect = projectId === "amstelhof-connect";
   const isPatronApp = projectId === "patronapp";
@@ -535,6 +637,17 @@ export default function ProjectDetail() {
   const isBurningManCampaign = projectId === "burning-man-campaign";
   const isStreamingEmotionsValuePlan = projectId === "streaming-emotions-value-plan";
   const isBeexExportStrategy = projectId === "beex-export-strategy";
+  const hasLocalizedProjectCopy =
+    isTheraNeckEcommerce ||
+    isMoesTuinen ||
+    isAmstelhofConnect ||
+    isPatronApp ||
+    isPpheHotel ||
+    isProDetailing ||
+    isHallenCity ||
+    isBurningManCampaign ||
+    isStreamingEmotionsValuePlan ||
+    isBeexExportStrategy;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -553,7 +666,37 @@ export default function ProjectDetail() {
     return <NotFound />;
   }
 
-  const localizedProject = isMoesTuinen
+  const localizedProject = isTheraNeckEcommerce
+    ? {
+        ...project,
+        title: messages.projectDetails.theraNeckEcommerce.title,
+        subtitle: messages.projectDetails.theraNeckEcommerce.subtitle,
+        description: messages.projectDetails.theraNeckEcommerce.description,
+        challenge: messages.projectDetails.theraNeckEcommerce.challenge,
+        solution: messages.projectDetails.theraNeckEcommerce.solution,
+        impact: messages.projectDetails.theraNeckEcommerce.impact,
+        role: messages.projectDetails.theraNeckEcommerce.role,
+        tags: messages.projectDetails.theraNeckEcommerce.tags,
+        tools: messages.projectDetails.theraNeckEcommerce.tools,
+        solutionSections: messages.projectDetails.theraNeckEcommerce.solutionSections,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Storefront Hero":
+              messages.projectDetails.theraNeckEcommerce.galleryTitles.storefrontHero,
+          };
+
+          const nextTitle = item.title ? translatedTitles[item.title] ?? item.title : item.title;
+
+          return {
+            ...item,
+            title: nextTitle,
+            alt: nextTitle ?? item.alt,
+          };
+        }),
+      }
+    : isMoesTuinen
     ? {
         ...project,
         subtitle: messages.projectDetails.moesTuinen.subtitle,
@@ -819,7 +962,7 @@ export default function ProjectDetail() {
               className="inline-flex items-center text-white/80 hover:text-primary mb-6 transition-colors"
               onClick={() => trackEvent("nav_click", { location: "project_detail_hero", destination: "/portfolio" })}
             >
-              <ArrowLeft className="mr-2 h-4 w-4" /> {(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.backToPortfolio : "Back to Portfolio"}
+              <ArrowLeft className="mr-2 h-4 w-4" /> {hasLocalizedProjectCopy ? messages.projectDetails.common.backToPortfolio : "Back to Portfolio"}
             </a>
           </Link>
           <div className="flex flex-wrap gap-3 mb-4">
@@ -843,32 +986,85 @@ export default function ProjectDetail() {
           {/* Main Content */}
           <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
             <div>
-              <h2 className="text-2xl font-heading font-bold mb-4">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.overview : "Overview"}</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {renderWithBold(localizedProject.description)}
-              </p>
+              <h2 className="text-2xl font-heading font-bold mb-4">{hasLocalizedProjectCopy ? messages.projectDetails.common.overview : "Overview"}</h2>
+              <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+                {renderRichText(localizedProject.description)}
+              </div>
+              {localizedProject.overviewLinkHref ? (
+                <a
+                  href={localizedProject.overviewLinkHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-base font-medium text-primary hover:text-primary/80"
+                  onClick={() =>
+                    trackEvent("external_link_click", {
+                      location: "project_overview",
+                      project_id: projectId ?? null,
+                    })
+                  }
+                >
+                  <span>{localizedProject.overviewLinkLabel || localizedProject.overviewLinkHref}</span>
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              ) : null}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-card/50 p-6 rounded-xl border border-white/5">
-                <h3 className="text-xl font-bold mb-3 text-primary">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.challenge : "The Challenge"}</h3>
-                <p className="text-muted-foreground">
-                  {renderWithBold(localizedProject.challenge)}
-                </p>
+                <h3 className="text-xl font-bold mb-3 text-primary">{hasLocalizedProjectCopy ? messages.projectDetails.common.challenge : "The Challenge"}</h3>
+                <div className="text-muted-foreground space-y-4">
+                  {renderRichText(localizedProject.challenge)}
+                </div>
               </div>
-              <div className="bg-card/50 p-6 rounded-xl border border-white/5">
-                <h3 className="text-xl font-bold mb-3 text-primary">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.solution : "The Solution"}</h3>
-                <p className="text-muted-foreground">
-                  {renderWithBold(localizedProject.solution)}
-                </p>
+              <div className="flex flex-col gap-8 h-full min-h-0">
+                <div className="bg-card/50 p-6 rounded-xl border border-white/5">
+                  <h3 className="text-xl font-bold mb-3 text-primary">{hasLocalizedProjectCopy ? messages.projectDetails.common.solution : "The Solution"}</h3>
+                  <div className="text-muted-foreground space-y-4">
+                    {renderRichText(localizedProject.solution)}
+                  </div>
+                </div>
+
+                {localizedProject.solutionAsideImage ? (
+                  <div className="bg-card/50 rounded-xl border border-white/5 overflow-hidden flex-1 min-h-0">
+                    <img
+                      src={localizedProject.solutionAsideImage}
+                      alt={`${localizedProject.title} solution highlight`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : null}
               </div>
             </div>
 
+            {Array.isArray(localizedProject.solutionSections) && localizedProject.solutionSections.length > 0 ? (
+              <div className="space-y-6">
+                <h2 className="text-2xl font-heading font-bold">
+                  {hasLocalizedProjectCopy ? messages.projectDetails.common.solutionBreakdown : "Solution Breakdown"}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {localizedProject.solutionSections.map(
+                    (section: { title: string; body: string }, index: number) => (
+                      <div
+                        key={`${section.title}-${index}`}
+                        className="bg-card/40 p-6 rounded-xl border border-white/10"
+                      >
+                        <h3 className="text-lg font-bold mb-3">{section.title}</h3>
+                        <div className="text-muted-foreground leading-relaxed space-y-4">
+                          {renderRichText(section.body)}
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            ) : null}
+
             <div>
-              <h2 className="text-2xl font-heading font-bold mb-4">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.impactResults : "Impact & Results"}</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {renderWithBold(localizedProject.impact)}
-              </p>
+              <h2 className="text-2xl font-heading font-bold mb-4">{hasLocalizedProjectCopy ? messages.projectDetails.common.impactResults : "Impact & Results"}</h2>
+              <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+                {renderRichText(localizedProject.impact)}
+              </div>
             </div>
 
             {project.deviceMockup ? (
@@ -912,12 +1108,12 @@ export default function ProjectDetail() {
             {/* Gallery */}
             {localizedProject.gallery && localizedProject.gallery.length > 0 && (
               <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-bold">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.projectGallery : "Project Gallery"}</h2>
+                <h2 className="text-2xl font-heading font-bold">{hasLocalizedProjectCopy ? messages.projectDetails.common.projectGallery : "Project Gallery"}</h2>
                 <ProjectGallery
                   ref={galleryRef}
                   items={localizedProject.gallery as ProjectGalleryMedia[]}
                   fallbackPoster={localizedProject.image}
-                  sectionLabels={(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.gallerySections : undefined}
+                  sectionLabels={hasLocalizedProjectCopy ? messages.projectDetails.common.gallerySections : undefined}
                 />
               </div>
             )}
@@ -927,7 +1123,13 @@ export default function ProjectDetail() {
           <div className="order-1 lg:order-2 space-y-8">
             <div className="bg-card border border-white/10 rounded-xl p-6 space-y-6 sticky top-24">
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.client : "Client"}</h3>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">
+                  {isTheraNeckEcommerce
+                    ? messages.projectDetails.common.website
+                    : hasLocalizedProjectCopy
+                    ? messages.projectDetails.common.client
+                    : "Client"}
+                </h3>
                 {localizedProject.clientLogos?.length ? (
                   <div className="mt-2 mb-2 min-h-[48px] flex flex-wrap items-center gap-3">
                     {localizedProject.clientLogos.map((logo: any, index: number) =>
@@ -972,8 +1174,8 @@ export default function ProjectDetail() {
                           <img
                             src={localizedProject.clientLogo}
                             alt={`${localizedProject.client} logo`}
-                            className={`${localizedProject.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
-                              localizedProject.clientLogoDark ? "" : "dark:block"
+                            className={`${localizedProject.clientLogoClass || "h-10"} w-auto object-contain ${
+                              localizedProject.clientLogoDark ? "dark:hidden" : ""
                             }`}
                           />
                           {localizedProject.clientLogoDark ? (
@@ -990,8 +1192,8 @@ export default function ProjectDetail() {
                           <img
                             src={localizedProject.clientLogo}
                             alt={`${localizedProject.client} logo`}
-                            className={`${localizedProject.clientLogoClass || "h-10"} w-auto object-contain dark:hidden ${
-                              localizedProject.clientLogoDark ? "" : "dark:block"
+                            className={`${localizedProject.clientLogoClass || "h-10"} w-auto object-contain ${
+                              localizedProject.clientLogoDark ? "dark:hidden" : ""
                             }`}
                           />
                         {localizedProject.clientLogoDark ? (
@@ -1010,17 +1212,17 @@ export default function ProjectDetail() {
               </div>
               
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.year : "Year"}</h3>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{hasLocalizedProjectCopy ? messages.projectDetails.common.year : "Year"}</h3>
                 <p className="text-lg font-bold">{localizedProject.year}</p>
               </div>
               
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.myRole : "My Role"}</h3>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">{hasLocalizedProjectCopy ? messages.projectDetails.common.myRole : "My Role"}</h3>
                 <p className="text-lg font-bold">{localizedProject.role}</p>
               </div>
               
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">{(isMoesTuinen || isAmstelhofConnect || isPatronApp || isPpheHotel || isProDetailing || isHallenCity || isBurningManCampaign || isStreamingEmotionsValuePlan || isBeexExportStrategy) ? messages.projectDetails.common.toolsUsed : "Tools Used"}</h3>
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">{hasLocalizedProjectCopy ? messages.projectDetails.common.toolsUsed : "Tools Used"}</h3>
                 <div className="flex flex-wrap gap-2">
                   {localizedProject.tools.map((tool: string) => (
                     <span key={tool} className="text-sm border border-white/10 px-2 py-1 rounded bg-secondary/50">

@@ -320,6 +320,7 @@ export interface LocaleMessages {
     };
     filters: {
       all: string;
+      eCommerceValidation: string;
       uxUiDesign: string;
       brandActivation: string;
       digitalMarketing: string;
@@ -335,6 +336,7 @@ export interface LocaleMessages {
       marketResearch: string;
     };
     projects: {
+      theraNeckEcommerce: { description: string };
       moesTuinen: { description: string };
       amstelhofConnect: { description: string };
       patronApp: { description: string };
@@ -346,6 +348,9 @@ export interface LocaleMessages {
       beexExportStrategy: { description: string };
     };
     tags: {
+      eCommerce: string;
+      productValidation: string;
+      behaviouralAnalytics: string;
       brandActivation: string;
       socialMedia: string;
       digitalMarketing: string;
@@ -378,8 +383,10 @@ export interface LocaleMessages {
       overview: string;
       challenge: string;
       solution: string;
+      solutionBreakdown: string;
       impactResults: string;
       prototypePreview: string;
+      website: string;
       client: string;
       year: string;
       myRole: string;
@@ -389,6 +396,24 @@ export interface LocaleMessages {
         videos: string;
         images: string;
         documents: string;
+      };
+    };
+    theraNeckEcommerce: {
+      title: string;
+      subtitle: string;
+      description: string;
+      challenge: string;
+      solution: string;
+      impact: string;
+      role: string;
+      tags: string[];
+      tools: string[];
+      solutionSections: Array<{
+        title: string;
+        body: string;
+      }>;
+      galleryTitles: {
+        storefrontHero: string;
       };
     };
     moesTuinen: {

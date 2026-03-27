@@ -347,6 +347,7 @@ export const en: LocaleMessages = {
     },
     filters: {
       all: "All",
+      eCommerceValidation: "E-commerce Validation",
       uxUiDesign: "UX/UI Design",
       brandActivation: "Brand Activation",
       digitalMarketing: "Digital Marketing",
@@ -362,6 +363,10 @@ export const en: LocaleMessages = {
       marketResearch: "Market Research",
     },
     projects: {
+      theraNeckEcommerce: {
+        description:
+          "Self-initiated e-commerce experiment to validate demand with a conversion-focused storefront and smoke test before committing to a full operational launch.",
+      },
       moesTuinen: {
         description:
           "A comprehensive brand activation campaign including pop-up stands, social media strategy, and digital marketing planning.",
@@ -400,6 +405,9 @@ export const en: LocaleMessages = {
       },
     },
     tags: {
+      eCommerce: "E-commerce",
+      productValidation: "Product Validation",
+      behaviouralAnalytics: "Behavioural Analytics",
       brandActivation: "Brand Activation",
       socialMedia: "Social Media",
       digitalMarketing: "Digital Marketing",
@@ -432,8 +440,10 @@ export const en: LocaleMessages = {
       overview: "Overview",
       challenge: "The Challenge",
       solution: "The Solution",
+      solutionBreakdown: "Solution Breakdown",
       impactResults: "Impact & Results",
       prototypePreview: "Prototype Preview",
+      website: "Website",
       client: "Client",
       year: "Year",
       myRole: "My Role",
@@ -443,6 +453,50 @@ export const en: LocaleMessages = {
         videos: "Videos",
         images: "Images",
         documents: "Documents",
+      },
+    },
+    theraNeckEcommerce: {
+      title: "TheraNeck | E-commerce Product",
+      subtitle: "E-commerce Validation & Conversion Smoke Test",
+      description:
+        "TheraNeck is a **self-initiated e-commerce validation project** created to gain hands-on experience in launching and testing a real digital product concept in a live environment.\n\nThe project focused on designing and building a **conversion-oriented storefront** for a wellness product while measuring genuine user demand before committing to a full operational launch.\n\nRather than approaching the work purely as a visual design exercise, the objective was to understand the broader mechanics of e-commerce, including **behavioural analytics, funnel performance, payment setup, demand validation, and early-stage growth experimentation**.\n\nTo enable **data-driven learning**, user behaviour across key CTAs and pages was tracked using privacy-focused analytics tooling, allowing real interaction signals to guide iteration.",
+      challenge:
+        "Transitioning from theoretical UX knowledge to a functioning e-commerce experiment introduced several practical challenges:\n\n- Designing a product experience that communicates **value and credibility within seconds**\n- Understanding **real purchase-intent behaviour** instead of relying on assumptions or mock testing\n- Setting up a technically functional **payment and funnel infrastructure**\n- Measuring interest before investing in **inventory, logistics, or scaling** efforts\n- Managing design, development, analytics, and marketing responsibilities as a **solo operator**\n\nThe project required balancing execution speed with sufficient realism to generate meaningful behavioural insights.",
+      solution:
+        "A **fully functional dropshipping storefront** was designed and developed as a controlled experimentation environment.",
+      impact:
+        "While not positioned as a fully scaled commercial launch, the project generated meaningful applied learning outcomes:\n\n- Developed practical understanding of dropshipping setup and operational workflows\n- Gained experience implementing **behavioural analytics** and interpreting funnel signals\n- Strengthened intuition for **conversion psychology** and intent measurement\n- Validated interest using observable user actions rather than hypothetical feedback\n- Built confidence in independently initiating, shipping, and evaluating product experiments\n\nOverall, the project accelerated the transition from conceptual UX thinking toward **market-oriented product experimentation** and growth awareness.",
+      role: "UX/UI Designer, Conversion Strategist, Product Researcher, E-commerce Builder",
+      tags: ["E-commerce", "UX/UI Design", "Conversion Optimization", "Web Design"],
+      tools: [
+        "Figma",
+        "UX Audits",
+        "Analytics Review",
+        "Prototyping",
+        "Umami",
+        "AI-assisted Development (Cursor / CodeX / ChatGPT)",
+        "Stripe",
+      ],
+      solutionSections: [
+        {
+          title: "Conversion-focused product experience",
+          body: "The landing and product experience were structured around proven conversion principles:\n\n- Clear benefit-driven messaging **above the fold**\n- Strong visual hierarchy guiding users toward **primary actions**\n- Trust and reassurance patterns reducing perceived risk\n- Friction-reduction strategies in navigation and interaction flows\n- Demand validation via a **smoke-test funnel**",
+        },
+        {
+          title: "Demand validation via smoke test",
+          body: "Instead of immediately enabling purchases, a structured smoke-test mechanism was implemented to quantify real buying intent.\n\nUsers clicking the primary purchase CTA were redirected to a researched **out-of-stock restock page** designed to encourage high-intent visitors to leave their email for priority access.\n\nThis approach enabled measurement of:\n\n- CTA interaction behaviour\n- Funnel progression and drop-off points\n- Strength of demand signals",
+        },
+        {
+          title: "Behavioural analytics and internal tooling",
+          body: "User activity across pages and CTAs was tracked using **Umami** to monitor engagement patterns and validate assumptions.\n\nAdditionally, a simple internal admin interface was created to review captured waitlist emails and restock-page visits, providing a lightweight operational dashboard for early validation tracking.",
+        },
+        {
+          title: "End-to-end e-commerce experimentation",
+          body: "To simulate a realistic product launch scenario, the project also included:\n\n- Trend-based product research informed by personal product experience\n- Payment infrastructure configuration using **Stripe**\n- Store development supported by **AI-assisted coding workflows**\n- Creation of social media accounts and initial promotional content\n- Iterative refinement of messaging, layout, and interaction cues\n\nThis enabled exploration of both design execution and product decision-making under real market conditions.",
+        },
+      ],
+      galleryTitles: {
+        storefrontHero: "Storefront Hero",
       },
     },
     moesTuinen: {

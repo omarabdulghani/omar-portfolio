@@ -27,20 +27,24 @@ export default function Home() {
 
   const featuredProjects = [
     {
+      id: "theraneck-ecommerce",
+      title: messages.projectDetails.theraNeckEcommerce.title,
+      category: messages.portfolio.filters.eCommerceValidation,
+      image: "/images/theraneck-gallery/theraneck%20thumbnail-updated.jpg",
+      description: messages.portfolio.projects.theraNeckEcommerce.description,
+      tags: [
+        messages.portfolio.tags.eCommerce,
+        messages.portfolio.tags.productValidation,
+        messages.portfolio.tags.conversionOptimization
+      ]
+    },
+    {
       id: "moes-tuinen",
       title: "MOES Tuinen",
       category: messages.portfolio.filters.brandActivation,
-      image: "/images/project-moes.jpg", // Placeholder, will need to be replaced or mapped
+      image: "/images/project-moes-tuinen.jpg",
       description: messages.portfolio.projects.moesTuinen.description,
       tags: [messages.tags.brandActivation, messages.tags.socialMedia, messages.tags.digitalMarketing]
-    },
-    {
-      id: "amstelhof-connect",
-      title: "Amstelhof Connect",
-      category: messages.portfolio.filters.appDesign,
-      image: "/images/project-amstelhof.jpg",
-      description: messages.portfolio.projects.amstelhofConnect.description,
-      tags: [messages.tags.uxUiDesign, messages.tags.appConcept, messages.tags.processOptimization]
     },
     {
       id: "patronapp",
@@ -324,7 +328,6 @@ export default function Home() {
               <ProjectCard
                 key={project.id}
                 {...project}
-                image={`/images/project-${project.id}.jpg`}
                 analyticsContext="home_featured_projects"
               />
             ))}

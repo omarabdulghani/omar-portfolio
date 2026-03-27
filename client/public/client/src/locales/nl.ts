@@ -349,6 +349,7 @@ export const nl: LocaleMessages = {
     },
     filters: {
       all: "Alles",
+      eCommerceValidation: "E-commercevalidatie",
       uxUiDesign: "UX/UI Design",
       brandActivation: "Brand activatie",
       digitalMarketing: "Digitale marketing",
@@ -364,6 +365,10 @@ export const nl: LocaleMessages = {
       marketResearch: "Marktonderzoek",
     },
     projects: {
+      theraNeckEcommerce: {
+        description:
+          "Zelf geïnitieerd e-commerce-experiment om vraag te valideren met een conversiegerichte storefront en smoke test voordat er wordt ingezet op een volledige operationele lancering.",
+      },
       moesTuinen: {
         description:
           "Een uitgebreide brand activation-campagne met pop-upstands, social-mediastrategie en digitale marketingplanning.",
@@ -402,6 +407,9 @@ export const nl: LocaleMessages = {
       },
     },
     tags: {
+      eCommerce: "E-commerce",
+      productValidation: "Productvalidatie",
+      behaviouralAnalytics: "Gedragsanalytics",
       brandActivation: "Brand activatie",
       socialMedia: "Social media",
       digitalMarketing: "Digitale marketing",
@@ -434,8 +442,10 @@ export const nl: LocaleMessages = {
       overview: "Overzicht",
       challenge: "De uitdaging",
       solution: "De oplossing",
+      solutionBreakdown: "Uitwerking van de oplossing",
       impactResults: "Impact & resultaten",
       prototypePreview: "Prototypepreview",
+      website: "Website",
       client: "KLANT",
       year: "JAAR",
       myRole: "MIJN ROL",
@@ -445,6 +455,50 @@ export const nl: LocaleMessages = {
         videos: "Videoâ€™s",
         images: "Afbeeldingen",
         documents: "Documenten",
+      },
+    },
+    theraNeckEcommerce: {
+      title: "TheraNeck | E-commerceproduct",
+      subtitle: "E-commercevalidatie & conversie-smoke-test",
+      description:
+        "TheraNeck is een **zelf geïnitieerd e-commercevalidatieproject** dat is opgezet om praktijkervaring op te doen met het lanceren en testen van een echt digitaal productconcept in een live omgeving.\n\nHet project richtte zich op het ontwerpen en bouwen van een **conversiegerichte storefront** voor een wellnessproduct, terwijl echte gebruikersvraag werd gemeten voordat er werd gekozen voor een volledige operationele lancering.\n\nIn plaats van het werk uitsluitend als een visuele designoefening te benaderen, was het doel om de bredere werking van e-commerce te begrijpen, waaronder **gedragsanalytics, funnelprestaties, betalingsinrichting, vraagvalidatie en vroege groeiexperimenten**.\n\nOm **datagedreven inzichten** mogelijk te maken, werd gebruikersgedrag rond belangrijke CTA’s en pagina’s gevolgd met privacygerichte analytics-tools, zodat echte interactiesignalen de iteraties konden sturen.",
+      challenge:
+        "De stap van theoretische UX-kennis naar een werkend e-commerce-experiment bracht verschillende praktische uitdagingen met zich mee:\n\n- Een productervaring ontwerpen die **waarde en geloofwaardigheid binnen enkele seconden** communiceert\n- **Echt koopintentiegedrag** begrijpen in plaats van te vertrouwen op aannames of mock testing\n- Een technisch functionele **betaal- en funnelinfrastructuur** opzetten\n- Interesse meten voordat er wordt geïnvesteerd in **voorraad, logistiek of schaalvergroting**\n- Design, development, analytics en marketing combineren als **solo operator**\n\nHet project vroeg om een balans tussen snelle uitvoering en voldoende realisme om betekenisvolle gedragsinzichten op te leveren.",
+      solution:
+        "Een **volledig functionele dropshipping-storefront** werd ontworpen en gebouwd als een gecontroleerde experimenteeromgeving.",
+      impact:
+        "Hoewel het project niet was bedoeld als volledig opgeschaalde commerciële lancering, leverde het waardevolle leerresultaten op:\n\n- Praktisch inzicht ontwikkeld in dropshipping-opzet en operationele workflows\n- Ervaring opgedaan met het implementeren van **gedragsanalytics** en het interpreteren van funnelsignalen\n- Sterkere intuïtie opgebouwd voor **conversiepsychologie** en intentiemeting\n- Interesse gevalideerd met observeerbare gebruikersacties in plaats van hypothetische feedback\n- Meer vertrouwen opgebouwd in het zelfstandig initiëren, opleveren en evalueren van productexperimenten\n\nAl met al versnelde het project de overgang van conceptueel UX-denken naar **marktgerichte productexperimentatie** en groeibewustzijn.",
+      role: "UX/UI Designer, Conversiestrateeg, Productonderzoeker, E-commercebouwer",
+      tags: ["E-commerce", "UX/UI Design", "Conversie-optimalisatie", "Webdesign"],
+      tools: [
+        "Figma",
+        "UX-audits",
+        "Analyse van analytics",
+        "Prototyping",
+        "Umami",
+        "AI-ondersteunde ontwikkeling (Cursor / CodeX / ChatGPT)",
+        "Stripe",
+      ],
+      solutionSections: [
+        {
+          title: "Conversiegerichte productervaring",
+          body: "De landing- en productervaring werden gestructureerd rond bewezen conversieprincipes:\n\n- Duidelijke, voordeelgedreven messaging **boven de vouw**\n- Een sterke visuele hiërarchie die gebruikers richting **primaire acties** leidt\n- Vertrouwens- en geruststellingspatronen die het waargenomen risico verlagen\n- Strategieën om frictie te verminderen in navigatie en interactieflows\n- Vraagvalidatie via een **smoke-testfunnel**",
+        },
+        {
+          title: "Vraagvalidatie via smoke test",
+          body: "In plaats van aankopen direct mogelijk te maken, werd een gestructureerd smoke-testmechanisme opgezet om echte koopintentie te meten.\n\nGebruikers die op de primaire aankoop-CTA klikten, werden doorgestuurd naar een onderzochte **out-of-stock restockpagina** die was ontworpen om bezoekers met hoge intentie te stimuleren hun e-mailadres achter te laten voor prioritaire toegang.\n\nDeze aanpak maakte het mogelijk om het volgende te meten:\n\n- CTA-interactiegedrag\n- Funnelvoortgang en afhaakmomenten\n- De sterkte van vraagsignalen",
+        },
+        {
+          title: "Gedragsanalytics en interne tooling",
+          body: "Gebruikersactiviteit over pagina’s en CTA’s heen werd gevolgd met **Umami** om engagementpatronen te monitoren en aannames te valideren.\n\nDaarnaast werd een eenvoudige interne admininterface gebouwd om verzamelde wachtlijst-e-mails en restockpaginabezoeken te bekijken, als een lichtgewicht operationeel dashboard voor vroege validatietracking.",
+        },
+        {
+          title: "End-to-end e-commerce-experiment",
+          body: "Om een realistisch productlanceringsscenario na te bootsen, bevatte het project ook:\n\n- Trendgedreven productonderzoek op basis van persoonlijke productervaring\n- Inrichting van betalingsinfrastructuur met **Stripe**\n- Store-ontwikkeling ondersteund door **AI-ondersteunde codingworkflows**\n- Het opzetten van socialmedia-accounts en eerste promotionele content\n- Iteratieve verfijning van messaging, lay-out en interactiesignalen\n\nHierdoor kon zowel designuitvoering als productbesluitvorming onder echte marktomstandigheden worden verkend.",
+        },
+      ],
+      galleryTitles: {
+        storefrontHero: "Storefront hero",
       },
     },
     moesTuinen: {
@@ -621,7 +675,7 @@ export const nl: LocaleMessages = {
     available: "Beschikbaar voor nieuwe projecten",
     title: "Hallo, ik ben",
     name: "Omar Abdulghani",
-    subtitleRole: "Creatief strateeg",
+    subtitleRole: "Creative Strategist",
     subtitleRest:
       "die branding, UX/UI en technologie combineert om ideeën om te zetten in",
     subtitleEnding: "betekenisvolle digitale ervaringen.",
