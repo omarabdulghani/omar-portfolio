@@ -9,7 +9,11 @@ import { useLanguage } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { messages } = useLanguage();
+  const { language, messages } = useLanguage();
+  const cvResumeHref =
+    language === "nl"
+      ? "/Omar%20Abdulghani%20-%20%28Nederlands%29%20CV%20Resume.pdf.pdf"
+      : "/Omar%20Abdulghani%20-%20%28English%29%20CV%20Resume.pdf";
   const heroPortraitVideoSrc = "/hero-video-1.mp4";
   const [isMobileHeroVideoLoaded, setIsMobileHeroVideoLoaded] = useState(false);
   const [isDesktopHeroVideoLoaded, setIsDesktopHeroVideoLoaded] = useState(false);
@@ -172,7 +176,7 @@ export default function Home() {
               </Link>
             </div>
             <a
-              href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
+              href={cvResumeHref}
               download
               className="mt-6 inline-flex items-center gap-3 xl:hidden text-[1.05rem] font-medium text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-primary"
               onClick={() => trackEvent("cv_download", { location: "home_hero_compact", label: "download_cv_pdf" })}
@@ -250,7 +254,7 @@ export default function Home() {
               
               {/* Floating Badge */}
               <a
-                href="/Omar%20Abdulghani%20-%20CV%20Resume.pdf"
+                href={cvResumeHref}
                 download
                 className="absolute z-20 bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
                 onClick={() => trackEvent("cv_download", { location: "home_hero", label: "curriculum_vitae" })}
