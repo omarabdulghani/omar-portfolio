@@ -42,11 +42,8 @@ function renderWithHighlights(text: string) {
 }
 
 export default function About() {
-  const { language, messages } = useLanguage();
-  const cvResumeHref =
-    language === "nl"
-      ? "/Omar%20Abdulghani%20-%20%28Nederlands%29%20CV%20Resume.pdf.pdf"
-      : "/Omar%20Abdulghani%20-%20%28English%29%20CV%20Resume.pdf";
+  const { messages } = useLanguage();
+  const cvResumeHref = "/Omar%20Abdulghani%20-%20CV%20Resume.pdf";
   const heroTitleParts = messages.about.hero.titlePrefix.trim().split(" ");
   const heroTitleLeading = heroTitleParts.slice(0, -1).join(" ");
   const heroTitleJoiner = heroTitleParts[heroTitleParts.length - 1] ?? "";

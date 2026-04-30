@@ -9,11 +9,8 @@ import { useLanguage } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { language, messages } = useLanguage();
-  const cvResumeHref =
-    language === "nl"
-      ? "/Omar%20Abdulghani%20-%20%28Nederlands%29%20CV%20Resume.pdf.pdf"
-      : "/Omar%20Abdulghani%20-%20%28English%29%20CV%20Resume.pdf";
+  const { messages } = useLanguage();
+  const cvResumeHref = "/Omar%20Abdulghani%20-%20CV%20Resume.pdf";
   const heroPortraitVideoSrc = "/hero-video-1.mp4";
   const [isMobileHeroVideoLoaded, setIsMobileHeroVideoLoaded] = useState(false);
   const [isDesktopHeroVideoLoaded, setIsDesktopHeroVideoLoaded] = useState(false);
