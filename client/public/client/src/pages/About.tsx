@@ -240,16 +240,16 @@ export default function About() {
             </div>
 
             <div className="rounded-[30px] border border-white/70 bg-white/80 p-4 shadow-[0_22px_70px_-42px_rgba(59,130,246,0.38)] backdrop-blur-md dark:border-white/10 dark:bg-card/80 xl:px-5 xl:py-4">
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5 xl:gap-3">
+              <div className="grid gap-3 sm:grid-cols-2 xl:flex xl:items-center xl:justify-between xl:gap-5">
                 {workflowSteps.map((step) => {
                   const Icon = step.icon;
 
                   return (
                     <div
                       key={step.title}
-                      className="rounded-2xl px-3 py-3 xl:min-w-0 xl:px-3"
+                      className="rounded-2xl px-3 py-3 xl:shrink-0 xl:px-0"
                     >
-                      <div className="grid grid-cols-[34px_minmax(0,1fr)] items-center gap-3 xl:grid-cols-[36px_minmax(0,1fr)]">
+                      <div className="grid grid-cols-[34px_minmax(0,1fr)] items-center gap-3 xl:grid-cols-[40px_max-content]">
                         <div className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/10 bg-primary/5 text-primary shadow-[0_8px_20px_-16px_rgba(59,130,246,0.5)] xl:h-10 xl:w-10">
                           <Icon size={14} />
                         </div>
