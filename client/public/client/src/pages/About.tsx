@@ -74,17 +74,18 @@ export default function About() {
 
   const storySections = [
     {
-      title: messages.about.story.sections.background.title,
+      title: messages.about.story.sections.focusToday.title,
       paragraphs: [
-        messages.about.story.sections.background.paragraph1,
-        messages.about.story.sections.background.paragraph2,
+        messages.about.story.sections.focusToday.paragraph1,
+        messages.about.story.sections.focusToday.paragraph2,
       ],
     },
+
     {
-      title: messages.about.story.sections.crossCulturalExperience.title,
+      title: messages.about.story.sections.creativeBusinessClientWork.title,
       paragraphs: [
-        messages.about.story.sections.crossCulturalExperience.paragraph1,
-        messages.about.story.sections.crossCulturalExperience.paragraph2,
+        messages.about.story.sections.creativeBusinessClientWork.paragraph1,
+        messages.about.story.sections.creativeBusinessClientWork.paragraph2,
       ],
     },
     {
@@ -95,27 +96,13 @@ export default function About() {
       ],
     },
     {
-      title: messages.about.story.sections.creativeBusinessClientWork.title,
+      title: messages.about.story.sections.background.title,
       paragraphs: [
-        messages.about.story.sections.creativeBusinessClientWork.paragraph1,
-        messages.about.story.sections.creativeBusinessClientWork.paragraph2,
+        messages.about.story.sections.background.paragraph1,
+        messages.about.story.sections.background.paragraph2,
       ],
     },
-    {
-      title: messages.about.story.sections.aiPrototyping.title,
-      paragraphs: [
-        messages.about.story.sections.aiPrototyping.paragraph1,
-        messages.about.story.sections.aiPrototyping.paragraph2,
-      ],
-    },
-    {
-      title: messages.about.story.sections.focusToday.title,
-      paragraphs: [messages.about.story.sections.focusToday.paragraph1],
-    },
-    {
-      title: messages.about.story.sections.languages.title,
-      paragraphs: [messages.about.story.sections.languages.paragraph1],
-    },
+
   ];
 
   return (
@@ -134,7 +121,7 @@ export default function About() {
               <div className="space-y-4">
                 <h1 className="text-5xl font-heading font-bold tracking-tight sm:text-6xl lg:text-7xl">
                   <span className="block">{heroTitleLeading}</span>
-                  <span className="block md:whitespace-nowrap">
+                  <span className="block">
                     {heroTitleJoiner} <span className="text-primary">{messages.about.hero.titleHighlight}</span>
                   </span>
                 </h1>
@@ -221,7 +208,7 @@ export default function About() {
                 <div className="absolute left-7 top-11 h-4 w-4 rounded-full bg-white/80 shadow-[0_0_24px_rgba(255,255,255,0.9)]" />
                 <div className="relative mx-auto aspect-[0.88] w-full max-w-[300px] overflow-hidden rounded-[30px]">
                   <img
-                    src="/images/CV%20Resume.png"
+                    src="/images/about-me.jpg"
                     alt="Omar Abdulghani"
                     className="h-full w-full object-cover object-top scale-[1.06]"
                   />
@@ -388,32 +375,60 @@ export default function About() {
                       school: messages.about.education.item1.school,
                       description: messages.about.education.item1.description,
                       year: "2021 — 2025",
+                      logos: [
+                        "/images/inholland logo.jpg",
+                        "/images/rotterdam business school logo.png"
+                      ],
                     },
                     {
                       title: messages.about.education.item2.title,
                       school: messages.about.education.item2.school,
                       description: messages.about.education.item2.description,
                       year: "2018 — 2020",
+                      logos: [
+                        "/images/inholland logo.jpg"
+                      ],
                     },
                     {
                       title: messages.about.education.item3.title,
                       school: messages.about.education.item3.school,
                       description: messages.about.education.item3.description,
                       year: "2017 — 2018",
+                      logos: [],
                     },
                   ].map((item) => (
                     <div
                       key={item.title}
                       className="rounded-2xl border border-white/10 bg-background/70 p-5"
                     >
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <h4 className="text-xl font-semibold">{item.title}</h4>
-                        <Badge variant="secondary">{item.year}</Badge>
+                      <div className="flex gap-4">
+                        {item.logos && item.logos.length > 0 && (
+                          <div className="mt-1 flex shrink-0 flex-col gap-2">
+                            {item.logos.map((logo, i) => (
+                              <div
+                                key={i}
+                                className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-md bg-white p-1 shadow-sm"
+                              >
+                                <img
+                                  src={logo}
+                                  alt="University Logo"
+                                  className="max-h-full max-w-full object-contain"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-start justify-between gap-3">
+                            <h4 className="text-xl font-semibold">{item.title}</h4>
+                            <Badge variant="secondary">{item.year}</Badge>
+                          </div>
+                          <p className="mt-2 font-medium text-primary">{item.school}</p>
+                          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
-                      <p className="mt-2 font-medium text-primary">{item.school}</p>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                        {item.description}
-                      </p>
                     </div>
                   ))}
                 </div>

@@ -129,6 +129,7 @@ type ProjectGalleryProps = {
     images: string;
     documents: string;
   };
+  thumbnailOrientation?: "landscape" | "portrait";
 };
 
 export type ProjectGalleryHandle = {
@@ -136,7 +137,7 @@ export type ProjectGalleryHandle = {
 };
 
 const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(function ProjectGallery(
-  { items, fallbackPoster, sectionLabels },
+  { items, fallbackPoster, sectionLabels, thumbnailOrientation = "landscape" },
   ref
 ) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -539,7 +540,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
       onClick={() => openItem(item)}
       className="group rounded-xl overflow-hidden border border-white/10 bg-card/35 hover:border-primary/40 transition-colors text-left"
     >
-      <div className="h-56 w-full overflow-hidden bg-background/20">
+      <div className={`w-full overflow-hidden bg-background/20 ${thumbnailOrientation === "portrait" ? "aspect-[9/16] h-auto" : "h-56"}`}>
         {item.type === "video" ? (
           <div className="relative h-full w-full">
             {getVideoPoster(item) ? (

@@ -1,4 +1,4 @@
-﻿import { Link } from "wouter";
+import { Link } from "wouter";
 import { ArrowRight, Download, ExternalLink, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
 import { useEffect, useState } from "react";
+import { useProjects } from "@/hooks/useProjects";
 
 export default function Home() {
   const { language, messages } = useLanguage();
@@ -29,36 +30,11 @@ export default function Home() {
     return () => window.clearTimeout(failSafeTimer);
   }, []);
 
-  const featuredProjects = [
-    {
-      id: "theraneck-ecommerce",
-      title: messages.projectDetails.theraNeckEcommerce.title,
-      category: messages.portfolio.filters.eCommerceValidation,
-      image: "/images/theraneck-gallery/theraneck%20thumbnail-updated.jpg",
-      description: messages.portfolio.projects.theraNeckEcommerce.description,
-      tags: [
-        messages.portfolio.tags.eCommerce,
-        messages.portfolio.tags.productValidation,
-        messages.portfolio.tags.conversionOptimization
-      ]
-    },
-    {
-      id: "moes-tuinen",
-      title: "MOES Tuinen",
-      category: messages.portfolio.filters.brandActivation,
-      image: "/images/project-moes-tuinen.jpg",
-      description: messages.portfolio.projects.moesTuinen.description,
-      tags: [messages.tags.brandActivation, messages.tags.socialMedia, messages.tags.digitalMarketing]
-    },
-    {
-      id: "patronapp",
-      title: "PatronApp",
-      category: messages.portfolio.filters.appDesign,
-      image: "/images/project-patronapp.jpg",
-      description: messages.portfolio.projects.patronApp.description,
-      tags: [messages.tags.uxResearch, messages.tags.prototyping, messages.tags.userStrategy]
-    }
-  ];
+  const allProjects = useProjects();
+  const featuredIds = ["job-scout", "moonlit-firefly-bloom", "patronapp"];
+  const featuredProjects = featuredIds
+    .map(id => allProjects.find(p => p.id === id))
+    .filter(Boolean);
 
   return (
     <Layout>
@@ -148,7 +124,7 @@ export default function Home() {
               </div>
             </div>
             
-            <p className="mt-4 md:mt-0 text-xl md:text-2xl text-black dark:text-muted-foreground max-w-lg leading-relaxed">
+            <p className="mt-4 md:mt-0 text-xl md:text-2xl text-black dark:text-muted-foreground max-w-xl text-balance leading-relaxed">
               <span className="text-primary font-semibold">{messages.hero.subtitleRole}</span>{" "}
               {messages.hero.subtitleRest}{" "}
               <span className="whitespace-nowrap">{messages.hero.subtitleEnding}</span>

@@ -1,4 +1,4 @@
-﻿import Layout from "@/components/Layout";
+import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/lib/i18n";
@@ -25,68 +25,49 @@ export default function Skills() {
       title: messages.skills.categories.digitalMarketingGrowth.title,
       icon: <Megaphone className="w-6 h-6 text-primary" />,
       skills: [
-        messages.skills.categories.digitalMarketingGrowth.skills.digitalMarketingStrategyPlanning,
-        messages.skills.categories.digitalMarketingGrowth.skills.seoTechnicalOnPage,
-        messages.skills.categories.digitalMarketingGrowth.skills.socialMediaMarketing,
-        messages.skills.categories.digitalMarketingGrowth.skills.contentStrategyCampaignMessaging,
-        messages.skills.categories.digitalMarketingGrowth.skills.brandStorytelling,
-        messages.skills.categories.digitalMarketingGrowth.skills.brandActivationExperientialConcepts,
-        messages.skills.categories.digitalMarketingGrowth.skills.conversionOptimization,
-        messages.skills.categories.digitalMarketingGrowth.skills.performanceTrackingReporting
+        messages.skills.categories.digitalMarketingGrowth.skills.frontendDevelopment,
+        messages.skills.categories.digitalMarketingGrowth.skills.backendArchitecture,
+        messages.skills.categories.digitalMarketingGrowth.skills.apiIntegration,
+        messages.skills.categories.digitalMarketingGrowth.skills.versionControl,
+        messages.skills.categories.digitalMarketingGrowth.skills.databaseManagement,
+        messages.skills.categories.digitalMarketingGrowth.skills.performanceOptimization
       ],
       tools: [
-        "Google Analytics 4",
-        "Adobe Analytics",
-        "Google Ads",
-        "Meta Ads Manager",
-        "Google Search Console",
-        "SEMrush",
-        "Hotjar",
-        "WordPress",
-        "GTmetrix"
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Tailwind CSS",
+        "SQL",
+        "REST APIs",
+        "Git & GitHub",
+        "Vite",
+        "Next.js"
       ]
     },
     {
       title: messages.skills.categories.researchStrategy.title,
       icon: <Search className="w-6 h-6 text-primary" />,
       skills: [
-        messages.skills.categories.researchStrategy.skills.userInterviewsSurveyDesign,
-        messages.skills.categories.researchStrategy.skills.qualitativeQuantitativeAnalysis,
-        messages.skills.categories.researchStrategy.skills.marketCompetitorResearch,
-        messages.skills.categories.researchStrategy.skills.personaJourneyEmpathyMapping,
-        messages.skills.categories.researchStrategy.skills.valueCreationPositioningStrategy,
+        messages.skills.categories.researchStrategy.skills.productStrategyPositioning,
+        messages.skills.categories.researchStrategy.skills.userResearchTesting,
+        messages.skills.categories.researchStrategy.skills.crossFunctionalCollaboration,
+        messages.skills.categories.researchStrategy.skills.projectStakeholderManagement,
+        messages.skills.categories.researchStrategy.skills.processAutomation,
         messages.skills.categories.researchStrategy.skills.evidenceBasedDecisionMaking
       ],
-      tools: ["Google Forms", "Typeform", "Miro", "Excel (Advanced)", "Tableau"]
-    },
-    {
-      title: messages.skills.categories.businessPlanningDelivery.title,
-      icon: <Briefcase className="w-6 h-6 text-primary" />,
-      skills: [
-        messages.skills.categories.businessPlanningDelivery.skills.conceptCreationIdeasToExperiences,
-        messages.skills.categories.businessPlanningDelivery.skills.projectStakeholderManagement,
-        messages.skills.categories.businessPlanningDelivery.skills.clientBriefingDebriefing,
-        messages.skills.categories.businessPlanningDelivery.skills.crossFunctionalCollaboration,
-        messages.skills.categories.businessPlanningDelivery.skills.exportMarketEntryPlanning,
-        messages.skills.categories.businessPlanningDelivery.skills.financialPlanningBudgetStructuring,
-        messages.skills.categories.businessPlanningDelivery.skills.kpiSmartGoalFrameworks,
-        messages.skills.categories.businessPlanningDelivery.skills.clientFacingPresentationDocumentation,
-        messages.skills.categories.businessPlanningDelivery.skills.htmlCssFundamentals,
-        messages.skills.categories.businessPlanningDelivery.skills.sqlFundamentals
-      ],
-      tools: ["Asana", "Jira", "Notion", "Trello", "Slack", "Microsoft Office", "VS Code"]
+      tools: ["Miro", "Notion", "Jira", "Asana", "Trello", "Google Workspace"]
     },
     {
       title: messages.skills.categories.aiAssistedCreation.title,
       icon: <Bot className="w-6 h-6 text-primary" />,
       skills: [
-        messages.skills.categories.aiAssistedCreation.skills.vibeCoding,
-        messages.skills.categories.aiAssistedCreation.skills.aiAssistedWebsiteAppPrototyping,
-        messages.skills.categories.aiAssistedCreation.skills.rapidIterationIdeaToMvp,
-        messages.skills.categories.aiAssistedCreation.skills.promptDrivenDevelopmentWorkflows,
-        messages.skills.categories.aiAssistedCreation.skills.creativeExperimentationAiTools
+        messages.skills.categories.aiAssistedCreation.skills.claudeCursorCodex,
+        messages.skills.categories.aiAssistedCreation.skills.promptDrivenDevelopment,
+        messages.skills.categories.aiAssistedCreation.skills.apiAutomationPipelines,
+        messages.skills.categories.aiAssistedCreation.skills.rapidIterationMvp,
+        messages.skills.categories.aiAssistedCreation.skills.vibeCoding
       ],
-      tools: ["Cursor", "OpenAI Codex", "Claude Code", "Vercel", "Aura", "Unity (Prototype Exploration)"]
+      tools: ["Cursor", "Claude Code", "OpenAI Codex", "Vercel", "GitHub Actions"]
     }
   ];
 

@@ -11,6 +11,7 @@ import ProjectGallery, {
 import DeviceMockup from "@/components/DeviceMockup";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
+import { useProjects } from "@/hooks/useProjects";
 import NotFound from "./NotFound";
 
 // This would typically come from a data file or API
@@ -554,6 +555,87 @@ const projectsData: Record<string, any> = {
         title: "Financial Export Plan (Excel File)"
       }
     ]
+  },
+  "job-scout": {
+    title: "Job Scout",
+    subtitle: "AI-Driven Automation & Job Discovery Utility",
+    year: "2026",
+    client: "Independent Project",
+    clientLogo: "/images/job-scout-gallery/logo-light.png",
+    clientLogoDark: "/images/job-scout-gallery/logo-dark.png",
+    clientLogoClass: "h-16 md:h-20",
+    role: "AI Product Architect & UI/UX Director",
+    description: "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by programmatically extracting, parsing, and filtering live professional opportunities.",
+    challenge: "Manually filtering through hundreds of daily job listings introduces massive operational fatigue. Most platform filters are noisy and fail to evaluate how closely an applicant's deep technical skills map to complex, multi-layered job specifications.",
+    solution: "Directed the end-to-end development of a local, GUI-first job search workspace using AI coding agents. Designed a complete vanilla JS/CSS frontend dashboard featuring Kanban-style job tracking, career lane taxonomy (Primary, Bridge, Fallback), and real-time AI budget guards. The backend orchestrates a multi-provider AI scoring engine to evaluate job descriptions against a strict, deterministic heuristic profile.",
+    impact: "Transformed a manual, fatigue-inducing search process into a high-fidelity visual workspace. Built a resilient pipeline that categorizes opportunities into 'Apply First,' 'Good Options,' and 'Rejected' using strict threshold logic, drastically reducing time spent reading unqualified listings while maintaining a clean, duplicate-free database across runs.",
+    ethics: "Engineered with strict security boundaries. The application never collects or stores third-party credentials, relying entirely on manual, human-in-the-loop browser authentication. To respect platform integrity, the system utilizes human-mimicking pacing, does not bypass CAPTCHAs or rate-limits, and pauses for explicit user review before any final application submissions.",
+    tags: ["AI Product Architecture", "Frontend UI/UX", "Python"],
+    tools: ["Python", "Antigravity IDE", "Cursor", "Playwright", "SQLite", "Vanilla JS/CSS", "Multi-Provider LLM APIs (Gemini, Claude, Cerebras)"],
+    image: "/images/job-scout-gallery/hero.png",
+    gallery: [
+      { src: "/images/job-scout-gallery/dashboard.png", title: "Data Pipeline Dashboard" },
+      { src: "/images/job-scout-gallery/logs.png", title: "API Parsing Records" }
+    ]
+  },
+  "moonlit-firefly-bloom": {
+    title: "Moonlit Firefly Bloom",
+    subtitle: "Browser-Native 2D Canvas Engine & Interactive Experience",
+    year: "2026",
+    client: "Independent Technical Demo",
+    clientLogo: "/images/moonlit-gallery/game logo.png",
+    clientLogoDark: "/images/moonlit-gallery/game logo.png",
+    clientLogoClass: "h-20 md:h-24",
+    role: "Game Engine Architect & Gameplay Programmer",
+    description: "Moonlit Firefly Bloom is a sophisticated, high-performance **browser-native 2D canvas game** built from scratch using strict TypeScript and Vite with zero external runtime engines.",
+    challenge: "Developing full-scale interactive rendering loops without heavy third-party engines (like Phaser or React) requires handling low-level canvas delta-timing, state management, particle pipelines, and collision calculations manually without dropping frames.",
+    solution: "Architected a strict **state snapshot pattern** that fully isolates a 2,200+ line gameplay core from a 3,200+ line procedural 2D rendering pipeline. Deployed OpenAI Codex to optimize complex mathematical scaling formulas and multi-phase state machine transitions.",
+    impact: "Achieved a zero-runtime-dependency interactive build that runs at a locked, stable frame rate. Built a complete responsive infrastructure mapping unique scaling laws and custom Web Audio API architectures across desktop, mobile, and tablet profiles.",
+    tags: ["TypeScript", "Engine Architecture", "AI-Assisted", "Product Design"],
+    tools: ["TypeScript", "HTML5 Canvas", "Vite", "Web Audio API", "Unidirectional Snapshot Architecture", "Antigravity IDE", "OpenAI Codex", "Suno AI", "ChatGPT Image 2.0"],
+    deviceMockups: [
+      {
+        title: "Desktop Experience (Playable)",
+        type: "desktop",
+        mode: "interactive",
+        orientation: "landscape",
+        iframeSrc: "https://moonlit-firefly-bloom.vercel.app/",
+        iframeTitle: "Moonlit Firefly Bloom Desktop",
+        allowFullscreen: true,
+        deferIframeUntilPlay: true
+      },
+      {
+        title: "Mobile Experience (Playable)",
+        type: "iphone",
+        mode: "interactive",
+        orientation: "portrait",
+        iframeSrc: "https://moonlit-firefly-bloom.vercel.app/",
+        iframeTitle: "Moonlit Firefly Bloom Mobile",
+        allowFullscreen: true,
+        deferIframeUntilPlay: true
+      }
+    ],
+    image: "/images/moonlit-gallery/moonlit cover.jpg",
+    galleryDesktop: [
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (1).png", title: "Game Start Screen" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (2).png", title: "Night 1: Initial Spawns" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (3).png", title: "Powerup Encounter: Energy" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (4).png", title: "Night 3: Moon Dash Unlock" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (5).png", title: "Night 4: Waxing Crescent Phase" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (6).png", title: "Hazard Encounter: Shadow Bloom" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (7).png", title: "Night 9: Full Moon Blessing" },
+      { src: "/images/moonlit-gallery/desktop screenshots/screenshot (8).png", title: "Dense Entity Scaling & Moon Shield" }
+    ],
+    galleryMobile: [
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (1).jpeg", title: "Mobile UI: Virtual Joystick Active" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (2).jpeg", title: "Mobile UI: Moon Dash Cooldown" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (3).jpeg", title: "Mobile UI: Moon Shield Active" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (4).jpeg", title: "Mobile UI: Energy Powerup Collection" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (5).jpeg", title: "Mobile UI: Night 3 Progression" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (6).jpeg", title: "Mobile UI: Shadow Hazard & Powerups" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (7).jpeg", title: "Mobile UI: Full Moon Blessing Triggered" },
+      { src: "/images/moonlit-gallery/mobile screenshots/screenshot (8).jpeg", title: "Mobile UI: Dense Entity Rendering" }
+    ]
   }
 };
 
@@ -625,8 +707,15 @@ export default function ProjectDetail() {
   const [, setLocation] = useLocation();
   const galleryRef = useRef<ProjectGalleryHandle>(null);
   const { messages } = useLanguage();
+  const baseProjects = useProjects();
   const projectId = params?.id;
-  const project = projectId ? projectsData[projectId] : undefined;
+  const rawProject = projectId ? projectsData[projectId] : undefined;
+  
+  // Create a single source of truth for tags by merging from useProjects
+  const project = rawProject ? {
+    ...rawProject,
+    tags: baseProjects.find(p => p.id === projectId)?.tags || rawProject.tags
+  } : undefined;
   const isTheraNeckEcommerce = projectId === "theraneck-ecommerce";
   const isMoesTuinen = projectId === "moes-tuinen";
   const isAmstelhofConnect = projectId === "amstelhof-connect";
@@ -637,6 +726,8 @@ export default function ProjectDetail() {
   const isBurningManCampaign = projectId === "burning-man-campaign";
   const isStreamingEmotionsValuePlan = projectId === "streaming-emotions-value-plan";
   const isBeexExportStrategy = projectId === "beex-export-strategy";
+  const isJobScout = projectId === "job-scout";
+  const isMoonlit = projectId === "moonlit-firefly-bloom";
   const hasLocalizedProjectCopy =
     isTheraNeckEcommerce ||
     isMoesTuinen ||
@@ -647,7 +738,9 @@ export default function ProjectDetail() {
     isHallenCity ||
     isBurningManCampaign ||
     isStreamingEmotionsValuePlan ||
-    isBeexExportStrategy;
+    isBeexExportStrategy ||
+    isJobScout ||
+    isMoonlit;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -676,7 +769,6 @@ export default function ProjectDetail() {
         solution: messages.projectDetails.theraNeckEcommerce.solution,
         impact: messages.projectDetails.theraNeckEcommerce.impact,
         role: messages.projectDetails.theraNeckEcommerce.role,
-        tags: messages.projectDetails.theraNeckEcommerce.tags,
         tools: messages.projectDetails.theraNeckEcommerce.tools,
         solutionSections: messages.projectDetails.theraNeckEcommerce.solutionSections,
         gallery: project.gallery?.map((item: any) => {
@@ -944,6 +1036,30 @@ export default function ProjectDetail() {
           };
         }),
       }
+    : isJobScout
+    ? {
+        ...project,
+        title: messages.projectDetails.jobScout.title,
+        subtitle: messages.projectDetails.jobScout.subtitle,
+        role: messages.projectDetails.jobScout.role,
+        description: messages.projectDetails.jobScout.description,
+        challenge: messages.projectDetails.jobScout.challenge,
+        solution: messages.projectDetails.jobScout.solution,
+        impact: messages.projectDetails.jobScout.impact,
+        ethics: messages.projectDetails.jobScout.ethics,
+      }
+    : isMoonlit
+    ? {
+        ...project,
+        title: messages.projectDetails.moonlit.title,
+        subtitle: messages.projectDetails.moonlit.subtitle,
+        role: messages.projectDetails.moonlit.role,
+        description: messages.projectDetails.moonlit.description,
+        challenge: messages.projectDetails.moonlit.challenge,
+        solution: messages.projectDetails.moonlit.solution,
+        impact: messages.projectDetails.moonlit.impact,
+        metrics: messages.projectDetails.moonlit.metrics,
+      }
     : project;
 
   return (
@@ -1067,7 +1183,60 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            {project.deviceMockup ? (
+            {localizedProject.ethics ? (
+              <div>
+                <h2 className="text-2xl font-heading font-bold mb-4">
+                  {projectId === "job-scout" 
+                    ? "Privacy-First Architecture & Platform Safety" 
+                    : hasLocalizedProjectCopy 
+                      ? messages.projectDetails.common.ethics 
+                      : "Ethical Engineering & Compliance"}
+                </h2>
+                <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+                  {renderRichText(localizedProject.ethics)}
+                </div>
+              </div>
+            ) : null}
+
+            {project.deviceMockups ? (
+              <div className="space-y-16">
+                {project.deviceMockups.map((mockup: any, index: number) => (
+                  <div key={index} className="space-y-6">
+                    <h2 className="text-2xl font-heading font-bold">
+                      {mockup.title || "Prototype Preview"}
+                    </h2>
+                    <DeviceMockup
+                      type={mockup.type}
+                      mode={mockup.mode}
+                      orientation={mockup.orientation}
+                      images={mockup.images}
+                      iframeSrc={mockup.iframeSrc}
+                      iframeTitle={mockup.iframeTitle}
+                      showArrows={mockup.showArrows}
+                      allowFullscreen={mockup.allowFullscreen}
+                      enableTilt={mockup.enableTilt}
+                      imageFit={mockup.imageFit}
+                      screenAspectRatio={mockup.screenAspectRatio}
+                      hideNotch={mockup.hideNotch}
+                      disableEmbeddedNavigation={mockup.disableEmbeddedNavigation}
+                      interactiveHref={mockup.interactiveHref}
+                      requireInteractionToggle={mockup.requireInteractionToggle}
+                      deferIframeUntilPlay={mockup.deferIframeUntilPlay}
+                      backClosesPrototype={mockup.backClosesPrototype}
+                      showExitNav={mockup.showExitNav}
+                      onExitToPortfolio={() => {
+                        trackEvent("cta_click", {
+                          location: "project_prototype",
+                          label: "back_to_portfolio",
+                          project_id: projectId ?? null,
+                        });
+                        setLocation("/portfolio/");
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : project.deviceMockup ? (
               <div className="space-y-6">
                 <h2 className="text-2xl font-heading font-bold">
                   {(isAmstelhofConnect || isPatronApp || isProDetailing || isHallenCity)
@@ -1106,6 +1275,7 @@ export default function ProjectDetail() {
             ) : null}
 
             {/* Gallery */}
+            {/* Gallery */}
             {localizedProject.gallery && localizedProject.gallery.length > 0 && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-heading font-bold">{hasLocalizedProjectCopy ? messages.projectDetails.common.projectGallery : "Project Gallery"}</h2>
@@ -1114,6 +1284,27 @@ export default function ProjectDetail() {
                   items={localizedProject.gallery as ProjectGalleryMedia[]}
                   fallbackPoster={localizedProject.image}
                   sectionLabels={hasLocalizedProjectCopy ? messages.projectDetails.common.gallerySections : undefined}
+                />
+              </div>
+            )}
+
+            {localizedProject.galleryDesktop && localizedProject.galleryDesktop.length > 0 && (
+              <div className="space-y-6">
+                <h2 className="text-2xl font-heading font-bold">Desktop Experience</h2>
+                <ProjectGallery
+                  items={localizedProject.galleryDesktop as ProjectGalleryMedia[]}
+                  fallbackPoster={localizedProject.image}
+                />
+              </div>
+            )}
+
+            {localizedProject.galleryMobile && localizedProject.galleryMobile.length > 0 && (
+              <div className="space-y-6">
+                <h2 className="text-2xl font-heading font-bold">Mobile Experience</h2>
+                <ProjectGallery
+                  items={localizedProject.galleryMobile as ProjectGalleryMedia[]}
+                  fallbackPoster={localizedProject.image}
+                  thumbnailOrientation="portrait"
                 />
               </div>
             )}
@@ -1126,6 +1317,8 @@ export default function ProjectDetail() {
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">
                   {isTheraNeckEcommerce
                     ? messages.projectDetails.common.website
+                    : (isMoonlit || isJobScout)
+                    ? "PROJECT"
                     : hasLocalizedProjectCopy
                     ? messages.projectDetails.common.client
                     : "Client"}
@@ -1231,6 +1424,19 @@ export default function ProjectDetail() {
                   ))}
                 </div>
               </div>
+
+              {localizedProject.metrics && (
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Core Engineering Metrics</h3>
+                  <ul className="space-y-1.5 border border-white/10 p-3 rounded bg-secondary/20">
+                    {localizedProject.metrics.map((metric: string) => (
+                      <li key={metric} className="text-sm text-foreground flex items-start gap-2">
+                        <span className="text-primary font-bold">›</span> {metric}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {(localizedProject.primaryActionHref || localizedProject.demoVideoSrc) ? (
                 <div className="pt-4 flex flex-col gap-3">

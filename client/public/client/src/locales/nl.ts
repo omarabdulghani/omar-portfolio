@@ -1,4 +1,4 @@
-﻿import type { LocaleMessages } from "./types";
+import type { LocaleMessages } from "./types";
 
 // Placeholder structure for approved Dutch copy. Values intentionally mirror
 // English for any keys not yet approved in other sections.
@@ -13,7 +13,7 @@ export const nl: LocaleMessages = {
   },
   footer: {
     description:
-      "Een Creative Business Specialist die de brug slaat tussen design, strategie en digitale marketing om betekenisvolle gebruikerservaringen te creëren.",
+      "Een door technologie gedreven creatieve specialist die full-stack producten bouwt, workflows automatiseert met AI en intuïtieve UX/UI-designs ontwerpt.",
     quickLinks: "Snelle links",
     home: "Home",
     aboutMe: "Over mij",
@@ -28,11 +28,11 @@ export const nl: LocaleMessages = {
   about: {
     hero: {
       badge: "Over mij",
-      titlePrefix: "Creativiteit en",
-      titleHighlight: "Business Strategy",
+      titlePrefix: "Bruggen slaan tussen design &",
+      titleHighlight: "Full-Stack Development",
       name: "Omar Abdulghani",
       description:
-        "Ideeën vertalen naar **betekenisvolle merkervaringen**, van **vroege conceptontwikkeling** tot tastbare concepten, activaties en digitale oplossingen. Ik combineer **onderzoek, creativiteit en strategie** om concepten te ontwikkelen die verbinding maken met doelgroepen en bijdragen aan **zakelijke doelstellingen**.",
+        "Ideeën omzetten in **betekenisvolle digitale ervaringen**, van **UX/UI design** tot full-stack development en AI-automatisering. Ik combineer **onderzoek, creativiteit en technologie** om schaalbare producten te bouwen die aansluiten bij gebruikers en **digitale workflows** stroomlijnen.",
       ctaViewWork: "Bekijk mijn werk",
       ctaDownloadCv: "Download CV",
     },
@@ -44,19 +44,19 @@ export const nl: LocaleMessages = {
           description: "Onderzoek & Strategie",
         },
         design: {
-          title: "Concept",
-          description: "Ideeën & Ervaring",
+          title: "Ontwerpen",
+          description: "UX/UI & Prototyping",
         },
         prototype: {
-          title: "Design",
-          description: "Brand & UX/UI",
+          title: "Ontwikkelen",
+          description: "Full-Stack Bouw",
         },
         testIterate: {
-          title: "Prototype",
-          description: "Test & Valideer",
+          title: "Automatiseren",
+          description: "AI & API Integratie",
         },
         deliver: {
-          title: "Activeren",
+          title: "Opleveren",
           description: "Lancering & Impact",
         },
       },
@@ -65,19 +65,19 @@ export const nl: LocaleMessages = {
       focusTitle: "Waar ik mij op focus",
       focusItems: {
         brandStrategy: {
-          title: "Brand & Experience Strategie",
+          title: "Web & Full-Stack Development",
           description:
-            "Concepten ontwikkelen die merkideeën vertalen naar **betekenisvolle ervaringen** via **storytelling, activaties en digitale touchpoints**.",
+            "Robuuste digitale producten bouwen die complexe vereisten vertalen naar **schaalbare architecturen**, naadloze **API-integraties** en efficiënte code.",
         },
         uxUiDesign: {
           title: "UX/UI & Digitaal Productdesign",
           description:
-            "**Intuïtieve digitale ervaringen** ontwerpen die **gebruikersbehoeften** verbinden met heldere **productlogica en interaction design**.",
+            "Het ontwerpen van **intuïtieve digitale ervaringen** die **gebruikersbehoeften** verbinden met helder **productdenken en interactieontwerp**.",
         },
         aiPrototyping: {
-          title: "AI-ondersteunde Prototyping & Conceptontwikkeling",
+          title: "AI-automatisering & Workflows",
           description:
-            "Ideeën snel verkennen via **prototypes, experimenten en nieuwe tools** om **vroege concepten** om te zetten in **tastbare ervaringen**.",
+            "Ontwikkelings- en operationele processen stroomlijnen door **geautomatiseerde pijplijnen, prompt-gedreven ontwikkeling en geavanceerde AI-tools** (Cursor, Claude Code, Codex).",
         },
       },
       highlightsTitle: "Highlights",
@@ -92,49 +92,32 @@ export const nl: LocaleMessages = {
       title: "Mijn verhaal",
       sections: {
         background: {
-          title: "Mijn achtergrond",
+          title: "Vroege Achtergrond & Cross-culturele Reis",
           paragraph1:
-            "Ik ben een Creative Strategist met een multidisciplinaire achtergrond in **branding, UX/UI-design, digitale marketing en technologie**. Mijn werk richt zich op het vertalen van ideeën naar duidelijke concepten en ervaringen die zowel creatief aansprekend als strategisch onderbouwd zijn.",
+            "Voordat ik naar Nederland verhuisde, ontwikkelde ik sterke communicatie- en presentatievaardigheden door Engelse les te geven aan kinderen in Syrië. Nadat ik op mijn 19e arriveerde, zette ik dit pad voort door de studie **Engels Docent aan de HU University of Applied Sciences in Utrecht** te volgen.",
           paragraph2:
-            "Mijn professionele pad combineert **communicatie, technologie en creatief denken**. Voordat ik naar Nederland verhuisde, gaf ik Engelse les aan kinderen in Syrië, waar ik al vroeg sterke communicatie- en presentatievaardigheden ontwikkelde.",
-        },
-        crossCulturalExperience: {
-          title: "Cross-culturele ervaring",
-          paragraph1:
-            "Nadat ik op mijn 19e naar Nederland verhuisde, bleef ik mijn interesse in taal en onderwijs verder ontwikkelen door de studie **Engels Docent aan de HU University of Applied Sciences in Utrecht** te volgen.",
-          paragraph2:
-            "Naast mijn studie werkte ik als vrijwillig vertaler en cultureel bemiddelaar voor organisaties zoals **VluchtelingenWerk** en **de Gemeente Amstelveen**. Ik ondersteunde bij vertalingen tussen Nederlands, Engels en Arabisch en hielp bij workshops waarin nieuwkomers kennismaakten met de Nederlandse samenleving en kernwaarden.",
+            "Naast mijn studie werkte ik als vrijwillig vertaler en cultureel bemiddelaar voor organisaties zoals **VluchtelingenWerk** en **de Gemeente Amstelveen**, waar ik ondersteunde bij vertalingen tussen Nederlands, Engels en Arabisch en hielp bij workshops voor nieuwkomers.",
         },
         technologyDesign: {
           title: "Technologie & Design",
           paragraph1:
-            "Mijn interesse in technologie bracht mij ertoe **Information Technology aan Hogeschool Inholland in Haarlem** te studeren, waar ik een technische basis opbouwde in **C#, HTML, SQL, Python en UX/UI**.",
+            "Mijn interesse in technologie bracht mij ertoe **Information Technology aan Hogeschool Inholland in Haarlem** te studeren, waar ik een **tweejarige technische basis** opbouwde in **C#, HTML, SQL, Python en UX/UI**.",
           paragraph2:
             "Door zowel de creatieve als de technische kant van digitale producten te begrijpen, kan ik **de brug slaan tussen ideeën, design en realisatie**.",
         },
         creativeBusinessClientWork: {
           title: "Creative Business & klantprojecten",
           paragraph1:
-            "Later behaalde ik mijn **Bachelor International Creative Business** aan Inholland in Haarlem, waar ik in 2025 afstudeerde met een minor in **Digital Marketing**.",
+            "Ik behaalde mijn **Bachelor International Creative Business** aan Inholland in Haarlem. Ik ben in 2025 **met verdienste afgestudeerd** (graduated with merit), inclusief een minor in **Digital Marketing aan de Rotterdam Business School**.",
           paragraph2:
             "Tijdens mijn studie werkte ik aan echte projecten voor organisaties zoals **Patronaat**, **Amstelhof** en **De FilmHallen**, waarbij ik betrokken was bij het volledige proces: van briefing en onderzoek tot conceptontwikkeling en eindpresentatie.",
         },
-        aiPrototyping: {
-          title: "AI & Prototyping",
-          paragraph1:
-            "Naast mijn werk in design en strategie experimenteer ik met **AI-ondersteunde ontwikkeling** met tools zoals **Cursor, Claude Code en Codex** om snel websites, apps en interactieve concepten te prototypen.",
-          paragraph2:
-            "Dankzij mijn technische achtergrond gebruik ik deze tools niet alleen creatief, maar begrijp ik ook **de systemen en structuur erachter**.",
-        },
         focusToday: {
-          title: "Waar ik mij vandaag op focus",
+          title: "Huidige Focus & AI-ontwikkeling",
           paragraph1:
-            "Vandaag richt ik mij op **branding, UX/UI-design, digitale marketing en conceptontwikkeling**, met een sterke focus op vroege ideefases, brand storytelling en experience-gedreven denken.",
-        },
-        languages: {
-          title: "Talen",
-          paragraph1:
-            "Ik spreek vloeiend **Arabisch en Engels** en beheers **Nederlands op B1-niveau**. Met mijn internationale achtergrond breng ik een **cross-cultureel perspectief, technische kennis en hands-on creativiteit** in elke samenwerking.",
+            "Vandaag de dag focus ik me op het bouwen van schaalbare webapplicaties en het stroomlijnen van digitale workflows. Ik integreer **AI-ondersteunde ontwikkeling** met tools zoals **Cursor, Claude Code en Codex** om snel full-stack producten te bouwen en te automatiseren.",
+          paragraph2:
+            "Met een sterke technische basis benader ik deze tools met een **goed begrip van de onderliggende systemen en API's**."
         },
       },
       closingLine:
@@ -148,22 +131,22 @@ export const nl: LocaleMessages = {
     education: {
       title: "Opleiding",
       item1: {
-        title: "International Creative Business",
+        title: "International Creative Business (BA)",
         school: "Hogeschool Inholland, Haarlem",
         description:
-          "Bacheloropleiding met een multidisciplinaire focus op branding, UX/UI, strategie en businessinnovatie. Inclusief een minor in Digital Marketing.",
+          "Met verdienste afgestudeerd. Bacheloropleiding met een multidisciplinaire focus op branding, UX/UI, strategie en businessinnovatie. Inclusief een minor in Digital Marketing aan de Rotterdam Business School.",
       },
       item2: {
-        title: "Information Technology",
-        school: "Hogeschool Haarlem",
+        title: "Information Technology (BSc Programme)",
+        school: "Hogeschool Inholland, Haarlem",
         description:
-          "Basis gelegd in programmeren, systems thinking en interface-ontwerp (C#, HTML, SQL, Python en UX/UI-basisprincipes).",
+          "Twee basisjaren afgerond. Basis gelegd in programmeren, systems thinking en interface-ontwerp (C#, HTML, SQL, Python en UX/UI-basisprincipes).",
       },
       item3: {
-        title: "Docent Engels",
+        title: "Docent Engels (BEd Programme)",
         school: "Hogeschool Utrecht",
         description:
-          "Bestudeerde de basis van taalonderwijs, waaronder communicatie, pedagogiek en literatuuranalyse.",
+          "Eerste basisjaar afgerond. Bestudeerde de basis van taalonderwijs, waaronder communicatie, pedagogiek en literatuuranalyse.",
       },
     },
     experience: {
@@ -209,7 +192,7 @@ export const nl: LocaleMessages = {
       titlePrefix: "Vaardigheden &",
       titleHighlight: "Expertise",
       description:
-        "Een praktische combinatie van UX/UI-design, strategisch onderzoek en digitale marketing, ontwikkeld via echte klantprojecten op het gebied van branding, productconcepten en groeistrategieën.",
+        "Een praktische mix van full-stack webontwikkeling, UX/UI design en AI-automatisering, opgebouwd door echte klantprojecten rond productconcepten, API-integraties en digitale workflows.",
     },
     labels: {
       coreCompetencies: "Kernvaardigheden",
@@ -228,27 +211,25 @@ export const nl: LocaleMessages = {
         },
       },
       digitalMarketingGrowth: {
-        title: "Digitale Marketing & Groei",
+        title: "Web & Full-Stack Development",
         skills: {
-          digitalMarketingStrategyPlanning: "Digitale marketingstrategie & planning",
-          seoTechnicalOnPage: "SEO (technisch & on-page)",
-          socialMediaMarketing: "Social-media-marketing",
-          contentStrategyCampaignMessaging: "Contentstrategie & campagneboodschappen",
-          brandStorytelling: "Brand storytelling",
-          brandActivationExperientialConcepts: "Brand activatie & experience-concepten",
-          conversionOptimization: "Conversie-optimalisatie",
-          performanceTrackingReporting: "Performance tracking & rapportage",
+          frontendDevelopment: "Frontend Ontwikkeling (React, TypeScript)",
+          backendArchitecture: "Backend Architectuur & API's",
+          apiIntegration: "API Integratie & Beheer",
+          versionControl: "Versiebeheer (Git & GitHub)",
+          databaseManagement: "Databasebeheer (SQL)",
+          performanceOptimization: "Prestatie & SEO Optimalisatie",
         },
       },
       researchStrategy: {
-        title: "Onderzoek & Strategie",
+        title: "Digitale Strategie & Workflows",
         skills: {
-          userInterviewsSurveyDesign: "User interviews & enquête-ontwerp",
-          qualitativeQuantitativeAnalysis: "Kwalitatieve & kwantitatieve analyse",
-          marketCompetitorResearch: "Markt- en concurrentieonderzoek",
-          personaJourneyEmpathyMapping: "Persona-, journey- en empathy-mapping",
-          valueCreationPositioningStrategy: "Waardecreatie & positioneringsstrategie",
-          evidenceBasedDecisionMaking: "Evidence-based besluitvorming",
+          productStrategyPositioning: "Productstrategie & Positionering",
+          userResearchTesting: "Gebruikersonderzoek & Usability Testing",
+          crossFunctionalCollaboration: "Cross-functionele Samenwerking",
+          projectStakeholderManagement: "Project- & Stakeholdermanagement",
+          processAutomation: "Procesautomatisering & Efficiëntie",
+          evidenceBasedDecisionMaking: "Data-gedreven Besluitvorming",
         },
       },
       businessPlanningDelivery: {
@@ -267,13 +248,13 @@ export const nl: LocaleMessages = {
         },
       },
       aiAssistedCreation: {
-        title: "AI-ondersteunde creatie & Vibe Coding",
+        title: "AI Automatisering & Engineering",
         skills: {
-          vibeCoding: "Vibe coding",
-          aiAssistedWebsiteAppPrototyping: "AI-ondersteunde website/app-prototyping",
-          rapidIterationIdeaToMvp: "Snelle iteratie van idee naar MVP",
-          promptDrivenDevelopmentWorkflows: "Prompt-gedreven development workflows",
-          creativeExperimentationAiTools: "Creatief experimenteren met AI-tools",
+          claudeCursorCodex: "Claude Code, Cursor & Codex Workflows",
+          promptDrivenDevelopment: "Prompt-gedreven Ontwikkeling",
+          apiAutomationPipelines: "API Automatisering & Pijplijnen",
+          rapidIterationMvp: "Snelle Iteratie van Idee naar MVP",
+          vibeCoding: "Vibe Coding & AI Orkestratie",
         },
       },
     },
@@ -349,20 +330,10 @@ export const nl: LocaleMessages = {
     },
     filters: {
       all: "Alles",
-      eCommerceValidation: "E-commercevalidatie",
-      uxUiDesign: "UX/UI Design",
-      brandActivation: "Brand activatie",
-      digitalMarketing: "Digitale marketing",
-      appDesign: "App design",
-      brandPositioning: "Brand positionering",
-      artistStrategy: "Artiestenstrategie",
-      exportStrategy: "Exportstrategie",
-      eventPromotion: "Eventpromotie",
-      posterDesign: "Poster design",
-      musicStrategy: "Muziekstrategie",
-      valueCreation: "Waardecreatie",
-      financialPlanning: "Financiële planning",
-      marketResearch: "Marktonderzoek",
+      softwareEngineering: "AI Product Architecture",
+      uxUiProductDesign: "UX/UI & Product Design",
+      digitalMarketingEcommerce: "Digitale Marketing & E-commerce",
+      creativeStrategyBranding: "Creatieve Strategie & Branding",
     },
     projects: {
       theraNeckEcommerce: {
@@ -405,8 +376,17 @@ export const nl: LocaleMessages = {
         description:
           "Strategie voor toetreding tot de Belgische markt, gebaseerd op exportonderzoek, financiële planning en operationele positionering.",
       },
+      jobScout: {
+        description:
+          "Een lokale, GUI-first AI-workspace gebouwd om professionele kansen programmatisch te extraheren, analyseren en evalueren aan de hand van een strikt heuristisch profiel.",
+      },
+      moonlit: {
+        description:
+          "Een zero-dependency TypeScript 2D-engine die een 'Soothing Arcade'-ervaring aandrijft. Voorzien van een op maat gemaakte snapshot-architectuur en AI-ondersteunde asset-pipelines.",
+      },
     },
     tags: {
+      uxUiDesign: "UX/UI Design",
       eCommerce: "E-commerce",
       productValidation: "Productvalidatie",
       behaviouralAnalytics: "Gedragsanalytics",
@@ -444,6 +424,7 @@ export const nl: LocaleMessages = {
       solution: "De oplossing",
       solutionBreakdown: "Uitwerking van de oplossing",
       impactResults: "Impact & resultaten",
+      ethics: "Ethisch Ontwerp & Compliance",
       prototypePreview: "Prototypepreview",
       website: "Website",
       client: "KLANT",
@@ -452,7 +433,7 @@ export const nl: LocaleMessages = {
       toolsUsed: "GEBRUIKTE TOOLS",
       projectGallery: "Projectgalerij",
       gallerySections: {
-        videos: "Videoâ€™s",
+        videos: "Video's",
         images: "Afbeeldingen",
         documents: "Documenten",
       },
@@ -670,15 +651,44 @@ export const nl: LocaleMessages = {
         financialExportPlan: "Financieel exportplan (Excel-bestand)",
       },
     },
+    jobScout: {
+      title: "Job Scout",
+      subtitle: "AI-Gedreven Automatisering & Job Discovery Tool",
+      role: "AI Product Architect & UI/UX Director",
+      description:
+        "Job Scout is een zelf-geïnitieerde, lokale AI-gestuurde workspace die is ontwikkeld om het zoekproces naar werk te optimaliseren door professionele kansen programmatisch te extraheren, analyseren en filteren.",
+      challenge:
+        "Het handmatig filteren van honderden dagelijkse vacatures zorgt voor operationele vermoeidheid. Bestaande filters zijn vaak onnauwkeurig en evalueren niet hoe specifiek technische vaardigheden aansluiten op complexe functie-eisen.",
+      solution:
+        "Stuurde de end-to-end ontwikkeling aan van een lokale, GUI-first workspace voor het zoeken naar werk met behulp van AI-codeeragenten. Ontwierp een compleet vanilla JS/CSS frontend-dashboard met Kanban-stijl job tracking, een carrièretaxonomie (Primary, Bridge, Fallback) en real-time AI-budgetbewaking. De backend orkestreert een multi-provider AI-score-engine om vacatures te evalueren tegen een strikt, deterministisch heuristisch profiel.",
+      impact:
+        "Transformeerde een handmatig, vermoeiend zoekproces tot een high-fidelity visuele workspace. Bouwde een veerkrachtige pijplijn die kansen categoriseert in 'Apply First', 'Good Options' en 'Rejected' met behulp van strikte drempelwaarden, waardoor de tijd besteed aan het lezen van ongekwalificeerde vacatures drastisch werd verminderd en een schone database zonder duplicaten behouden blijft.",
+      ethics:
+        "Ontworp met strikte veiligheidsgrenzen. De applicatie verzamelt of bewaart nooit inloggegevens van derden en vertrouwt volledig op handmatige, human-in-the-loop browser authenticatie. Om de integriteit van de platformen te respecteren, maakt het systeem gebruik van menselijk tempo, worden CAPTCHA's of snelheidslimieten niet omzeild en pauzeert het voor expliciete goedkeuring van de gebruiker vóór elke definitieve sollicitatie.",
+    },
+    moonlit: {
+      title: "Moonlit Firefly Bloom",
+      subtitle: "Een Custom 2D Canvas Engine gebouwd voor een \"Soothing Arcade\" Ervaring.",
+      role: "Engine Architect, Gameplay Programmer & Product Lead",
+      description: "Moonlit Firefly Bloom is een geoptimaliseerde, framework-vrije **browser-native 2D arcade engine**, volledig vanaf nul opgebouwd met strikte TypeScript en HTML5 Canvas. Strategisch gepositioneerd binnen de opkomende **\"Soothing Arcade\"** niche, slaat het project een brug tussen **mechanische arcade-survival loops** en **kalmerende gebruikerspsychologie**, wat zorgt voor hoogwaardige, afleidingsvrije gameplay direct in de browser.",
+      challenge: "Het ontwikkelen van een high-fidelity interactieve rendering loop zonder externe frameworks (zoals Phaser of PixiJS) vereiste maatwerkoplossingen voor **low-level delta timing**, **responsieve schaalwetten voor mobiel**, en **responsieve bounding-box/circle botsingen**. Het systeem moest gracieus omgaan met stapelende, **complexe globale event states** (Full Moon Blessings, Moon Rain loops, New Moon Shadow Blooms) en prestatielimieten op mobiele browsers zonder frames te verliezen of thread-synchronisatie te verbreken.",
+      solution: "Een strikte **Unidirectional Snapshot Pattern-architectuur** ontworpen. De core Game engine behandelt pure logica-mutaties en voert een volledig onveranderlijke **RenderSnapshot** uit naar een ontkoppelde CanvasRenderer, waarmee side effects over staten heen worden geëlimineerd. Om fragiele beperkingen van mobiele browsers op te lossen, heb ik een asynchrone **Web Audio API pre-loading pipeline** gebouwd met gesture-safe runtime fallback audiostreams. Responsieve trackingprofielen passen de **dichtheid van entiteiten** (schaduwen, power-ups, orbs) in realtime aan op basis van hardwarecapaciteit.",
+      impact: "- **Zero-Dependency Architectuur:** Een volledige 2D interactieve omgeving ontworpen met pure browser API's, waarmee externe bundle bloat en afhankelijkheidskwetsbaarheden zijn geëlimineerd.\n- **Unidirectionele Data Flow:** Bewezen architectonische scheiding tussen gameloops, inputbeheer en procedurele rendering via veilige snapshot states.\n- **Systemische State Engine:** Een complexe wiskundige state engine geïmplementeerd die gesynchroniseerde globale modifiers controleert, waaronder progressieve maanfasen, entiteit-verbergende safe states en lokaal geïsoleerde terreingevaren (Shadow Blooms).\n- **Procedurele Prestaties boven Asset Overhead:** Traditionele zware visuele assets vervangen door sterk geoptimaliseerde, wiskundige renderingtrucs—met behulp van canvas composite wiskunde, alpha fades en dynamische matrix transformaties om een vlekkeloze 60FPS lock op mobiel te behouden.\n- **Frictieloze Data Persistentie:** Een lichtgewicht, gelokaliseerde data-opslaglaag geïmplementeerd met behulp van de native `localStorage` API om \"Best Night\" records en run metrics bij te houden, waarbij backend latentie en authenticatiemuren expliciet worden vermeden om aan de MVP-scope te voldoen.\n- **Commercial-Grade IP & Compliance Pipeline:** Een strikte interne juridische logboekarchitectuur opgezet om AI-gegenereerde visuele/audio-assets bij te houden en commerciële app-store gereedheid te behouden, waarmee volwassenheid in productmanagement en zakelijke naleving wordt aangetoond.\n- **Tactiele Mobiele UX Engineering:** Een aangepast virtueel joystick-invoersysteem ontwikkeld met wiskundig gecompenseerde aanraakdoelen (Y-as duimcompensatie) om ervoor te zorgen dat het zicht van de speler op het canvas volledig onbelemmerd blijft tijdens het mobiel spelen.\n- **AI-Gedreven Creatieve Directie & Solo Ontwikkeling:** Volledige regie over de productvisie en de end-to-end ontwikkeling solo uitgevoerd. Antigravity IDE en OpenAI Codex ingezet voor snelle engine-architectuur, Suno AI gebruikt om de rustgevende akoestische soundscape te genereren, en ChatGPT Image 2.0 toegepast om de sfeervolle visuele assets te synthetiseren.",
+      metrics: [
+        "0 Runtime Dependencies",
+        "Strikte 60FPS Doelstelling op Mobiele Viewports",
+        "Geünificeerde Desktop & Touch Input Mapping"
+      ]
+    },
   },
   hero: {
     available: "Beschikbaar voor nieuwe projecten",
     title: "Hallo, ik ben",
     name: "Omar Abdulghani",
-    subtitleRole: "Creative Strategist",
+    subtitleRole: "Technologiegedreven Creatieve Specialist",
     subtitleRest:
-      "die branding, UX/UI en technologie combineert om ideeën om te zetten in",
-    subtitleEnding: "betekenisvolle digitale ervaringen.",
+      "die full-stack webontwikkeling, AI-automatisering en UX/UI-design combineert om",
+    subtitleEnding: "schaalbare digitale producten te bouwen.",
     ctaViewWork: "Bekijk mijn werk",
     ctaContact: "Neem contact op",
     download: "Download",
@@ -697,9 +707,9 @@ export const nl: LocaleMessages = {
   },
   cards: {
     conceptDevelopment: {
-      title: "Conceptontwikkeling & Merkbeleving",
+      title: "Web & Full-Stack Development",
       body:
-        "Ik vertaal ideeën naar betekenisvolle merkervaringen — van eerste concept tot concrete activaties en digitale oplossingen. Door onderzoek, creativiteit en strategie te combineren ontwikkel ik concepten die aansluiten bij doelgroepen en bijdragen aan bedrijfsdoelen.",
+        "Robuuste digitale producten bouwen die complexe vereisten vertalen naar schaalbare architecturen, naadloze API-integraties en efficiënte code.",
     },
     uxUi: {
       title: "UX/UI Design & Digitale Productstrategie",
@@ -707,9 +717,9 @@ export const nl: LocaleMessages = {
         "Ik ontwerp intuïtieve digitale ervaringen op basis van gebruikersonderzoek, gedrag en strategisch denken. Complexe ideeën vertaal ik naar duidelijke, gebruiksvriendelijke interfaces die functionaliteit, gebruiksgemak en visuele identiteit in balans brengen.",
     },
     creativeTechnology: {
-      title: "Creatieve Technologie, AI-ondersteunde Prototyping & Vibe Coding",
+      title: "AI Automatisering & Workflows",
       body:
-        "Met een sterke IT-basis en AI-ondersteunde ontwikkeltools zoals Cursor, Claude Code en CodeX ontwikkel ik snel prototypes van websites, apps en interactieve concepten. Dit maakt snelle iteratie en efficiënte uitvoering mogelijk — van idee tot werkend prototype.",
+        "Ontwikkelings- en operationele processen stroomlijnen door geautomatiseerde pijplijnen, prompt-gedreven ontwikkeling en geavanceerde AI-tools (Cursor, Claude Code, Codex).",
     },
   },
   tags: {

@@ -1,4 +1,4 @@
-﻿import type { LocaleMessages } from "./types";
+import type { LocaleMessages } from "./types";
 
 export const en: LocaleMessages = {
   nav: {
@@ -11,7 +11,7 @@ export const en: LocaleMessages = {
   },
   footer: {
     description:
-      "A Creative Business Specialist bridging the gap between design, strategy, and digital marketing to create meaningful user experiences.",
+      "A Tech-Driven Creative Specialist building full-stack products, automating workflows with AI, and crafting intuitive UX/UI designs.",
     quickLinks: "Quick Links",
     home: "Home",
     aboutMe: "About Me",
@@ -26,11 +26,11 @@ export const en: LocaleMessages = {
   about: {
     hero: {
       badge: "About Me",
-      titlePrefix: "Bridging Creativity &",
-      titleHighlight: "Business Strategy",
+      titlePrefix: "Bridging Design &",
+      titleHighlight: "Full-Stack Development",
       name: "Omar Abdulghani",
       description:
-        "Turning ideas into **meaningful brand experiences**, from **early ideation** to tangible concepts, activations, and digital solutions. I combine **research, creativity, and strategy** to create concepts that connect with audiences and support **business goals**.",
+        "Turning ideas into **meaningful digital experiences**, from **UX/UI design** to full-stack development and AI automation. I combine **research, creativity, and technology** to build scalable products that connect with users and streamline **digital workflows**.",
       ctaViewWork: "View My Work",
       ctaDownloadCv: "Download CV",
     },
@@ -42,19 +42,19 @@ export const en: LocaleMessages = {
           description: "Research & Strategy",
         },
         design: {
-          title: "Concept",
-          description: "Ideas & Experience",
+          title: "Design",
+          description: "UX/UI & Prototyping",
         },
         prototype: {
-          title: "Design",
-          description: "Brand & UX/UI",
+          title: "Develop",
+          description: "Full-Stack Build",
         },
         testIterate: {
-          title: "Prototype",
-          description: "Test & Validate",
+          title: "Automate",
+          description: "AI & API Integration",
         },
         deliver: {
-          title: "Activate",
+          title: "Deliver",
           description: "Launch & Impact",
         },
       },
@@ -63,9 +63,9 @@ export const en: LocaleMessages = {
       focusTitle: "What I Focus On",
       focusItems: {
         brandStrategy: {
-          title: "Brand & Experience Strategy",
+          title: "Web & Full-Stack Development",
           description:
-            "Developing concepts that translate brand ideas into **meaningful experiences** through **storytelling, activations, and digital touchpoints**.",
+            "Building robust digital products that translate complex requirements into **scalable architectures**, seamless **API integrations**, and efficient code.",
         },
         uxUiDesign: {
           title: "UX/UI & Digital Product Design",
@@ -73,9 +73,9 @@ export const en: LocaleMessages = {
             "Designing **intuitive digital experiences** that connect **user needs** with clear **product thinking and interaction design**.",
         },
         aiPrototyping: {
-          title: "AI-Assisted Prototyping & Concept Development",
+          title: "AI Automation & Workflows",
           description:
-            "Rapidly exploring ideas through **prototypes, experiments, and emerging tools** to turn **early concepts** into **tangible experiences**.",
+            "Streamlining development and operational processes through **automated pipelines, prompt-driven development, and advanced AI tools** (Cursor, Claude Code, Codex).",
         },
       },
       highlightsTitle: "Highlights",
@@ -90,49 +90,32 @@ export const en: LocaleMessages = {
       title: "My Story",
       sections: {
         background: {
-          title: "My Background",
+          title: "Early Background & Cross-Cultural Journey",
           paragraph1:
-            "I’m a Creative Strategist with a multidisciplinary background in **branding, UX/UI design, digital marketing, and technology**. My work focuses on translating ideas into clear concepts and experiences that are both creatively engaging and strategically grounded.",
+            "Before moving to the Netherlands, I developed strong communication and presentation skills by teaching English to children in Syria. After arriving at the age of 19, I continued this path by studying **English Teaching at HU University of Applied Sciences in Utrecht**.",
           paragraph2:
-            "My professional path combines **communication, technology, and creative thinking**. Before moving to the Netherlands, I taught English to children in Syria, where I developed strong communication and presentation skills early on.",
-        },
-        crossCulturalExperience: {
-          title: "Cross-Cultural Experience",
-          paragraph1:
-            "After moving to the Netherlands at the age of 19, I continued developing this interest in language and education by studying **English Teaching at HU University of Applied Sciences in Utrecht**.",
-          paragraph2:
-            "Alongside my studies, I worked as a voluntary translator and cultural mediator with organizations such as **VluchtelingenWerk** and **the Municipality of Amstelveen**. I assisted with translation between Dutch, English, and Arabic, and supported workshops that introduced newcomers to Dutch society and core values.",
+            "Alongside my studies, I worked as a voluntary translator and cultural mediator with organizations such as **VluchtelingenWerk** and **the Municipality of Amstelveen**, assisting with translations between Dutch, English, and Arabic, and supporting workshops for newcomers.",
         },
         technologyDesign: {
           title: "Technology & Design",
           paragraph1:
-            "My interest in technology led me to study **Information Technology at Inholland University of Applied Sciences in Haarlem**, where I built a technical foundation in **C#, HTML, SQL, Python, and UX/UI**.",
+            "My interest in technology led me to study **Information Technology at Inholland University of Applied Sciences in Haarlem**, where I completed a **two-year technical foundation** in **C#, HTML, SQL, Python, and UX/UI**.",
           paragraph2:
             "Understanding both the creative and technical sides of digital products allows me to **bridge the gap between ideas, design, and implementation**.",
         },
         creativeBusinessClientWork: {
           title: "Creative Business & Client Work",
           paragraph1:
-            "I later completed my **Bachelor's degree in International Creative Business** at Inholland in Haarlem, graduating in 2025 with a minor in **Digital Marketing**.",
+            "I completed my **Bachelor's degree in International Creative Business** at Inholland in Haarlem, **graduating with merit** in 2025, which included a minor in **Digital Marketing at Rotterdam Business School**.",
           paragraph2:
             "During this time, I worked on real client projects for organizations such as **Patronaat**, **Amstelhof**, and **De FilmHallen**, contributing to projects from briefing and research to concept development and final presentation.",
         },
-        aiPrototyping: {
-          title: "AI & Prototyping",
-          paragraph1:
-            "Alongside my design and strategy work, I have been exploring **AI-assisted development** using tools such as **Cursor, Claude Code, and Codex** to rapidly prototype websites, apps, and interactive concepts.",
-          paragraph2:
-            "With my technical background, I approach these tools not only creatively but also with a **solid understanding of the systems behind them**.",
-        },
         focusToday: {
-          title: "What I Focus On Today",
+          title: "Current Focus & AI Development",
           paragraph1:
-            "Today, I focus on **branding, UX/UI design, digital marketing, and concept development**, particularly in early-stage ideation, brand storytelling, and experience-driven thinking.",
-        },
-        languages: {
-          title: "Languages",
-          paragraph1:
-            "Fluent in **Arabic and English** and conversational in **Dutch (B1)**, I bring a **cross-cultural perspective, technical understanding, and hands-on creativity** to every collaboration.",
+            "Today, I focus on building scalable web applications and streamlining digital workflows. I deeply integrate **AI-assisted development** using tools such as **Cursor, Claude Code, and Codex** to rapidly build and automate full-stack products.",
+          paragraph2:
+            "With a strong technical foundation, I approach these tools with a **solid understanding of the systems and APIs behind them**."
         },
       },
       closingLine:
@@ -146,22 +129,22 @@ export const en: LocaleMessages = {
     education: {
       title: "Education",
       item1: {
-        title: "International Creative Business",
+        title: "International Creative Business (BA)",
         school: "Inholland University of Applied Sciences, Haarlem",
         description:
-          "Bachelor's degree with a multidisciplinary focus on branding, UX/UI, strategy, and business innovation. Included a minor in Digital Marketing.",
+          "Graduated with merit. Bachelor's degree with a multidisciplinary focus on branding, UX/UI, strategy, and business innovation. Included a minor in Digital Marketing at Rotterdam Business School.",
       },
       item2: {
-        title: "Information Technology",
-        school: "Haarlem University of Applied Sciences",
+        title: "Information Technology (BSc Programme)",
+        school: "Inholland University of Applied Sciences, Haarlem",
         description:
-          "Built foundations in programming, systems thinking, and interface design (C#, HTML, SQL, Python, UX/UI basics).",
+          "Completed two foundational years. Built foundations in programming, systems thinking, and interface design (C#, HTML, SQL, Python, UX/UI basics).",
       },
       item3: {
-        title: "Teacher of English",
+        title: "Teacher of English (BEd Programme)",
         school: "Utrecht University of Applied Sciences",
         description:
-          "Studied language teaching fundamentals including communication, pedagogy, and literature analysis.",
+          "Completed first foundational year. Studied language teaching fundamentals including communication, pedagogy, and literature analysis.",
       },
     },
     experience: {
@@ -207,7 +190,7 @@ export const en: LocaleMessages = {
       titlePrefix: "Skills &",
       titleHighlight: "Expertise",
       description:
-        "A practical blend of UX/UI design, strategic research, and digital marketing execution built through real client projects across branding, product concepts, and growth optimization.",
+        "A practical blend of full-stack web development, UX/UI design, and AI automation built through real client projects across product concepts, API integrations, and digital workflows.",
     },
     labels: {
       coreCompetencies: "Core Competencies",
@@ -226,52 +209,35 @@ export const en: LocaleMessages = {
         },
       },
       digitalMarketingGrowth: {
-        title: "Digital Marketing & Growth",
+        title: "Web & Full-Stack Development",
         skills: {
-          digitalMarketingStrategyPlanning: "Digital Marketing Strategy & Planning",
-          seoTechnicalOnPage: "SEO (Technical & On-Page)",
-          socialMediaMarketing: "Social Media Marketing",
-          contentStrategyCampaignMessaging: "Content Strategy & Campaign Messaging",
-          brandStorytelling: "Brand Storytelling",
-          brandActivationExperientialConcepts: "Brand Activation & Experiential Concepts",
-          conversionOptimization: "Conversion Optimization",
-          performanceTrackingReporting: "Performance Tracking & Reporting",
+          frontendDevelopment: "Frontend Development (React, TypeScript)",
+          backendArchitecture: "Backend Architecture & APIs",
+          apiIntegration: "API Integration & Management",
+          versionControl: "Version Control (Git & GitHub)",
+          databaseManagement: "Database Management (SQL)",
+          performanceOptimization: "Performance & SEO Optimization",
         },
       },
       researchStrategy: {
-        title: "Research & Strategy",
+        title: "Digital Strategy & Workflows",
         skills: {
-          userInterviewsSurveyDesign: "User Interviews & Survey Design",
-          qualitativeQuantitativeAnalysis: "Qualitative & Quantitative Analysis",
-          marketCompetitorResearch: "Market & Competitor Research",
-          personaJourneyEmpathyMapping: "Persona, Journey & Empathy Mapping",
-          valueCreationPositioningStrategy: "Value Creation & Positioning Strategy",
+          productStrategyPositioning: "Product Strategy & Positioning",
+          userResearchTesting: "User Research & Usability Testing",
+          crossFunctionalCollaboration: "Cross-Functional Collaboration",
+          projectStakeholderManagement: "Project & Stakeholder Management",
+          processAutomation: "Process Automation & Efficiency",
           evidenceBasedDecisionMaking: "Evidence-Based Decision Making",
         },
       },
-      businessPlanningDelivery: {
-        title: "Business, Planning & Delivery",
-        skills: {
-          conceptCreationIdeasToExperiences: "Concept Creation (Ideas to Experiences)",
-          projectStakeholderManagement: "Project & Stakeholder Management",
-          clientBriefingDebriefing: "Client Briefing & Debriefing",
-          crossFunctionalCollaboration: "Cross-Functional Collaboration",
-          exportMarketEntryPlanning: "Export & Market Entry Planning",
-          financialPlanningBudgetStructuring: "Financial Planning & Budget Structuring",
-          kpiSmartGoalFrameworks: "KPI & SMART Goal Frameworks",
-          clientFacingPresentationDocumentation: "Client-Facing Presentation & Documentation",
-          htmlCssFundamentals: "HTML & CSS Fundamentals",
-          sqlFundamentals: "SQL Fundamentals",
-        },
-      },
       aiAssistedCreation: {
-        title: "AI-Assisted Creation & Vibe Coding",
+        title: "AI Automation & Engineering",
         skills: {
-          vibeCoding: "Vibe Coding",
-          aiAssistedWebsiteAppPrototyping: "AI-Assisted Website/App Prototyping",
-          rapidIterationIdeaToMvp: "Rapid Iteration from Idea to MVP",
-          promptDrivenDevelopmentWorkflows: "Prompt-Driven Development Workflows",
-          creativeExperimentationAiTools: "Creative Experimentation with AI Tools",
+          claudeCursorCodex: "Claude Code, Cursor & Codex Workflows",
+          promptDrivenDevelopment: "Prompt-Driven Development",
+          apiAutomationPipelines: "API Automation & Pipelines",
+          rapidIterationMvp: "Rapid Iteration from Idea to MVP",
+          vibeCoding: "Vibe Coding & AI Orchestration",
         },
       },
     },
@@ -347,20 +313,10 @@ export const en: LocaleMessages = {
     },
     filters: {
       all: "All",
-      eCommerceValidation: "E-commerce Validation",
-      uxUiDesign: "UX/UI Design",
-      brandActivation: "Brand Activation",
-      digitalMarketing: "Digital Marketing",
-      appDesign: "App Design",
-      brandPositioning: "Brand Positioning",
-      artistStrategy: "Artist Strategy",
-      exportStrategy: "Export Strategy",
-      eventPromotion: "Event Promotion",
-      posterDesign: "Poster Design",
-      musicStrategy: "Music Strategy",
-      valueCreation: "Value Creation",
-      financialPlanning: "Financial Planning",
-      marketResearch: "Market Research",
+      softwareEngineering: "AI Product Architecture",
+      uxUiProductDesign: "UX/UI & Product Design",
+      digitalMarketingEcommerce: "Digital Marketing & E-Commerce",
+      creativeStrategyBranding: "Creative Strategy & Branding",
     },
     projects: {
       theraNeckEcommerce: {
@@ -403,8 +359,17 @@ export const en: LocaleMessages = {
         description:
           "Belgium market-entry strategy combining export research, financial planning, and operational positioning.",
       },
+      jobScout: {
+        description:
+          "A local, GUI-first AI workspace built to programmatically extract, parse, and evaluate professional opportunities against a strict heuristic profile.",
+      },
+      moonlit: {
+        description:
+          "A zero-dependency TypeScript 2D engine powering a 'Soothing Arcade' experience. Features custom snapshot architecture and AI-assisted asset pipelines.",
+      },
     },
     tags: {
+      uxUiDesign: "UX/UI Design",
       eCommerce: "E-commerce",
       productValidation: "Product Validation",
       behaviouralAnalytics: "Behavioural Analytics",
@@ -442,6 +407,7 @@ export const en: LocaleMessages = {
       solution: "The Solution",
       solutionBreakdown: "Solution Breakdown",
       impactResults: "Impact & Results",
+      ethics: "Ethical Engineering & Compliance",
       prototypePreview: "Prototype Preview",
       website: "Website",
       client: "Client",
@@ -548,7 +514,7 @@ export const en: LocaleMessages = {
     patronApp: {
       subtitle: "Chosen App Concept for Patronaat's International Audience",
       description:
-        "PatronApp was developed with my classmates in **ZOOTS** (Zuzanna, Omar, Oliwia, Tamara, and Susanna) for Patronaat in Haarlem. Across the three module phases â€” **Creation, Justification, and Production** â€” we proposed three concepts, and **PatronApp (my concept)** was selected by the client for further development. I led the app ideation and designed the interactive prototype in Adobe XD.",
+        "PatronApp was developed with my classmates in **ZOOTS** (Zuzanna, Omar, Oliwia, Tamara, and Susanna) for Patronaat in Haarlem. Across the three module phases - **Creation, Justification, and Production** - we proposed three concepts, and **PatronApp (my concept)** was selected by the client for further development. I led the app ideation and designed the interactive prototype in Adobe XD.",
       challenge:
         "Patronaat needed to improve **online communication and reach**, especially for **international visitors** who faced language and inclusion barriers. Existing communication felt too generic, while users asked for a more personal, interactive, and community-driven music venue experience.",
       solution:
@@ -668,15 +634,44 @@ export const en: LocaleMessages = {
         financialExportPlan: "Financial Export Plan (Excel File)",
       },
     },
+    jobScout: {
+      title: "Job Scout",
+      subtitle: "AI-Driven Automation & Job Discovery Utility",
+      role: "AI Product Architect & UI/UX Director",
+      description:
+        "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by programmatically extracting, parsing, and filtering live professional opportunities.",
+      challenge:
+        "Manually filtering through hundreds of daily job listings introduces massive operational fatigue. Most platform filters are noisy and fail to evaluate how closely an applicant's deep technical skills map to complex, multi-layered job specifications.",
+      solution:
+        "Directed the end-to-end development of a local, GUI-first job search workspace using AI coding agents. Designed a complete vanilla JS/CSS frontend dashboard featuring Kanban-style job tracking, career lane taxonomy (Primary, Bridge, Fallback), and real-time AI budget guards. The backend orchestrates a multi-provider AI scoring engine to evaluate job descriptions against a strict, deterministic heuristic profile.",
+      impact:
+        "Transformed a manual, fatigue-inducing search process into a high-fidelity visual workspace. Built a resilient pipeline that categorizes opportunities into 'Apply First,' 'Good Options,' and 'Rejected' using strict threshold logic, drastically reducing time spent reading unqualified listings while maintaining a clean, duplicate-free database across runs.",
+      ethics:
+        "Engineered with strict security boundaries. The application never collects or stores third-party credentials, relying entirely on manual, human-in-the-loop browser authentication. To respect platform integrity, the system utilizes human-mimicking pacing, does not bypass CAPTCHAs or rate-limits, and pauses for explicit user review before any final application submissions.",
+    },
+    moonlit: {
+      title: "Moonlit Firefly Bloom",
+      subtitle: "A Custom 2D Canvas Engine Architected for a \"Soothing Arcade\" Experience.",
+      role: "Engine Architect, Gameplay Programmer & Product Lead",
+      description: "Moonlit Firefly Bloom is an optimized, framework-free **browser-native 2D arcade engine** built entirely from scratch using strict TypeScript and HTML5 Canvas. Positioned strategically within the emerging **\"Soothing Arcade\"** market niche, the project bridges the gap between **mechanical arcade-survival loops** and **calming, wind-down user psychology**—delivering high-performance, distraction-free gameplay directly to the browser.",
+      challenge: "Engineering a high-fidelity interactive rendering loop without third-party game frameworks (like Phaser or PixiJS) required custom implementations for **low-level delta timing**, **responsive mobile viewport scaling laws**, and **responsive bounding-box/circle collisions**. The system had to gracefully manage stacking, **complex global event states** (Full Moon Blessings, Moon Rain loops, New Moon Shadow Blooms) and mobile browser performance caps without dropping frames or breaking thread synchronization.",
+      solution: "Designed a strict **Unidirectional Snapshot Pattern** architecture. The core Game engine handles pure logic mutations and outputs a completely immutable **RenderSnapshot** payload to a decoupled CanvasRenderer, eliminating cross-state side effects. To resolve fragile mobile browser limitations, I built an asynchronous **Web Audio API pre-loading pipeline** featuring gesture-safe runtime fallback audio streams. Responsive tracking profiles dynamically adjust **entity densities** (shadows, powerups, orbs) in real-time based on hardware scale.",
+      impact: "- **Zero-Dependency Architecture:** Engineered a complete 2D interactive environment using raw browser APIs, eliminating external bundle bloat and dependency vulnerabilities.\n- **Unidirectional Data Flow:** Proven architectural separation between game loops, input management, and procedural rendering systems via safe snapshot states.\n- **Systemic State Engine:** Implemented a complex mathematical state engine controlling synchronized global modifiers, including progressive moon phases, entity-hiding safe states, and localized coordinate-isolated terrain hazards (Shadow Blooms).\n- **Procedural Performance Over Asset Overhead:** Swapped traditional heavy visual asset structures for highly optimized, mathematical rendering tricks—utilizing canvas composite math, alpha fades, and dynamic matrix transformations to preserve a flawless 60FPS lock on mobile.\n- **Frictionless Data Persistence:** Implemented a lightweight, localized data-storage layer using native `localStorage` API to track \"Best Night\" records and run metrics, explicitly avoiding backend latency and authentication walls to fulfill the MVP scope.\n- **Commercial-Grade IP & Compliance Pipeline:** Established a strict internal legal logging architecture to track AI-generated visual/audio assets and maintain commercial app-store readiness, demonstrating product management maturity and business compliance.\n- **Tactile Mobile UX Engineering:** Engineered a custom virtual joystick input system with mathematically offset touch-targets (Y-axis thumb compensation) to ensure the player's view of the canvas remains entirely unobstructed during mobile play.\n- **AI-Driven Creative Direction & Solo Development:** Directed the complete product vision and executed end-to-end development solo. Leveraged Antigravity IDE and OpenAI Codex for rapid engine architecture, utilized Suno AI to generate the soothing acoustic soundscape, and applied ChatGPT Image 2.0 to synthesize the atmospheric visual assets.",
+      metrics: [
+        "0 Runtime Dependencies",
+        "Strict 60FPS Target across Mobile Viewports",
+        "Unified Desktop & Touch Input Mapping"
+      ]
+    },
   },
   hero: {
     available: "Available for new projects",
     title: "Hello, I'm",
     name: "Omar Abdulghani",
-    subtitleRole: "Creative Strategist",
+    subtitleRole: "Tech-Driven Creative Specialist",
     subtitleRest:
-      "combining branding, UX/UI, and technology to turn ideas into",
-    subtitleEnding: "meaningful experiences.",
+      "combining full-stack web development, AI automation, and UX/UI design to build",
+    subtitleEnding: "scalable digital products.",
     ctaViewWork: "View My Work",
     ctaContact: "Contact Me",
     download: "Download",
@@ -695,9 +690,9 @@ export const en: LocaleMessages = {
   },
   cards: {
     conceptDevelopment: {
-      title: "Concept Development & Brand Experience",
+      title: "Web & Full-Stack Development",
       body:
-        "Turning ideas into meaningful brand experiences, from early ideation to tangible concepts, activations, and digital solutions. I combine research, creativity, and strategy to create concepts that connect with audiences and support business goals.",
+        "Building robust digital products that translate complex requirements into scalable architectures, seamless API integrations, and efficient code.",
     },
     uxUi: {
       title: "UX/UI Design & Digital Product Strategy",
@@ -705,9 +700,9 @@ export const en: LocaleMessages = {
         "Designing intuitive digital experiences grounded in user research, behavior, and strategic thinking. I transform complex ideas into clear, user-centered interfaces that balance functionality, usability, and visual identity.",
     },
     creativeTechnology: {
-      title: "Creative Technology, AI-Assisted Prototyping & Vibe Coding",
+      title: "AI Automation & Workflows",
       body:
-        "Using IT foundations and AI-assisted development tools such as Cursor, Claude Code, and CodeX to rapidly prototype websites, apps, and interactive concepts. This enables fast iteration and efficient execution from idea to prototype.",
+        "Streamlining development and operational processes through automated pipelines, prompt-driven development, and advanced AI tools (Cursor, Claude Code, Codex).",
     },
   },
   tags: {

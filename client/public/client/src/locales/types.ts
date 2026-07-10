@@ -1,4 +1,4 @@
-﻿export type Language = "en" | "nl";
+export type Language = "en" | "nl";
 
 export interface LocaleMessages {
   nav: {
@@ -320,20 +320,10 @@ export interface LocaleMessages {
     };
     filters: {
       all: string;
-      eCommerceValidation: string;
-      uxUiDesign: string;
-      brandActivation: string;
-      digitalMarketing: string;
-      appDesign: string;
-      brandPositioning: string;
-      artistStrategy: string;
-      exportStrategy: string;
-      eventPromotion: string;
-      posterDesign: string;
-      musicStrategy: string;
-      valueCreation: string;
-      financialPlanning: string;
-      marketResearch: string;
+      softwareEngineering: string;
+      uxUiProductDesign: string;
+      digitalMarketingEcommerce: string;
+      creativeStrategyBranding: string;
     };
     projects: {
       theraNeckEcommerce: { description: string };
@@ -346,6 +336,8 @@ export interface LocaleMessages {
       burningManCampaign: { description: string };
       streamingEmotionsValuePlan: { description: string };
       beexExportStrategy: { description: string };
+      jobScout: { description: string };
+      moonlit: { description: string };
     };
     tags: {
       eCommerce: string;
@@ -385,6 +377,7 @@ export interface LocaleMessages {
       solution: string;
       solutionBreakdown: string;
       impactResults: string;
+      ethics: string;
       prototypePreview: string;
       website: string;
       client: string;
@@ -545,6 +538,26 @@ export interface LocaleMessages {
         exportPlan: string;
         financialExportPlan: string;
       };
+    };
+    jobScout: {
+      title: string;
+      subtitle: string;
+      role: string;
+      description: string;
+      challenge: string;
+      solution: string;
+      impact: string;
+      ethics: string;
+    };
+    moonlit: {
+      title: string;
+      subtitle: string;
+      role: string;
+      description: string;
+      challenge: string;
+      solution: string;
+      impact: string;
+      metrics?: string[];
     };
   };
   hero: {

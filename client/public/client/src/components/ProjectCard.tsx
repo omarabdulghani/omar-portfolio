@@ -41,7 +41,7 @@ export default function ProjectCard({
               src={image}
               alt={title}
               className={cn(
-                "block w-full h-full object-cover transition-transform duration-700 group-hover:scale-105",
+                "block w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105",
                 imageClassName
               )}
             />
@@ -66,13 +66,13 @@ export default function ProjectCard({
             <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
               {title}
             </h3>
-            <p className="text-muted-foreground text-sm mb-6 line-clamp-2 flex-grow">
+            <p className="text-muted-foreground text-sm mb-6 line-clamp-3 flex-grow">
               {description}
             </p>
             
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-auto">
-              {tags.slice(0, 3).map((tag) => (
+              {tags.map((tag) => (
                 <span 
                   key={tag} 
                   className="text-xs text-muted-foreground bg-secondary/50 px-2 py-1 rounded-md border border-border/50"
@@ -80,11 +80,6 @@ export default function ProjectCard({
                   {tag}
                 </span>
               ))}
-              {tags.length > 3 && (
-                <span className="text-xs text-muted-foreground px-2 py-1">
-                  +{tags.length - 3}
-                </span>
-              )}
             </div>
           </div>
         </div>
