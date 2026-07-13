@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
-import { Mail, MapPin, Phone, Send, Linkedin, Instagram } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Linkedin, Instagram, Github } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -109,12 +109,21 @@ export default function Contact() {
               </div>
 
               <div className="flex gap-4 pt-4">
-                <Button variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                  <Linkedin size={20} />
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                  <Instagram size={20} />
-                </Button>
+                <a href="https://www.linkedin.com/in/omar-abdelgani/" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "linkedin" })}>
+                  <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Linkedin size={20} />
+                  </Button>
+                </a>
+                <a href="https://github.com/omarabdulghani/" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "github" })}>
+                  <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Github size={20} />
+                  </Button>
+                </a>
+                <a href="https://instagram.com/omar-abdelgani" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "instagram" })}>
+                  <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                    <Instagram size={20} />
+                  </Button>
+                </a>
               </div>
             </div>
 

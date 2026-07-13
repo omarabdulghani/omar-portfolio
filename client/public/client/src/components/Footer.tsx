@@ -1,5 +1,5 @@
-﻿import { Link } from "wouter";
-import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "wouter";
+import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useCookieConsent } from "@/contexts/CookieConsentContext";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
@@ -31,6 +31,15 @@ export default function Footer() {
                 onClick={() => trackEvent("social_click", { location: "footer", network: "linkedin" })}
               >
                 <Linkedin size={20} />
+              </a>
+              <a
+                href="https://github.com/omarabdulghani/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                onClick={() => trackEvent("social_click", { location: "footer", network: "github" })}
+              >
+                <Github size={20} />
               </a>
               <a
                 href="mailto:omarabdulgh@gmail.com"
