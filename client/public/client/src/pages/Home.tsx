@@ -151,19 +151,6 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-            <a
-              href={cvResumeHref}
-              download
-              className="mt-6 inline-flex items-center gap-3 xl:hidden text-[1.05rem] font-medium text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-primary"
-              onClick={() => trackEvent("cv_download", { location: "home_hero_compact", label: "download_cv_pdf" })}
-            >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
-                <Download className="h-5 w-5" />
-              </span>
-              <span>
-                {messages.hero.download} <span className="text-muted-foreground">{messages.hero.cvPdf}</span>
-              </span>
-            </a>
             </div>
           </div>
 
@@ -227,30 +214,6 @@ export default function Home() {
                 <div className="pointer-events-none absolute inset-0 z-[6] rounded-full dark:hidden bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_44%,rgba(255,255,255,0.06)_66%,rgba(255,255,255,0.14)_84%,rgba(255,255,255,0.22)_100%)]" />
                 <div className="pointer-events-none absolute inset-0 z-[6] hidden rounded-full dark:block bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_44%,rgba(0,0,0,0.10)_66%,rgba(0,0,0,0.20)_84%,rgba(0,0,0,0.32)_100%)]" />
               </div>
-              
-              {/* Floating Badge */}
-              <a
-                href={cvResumeHref}
-                download
-                className="absolute z-20 bottom-10 -left-10 bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl animate-shine-once hover:border-primary/30 transition-colors"
-                onClick={() => trackEvent("cv_download", { location: "home_hero", label: "curriculum_vitae" })}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/20 p-2 rounded-lg text-primary">
-                    <Download size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{messages.hero.download}</p>
-                    <p className="font-bold text-sm">{messages.hero.cvPdf}</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Proposition */}
       <section className="py-20 bg-[#faf9fc] dark:bg-white/[0.02]">
         <div className="container">
           <div className="mb-10">
