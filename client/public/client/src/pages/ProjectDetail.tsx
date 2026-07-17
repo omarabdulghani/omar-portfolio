@@ -579,7 +579,7 @@ const projectsData: Record<string, any> = {
     image: "/images/job-scout-gallery/hero.png",
     gallery: [
       { src: "/images/job-scout-gallery/dashboard.png", title: "Data Pipeline Dashboard" },
-      { src: "/images/job-scout-gallery/Dark mode dashboard.png", title: "Dark Mode Dashboard" },
+      { src: "/images/job-scout-gallery/dark-mode-dashboard.png", title: "Dark Mode Dashboard" },
       { src: "/images/job-scout-gallery/logs.png", title: "API Parsing Records" }
     ]
   },
