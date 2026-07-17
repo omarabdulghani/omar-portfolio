@@ -13,8 +13,8 @@ export default function Home() {
   const { language, messages } = useLanguage();
   const cvResumeHref =
     language === "nl"
-      ? "/Omar%20Abdulghani%20-%20CV%20Resume%20%28Dutch%29.pdf"
-      : "/Omar%20Abdulghani%20-%20CV%20Resume%20%28English%29.pdf";
+      ? "/ATS_CV_Omar_Abdulghani_NL_v2.pdf"
+      : "/ATS_CV_Omar_Abdulghani_v2.pdf";
   const heroPortraitVideoSrc = "/hero-video-1.mp4";
   const [isMobileHeroVideoLoaded, setIsMobileHeroVideoLoaded] = useState(false);
   const [isDesktopHeroVideoLoaded, setIsDesktopHeroVideoLoaded] = useState(false);
