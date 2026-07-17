@@ -636,10 +636,10 @@ export const en: LocaleMessages = {
     },
     jobScout: {
       title: "Job Scout",
-      subtitle: "AI-Driven Automation & Job Discovery Utility",
+      subtitle: "Autonomous Sourcing Pipeline & Job Discovery Utility",
       role: "AI Product Architect & UI/UX Director",
       description:
-        "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by programmatically extracting, parsing, and filtering live professional opportunities.",
+        "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by orchestrating autonomous browser pipelines to parse, structure, and filter live professional opportunities against complex profile criteria.",
       challenge:
         "Manually filtering through hundreds of daily job listings introduces massive operational fatigue. Most platform filters are noisy and fail to evaluate how closely an applicant's deep technical skills map to complex, multi-layered job specifications.",
       solution:

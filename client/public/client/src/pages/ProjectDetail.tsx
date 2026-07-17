@@ -560,7 +560,7 @@ const projectsData: Record<string, any> = {
   },
   "job-scout": {
     title: "Job Scout",
-    subtitle: "AI-Driven Automation & Job Discovery Utility",
+    subtitle: "Autonomous Sourcing Pipeline & Job Discovery Utility",
     year: "2026",
     client: "Independent Project",
     clientLogo: "/images/job-scout-gallery/logo-light.png",
@@ -569,7 +569,7 @@ const projectsData: Record<string, any> = {
     primaryActionLabel: "View GitHub Repository",
     primaryActionHref: "https://github.com/omarabdulghani/job-scout",
     role: "AI Product Architect & UI/UX Director",
-    description: "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by programmatically extracting, parsing, and filtering live professional opportunities.",
+    description: "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by orchestrating autonomous browser pipelines to parse, structure, and filter live professional opportunities against complex profile criteria.",
     challenge: "Manually filtering through hundreds of daily job listings introduces massive operational fatigue. Most platform filters are noisy and fail to evaluate how closely an applicant's deep technical skills map to complex, multi-layered job specifications.",
     solution: "Directed the end-to-end development of a local, GUI-first job search workspace using AI coding agents. Designed a complete vanilla JS/CSS frontend dashboard featuring Kanban-style job tracking, career lane taxonomy (Primary, Bridge, Fallback), and real-time AI budget guards. The backend orchestrates a multi-provider AI scoring engine to evaluate job descriptions against a strict, deterministic heuristic profile.",
     impact: "Transformed a manual, fatigue-inducing search process into a high-fidelity visual workspace. Built a resilient pipeline that categorizes opportunities into 'Apply First,' 'Good Options,' and 'Rejected' using strict threshold logic, drastically reducing time spent reading unqualified listings while maintaining a clean, duplicate-free database across runs.",
