@@ -214,6 +214,12 @@ export default function Home() {
                 <div className="pointer-events-none absolute inset-0 z-[6] rounded-full dark:hidden bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_44%,rgba(255,255,255,0.06)_66%,rgba(255,255,255,0.14)_84%,rgba(255,255,255,0.22)_100%)]" />
                 <div className="pointer-events-none absolute inset-0 z-[6] hidden rounded-full dark:block bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_44%,rgba(0,0,0,0.10)_66%,rgba(0,0,0,0.20)_84%,rgba(0,0,0,0.32)_100%)]" />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Proposition */}
       <section className="py-20 bg-[#faf9fc] dark:bg-white/[0.02]">
         <div className="container">
           <div className="mb-10">
