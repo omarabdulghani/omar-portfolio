@@ -7,6 +7,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLiquidGlass } from "@/hooks/useLiquidGlass";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,11 @@ export default function Navigation() {
   const { theme } = useTheme();
   const { language, setLanguage, messages } = useLanguage();
   const navRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  
+  const { filter: liquidGlassFilter, isSupported: isDesktopNavSupported } = useLiquidGlass(navRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: mobileLiquidGlassFilter, isSupported: isMobileMenuSupported } = useLiquidGlass(mobileMenuRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+
   const desktopLanguageMenuRef = useRef<HTMLDivElement>(null);
   const mobileLanguageMenuRef = useRef<HTMLDivElement>(null);
 
@@ -78,7 +84,8 @@ export default function Navigation() {
     { name: messages.nav.skills, href: "/skills" },
     { name: messages.nav.contact, href: "/contact" },
   ];
-  const glassSurfaceClasses = "bg-white/45 dark:bg-background/80 backdrop-blur-md";
+  const glassSurfaceClasses = isDesktopNavSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
+  const mobileGlassSurfaceClasses = isMobileMenuSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
   const languageButtonLabel = language.toUpperCase();
 
   const handleLanguageSelect = (nextLanguage: "en" | "nl") => {
@@ -91,15 +98,17 @@ export default function Navigation() {
     <nav
       ref={navRef}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        (scrolled || isOpen)
-          ? `${glassSurfaceClasses} py-4 md:border-b md:border-transparent dark:md:border-border/40`
-          : "bg-transparent dark:bg-transparent py-6"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
+        glassSurfaceClasses
       )}
+      style={{
+        backdropFilter: liquidGlassFilter || "none",
+        WebkitBackdropFilter: liquidGlassFilter || "none",
+      }}
     >
       <div className="container flex items-center justify-between">
         <Link href="/">
-          <a className="text-2xl font-bold font-heading tracking-tight hover:text-primary transition-colors">
+          <a className="text-2xl font-bold font-heading tracking-tight text-white hover:text-primary transition-colors">
             OMAR<span className="text-primary">.</span>
           </a>
         </Link>
@@ -112,8 +121,8 @@ export default function Navigation() {
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative group",
                   location === link.href
-                    ? "text-black dark:text-primary"
-                    : "text-black/75 dark:text-muted-foreground"
+                    ? "text-primary"
+                    : "text-white/80 hover:text-white"
                 )}
                 onClick={() => trackEvent("nav_click", { location: "header_desktop", destination: link.href })}
               >
@@ -131,7 +140,7 @@ export default function Navigation() {
             <button
               type="button"
               onClick={() => setIsLanguageMenuOpen((open) => !open)}
-              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-medium text-black/75 transition-colors hover:text-primary dark:text-muted-foreground dark:hover:text-primary"
+              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-medium text-white/80 transition-colors hover:text-white"
               aria-haspopup="menu"
               aria-expanded={isLanguageMenuOpen}
             >
@@ -183,7 +192,7 @@ export default function Navigation() {
             <button
               type="button"
               onClick={() => setIsLanguageMenuOpen((open) => !open)}
-              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary/50"
+              className="inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium text-white/80 transition-colors hover:text-white hover:bg-white/10"
               aria-haspopup="menu"
               aria-expanded={isLanguageMenuOpen}
             >
@@ -218,7 +227,7 @@ export default function Navigation() {
           </div>
 
           <button
-            className="text-foreground p-2"
+            className="text-white p-2 transition-colors hover:text-primary"
             onClick={() => {
               if (!isOpen) {
                 trackEvent("mobile_menu_open", { location });
@@ -232,13 +241,17 @@ export default function Navigation() {
           </button>
         </div>
       </div>
-
     </nav>
     {isOpen && typeof document !== "undefined" &&
       createPortal(
         <div
-          className={`fixed inset-x-0 bottom-0 z-40 md:hidden ${glassSurfaceClasses}`}
-          style={{ top: "0px" }}
+          ref={mobileMenuRef}
+          className={`fixed inset-x-0 bottom-0 z-40 md:hidden ${mobileGlassSurfaceClasses}`}
+          style={{ 
+            top: "0px",
+            backdropFilter: mobileLiquidGlassFilter || "none",
+            WebkitBackdropFilter: mobileLiquidGlassFilter || "none",
+          }}
           onWheel={() => setIsOpen(false)}
           onTouchMove={() => setIsOpen(false)}
         >

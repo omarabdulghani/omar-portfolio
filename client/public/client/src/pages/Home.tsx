@@ -8,6 +8,8 @@ import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
 import { useEffect, useState, useRef } from "react";
 import { useProjects } from "@/hooks/useProjects";
+import { useLiquidGlass } from "@/hooks/useLiquidGlass";
+
 export default function Home() {
   const { language, messages } = useLanguage();
   const cvResumeHref =
@@ -28,13 +30,29 @@ export default function Home() {
       if (!p) return null;
       
       const isPatronApp = p.id === "patronapp";
+      const isJobScout = p.id === "job-scout";
+      const isMoonlit = p.id === "moonlit-firefly-bloom";
+      const hasVideo = isPatronApp || isJobScout || isMoonlit;
       
       return {
         id: p.id,
         title: p.title,
         category: p.category,
-        type: isPatronApp ? ("video" as const) : ("image" as const),
-        src: isPatronApp ? "/images/patronapp gallery/PatronApp Promo 1.mp4" : p.image, 
+        description: isPatronApp 
+          ? "A whole new interactive music experience."
+          : isJobScout
+          ? "The job hunt made effortless."
+          : isMoonlit
+          ? "An enchanting and cozy arcade game."
+          : p.description,
+        type: hasVideo ? ("video" as const) : ("image" as const),
+        src: isPatronApp
+          ? "/images/patronapp gallery/PatronApp Promo 1.mp4"
+          : isJobScout
+          ? "/images/job-scout-gallery/Job_Scout_dashboard_showcase_202607201923.mp4"
+          : isMoonlit
+          ? "/images/moonlit-gallery/Video_promo_for_game_project_202607201943.mp4"
+          : p.image, 
         link: `/portfolio/${p.id}`
       };
     })
@@ -48,6 +66,14 @@ export default function Home() {
   const UPDATE_INTERVAL = 50;
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const tagRef = useRef<HTMLDivElement>(null);
+  const mobileTagRef = useRef<HTMLDivElement>(null);
+  
+  const { filter: tagLiquidGlassFilter, isSupported: isTagSupported } = useLiquidGlass(tagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: mobileTagLiquidGlassFilter, isSupported: isMobileTagSupported } = useLiquidGlass(mobileTagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+
+  const tagGlassClasses = isTagSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
+  const mobileTagGlassClasses = isMobileTagSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
@@ -92,8 +118,7 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden -mt-[64px] md:-mt-[80px] pt-[calc(4rem+64px)] md:pt-[calc(5rem+80px)] pb-16 md:pb-32">
+      <section className="relative min-h-[85svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden -mt-[64px] md:-mt-[80px] pt-[calc(4rem+64px)] md:pt-[calc(5rem+80px)] pb-16 md:pb-32">
 
         {/* Full-Width Background Slideshow */}
         <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-slate-950">
@@ -123,19 +148,14 @@ export default function Home() {
           ))}
           {/* Legibility Overlay Mask */}
           <div className="absolute inset-0 z-20 bg-slate-950/85 md:bg-transparent md:bg-gradient-to-r md:from-slate-950 md:via-slate-950/80 md:to-transparent" />
+          {/* Bottom-right corner vignette — hides video watermarks */}
+          <div className="absolute bottom-0 right-0 z-20 w-[40%] h-[45%] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,0.95) 35%, rgba(2,6,23,0.6) 55%, transparent 80%)' }} />
         </div>
 
-        <div className="container relative z-30 grid grid-cols-1 md:w-2/3 lg:w-1/2 gap-12 items-center mr-auto">
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 border border-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:text-white text-sm font-medium backdrop-blur-md shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-900 dark:bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-900 dark:bg-white"></span>
-              </span>
-              {messages.hero.available}
-            </div>
+        <div className="container relative z-30 flex flex-col md:grid md:grid-cols-1 md:w-2/3 lg:w-1/2 gap-12 md:items-center mx-auto md:mx-0 md:mr-auto text-center md:text-left mb-24 md:mb-0">
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start">
 
-            <div className="mt-6 md:mt-0">
+            <div className="mt-6 md:mt-0 w-full">
               <div className="relative md:block">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md">
                   {messages.hero.title} <br />
@@ -145,13 +165,11 @@ export default function Home() {
                 </h1>
               </div>
 
-              <p className="mt-4 md:mt-6 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-xl text-balance leading-relaxed drop-shadow-sm dark:drop-shadow-md">
-                <span className="text-primary font-semibold dark:text-primary-foreground">{messages.hero.subtitleRole}</span>{" "}
-                {messages.hero.subtitleRest}{" "}
-                <span className="whitespace-nowrap">{messages.hero.subtitleEnding}</span>
+              <p className="mt-4 md:mt-6 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-xl text-balance leading-relaxed drop-shadow-sm dark:drop-shadow-md mx-auto md:mx-0">
+                A Creative Technologist blending development, AI, and design into scalable digital products.
               </p>
 
-              <div className="flex flex-wrap gap-4 mt-8 md:mt-12">
+              <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-8 md:mt-12 justify-center md:justify-start items-center md:items-start">
                 <Link href="/portfolio">
                   <Button
                     size="lg"
@@ -165,50 +183,65 @@ export default function Home() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="rounded-full px-8 text-lg h-14 bg-slate-900/5 border-slate-900/15 text-slate-900 hover:bg-slate-900/10 dark:bg-white/5 dark:border-white/15 dark:text-white dark:hover:bg-white/10 backdrop-blur-sm shadow-sm"
+                    className="flex items-center justify-center rounded-full px-8 text-lg h-14 bg-transparent border-slate-900/20 text-slate-900 hover:bg-slate-900/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10 backdrop-blur-sm shadow-sm"
                     onClick={() => trackEvent("cta_click", { location: "home_hero", label: "contact_me", destination: "/contact" })}
                   >
                     {messages.hero.ctaContact}
                   </Button>
                 </Link>
               </div>
+
+
             </div>
           </div>
         </div>
 
-        {/* Bottom-Right Navigation & Metadata UI */}
-        <div className="absolute bottom-8 right-8 z-30 hidden md:flex flex-col items-end gap-4 animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+        {/* Desktop-Only Project Tag (Middle Right) */}
+        <div className="absolute top-32 right-8 z-30 hidden md:flex flex-col items-end animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
           <Link href={heroSlides[currentSlide].link}>
-            <div className="flex items-center gap-4 bg-white/60 dark:bg-black/40 backdrop-blur-md border border-slate-900/10 dark:border-white/10 rounded-full py-2 px-4 shadow-xl cursor-pointer hover:bg-white/80 dark:hover:bg-black/60 hover:border-slate-900/20 dark:hover:border-white/20 transition-all group">
-              <span className="text-slate-900/60 dark:text-white/60 text-sm font-mono tracking-wider">
-                [0{currentSlide + 1}/0{heroSlides.length}]
-              </span>
-              <span className="text-slate-900/30 dark:text-white/40 text-sm">|</span>
-              <span className="text-slate-900 dark:text-white text-sm font-medium truncate max-w-[200px] group-hover:text-primary transition-colors">
-                {heroSlides[currentSlide].title}
-              </span>
-              <Badge variant="outline" className="bg-slate-900/5 border-slate-900/10 text-slate-900/80 dark:bg-white/5 dark:border-white/10 dark:text-white/80 text-xs ml-2 group-hover:border-primary/50 transition-colors">
-                {heroSlides[currentSlide].category}
-              </Badge>
-              <ExternalLink className="w-3 h-3 text-slate-900/50 dark:text-white/50 group-hover:text-primary ml-1" />
+            <div 
+              ref={tagRef}
+              className={`flex flex-col gap-3 rounded-2xl p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group max-w-sm border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
+              style={{
+                backdropFilter: tagLiquidGlassFilter || "none",
+                WebkitBackdropFilter: tagLiquidGlassFilter || "none",
+              }}
+            >
+              <div>
+                <h3 className="text-white text-lg font-bold flex items-center gap-3">
+                  {heroSlides[currentSlide].title}
+                  <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal">
+                    {heroSlides[currentSlide].category}
+                  </Badge>
+                </h3>
+                <p className="text-white/80 text-sm mt-2 line-clamp-2 leading-relaxed">
+                  {heroSlides[currentSlide].description}
+                </p>
+              </div>
+              <div className="flex items-center justify-end mt-1">
+                <span className="text-primary text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  View Project <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
             </div>
           </Link>
+        </div>
 
-          <div className="flex items-center gap-2 bg-white/60 dark:bg-black/40 backdrop-blur-md border border-slate-900/10 dark:border-white/10 rounded-full p-1 shadow-xl">
-            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handlePrev}>
+        {/* Global Slideshow Controls (Desktop Only) */}
+        <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-8 z-30 hidden md:flex items-center gap-2 bg-white/60 dark:bg-black/40 backdrop-blur-md border border-slate-900/10 dark:border-white/10 rounded-full p-1 shadow-xl animate-in fade-in slide-in-from-bottom-8 md:slide-in-from-right-8 duration-700 delay-300">
+            <Button variant="ghost" size="icon" className="hidden md:inline-flex h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handlePrev}>
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={togglePause}>
               {isPaused ? <Play className="h-4 w-4 fill-current" /> : <Pause className="h-4 w-4 fill-current" />}
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handleNext}>
+            <Button variant="ghost" size="icon" className="hidden md:inline-flex h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handleNext}>
               <ChevronRight className="h-4 w-4" />
             </Button>
-          </div>
         </div>
 
         {/* Global Progress Bar at Bottom Boundary */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-slate-900/10 dark:bg-white/10 z-30 hidden md:block">
+        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-slate-900/10 dark:bg-white/10 z-30 opacity-0 md:opacity-100 transition-opacity">
           <div
             className="h-full bg-primary transition-all duration-75 ease-linear"
             style={{ width: `${progress}%` }}
