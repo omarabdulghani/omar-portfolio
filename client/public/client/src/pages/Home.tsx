@@ -207,16 +207,23 @@ export default function Home() {
                 WebkitBackdropFilter: tagLiquidGlassFilter || "none",
               }}
             >
-              <div>
-                <h3 className="text-white text-lg font-bold flex items-center gap-3">
-                  {heroSlides[currentSlide].title}
-                  <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal">
-                    {heroSlides[currentSlide].category}
-                  </Badge>
-                </h3>
-                <p className="text-white/80 text-sm mt-2 line-clamp-2 leading-relaxed">
-                  {heroSlides[currentSlide].description}
-                </p>
+              <div className="relative grid">
+                {heroSlides.map((slide, index) => (
+                  <div 
+                    key={slide.id}
+                    className={`col-start-1 row-start-1 transition-all duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 invisible'}`}
+                  >
+                    <h3 className="text-white text-lg font-bold flex items-center gap-3">
+                      {slide.title}
+                      <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal whitespace-nowrap">
+                        {slide.category}
+                      </Badge>
+                    </h3>
+                    <p className="text-white/80 text-sm mt-2 line-clamp-2 leading-relaxed">
+                      {slide.description}
+                    </p>
+                  </div>
+                ))}
               </div>
               <div className="flex items-center justify-end mt-1">
                 <span className="text-primary text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
