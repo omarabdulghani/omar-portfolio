@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n";
@@ -14,7 +14,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuTop, setMenuTop] = useState(72);
   const [location] = useLocation();
-  const { theme, toggleTheme, switchable } = useTheme();
+  const { theme } = useTheme();
   const { language, setLanguage, messages } = useLanguage();
   const navRef = useRef<HTMLElement>(null);
   const desktopLanguageMenuRef = useRef<HTMLDivElement>(null);
@@ -164,19 +164,7 @@ export default function Navigation() {
               </div>
             )}
           </div>
-          {switchable && toggleTheme && (
-            <button
-              type="button"
-              onClick={() => {
-                trackEvent("theme_toggle", { location: "header_desktop", theme: theme === "dark" ? "light" : "dark" });
-                toggleTheme();
-              }}
-              className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
-              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-          )}
+
           <Link href="/contact">
             <Button
               variant="default"
@@ -228,19 +216,7 @@ export default function Navigation() {
               </div>
             )}
           </div>
-          {switchable && toggleTheme && (
-            <button
-              type="button"
-              onClick={() => {
-                trackEvent("theme_toggle", { location: "header_mobile", theme: theme === "dark" ? "light" : "dark" });
-                toggleTheme();
-              }}
-              className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
-              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
-            </button>
-          )}
+
           <button
             className="text-foreground p-2"
             onClick={() => {

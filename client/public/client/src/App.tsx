@@ -45,7 +45,7 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="system" switchable>
+      <ThemeProvider>
         <CookieConsentProvider>
           <TooltipProvider>
             <Toaster />
