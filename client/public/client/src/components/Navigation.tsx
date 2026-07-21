@@ -88,9 +88,9 @@ export default function Navigation() {
     ? (isDesktopNavSupported ? "bg-slate-950/60 dark:bg-slate-950/60" : "bg-slate-950/90 backdrop-blur-md") 
     : (isDesktopNavSupported ? "bg-transparent" : "bg-slate-950/40 backdrop-blur-md");
     
-  const mobileGlassSurfaceClasses = scrolled
-    ? (isMobileMenuSupported ? "bg-slate-950/60 dark:bg-slate-950/60" : "bg-slate-950/90 backdrop-blur-md")
-    : (isMobileMenuSupported ? "bg-transparent" : "bg-slate-950/40 backdrop-blur-md");
+  const mobileGlassSurfaceClasses = isMobileMenuSupported 
+    ? "bg-slate-950/60 dark:bg-slate-950/60" 
+    : "bg-slate-950/90 backdrop-blur-md";
 
   const languageButtonLabel = language.toUpperCase();
 
