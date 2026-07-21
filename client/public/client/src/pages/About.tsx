@@ -168,51 +168,14 @@ export default function About() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[435px]">
-              <div className="absolute inset-0 rounded-[44px] bg-gradient-to-br from-primary/12 via-primary/5 to-transparent blur-3xl" />
-              <div className="absolute right-6 top-10 hidden rounded-[40px] border border-white/20 bg-white/30 p-4 backdrop-blur-sm lg:block">
-                <div className="grid grid-cols-6 gap-2">
-                  {Array.from({ length: 36 }).map((_, index) => (
-                    <span
-                      key={index}
-                      className="h-1.5 w-1.5 rounded-full bg-primary/20"
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className="absolute left-0 top-1/2 hidden -translate-y-1/2 xl:block">
-                <svg
-                  width="180"
-                  height="220"
-                  viewBox="0 0 180 220"
-                  fill="none"
-                  className="opacity-90"
-                >
-                  <path
-                    d="M160 30C105 64 39 121 42 176C43 194 51 206 70 214"
-                    stroke="rgba(59,130,246,0.75)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M151 42L160 30L144 28"
-                    stroke="rgba(59,130,246,0.75)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div className="relative overflow-hidden rounded-[34px] border border-primary/15 bg-white/60 px-3 py-4 shadow-[0_40px_120px_-60px_rgba(59,130,246,0.45)] backdrop-blur-sm dark:border-white/8 dark:bg-white/32 sm:px-4 sm:py-5">
-                <div className="absolute inset-x-6 bottom-0 top-8 rounded-[30px] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_52%),linear-gradient(135deg,rgba(255,255,255,0.92),rgba(219,234,254,0.7))] dark:bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.09),transparent_52%),linear-gradient(135deg,rgba(255,255,255,0.46),rgba(219,234,254,0.33))]" />
-                <div className="absolute left-7 top-11 h-4 w-4 rounded-full bg-white/80 shadow-[0_0_24px_rgba(255,255,255,0.9)]" />
-                <div className="relative mx-auto aspect-[0.88] w-full max-w-[300px] overflow-hidden rounded-[30px]">
-                  <img
-                    src="/images/about-me.jpg"
-                    alt="Omar Abdulghani"
-                    className="h-full w-full object-cover object-top scale-[1.06]"
-                  />
-                </div>
+            <div className="relative mx-auto w-full max-w-[380px]">
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-3xl -z-10" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-white/10 shadow-xl dark:shadow-[0_20px_70px_-45px_rgba(59,130,246,0.3)]">
+                <img
+                  src="/images/about-me.jpg"
+                  alt="Omar Abdulghani"
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>
@@ -229,8 +192,9 @@ export default function About() {
               <div className="mt-4 h-1 w-14 rounded-full bg-primary" />
             </div>
 
-            <div className="rounded-[30px] border border-white/70 bg-white/80 p-4 shadow-[0_22px_70px_-42px_rgba(59,130,246,0.38)] backdrop-blur-md dark:border-white/10 dark:bg-card/80 xl:px-5 xl:py-4">
-              <div className="grid gap-3 sm:grid-cols-2 xl:flex xl:items-center xl:justify-between xl:gap-5">
+            <div className="relative overflow-hidden rounded-[30px] border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_22px_70px_-42px_rgba(59,130,246,0.38)] backdrop-blur-md transition-all hover:border-slate-300 dark:hover:border-white/20 xl:px-5 xl:py-4 group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10 grid gap-3 sm:grid-cols-2 xl:flex xl:items-center xl:justify-between xl:gap-5">
                 {workflowSteps.map((step) => {
                   const Icon = step.icon;
 
@@ -264,21 +228,22 @@ export default function About() {
       <section className="pb-16 md:pb-20">
         <div className="container">
           <div className="grid gap-8 xl:grid-cols-[1.25fr_0.75fr]">
-            <div className="space-y-6">
+            <div className="flex flex-col space-y-6">
               <h2 className="text-3xl font-heading font-bold">
                 {messages.about.overview.focusTitle}
               </h2>
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-3 flex-1">
                 {focusItems.map((item) => {
                   const Icon = item.icon;
 
                   return (
                     <Card
                       key={item.title}
-                      className="border-white/10 bg-card/70 shadow-[0_20px_70px_-45px_rgba(59,130,246,0.26)] backdrop-blur-sm"
+                      className="relative h-full flex flex-col rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden"
                     >
-                      <CardContent className="space-y-4 p-6">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <CardContent className="relative z-10 space-y-4 p-6">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-slate-900 dark:text-white group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
                           <Icon size={22} />
                         </div>
                         <div>
@@ -294,12 +259,13 @@ export default function About() {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="flex flex-col space-y-6">
               <h2 className="text-3xl font-heading font-bold">
                 {messages.about.overview.highlightsTitle}
               </h2>
-              <Card className="border-white/10 bg-card/70 shadow-[0_20px_70px_-45px_rgba(59,130,246,0.26)] backdrop-blur-sm">
-                <CardContent className="space-y-4 p-6 md:p-8">
+              <Card className="relative flex-1 flex flex-col rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="relative z-10 flex-1 flex flex-col justify-center space-y-4 p-6 md:p-8">
                   {highlightItems.map((item) => (
                     <div
                       key={item}
@@ -331,9 +297,10 @@ export default function About() {
             {storySections.map((section) => (
               <Card
                 key={section.title}
-                className="border-white/10 bg-card/70 shadow-[0_20px_70px_-45px_rgba(59,130,246,0.24)] backdrop-blur-sm"
+                className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden"
               >
-                <CardContent className="p-6 md:p-8">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="relative z-10 p-6 md:p-8">
                   <h3 className="text-2xl font-heading font-bold">{section.title}</h3>
                   <div className="mt-4 space-y-4 text-base leading-7 text-muted-foreground">
                     {section.paragraphs.map((paragraph) => (
@@ -357,8 +324,9 @@ export default function About() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            <Card className="border-white/10 bg-card/70 shadow-[0_20px_70px_-45px_rgba(59,130,246,0.24)] backdrop-blur-sm">
-              <CardContent className="p-6 md:p-8">
+            <Card className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <CardContent className="relative z-10 p-6 md:p-8">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="rounded-2xl bg-primary/10 p-3 text-primary">
                     <GraduationCap size={24} />
@@ -399,7 +367,7 @@ export default function About() {
                   ].map((item) => (
                     <div
                       key={item.title}
-                      className="rounded-2xl border border-white/10 bg-background/70 p-5"
+                      className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]"
                     >
                       <div className="flex gap-4">
                         {item.logos && item.logos.length > 0 && (
@@ -435,8 +403,9 @@ export default function About() {
               </CardContent>
             </Card>
 
-            <Card className="border-white/10 bg-card/70 shadow-[0_20px_70px_-45px_rgba(59,130,246,0.24)] backdrop-blur-sm">
-              <CardContent className="p-6 md:p-8">
+            <Card className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <CardContent className="relative z-10 p-6 md:p-8">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="rounded-2xl bg-primary/10 p-3 text-primary">
                     <Briefcase size={24} />
@@ -469,7 +438,7 @@ export default function About() {
                   ].map((item) => (
                     <div
                       key={item.title}
-                      className="rounded-2xl border border-white/10 bg-background/70 p-5"
+                      className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]"
                     >
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <h4 className="text-xl font-semibold">{item.title}</h4>
@@ -520,10 +489,11 @@ export default function About() {
             ].map((language) => (
               <Card
                 key={language.initials}
-                className="border-white/10 bg-card/70 shadow-[0_20px_70px_-45px_rgba(59,130,246,0.24)] backdrop-blur-sm"
+                className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden"
               >
-                <CardContent className="flex items-center gap-4 p-6 md:p-8">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-xl font-bold text-primary">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="relative z-10 flex items-center gap-4 p-6 md:p-8">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-xl font-bold text-slate-900 dark:text-white group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
                     {language.initials}
                   </div>
                   <div>

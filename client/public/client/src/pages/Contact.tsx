@@ -52,22 +52,23 @@ export default function Contact() {
         <div className="absolute inset-0 bg-[url('/images/abstract-texture.png')] opacity-10 mix-blend-overlay" />
         
         <div className="container relative z-10">
+          <div className="mb-12 md:mb-16 max-w-2xl">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
+              {messages.contact.hero.titlePrefix} <span className="text-primary">{messages.contact.hero.titleHighlight}</span>
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              {messages.contact.hero.description}
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
             {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-                  {messages.contact.hero.titlePrefix} <span className="text-primary">{messages.contact.hero.titleHighlight}</span>
-                </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  {messages.contact.hero.description}
-                </p>
-              </div>
-
+            <div className="flex flex-col">
               <div className="space-y-6">
-                <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-full text-primary">
+                <Card className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardContent className="relative z-10 p-6 flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-2xl text-slate-900 dark:text-white group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
                       <Mail size={24} />
                     </div>
                     <div>
@@ -79,9 +80,10 @@ export default function Contact() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-full text-primary">
+                <Card className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardContent className="relative z-10 p-6 flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-2xl text-slate-900 dark:text-white group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
                       <Phone size={24} />
                     </div>
                     <div>
@@ -93,9 +95,10 @@ export default function Contact() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-card/50 border-white/5 hover:border-primary/30 transition-colors">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-full text-primary">
+                <Card className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardContent className="relative z-10 p-6 flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-2xl text-slate-900 dark:text-white group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
                       <MapPin size={24} />
                     </div>
                     <div>
@@ -107,30 +110,14 @@ export default function Contact() {
                   </CardContent>
                 </Card>
               </div>
-
-              <div className="flex gap-4 pt-4">
-                <a href="https://www.linkedin.com/in/omar-abdelgani/" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "linkedin" })}>
-                  <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                    <Linkedin size={20} />
-                  </Button>
-                </a>
-                <a href="https://github.com/omarabdulghani/" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "github" })}>
-                  <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                    <Github size={20} />
-                  </Button>
-                </a>
-                <a href="https://instagram.com/omar-abdelgani" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "instagram" })}>
-                  <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                    <Instagram size={20} />
-                  </Button>
-                </a>
-              </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-card border border-white/10 rounded-3xl p-8 shadow-2xl">
-              <h3 className="text-2xl font-heading font-bold mb-6">{messages.contact.form.title}</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="relative h-full flex flex-col rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md p-8 shadow-xl dark:shadow-[0_20px_70px_-45px_rgba(59,130,246,0.24)] overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-50" />
+              <div className="relative z-10 flex-1 flex flex-col">
+                <h3 className="text-2xl font-heading font-bold mb-6">{messages.contact.form.title}</h3>
+              <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-muted-foreground">{messages.contact.form.nameLabel}</label>
@@ -147,9 +134,9 @@ export default function Contact() {
                   <Input id="subject" name="subject" placeholder={messages.contact.form.subjectPlaceholder} required className="bg-secondary/50 border-white/5 focus:border-primary/50" />
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-2 flex-1 flex flex-col">
                   <label htmlFor="message" className="text-sm font-medium text-muted-foreground">{messages.contact.form.messageLabel}</label>
-                  <Textarea id="message" name="message" placeholder={messages.contact.form.messagePlaceholder} required className="min-h-[150px] bg-secondary/50 border-white/5 focus:border-primary/50 resize-none" />
+                  <Textarea id="message" name="message" placeholder={messages.contact.form.messagePlaceholder} required className="flex-1 bg-secondary/50 border-white/5 focus:border-primary/50 resize-none min-h-[80px]" />
                 </div>
 
                 <Button type="submit" size="lg" className="w-full rounded-xl text-lg h-12" disabled={isSubmitting}>
@@ -162,7 +149,26 @@ export default function Contact() {
                   )}
                 </Button>
               </form>
+              </div>
             </div>
+          </div>
+
+          <div className="mt-8 md:mt-12 flex gap-4">
+            <a href="https://www.linkedin.com/in/omar-abdelgani/" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "linkedin" })}>
+              <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                <Linkedin size={20} />
+              </Button>
+            </a>
+            <a href="https://github.com/omarabdulghani/" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "github" })}>
+              <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                <Github size={20} />
+              </Button>
+            </a>
+            <a href="https://instagram.com/omar-abdelgani" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("social_click", { location: "contact_page", network: "instagram" })}>
+              <Button type="button" variant="outline" size="icon" className="rounded-full w-12 h-12 border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                <Instagram size={20} />
+              </Button>
+            </a>
           </div>
         </div>
       </section>

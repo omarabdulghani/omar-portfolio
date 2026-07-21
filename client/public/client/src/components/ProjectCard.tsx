@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { ArrowUpRight } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -33,8 +32,8 @@ export default function ProjectCard({
         className={cn("group block h-full", className)}
         onClick={() => trackEvent("project_card_click", { project_id: id, location: analyticsContext ?? "project_grid" })}
       >
-        <div className="relative h-full bg-card border border-border/50 rounded-xl overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_-10px_rgba(75,120,216,0.15)] hover:-translate-y-2 flex flex-col">
-          {/* Image Container */}
+        <div className="relative h-full rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] overflow-hidden flex flex-col">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="relative aspect-[4/3] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 opacity-60 transition-opacity group-hover:opacity-40" />
             <img
@@ -53,12 +52,7 @@ export default function ProjectCard({
               </Badge>
             </div>
             
-            {/* Hover Overlay Icon */}
-            <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center text-primary-foreground transform scale-50 group-hover:scale-100 transition-transform duration-300">
-                <ArrowUpRight size={32} />
-              </div>
-            </div>
+
           </div>
 
           {/* Content */}

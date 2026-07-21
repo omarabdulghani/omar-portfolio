@@ -91,9 +91,11 @@ export default function Skills() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {skillCategories.map((category, index) => (
-              <Card key={index} className="bg-card/50 border-white/5 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-3 bg-primary/10 rounded-xl">
+              <Card key={index} className="relative rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                    <div className="p-3 bg-primary/10 rounded-2xl text-slate-900 dark:text-white group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
                     {category.icon}
                   </div>
                   <CardTitle className="text-2xl font-heading">{category.title}</CardTitle>
@@ -121,6 +123,7 @@ export default function Skills() {
                     </div>
                   </div>
                 </CardContent>
+                </div>
               </Card>
             ))}
           </div>
@@ -145,7 +148,7 @@ export default function Skills() {
                   messages.skills.certifications.ieltsEnglishLanguageTesting,
                   messages.skills.certifications.dutchLanguageCertificate
                 ].map((certificate) => (
-                  <div key={certificate} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-white/5">
+                  <div key={certificate} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]">
                     <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
                     <span className="font-medium">{certificate}</span>
                   </div>
@@ -165,7 +168,7 @@ export default function Skills() {
                   { name: messages.skills.languages.english.name, level: messages.skills.languages.english.level },
                   { name: messages.skills.languages.dutch.name, level: messages.skills.languages.dutch.level }
                 ].map((language) => (
-                  <div key={language.name} className="p-4 rounded-xl bg-card border border-white/5">
+                  <div key={language.name} className="p-4 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]">
                     <h3 className="font-bold">{language.name}</h3>
                     <p className="text-sm text-muted-foreground">{language.level}</p>
                   </div>
@@ -190,7 +193,7 @@ export default function Skills() {
                   messages.skills.softSkills.adaptability,
                   messages.skills.softSkills.ownershipProactiveExecution
                 ].map((skill) => (
-                  <div key={skill} className="flex h-full items-start gap-3 rounded-lg bg-secondary/30 p-4">
+                  <div key={skill} className="flex h-full items-start gap-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]">
                     <div className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
                     <span className="font-medium leading-snug">{skill}</span>
                   </div>

@@ -111,7 +111,7 @@ export default function Navigation() {
       <nav
         ref={navRef}
         className={cn(
-          "fixed top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-full border border-white/10 dark:border-white/5",
+          "fixed top-4 left-4 right-4 md:left-6 md:right-6 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-full border border-white/10 dark:border-white/5 px-4 md:px-5 lg:px-6",
           scrolled ? `py-2 shadow-lg ${glassSurfaceClasses}` : `py-4 ${glassSurfaceClasses}`
         )}
         style={{
@@ -119,14 +119,14 @@ export default function Navigation() {
           WebkitBackdropFilter: liquidGlassFilter || "none",
         }}
       >
-        <div className="container flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <Link href="/">
-            <a className="group relative flex items-center">
+            <a className="group relative flex items-center shrink-0">
               {/* <span className="text-2xl font-bold font-heading tracking-tight text-white hover:text-primary transition-colors">OMAR<span className="text-primary">.</span></span> */}
             <img 
               src="/logo/vectorised-760f92c0.svg" 
               alt="OMAR Logo" 
-              className="h-5 md:h-6 w-auto" 
+              className="h-5 md:h-6 w-auto shrink-0" 
             />
             <img 
               src="/logo/on%20hover.svg" 
@@ -137,12 +137,12 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-3 lg:gap-8">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href}>
                 <a
                   className={cn(
-                    "text-sm font-medium transition-all duration-300 px-4 py-2 rounded-full",
+                    "text-xs lg:text-sm font-medium transition-all duration-300 px-3 lg:px-4 py-1.5 lg:py-2 rounded-full",
                     location === link.href
                       ? "bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
                       : "text-white/70 hover:text-white hover:bg-white/5"
@@ -196,7 +196,7 @@ export default function Navigation() {
                 ref={desktopLetsTalkRef}
                 variant="ghost"
                 size="sm"
-                className={`rounded-full px-6 text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300 ${desktopLetsTalkGlassClasses}`}
+                className={`rounded-full px-4 lg:px-6 text-sm lg:text-base text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300 ${desktopLetsTalkGlassClasses}`}
                 style={isDesktopLetsTalkSupported ? { backdropFilter: desktopLetsTalkLiquidGlassFilter, WebkitBackdropFilter: desktopLetsTalkLiquidGlassFilter } : {}}
                 onClick={() => trackEvent("cta_click", { location: "header_desktop", label: "lets_talk", destination: "/contact" })}
               >

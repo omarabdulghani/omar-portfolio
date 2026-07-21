@@ -35,9 +35,9 @@ export function useLiquidGlass(ref: RefObject<HTMLElement>, options: {
             const entry = entries[0];
             if (!entry) return;
 
-            const rect = entry.target.getBoundingClientRect();
-            const actualWidth = Math.round(rect.width);
-            const actualHeight = Math.round(rect.height);
+            const el = entry.target as HTMLElement;
+            const actualWidth = el.offsetWidth;
+            const actualHeight = el.offsetHeight;
             const radius = 0; // Assuming rectangular header
             
             const depth = options.depth ?? 10;

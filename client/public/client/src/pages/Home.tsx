@@ -19,7 +19,7 @@ export default function Home() {
 
   const allProjects = useProjects();
 
-  const featuredIds = ["job-scout", "moonlit-firefly-bloom", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel"];
+  const featuredIds = ["job-scout", "moonlit-firefly-bloom", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel", "theraneck-ecommerce", "hallencity"];
   const featuredProjects = featuredIds
     .map(id => allProjects.find(p => p.id === id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -35,7 +35,9 @@ export default function Home() {
       const isAmstelhof = p.id === "amstelhof-connect";
       const isMoesTuinen = p.id === "moes-tuinen";
       const isPPHE = p.id === "pphe-hotel";
-      const hasVideo = isPatronApp || isJobScout || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE;
+      const isTheraNeck = p.id === "theraneck-ecommerce";
+      const isHallenCity = p.id === "hallencity";
+      const hasVideo = isPatronApp || isJobScout || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE || isTheraNeck || isHallenCity;
       
       return {
         id: p.id,
@@ -48,6 +50,8 @@ export default function Home() {
           ? "/images/moestuinenlogo-darkmode.png"
           : isPPHE
           ? "/images/pphe-hotel-group gallery/pphe-hotel-group-logo.png"
+          : isHallenCity
+          ? "/images/hallencity gallery/logo-De-Filmhallen (dark mode).png"
           : undefined,
         secondaryLogo: isPPHE
           ? "/images/pphe-hotel-group gallery/artotel-logo-png_seeklogo-342919.png"
@@ -63,6 +67,10 @@ export default function Home() {
           ? "Connecting a vibrant health club community."
           : isPPHE
           ? "Enhanced UI/UX for global hotel brands."
+          : isTheraNeck
+          ? "End-to-end e-commerce concept validation."
+          : isHallenCity
+          ? "An inclusive, all-in-one cinema experience app concept."
           : p.description,
         type: hasVideo ? ("video" as const) : ("image" as const),
         src: isPatronApp
@@ -77,6 +85,10 @@ export default function Home() {
           ? "/images/moes-tuinen gallery/MOES_Tuinen_brand_activation_video_202607210304.mp4"
           : isPPHE
           ? "/images/pphe-hotel-group gallery/pphe_video.mp4"
+          : isTheraNeck
+          ? "/images/theraneck-gallery/Recruiter_portfolio_video_TheraNeck_202607210414.mp4"
+          : isHallenCity
+          ? "/images/hallencity gallery/hallencity_video.mp4"
           : p.image, 
         link: `/portfolio/${p.id}`
       };
@@ -199,7 +211,7 @@ export default function Home() {
           <div className="absolute bottom-0 right-0 z-20 w-[40%] h-[45%] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,0.95) 35%, rgba(2,6,23,0.6) 55%, transparent 80%)' }} />
         </div>
 
-        <div className="container relative z-30 flex flex-col md:grid md:grid-cols-1 md:w-2/3 lg:w-1/2 gap-12 md:items-center mx-auto md:mx-0 md:mr-auto text-center md:text-left mb-24 md:mb-0">
+        <div className="relative z-30 flex flex-col md:grid md:grid-cols-1 md:w-[50%] gap-12 md:items-center mx-auto md:mx-0 md:mr-auto text-center md:text-left mb-24 md:mb-0 px-[clamp(1.25rem,4vw,2.5rem)]">
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start">
 
             <div className="mt-6 md:mt-0 w-full">
@@ -248,11 +260,11 @@ export default function Home() {
         </div>
 
         {/* Desktop-Only Project Tag (Middle Right) */}
-        <div className="absolute top-32 right-8 z-30 hidden md:flex flex-col items-end animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+        <div className="absolute top-32 right-6 md:right-8 left-[65%] z-30 hidden md:flex flex-col items-end animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
           <Link href={heroSlides[currentSlide].link}>
             <div 
               ref={tagRef}
-              className={`flex flex-col gap-3 rounded-2xl p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group max-w-md border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
+              className={`flex flex-col gap-2 lg:gap-3 rounded-2xl p-3 md:p-4 lg:p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group w-full max-w-full border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
               style={{
                 backdropFilter: tagLiquidGlassFilter || "none",
                 WebkitBackdropFilter: tagLiquidGlassFilter || "none",
@@ -262,24 +274,24 @@ export default function Home() {
                 {heroSlides.map((slide, index) => (
                   <div 
                     key={slide.id}
-                    className={`col-start-1 row-start-1 flex flex-col justify-between transition-all duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 invisible'}`}
+                    className={`transition-all duration-700 ease-in-out flex flex-col ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 absolute inset-0'}`}
                   >
                     <div>
-                      <h3 className="text-white text-lg font-bold flex items-center gap-3 whitespace-nowrap">
+                      <h3 className="text-white text-sm lg:text-lg font-bold flex flex-wrap items-center gap-2 lg:gap-3">
                         {slide.title}
                         <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal whitespace-nowrap">
                           {slide.category}
                         </Badge>
                       </h3>
-                      <p className="text-white/80 text-sm mt-2 line-clamp-2 leading-relaxed">
+                      <p className="text-white/80 text-xs lg:text-sm mt-1 lg:mt-2 line-clamp-2 leading-relaxed">
                         {slide.description}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between mt-4 h-6">
+                    <div className="flex items-center justify-between mt-3 lg:mt-4">
                       <div className="flex items-center">
                         {slide.logo ? (
                           <>
-                            <img src={slide.logo} alt="Project Logo" className="h-6 w-auto object-contain" />
+                            <img src={slide.logo} alt="Project Logo" className={`w-auto object-contain ${slide.id === 'hallencity' ? 'h-10 scale-110 origin-left' : 'h-6'}`} />
                             {slide.secondaryLogo && (
                               <img src={slide.secondaryLogo} alt="Secondary Logo" className="h-12 w-auto object-contain ml-4" />
                             )}
@@ -288,7 +300,7 @@ export default function Home() {
                           <span className="text-white/80 text-xs border border-white/20 rounded-full px-3 py-1 font-medium">Independent Project</span>
                         )}
                       </div>
-                      <span className="text-white text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      <span className="text-white text-xs lg:text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform whitespace-nowrap">
                         View Project <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -333,32 +345,61 @@ export default function Home() {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-[#faf9fc] dark:bg-white/[0.02]">
-        <div className="container">
-          <div className="mb-10">
+      <section className="relative py-24 bg-[#faf9fc] dark:bg-slate-950/50 overflow-hidden">
+        {/* Minimal Animated Fluid Aura Background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 pointer-events-none flex items-center justify-center opacity-60 dark:opacity-30">
+          <div className="absolute w-[60vw] h-[30vw] min-w-[600px] min-h-[300px] rounded-[100%] bg-primary/20 dark:bg-primary/10 blur-[120px] animate-[spin_30s_linear_infinite]" />
+          <div className="absolute w-[40vw] h-[60vw] min-w-[400px] min-h-[600px] rounded-[100%] bg-blue-500/15 dark:bg-blue-500/10 blur-[140px] animate-[spin_40s_linear_infinite_reverse] mix-blend-multiply dark:mix-blend-screen" />
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold">{messages.sections.whatIDo}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" /><path d="m9 12 2 2 4-4" /></svg>
+            <div className="relative p-8 rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white mb-6 bg-primary/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" /><path d="m9 12 2 2 4-4" /></svg>
+                </div>
+                <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight [text-wrap:balance] mb-3 text-slate-900 dark:text-white transition-colors group-hover:text-primary">
+                  {messages.cards.conceptDevelopment.title}
+                </h3>
+                <p className="text-slate-600 dark:text-white/70 leading-relaxed text-sm md:text-base font-light">
+                  {messages.cards.conceptDevelopment.body}
+                </p>
               </div>
-              <h3 className="text-xl font-bold leading-tight [text-wrap:balance] mb-2">{messages.cards.conceptDevelopment.title}</h3>
-              <p className="text-black dark:text-muted-foreground">{messages.cards.conceptDevelopment.body}</p>
             </div>
-            <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+
+            <div className="relative p-8 rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white mb-6 bg-primary/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+                </div>
+                <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight [text-wrap:balance] mb-3 text-slate-900 dark:text-white transition-colors group-hover:text-primary">
+                  {messages.cards.uxUi.title}
+                </h3>
+                <p className="text-slate-600 dark:text-white/70 leading-relaxed text-sm md:text-base font-light">
+                  {messages.cards.uxUi.body}
+                </p>
               </div>
-              <h3 className="text-xl font-bold leading-tight [text-wrap:balance] mb-2">{messages.cards.uxUi.title}</h3>
-              <p className="text-black dark:text-muted-foreground">{messages.cards.uxUi.body}</p>
             </div>
-            <div className="p-6 rounded-2xl bg-primary/10 dark:bg-primary/10 transition-colors group">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+
+            <div className="relative p-8 rounded-[2rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.15)] group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white mb-6 bg-primary/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+                </div>
+                <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight [text-wrap:balance] mb-3 text-slate-900 dark:text-white transition-colors group-hover:text-primary">
+                  {messages.cards.creativeTechnology.title}
+                </h3>
+                <p className="text-slate-600 dark:text-white/70 leading-relaxed text-sm md:text-base font-light">
+                  {messages.cards.creativeTechnology.body}
+                </p>
               </div>
-              <h3 className="text-xl font-bold leading-tight [text-wrap:balance] mb-2">{messages.cards.creativeTechnology.title}</h3>
-              <p className="text-black dark:text-muted-foreground">{messages.cards.creativeTechnology.body}</p>
             </div>
           </div>
         </div>
@@ -372,6 +413,15 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('/images/abstract-texture.png')] opacity-20 mix-blend-overlay" />
 
         <div className="container relative z-10 text-center">
+          <div className="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm md:text-base font-medium shadow-[0_0_15px_rgba(16,185,129,0.1)] transition-all hover:bg-emerald-500/20 cursor-default">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              Actively looking for full-time opportunities
+            </div>
+          </div>
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">{messages.sections.ctaTitle}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
             {messages.sections.ctaBody}
