@@ -211,12 +211,12 @@ export default function Home() {
           <div className="absolute bottom-0 right-0 z-20 w-[40%] h-[45%] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,0.95) 35%, rgba(2,6,23,0.6) 55%, transparent 80%)' }} />
         </div>
 
-        <div className="relative z-30 flex flex-col md:grid md:grid-cols-1 md:w-[50%] gap-12 md:items-center mx-auto md:mx-0 md:mr-auto text-center md:text-left mb-24 md:mb-0 px-[clamp(1.25rem,4vw,2.5rem)]">
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start">
+        <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-24 md:mb-0">
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start md:w-[50%] lg:w-[55%]">
 
             <div className="mt-6 md:mt-0 w-full">
               <div className="relative md:block">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md">
+                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md">
                   {messages.hero.title} <br />
                   <span className="inline-block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60">
                     {messages.hero.name}
@@ -257,11 +257,10 @@ export default function Home() {
 
             </div>
           </div>
-        </div>
 
-        {/* Desktop-Only Project Tag (Middle Right) */}
-        <div className="absolute top-32 right-6 md:right-8 left-[65%] z-30 hidden md:flex flex-col items-end animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
-          <Link href={heroSlides[currentSlide].link}>
+          {/* Desktop-Only Project Tag (Right Side) */}
+          <div className="hidden md:flex flex-col items-end md:w-[45%] lg:w-[40%] animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+            <Link href={heroSlides[currentSlide].link}>
             <div 
               ref={tagRef}
               className={`flex flex-col gap-2 lg:gap-3 rounded-2xl p-3 md:p-4 lg:p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group w-full max-w-full border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
@@ -310,6 +309,7 @@ export default function Home() {
             </div>
           </Link>
         </div>
+      </div>
 
         {/* Global Slideshow Controls & Progress (Desktop Only) */}
         <div 
