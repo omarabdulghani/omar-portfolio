@@ -104,8 +104,8 @@ export default function Navigation() {
       <nav
         ref={navRef}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled ? `py-2 shadow-sm ${glassSurfaceClasses}` : `py-4 ${glassSurfaceClasses}`
+          "fixed top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-full border border-white/10 dark:border-white/5",
+          scrolled ? `py-2 shadow-lg ${glassSurfaceClasses}` : `py-4 ${glassSurfaceClasses}`
         )}
         style={{
           backdropFilter: liquidGlassFilter || "none",
@@ -135,20 +135,14 @@ export default function Navigation() {
               <Link key={link.name} href={link.href}>
                 <a
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary relative group",
+                    "text-sm font-medium transition-all duration-300 px-4 py-2 rounded-full",
                     location === link.href
-                      ? "text-primary"
-                      : "text-white/80 hover:text-white"
+                      ? "bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
+                      : "text-white/70 hover:text-white hover:bg-white/5"
                   )}
                   onClick={() => trackEvent("nav_click", { location: "header_desktop", destination: link.href })}
                 >
                   {link.name}
-                  <span
-                    className={cn(
-                      "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
-                      location === link.href ? "w-full" : ""
-                    )}
-                  />
                 </a>
               </Link>
             ))}
