@@ -239,8 +239,11 @@ export default function Home() {
           ))}
           {/* Legibility Overlay Mask */}
           <div className="absolute inset-0 z-20 bg-slate-950/85 md:bg-transparent md:bg-gradient-to-r md:from-slate-950 md:via-slate-950/80 md:to-transparent" />
-          {/* Bottom-right corner vignette — completely hides video watermarks with zero sharp lines using extreme blur */}
-          <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 z-20 w-[80vw] h-[80vw] md:w-[600px] md:h-[600px] bg-slate-950 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
+          {/* Bottom Edge Blend — seamlessly blends the video into the section below it */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 z-20 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
+          
+          {/* Bottom-right corner vignette — solid core completely hides watermarks, extremely smooth fade */}
+          <div className="absolute bottom-0 right-0 z-20 w-[70vw] h-[70vw] md:w-[600px] md:h-[600px] pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 35%, rgba(2,6,23,0.5) 65%, rgba(2,6,23,0) 90%)' }} />
         </div>
 
         <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-24 md:mb-0">
