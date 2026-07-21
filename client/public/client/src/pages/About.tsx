@@ -112,20 +112,20 @@ export default function About() {
 
       <section className="relative pt-8 pb-8 md:pt-10 md:pb-10">
         <div className="container relative z-10">
-          <div className="grid items-center gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:gap-10">
+          <div className="grid items-center gap-8 md:grid-cols-[1.2fr_0.8fr] lg:grid-cols-[1.1fr_0.9fr] xl:grid-cols-[1.05fr_0.95fr] xl:gap-10">
             <div className="max-w-3xl space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
                 {messages.about.hero.badge}
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl font-heading font-bold tracking-tight sm:text-6xl lg:text-7xl">
+                <h1 className="text-4xl font-heading font-bold tracking-tight sm:text-5xl md:text-4xl lg:text-6xl xl:text-7xl">
                   <span className="block">{heroTitleLeading}</span>
                   <span className="block">
                     {heroTitleJoiner} <span className="text-primary">{messages.about.hero.titleHighlight}</span>
                   </span>
                 </h1>
-                <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+                <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-base lg:text-xl lg:leading-8">
                   {renderWithHighlights(messages.about.hero.description)}
                 </p>
               </div>
@@ -168,7 +168,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[380px]">
+            <div className="relative mx-auto w-full max-w-[280px] md:max-w-[300px] lg:max-w-[380px]">
               <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-3xl -z-10" />
               <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-white/10 shadow-xl dark:shadow-[0_20px_70px_-45px_rgba(59,130,246,0.3)]">
                 <img

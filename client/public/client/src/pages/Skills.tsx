@@ -133,9 +133,9 @@ export default function Skills() {
       {/* Certifications & Soft Skills */}
       <section className="py-20 bg-white/[0.02] border-t border-white/5">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Certifications */}
-            <div>
+            <div className="md:col-span-1 lg:col-span-1">
               <div className="flex items-center gap-3 mb-8">
                 <Award className="text-primary" size={28} />
                 <h2 className="text-3xl font-heading font-bold">{messages.skills.sections.certifications}</h2>
@@ -157,7 +157,7 @@ export default function Skills() {
             </div>
 
             {/* Languages */}
-            <div>
+            <div className="md:col-span-1 lg:col-span-1">
               <div className="flex items-center gap-3 mb-8">
                 <Globe className="text-primary" size={28} />
                 <h2 className="text-3xl font-heading font-bold">{messages.skills.sections.languages}</h2>
@@ -177,12 +177,12 @@ export default function Skills() {
             </div>
 
             {/* Soft Skills */}
-            <div>
+            <div className="md:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-3 mb-8">
                 <Users className="text-primary" size={28} />
                 <h2 className="text-3xl font-heading font-bold">{messages.skills.sections.softSkills}</h2>
               </div>
-              <div className={language === "nl" ? "grid grid-cols-1 gap-4" : "grid grid-cols-1 sm:grid-cols-2 gap-4"}>
+              <div className="flex flex-wrap gap-2.5">
                 {[
                   messages.skills.softSkills.creativeProblemSolving,
                   messages.skills.softSkills.strategicThinking,
@@ -193,9 +193,9 @@ export default function Skills() {
                   messages.skills.softSkills.adaptability,
                   messages.skills.softSkills.ownershipProactiveExecution
                 ].map((skill) => (
-                  <div key={skill} className="flex h-full items-start gap-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]">
-                    <div className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
-                    <span className="font-medium leading-snug">{skill}</span>
+                  <div key={skill} className="flex items-center gap-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg dark:hover:shadow-[0_8px_30px_rgba(var(--primary),0.05)]">
+                    <div className="h-2 w-2 shrink-0 rounded-full bg-primary" />
+                    <span className="font-medium text-sm md:text-base leading-tight">{skill}</span>
                   </div>
                 ))}
               </div>
