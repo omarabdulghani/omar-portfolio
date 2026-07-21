@@ -84,8 +84,14 @@ export default function Navigation() {
     { name: messages.nav.skills, href: "/skills" },
     { name: messages.nav.contact, href: "/contact" },
   ];
-  const glassSurfaceClasses = isDesktopNavSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
-  const mobileGlassSurfaceClasses = isMobileMenuSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
+  const glassSurfaceClasses = scrolled 
+    ? (isDesktopNavSupported ? "bg-slate-950/60 dark:bg-slate-950/60" : "bg-slate-950/90 backdrop-blur-md") 
+    : (isDesktopNavSupported ? "bg-transparent" : "bg-slate-950/40 backdrop-blur-md");
+    
+  const mobileGlassSurfaceClasses = scrolled
+    ? (isMobileMenuSupported ? "bg-slate-950/60 dark:bg-slate-950/60" : "bg-slate-950/90 backdrop-blur-md")
+    : (isMobileMenuSupported ? "bg-transparent" : "bg-slate-950/40 backdrop-blur-md");
+
   const languageButtonLabel = language.toUpperCase();
 
   const handleLanguageSelect = (nextLanguage: "en" | "nl") => {
@@ -98,8 +104,8 @@ export default function Navigation() {
       <nav
         ref={navRef}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
-          glassSurfaceClasses
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          scrolled ? `py-2 shadow-sm ${glassSurfaceClasses}` : `py-4 ${glassSurfaceClasses}`
         )}
         style={{
           backdropFilter: liquidGlassFilter || "none",

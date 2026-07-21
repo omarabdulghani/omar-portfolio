@@ -68,12 +68,21 @@ export default function Home() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const tagRef = useRef<HTMLDivElement>(null);
   const mobileTagRef = useRef<HTMLDivElement>(null);
+  const pillRef = useRef<HTMLDivElement>(null);
+  const contactBtnRef = useRef<HTMLButtonElement>(null);
+  const viewWorkBtnRef = useRef<HTMLButtonElement>(null);
   
   const { filter: tagLiquidGlassFilter, isSupported: isTagSupported } = useLiquidGlass(tagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: mobileTagLiquidGlassFilter, isSupported: isMobileTagSupported } = useLiquidGlass(mobileTagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: pillLiquidGlassFilter, isSupported: isPillSupported } = useLiquidGlass(pillRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: contactBtnLiquidGlassFilter, isSupported: isContactBtnSupported } = useLiquidGlass(contactBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: viewWorkBtnLiquidGlassFilter, isSupported: isViewWorkBtnSupported } = useLiquidGlass(viewWorkBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
 
   const tagGlassClasses = isTagSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
   const mobileTagGlassClasses = isMobileTagSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
+  const pillGlassClasses = isPillSupported ? "bg-white/5 dark:bg-black/5" : "bg-white/60 dark:bg-black/40 backdrop-blur-md";
+  const contactBtnGlassClasses = isContactBtnSupported ? "bg-white/10 hover:bg-white/20" : "bg-white/10 hover:bg-white/20 backdrop-blur-md";
+  const viewWorkBtnGlassClasses = isViewWorkBtnSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
@@ -172,8 +181,10 @@ export default function Home() {
               <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-8 md:mt-12 justify-center md:justify-start items-center md:items-start">
                 <Link href="/portfolio">
                   <Button
+                    ref={viewWorkBtnRef}
                     size="lg"
-                    className="flex items-center justify-center gap-2 rounded-full px-8 text-base h-14 bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300"
+                    className={`flex items-center justify-center gap-2 rounded-full px-8 text-base h-14 text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300 ${viewWorkBtnGlassClasses}`}
+                    style={isViewWorkBtnSupported ? { backdropFilter: viewWorkBtnLiquidGlassFilter, WebkitBackdropFilter: viewWorkBtnLiquidGlassFilter } : {}}
                     onClick={() => trackEvent("cta_click", { location: "home_hero", label: "view_my_work", destination: "/portfolio" })}
                   >
                     {messages.hero.ctaViewWork} <ArrowRight className="h-4 w-4" />
@@ -181,9 +192,11 @@ export default function Home() {
                 </Link>
                 <Link href="/contact">
                   <Button
-                    variant="outline"
+                    ref={contactBtnRef}
+                    variant="ghost"
                     size="lg"
-                    className="flex items-center justify-center rounded-full px-8 text-lg h-14 bg-transparent border-slate-900/20 text-slate-900 hover:bg-slate-900/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10 backdrop-blur-sm shadow-sm"
+                    className={`flex items-center justify-center rounded-full px-8 text-lg h-14 text-slate-900 dark:text-white shadow-sm transition-colors ${contactBtnGlassClasses}`}
+                    style={isContactBtnSupported ? { backdropFilter: contactBtnLiquidGlassFilter, WebkitBackdropFilter: contactBtnLiquidGlassFilter } : {}}
                     onClick={() => trackEvent("cta_click", { location: "home_hero", label: "contact_me", destination: "/contact" })}
                   >
                     {messages.hero.ctaContact}
@@ -234,25 +247,36 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Global Slideshow Controls (Desktop Only) */}
-        <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-8 z-30 hidden md:flex items-center gap-2 bg-white/60 dark:bg-black/40 backdrop-blur-md border border-slate-900/10 dark:border-white/10 rounded-full p-1 shadow-xl animate-in fade-in slide-in-from-bottom-8 md:slide-in-from-right-8 duration-700 delay-300">
-            <Button variant="ghost" size="icon" className="hidden md:inline-flex h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handlePrev}>
+        {/* Global Slideshow Controls & Progress (Desktop Only) */}
+        <div 
+          ref={pillRef}
+          className={`absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 hidden md:flex items-center gap-1 rounded-full p-1 pl-4 shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 ${pillGlassClasses}`}
+          style={isPillSupported ? { backdropFilter: pillLiquidGlassFilter, WebkitBackdropFilter: pillLiquidGlassFilter } : {}}
+        >
+          {/* Segmented Progress Indicators */}
+          <div className="flex items-center gap-1.5 mr-2">
+            {heroSlides.map((_, idx) => (
+              <div key={idx} className="h-1 w-6 bg-slate-900/20 dark:bg-white/20 rounded-full overflow-hidden">
+                <div 
+                  className={`h-full bg-slate-900 dark:bg-white transition-all duration-75 ease-linear ${idx < currentSlide ? 'w-full' : idx === currentSlide ? '' : 'w-0'}`}
+                  style={{ width: idx === currentSlide ? `${progress}%` : undefined }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center gap-1">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handlePrev}>
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={togglePause}>
               {isPaused ? <Play className="h-4 w-4 fill-current" /> : <Pause className="h-4 w-4 fill-current" />}
             </Button>
-            <Button variant="ghost" size="icon" className="hidden md:inline-flex h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handleNext}>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-slate-900 dark:text-white hover:bg-slate-900/10 dark:hover:bg-white/20" onClick={handleNext}>
               <ChevronRight className="h-4 w-4" />
             </Button>
-        </div>
-
-        {/* Global Progress Bar at Bottom Boundary */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-slate-900/10 dark:bg-white/10 z-30 opacity-0 md:opacity-100 transition-opacity">
-          <div
-            className="h-full bg-primary transition-all duration-75 ease-linear"
-            style={{ width: `${progress}%` }}
-          />
+          </div>
         </div>
       </section>
 
