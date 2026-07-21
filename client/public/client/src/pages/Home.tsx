@@ -239,8 +239,8 @@ export default function Home() {
           ))}
           {/* Legibility Overlay Mask */}
           <div className="absolute inset-0 z-20 bg-slate-950/85 md:bg-transparent md:bg-gradient-to-r md:from-slate-950 md:via-slate-950/80 md:to-transparent" />
-          {/* Bottom-right corner vignette — hides video watermarks */}
-          <div className="absolute bottom-0 right-0 z-20 w-[60%] h-[60%] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,0.85) 25%, rgba(2,6,23,0.4) 50%, rgba(2,6,23,0) 75%)' }} />
+          {/* Bottom-right corner vignette — completely hides video watermarks with zero sharp lines using extreme blur */}
+          <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 z-20 w-[80vw] h-[80vw] md:w-[600px] md:h-[600px] bg-slate-950 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
         </div>
 
         <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-24 md:mb-0">
