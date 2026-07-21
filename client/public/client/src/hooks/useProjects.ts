@@ -86,8 +86,8 @@ export function useProjects(): ProjectMetadata[] {
     {
       id: "moes-tuinen",
       title: "MOES Tuinen",
-      categoryValue: "digital-marketing-ecommerce",
-      category: messages.portfolio.filters.digitalMarketingEcommerce,
+      categoryValue: "brand-activation",
+      category: "Brand Activation",
       image: "/images/project-moes-tuinen.jpg",
       description: messages.portfolio.projects.moesTuinen.description,
       tags: [messages.portfolio.tags.brandActivation, messages.portfolio.tags.socialMedia, messages.portfolio.tags.digitalMarketing],
@@ -96,8 +96,8 @@ export function useProjects(): ProjectMetadata[] {
     {
       id: "pphe-hotel",
       title: "PPHE Hotel Group",
-      categoryValue: "ux-ui-product-design",
-      category: messages.portfolio.filters.uxUiProductDesign,
+      categoryValue: "web-optimization-ux",
+      category: "Web Optimization & UX/UI",
       image: "/images/pphe-project.jpg",
       description: messages.portfolio.projects.ppheHotel.description,
       tags: [messages.portfolio.tags.webDesign, messages.portfolio.tags.conversionOptimization, messages.portfolio.tags.analytics],

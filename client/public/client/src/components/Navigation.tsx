@@ -19,9 +19,13 @@ export default function Navigation() {
   const { language, setLanguage, messages } = useLanguage();
   const navRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const desktopLetsTalkRef = useRef<HTMLButtonElement>(null);
+  const mobileLetsTalkRef = useRef<HTMLButtonElement>(null);
 
   const { filter: liquidGlassFilter, isSupported: isDesktopNavSupported } = useLiquidGlass(navRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: mobileLiquidGlassFilter, isSupported: isMobileMenuSupported } = useLiquidGlass(mobileMenuRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: desktopLetsTalkLiquidGlassFilter, isSupported: isDesktopLetsTalkSupported } = useLiquidGlass(desktopLetsTalkRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: mobileLetsTalkLiquidGlassFilter, isSupported: isMobileLetsTalkSupported } = useLiquidGlass(mobileLetsTalkRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
 
   const desktopLanguageMenuRef = useRef<HTMLDivElement>(null);
   const mobileLanguageMenuRef = useRef<HTMLDivElement>(null);
@@ -91,6 +95,9 @@ export default function Navigation() {
   const mobileGlassSurfaceClasses = isMobileMenuSupported 
     ? "bg-slate-950/60 dark:bg-slate-950/60" 
     : "bg-slate-950/90 backdrop-blur-md";
+
+  const desktopLetsTalkGlassClasses = isDesktopLetsTalkSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
+  const mobileLetsTalkGlassClasses = isMobileLetsTalkSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
 
   const languageButtonLabel = language.toUpperCase();
 
@@ -186,9 +193,11 @@ export default function Navigation() {
 
             <Link href="/contact">
               <Button
-                variant="default"
+                ref={desktopLetsTalkRef}
+                variant="ghost"
                 size="sm"
-                className="rounded-full px-6"
+                className={`rounded-full px-6 text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300 ${desktopLetsTalkGlassClasses}`}
+                style={isDesktopLetsTalkSupported ? { backdropFilter: desktopLetsTalkLiquidGlassFilter, WebkitBackdropFilter: desktopLetsTalkLiquidGlassFilter } : {}}
                 onClick={() => trackEvent("cta_click", { location: "header_desktop", label: "lets_talk", destination: "/contact" })}
               >
                 {messages.nav.letsTalk}
@@ -288,8 +297,11 @@ export default function Navigation() {
                 ))}
                 <Link href="/contact">
                   <Button
+                    ref={mobileLetsTalkRef}
+                    variant="ghost"
                     size="lg"
-                    className="mt-4 rounded-full px-8 text-lg"
+                    className={`mt-4 rounded-full px-8 text-lg text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300 ${mobileLetsTalkGlassClasses}`}
+                    style={isMobileLetsTalkSupported ? { backdropFilter: mobileLetsTalkLiquidGlassFilter, WebkitBackdropFilter: mobileLetsTalkLiquidGlassFilter } : {}}
                     onClick={() => {
                       trackEvent("cta_click", { location: "header_mobile", label: "lets_talk", destination: "/contact" });
                       setIsOpen(false);

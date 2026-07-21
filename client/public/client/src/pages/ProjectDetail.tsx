@@ -377,17 +377,18 @@ const projectsData: Record<string, any> = {
     client: "PPHE Hotel Group",
     clientLogos: [
       {
-        src: "/images/pphe-hotel-group gallery/pphe-logo.png",
+        src: "/images/pphe-hotel-group gallery/pphe-hotel-group-logo.png",
         href: "https://www.pphe.com/",
         alt: "PPHE Hotel Group logo"
       },
       {
-        src: "/images/pphe-hotel-group gallery/artotel logo.png",
+        src: "/images/pphe-hotel-group gallery/artotel-logo-png_seeklogo-342919.png",
         href: "https://artotel.com",
-        alt: "art'otel logo"
+        alt: "art'otel logo",
+        logoClass: "h-14 scale-110 ml-2"
       }
     ],
-    role: "Digital Marketing Intern (UX/UI & Web Optimization)",
+    role: "Digital Marketing and Web Development Coordinator Intern",
     description: "During my internship at PPHE Hotel Group, I worked on UX/UI and web optimization initiatives across multiple hotel and venue websites. My scope combined hands-on interface improvements with technical performance analysis, supporting both user experience quality and business conversion goals.",
     challenge: "PPHE websites faced recurring **UX friction**, including booking-flow usability issues, missing or inconsistent multilingual content, and technical performance bottlenecks. The challenge was to improve **usability, speed, and conversion potential** while maintaining brand consistency across different teams and properties.",
     solution: "I contributed through a structured optimization workflow: WordPress UX issue resolution, A/B testing hypotheses and prototypes for booking interfaces, GTmetrix-led technical SEO audits, and data analysis using Google Analytics, Google Search Console, and Google Tag Manager. I also created Figma prototypes for page improvements (including Park Plaza Moments and Tozi Events) and coordinated implementation with internal stakeholders and external development partners.",

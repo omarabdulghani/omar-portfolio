@@ -19,7 +19,7 @@ export default function Home() {
 
   const allProjects = useProjects();
 
-  const featuredIds = ["job-scout", "moonlit-firefly-bloom", "patronapp"];
+  const featuredIds = ["job-scout", "moonlit-firefly-bloom", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel"];
   const featuredProjects = featuredIds
     .map(id => allProjects.find(p => p.id === id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -32,11 +32,26 @@ export default function Home() {
       const isPatronApp = p.id === "patronapp";
       const isJobScout = p.id === "job-scout";
       const isMoonlit = p.id === "moonlit-firefly-bloom";
-      const hasVideo = isPatronApp || isJobScout || isMoonlit;
+      const isAmstelhof = p.id === "amstelhof-connect";
+      const isMoesTuinen = p.id === "moes-tuinen";
+      const isPPHE = p.id === "pphe-hotel";
+      const hasVideo = isPatronApp || isJobScout || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE;
       
       return {
         id: p.id,
         title: p.title,
+        logo: isAmstelhof 
+          ? "/images/amstelhof-connect gallery/amstelhof-logo dark mode.png" 
+          : isPatronApp
+          ? "/images/patronapp gallery/patronaat logo.png"
+          : isMoesTuinen
+          ? "/images/moestuinenlogo-darkmode.png"
+          : isPPHE
+          ? "/images/pphe-hotel-group gallery/pphe-hotel-group-logo.png"
+          : undefined,
+        secondaryLogo: isPPHE
+          ? "/images/pphe-hotel-group gallery/artotel-logo-png_seeklogo-342919.png"
+          : undefined,
         category: p.category,
         description: isPatronApp 
           ? "A whole new interactive music experience."
@@ -44,6 +59,10 @@ export default function Home() {
           ? "The job hunt made effortless."
           : isMoonlit
           ? "An enchanting and cozy arcade game."
+          : isAmstelhof
+          ? "Connecting a vibrant health club community."
+          : isPPHE
+          ? "Enhanced UI/UX for global hotel brands."
           : p.description,
         type: hasVideo ? ("video" as const) : ("image" as const),
         src: isPatronApp
@@ -52,6 +71,12 @@ export default function Home() {
           ? "/images/job-scout-gallery/Job_Scout_dashboard_showcase_202607201923.mp4"
           : isMoonlit
           ? "/images/moonlit-gallery/Video_promo_for_game_project_202607201943.mp4"
+          : isAmstelhof
+          ? "/images/amstelhof-connect gallery/Amstelhof_Connect_tablet_app_202607210249.mp4"
+          : isMoesTuinen
+          ? "/images/moes-tuinen gallery/MOES_Tuinen_brand_activation_video_202607210304.mp4"
+          : isPPHE
+          ? "/images/pphe-hotel-group gallery/pphe_video.mp4"
           : p.image, 
         link: `/portfolio/${p.id}`
       };
@@ -78,8 +103,8 @@ export default function Home() {
   const { filter: contactBtnLiquidGlassFilter, isSupported: isContactBtnSupported } = useLiquidGlass(contactBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: viewWorkBtnLiquidGlassFilter, isSupported: isViewWorkBtnSupported } = useLiquidGlass(viewWorkBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
 
-  const tagGlassClasses = isTagSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
-  const mobileTagGlassClasses = isMobileTagSupported ? "bg-transparent" : "bg-slate-950/60 backdrop-blur-md";
+  const tagGlassClasses = isTagSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
+  const mobileTagGlassClasses = isMobileTagSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
   const pillGlassClasses = isPillSupported ? "bg-white/5 dark:bg-black/5" : "bg-white/60 dark:bg-black/40 backdrop-blur-md";
   const contactBtnGlassClasses = isContactBtnSupported ? "bg-white/10 hover:bg-white/20" : "bg-white/10 hover:bg-white/20 backdrop-blur-md";
   const viewWorkBtnGlassClasses = isViewWorkBtnSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
@@ -124,6 +149,19 @@ export default function Home() {
   };
 
   const togglePause = () => setIsPaused(!isPaused);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
+        handleNext();
+      } else if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
+        handlePrev();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [heroSlides.length]);
 
   return (
     <Layout>
@@ -214,7 +252,7 @@ export default function Home() {
           <Link href={heroSlides[currentSlide].link}>
             <div 
               ref={tagRef}
-              className={`flex flex-col gap-3 rounded-2xl p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group max-w-sm border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
+              className={`flex flex-col gap-3 rounded-2xl p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group max-w-md border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
               style={{
                 backdropFilter: tagLiquidGlassFilter || "none",
                 WebkitBackdropFilter: tagLiquidGlassFilter || "none",
@@ -224,24 +262,38 @@ export default function Home() {
                 {heroSlides.map((slide, index) => (
                   <div 
                     key={slide.id}
-                    className={`col-start-1 row-start-1 transition-all duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 invisible'}`}
+                    className={`col-start-1 row-start-1 flex flex-col justify-between transition-all duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 invisible'}`}
                   >
-                    <h3 className="text-white text-lg font-bold flex items-center gap-3">
-                      {slide.title}
-                      <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal whitespace-nowrap">
-                        {slide.category}
-                      </Badge>
-                    </h3>
-                    <p className="text-white/80 text-sm mt-2 line-clamp-2 leading-relaxed">
-                      {slide.description}
-                    </p>
+                    <div>
+                      <h3 className="text-white text-lg font-bold flex items-center gap-3 whitespace-nowrap">
+                        {slide.title}
+                        <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal whitespace-nowrap">
+                          {slide.category}
+                        </Badge>
+                      </h3>
+                      <p className="text-white/80 text-sm mt-2 line-clamp-2 leading-relaxed">
+                        {slide.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between mt-4 h-6">
+                      <div className="flex items-center">
+                        {slide.logo ? (
+                          <>
+                            <img src={slide.logo} alt="Project Logo" className="h-6 w-auto object-contain" />
+                            {slide.secondaryLogo && (
+                              <img src={slide.secondaryLogo} alt="Secondary Logo" className="h-12 w-auto object-contain ml-4" />
+                            )}
+                          </>
+                        ) : (
+                          <span className="text-white/80 text-xs border border-white/20 rounded-full px-3 py-1 font-medium">Independent Project</span>
+                        )}
+                      </div>
+                      <span className="text-white text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        View Project <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
                   </div>
                 ))}
-              </div>
-              <div className="flex items-center justify-end mt-1">
-                <span className="text-primary text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  View Project <ArrowRight className="w-4 h-4" />
-                </span>
               </div>
             </div>
           </Link>
@@ -312,38 +364,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section className="py-24 relative">
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">{messages.sections.featuredProjects}</h2>
-              <p className="text-muted-foreground max-w-xl md:max-w-none">
-                {messages.sections.featuredProjectsDescription}
-              </p>
-            </div>
-            <Link href="/portfolio">
-              <Button
-                variant="ghost"
-                className="group"
-                onClick={() => trackEvent("cta_click", { location: "home_featured_projects", label: "view_all_projects", destination: "/portfolio" })}
-              >
-                {messages.sections.viewAllProjects} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                {...project}
-                analyticsContext="home_featured_projects"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">

@@ -325,7 +325,7 @@ export const en: LocaleMessages = {
       },
       moesTuinen: {
         description:
-          "A comprehensive brand activation campaign including pop-up stands, social media strategy, and digital marketing planning.",
+          "An integrated digital and physical brand activation.",
       },
       amstelhofConnect: {
         description:
