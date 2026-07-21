@@ -99,6 +99,8 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const SLIDE_DURATION = 5000;
   const UPDATE_INTERVAL = 50;
 
@@ -162,6 +164,31 @@ export default function Home() {
 
   const togglePause = () => setIsPaused(!isPaused);
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    }
+    if (isRightSwipe) {
+      handlePrev();
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
@@ -177,7 +204,12 @@ export default function Home() {
 
   return (
     <Layout>
-      <section className="relative min-h-[85svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden -mt-[64px] md:-mt-[80px] pt-[calc(4rem+64px)] md:pt-[calc(5rem+80px)] pb-16 md:pb-32">
+      <section 
+        className="relative min-h-[85svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden -mt-[64px] md:-mt-[80px] pt-[calc(4rem+64px)] md:pt-[calc(5rem+80px)] pb-16 md:pb-32 touch-pan-y"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
 
         {/* Full-Width Background Slideshow */}
         <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-slate-950">
