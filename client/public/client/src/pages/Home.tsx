@@ -308,7 +308,7 @@ export default function Home() {
                 {heroSlides.map((slide, index) => (
                   <div 
                     key={slide.id}
-                    className={`transition-all duration-700 ease-in-out flex flex-col justify-between min-h-[120px] lg:min-h-[140px] ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 absolute inset-0'}`}
+                    className={`transition-all duration-700 ease-in-out flex flex-col justify-between min-h-[160px] lg:min-h-[180px] ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 absolute inset-0'}`}
                   >
                     <div>
                       <h3 className="text-white text-sm lg:text-lg font-bold flex flex-wrap items-center gap-2 lg:gap-3">
@@ -321,7 +321,7 @@ export default function Home() {
                         {slide.description}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between mt-5 lg:mt-5">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         {slide.logo ? (
                           <>
