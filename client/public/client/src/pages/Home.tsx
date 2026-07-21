@@ -298,7 +298,7 @@ export default function Home() {
             <Link href={heroSlides[currentSlide].link}>
             <div 
               ref={tagRef}
-              className={`flex flex-col gap-3 rounded-2xl p-5 lg:p-6 shadow-2xl cursor-pointer hover:border-white/20 transition-all group w-full max-w-full border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
+              className={`flex flex-col gap-2 lg:gap-3 rounded-2xl p-3 md:p-4 lg:p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group w-full max-w-full border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
               style={{
                 backdropFilter: tagLiquidGlassFilter || "none",
                 WebkitBackdropFilter: tagLiquidGlassFilter || "none",
@@ -308,7 +308,7 @@ export default function Home() {
                 {heroSlides.map((slide, index) => (
                   <div 
                     key={slide.id}
-                    className={`transition-all duration-700 ease-in-out flex flex-col justify-between min-h-[160px] lg:min-h-[180px] ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 absolute inset-0'}`}
+                    className={`transition-all duration-700 ease-in-out flex flex-col ${index === currentSlide ? 'opacity-100 translate-y-0 blur-none z-10 relative' : 'opacity-0 -translate-y-2 blur-sm pointer-events-none z-0 absolute inset-0'}`}
                   >
                     <div>
                       <h3 className="text-white text-sm lg:text-lg font-bold flex flex-wrap items-center gap-2 lg:gap-3">
@@ -317,11 +317,11 @@ export default function Home() {
                           {slide.category}
                         </Badge>
                       </h3>
-                      <p className="text-white/80 text-xs lg:text-sm mt-3 line-clamp-2 leading-relaxed">
+                      <p className="text-white/80 text-xs lg:text-sm mt-1 lg:mt-2 line-clamp-2 leading-relaxed">
                         {slide.description}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4 mt-3 lg:mt-4">
                       <div className="flex items-center">
                         {slide.logo ? (
                           <>
