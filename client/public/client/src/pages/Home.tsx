@@ -242,8 +242,8 @@ export default function Home() {
           {/* Bottom Edge Blend — seamlessly blends the video into the section below it */}
           <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 z-20 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
           
-          {/* Bottom-right corner vignette — solid core completely hides watermarks, extremely smooth fade */}
-          <div className="absolute bottom-0 right-0 z-20 w-[70vw] h-[70vw] md:w-[600px] md:h-[600px] pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 35%, rgba(2,6,23,0.5) 65%, rgba(2,6,23,0) 90%)' }} />
+          {/* Bottom-right corner vignette — full screen element to ensure no sharp edges, completely hides watermarks */}
+          <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 250px, rgba(2,6,23,0.3) 500px, rgba(2,6,23,0) 800px)' }} />
         </div>
 
         <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-24 md:mb-0">
