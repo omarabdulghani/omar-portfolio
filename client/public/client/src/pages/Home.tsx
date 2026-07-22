@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Download, ExternalLink, ChevronRight, ChevronLeft, Play, Pause } from "lucide-react";
+import { ArrowRight, Download, ExternalLink, ChevronRight, ChevronLeft, Play, Pause, Sparkles, Code2, Cpu, Palette, Zap, Globe, Users, Rocket, Target, Award, Layers, Brain, Bot, Music, Leaf, Gamepad2, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
@@ -9,6 +9,8 @@ import { useLanguage } from "@/lib/i18n";
 import { useEffect, useState, useRef } from "react";
 import { useProjects } from "@/hooks/useProjects";
 import { useLiquidGlass } from "@/hooks/useLiquidGlass";
+import { useNetworkQuality } from "@/hooks/useNetworkQuality";
+import { getRandomHighlights, RecruiterHighlight, preventOrphans } from "@/data/recruiterHighlights";
 
 export default function Home() {
   const { language, messages } = useLanguage();
@@ -24,7 +26,20 @@ export default function Home() {
     .map(id => allProjects.find(p => p.id === id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-  const heroSlides = featuredIds
+  const { isSlowConnection } = useNetworkQuality();
+
+  const introSlide = {
+    id: "about-me-intro",
+    title: "Omar in Action",
+    category: "Personal Intro",
+    description: "A behind-the-scenes look into my process, passions, and creative tech builds.",
+    type: "video" as const,
+    src: "/my-intro.mp4",
+    link: "/about",
+    isPersonalIntro: true
+  };
+
+  const projectSlides = featuredIds
     .map(id => {
       const p = allProjects.find(proj => proj.id === id);
       if (!p) return null;
@@ -90,10 +105,56 @@ export default function Home() {
           : isHallenCity
           ? "/images/hallencity gallery/hallencity_video.mp4"
           : p.image, 
-        link: `/portfolio/${p.id}`
+        link: `/portfolio/${p.id}`,
+        isPersonalIntro: false
       };
     })
     .filter((slide): slide is NonNullable<typeof slide> => Boolean(slide));
+
+  const heroSlides = projectSlides;
+
+  const HIGHLIGHT_ICONS = {
+    Sparkles, Code2, Cpu, Palette, Zap, Globe, Users, Rocket, Target, Award, Layers, Brain, Bot, Music, Leaf, Gamepad2, Heart
+  };
+
+  // Intro Sequence State & Loading States
+  const [isIntroActive, setIsIntroActive] = useState(true);
+  const [isIntroLoading, setIsIntroLoading] = useState(true);
+  const [isVideoLoading, setIsVideoLoading] = useState(false);
+  const [introHighlights, setIntroHighlights] = useState<RecruiterHighlight[]>([]);
+  const [visibleHighlightIndex, setVisibleHighlightIndex] = useState<number>(-1);
+
+  useEffect(() => {
+    setIntroHighlights(getRandomHighlights());
+  }, []);
+
+  useEffect(() => {
+    if (!isIntroActive || isIntroLoading || introHighlights.length === 0) return;
+
+    const initialTimeout = setTimeout(() => {
+      setVisibleHighlightIndex(0);
+    }, 800);
+
+    const interval = setInterval(() => {
+      setVisibleHighlightIndex((prev) => {
+        if (prev < introHighlights.length - 1) {
+          return prev + 1;
+        }
+        return prev;
+      });
+    }, 3600);
+
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
+  }, [isIntroActive, isIntroLoading, introHighlights]);
+
+  const finishIntro = () => {
+    setIsIntroActive(false);
+    setCurrentSlide(0);
+    setProgress(0);
+  };
 
   // Slideshow State
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -105,25 +166,30 @@ export default function Home() {
   const UPDATE_INTERVAL = 50;
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const introVideoRef = useRef<HTMLVideoElement | null>(null);
   const tagRef = useRef<HTMLDivElement>(null);
+  const introCardRef = useRef<HTMLDivElement>(null);
   const mobileTagRef = useRef<HTMLDivElement>(null);
   const pillRef = useRef<HTMLDivElement>(null);
   const contactBtnRef = useRef<HTMLButtonElement>(null);
   const viewWorkBtnRef = useRef<HTMLButtonElement>(null);
   
   const { filter: tagLiquidGlassFilter, isSupported: isTagSupported } = useLiquidGlass(tagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: introCardLiquidGlassFilter, isSupported: isIntroCardSupported } = useLiquidGlass(introCardRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: mobileTagLiquidGlassFilter, isSupported: isMobileTagSupported } = useLiquidGlass(mobileTagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: pillLiquidGlassFilter, isSupported: isPillSupported } = useLiquidGlass(pillRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: contactBtnLiquidGlassFilter, isSupported: isContactBtnSupported } = useLiquidGlass(contactBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: viewWorkBtnLiquidGlassFilter, isSupported: isViewWorkBtnSupported } = useLiquidGlass(viewWorkBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
 
   const tagGlassClasses = isTagSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
+  const introCardGlassClasses = isIntroCardSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
   const mobileTagGlassClasses = isMobileTagSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
   const pillGlassClasses = isPillSupported ? "bg-white/5 dark:bg-black/5" : "bg-white/60 dark:bg-black/40 backdrop-blur-md";
   const contactBtnGlassClasses = isContactBtnSupported ? "bg-white/10 hover:bg-white/20" : "bg-white/10 hover:bg-white/20 backdrop-blur-md";
   const viewWorkBtnGlassClasses = isViewWorkBtnSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
 
   useEffect(() => {
+    if (isIntroActive) return;
     videoRefs.current.forEach((video, index) => {
       if (video) {
         if (index === currentSlide) {
@@ -134,10 +200,10 @@ export default function Home() {
         }
       }
     });
-  }, [currentSlide]);
+  }, [currentSlide, isIntroActive]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isIntroActive || isPaused) return;
 
     const timer = setInterval(() => {
       setProgress((prev) => {
@@ -150,7 +216,7 @@ export default function Home() {
     }, UPDATE_INTERVAL);
 
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [isPaused, isIntroActive]);
 
   const handleNext = () => {
     setCurrentSlide((current) => (current + 1) % heroSlides.length);
@@ -213,10 +279,80 @@ export default function Home() {
 
         {/* Full-Width Background Slideshow */}
         <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-slate-950">
+          {/* Intro Video Full-Screen Layer */}
+          <div className={`absolute inset-0 z-30 transition-opacity duration-1000 ease-in-out ${isIntroActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+            <video
+              ref={introVideoRef}
+              src="/my-intro-new.mp4"
+              autoPlay
+              muted
+              playsInline
+              preload={isSlowConnection ? "metadata" : "auto"}
+              onWaiting={() => setIsIntroLoading(true)}
+              onStalled={() => setIsIntroLoading(true)}
+              onCanPlay={() => setIsIntroLoading(false)}
+              onPlaying={() => setIsIntroLoading(false)}
+              onEnded={finishIntro}
+              className="w-full h-full object-cover scale-[1.02]"
+            />
+            {/* Intro Video Loading Spinner Indicator */}
+            {isIntroLoading && (
+              <div className="absolute inset-0 z-35 flex flex-col items-center justify-center bg-slate-950/60 backdrop-blur-md transition-opacity duration-300 pointer-events-none">
+                <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium backdrop-blur-xl shadow-2xl animate-pulse">
+                  <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+                  <span>Loading Intro Video...</span>
+                </div>
+              </div>
+            )}
+
+            {/* Apple-Inspired Floating Recruiter Value Glass Card */}
+            {isIntroActive && !isIntroLoading && visibleHighlightIndex >= 0 && introHighlights[visibleHighlightIndex] && (() => {
+              const card = introHighlights[visibleHighlightIndex];
+              const IconComp = HIGHLIGHT_ICONS[card.iconName] || Sparkles;
+
+              const posClasses = 
+                card.position === "top-right" ? "top-24 right-6 md:top-28 md:right-16" :
+                card.position === "middle-left" ? "top-1/3 left-6 md:left-16" :
+                card.position === "top-left" ? "top-24 left-6 md:top-28 md:left-16" :
+                "top-1/2 right-6 md:right-16";
+
+              return (
+                <div
+                  key={`${card.id}-${visibleHighlightIndex}`}
+                  className={`absolute z-35 ${posClasses} max-w-[290px] sm:max-w-sm transition-all duration-700 ease-out transform animate-in fade-in zoom-in-95 slide-in-from-bottom-4 pointer-events-none`}
+                >
+                  <div 
+                    ref={introCardRef}
+                    className={`flex flex-col gap-1.5 p-4 rounded-2xl border border-white/20 shadow-2xl transition-all group ${introCardGlassClasses}`}
+                    style={{
+                      backdropFilter: introCardLiquidGlassFilter || "none",
+                      WebkitBackdropFilter: introCardLiquidGlassFilter || "none",
+                    }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="p-1.5 rounded-lg bg-amber-400/10 border border-amber-400/20 text-amber-300">
+                        <IconComp className="w-4 h-4 animate-pulse" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-wider font-semibold text-amber-300/90">
+                        {preventOrphans(card.badge)}
+                      </span>
+                    </div>
+                    <h4 className="text-white font-bold text-sm sm:text-base leading-snug [text-wrap:pretty] [hyphens:none]">
+                      {preventOrphans(card.title)}
+                    </h4>
+                    <p className="text-white/75 text-xs leading-relaxed [text-wrap:pretty] [hyphens:none]">
+                      {preventOrphans(card.subtitle)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+
           {heroSlides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${!isIntroActive && index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             >
               {slide.type === 'video' ? (
                 <video
@@ -226,6 +362,11 @@ export default function Home() {
                   muted
                   loop
                   playsInline
+                  preload={isSlowConnection ? "metadata" : "auto"}
+                  onWaiting={() => setIsVideoLoading(true)}
+                  onStalled={() => setIsVideoLoading(true)}
+                  onCanPlay={() => setIsVideoLoading(false)}
+                  onPlaying={() => setIsVideoLoading(false)}
                   className="w-full h-full object-cover scale-[1.02]"
                 />
               ) : (
@@ -237,6 +378,17 @@ export default function Home() {
               )}
             </div>
           ))}
+
+          {/* Slideshow Video Buffering Spinner Indicator */}
+          {!isIntroActive && isVideoLoading && heroSlides[currentSlide]?.type === 'video' && (
+            <div className="absolute inset-0 z-15 flex items-center justify-center bg-slate-950/40 backdrop-blur-sm transition-opacity duration-300 pointer-events-none">
+              <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/80 border border-white/10 text-white/90 text-xs backdrop-blur-md shadow-xl animate-pulse">
+                <div className="w-3.5 h-3.5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <span>Buffering video...</span>
+              </div>
+            </div>
+          )}
+
           {/* Legibility Overlay Mask */}
           <div className="absolute inset-0 z-20 bg-slate-950/85 md:bg-transparent md:bg-gradient-to-r md:from-slate-950 md:via-slate-950/80 md:to-transparent" />
           {/* Bottom Edge Blend — seamlessly blends the video into the section below it */}
@@ -246,8 +398,22 @@ export default function Home() {
           <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 250px, rgba(2,6,23,0.3) 500px, rgba(2,6,23,0) 800px)' }} />
         </div>
 
+        {/* Floating Skip Intro Pill (During Intro Mode) */}
+        {isIntroActive && (
+          <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-40 flex items-center justify-center animate-in fade-in slide-in-from-bottom-6 duration-700">
+            <button
+              onClick={finishIntro}
+              className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950/80 hover:bg-slate-900 border border-white/20 text-white text-xs md:text-sm font-medium shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-amber-400/50 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+              <span>Skip</span>
+              <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        )}
+
         <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-24 md:mb-0">
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start md:w-[50%] lg:w-[55%]">
+          <div className={`space-y-8 transition-all duration-1000 ease-out w-full flex flex-col items-center md:items-start md:w-[50%] lg:w-[55%] ${isIntroActive ? 'opacity-0 translate-y-8 pointer-events-none' : 'opacity-100 translate-y-0 pointer-events-auto'}`}>
 
             <div className="mt-6 md:mt-0 w-full">
               <div className="relative md:block">
@@ -294,7 +460,7 @@ export default function Home() {
           </div>
 
           {/* Desktop-Only Project Tag (Right Side) */}
-          <div className="hidden md:flex flex-col items-end md:w-[45%] lg:w-[40%] animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+          <div className={`hidden md:flex flex-col items-end md:w-[45%] lg:w-[40%] transition-all duration-1000 ease-out delay-200 ${isIntroActive ? 'opacity-0 translate-x-8 pointer-events-none' : 'opacity-100 translate-x-0 pointer-events-auto'}`}>
             <Link href={heroSlides[currentSlide].link}>
             <div 
               ref={tagRef}
@@ -313,7 +479,7 @@ export default function Home() {
                     <div>
                       <h3 className="text-white text-sm lg:text-lg font-bold flex flex-wrap items-center gap-2 lg:gap-3">
                         {slide.title}
-                        <Badge variant="outline" className="bg-white/5 border-white/10 text-white/90 text-xs font-normal whitespace-nowrap">
+                        <Badge variant="outline" className={slide.isPersonalIntro ? "bg-gradient-to-r from-amber-500/20 to-purple-500/20 border-amber-400/40 text-amber-200 text-xs font-semibold whitespace-nowrap shadow-sm" : "bg-white/5 border-white/10 text-white/90 text-xs font-normal whitespace-nowrap"}>
                           {slide.category}
                         </Badge>
                       </h3>
@@ -323,7 +489,12 @@ export default function Home() {
                     </div>
                     <div className="flex items-center justify-between gap-4 mt-3 lg:mt-4">
                       <div className="flex items-center">
-                        {slide.logo ? (
+                        {slide.isPersonalIntro ? (
+                          <span className="text-amber-300 text-xs border border-amber-400/30 bg-amber-500/10 rounded-full px-3 py-1 font-medium flex items-center gap-1.5 shadow-[0_0_12px_rgba(251,191,36,0.15)]">
+                            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+                            Behind the Scenes
+                          </span>
+                        ) : slide.logo ? (
                           <>
                             <img src={slide.logo} alt="Project Logo" className={`w-auto object-contain ${slide.id === 'hallencity' ? 'h-10 scale-110 origin-left' : 'h-6'}`} />
                             {slide.secondaryLogo && (
@@ -335,7 +506,7 @@ export default function Home() {
                         )}
                       </div>
                       <span className="text-white text-xs lg:text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform whitespace-nowrap">
-                        View Project <ArrowRight className="w-4 h-4" />
+                        {slide.isPersonalIntro ? "Meet Omar" : "View Project"} <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
                   </div>
@@ -349,7 +520,7 @@ export default function Home() {
         {/* Global Slideshow Controls & Progress (Desktop Only) */}
         <div 
           ref={pillRef}
-          className={`absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 hidden md:flex items-center gap-1 rounded-full p-1 pl-4 shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 ${pillGlassClasses}`}
+          className={`absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 hidden md:flex items-center gap-1 rounded-full p-1 pl-4 shadow-xl transition-all duration-1000 ease-out delay-400 ${pillGlassClasses} ${isIntroActive ? 'opacity-0 translate-y-8 pointer-events-none' : 'opacity-100 translate-y-0 pointer-events-auto'}`}
           style={isPillSupported ? { backdropFilter: pillLiquidGlassFilter, WebkitBackdropFilter: pillLiquidGlassFilter } : {}}
         >
           {/* Segmented Progress Indicators */}
