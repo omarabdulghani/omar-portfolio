@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Download, ExternalLink, ChevronRight, ChevronLeft, Play, Pause } from "lucide-react";
+import { ArrowRight, Download, ExternalLink, ChevronRight, ChevronLeft, Play, Pause, Sparkles, FolderKanban, Layers, Briefcase, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
@@ -106,18 +106,24 @@ export default function Home() {
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const tagRef = useRef<HTMLDivElement>(null);
+  const fullPortfolioPillRef = useRef<HTMLDivElement>(null);
+  const mobileFullPortfolioPillRef = useRef<HTMLDivElement>(null);
   const mobileTagRef = useRef<HTMLDivElement>(null);
   const pillRef = useRef<HTMLDivElement>(null);
   const contactBtnRef = useRef<HTMLButtonElement>(null);
   const viewWorkBtnRef = useRef<HTMLButtonElement>(null);
   
   const { filter: tagLiquidGlassFilter, isSupported: isTagSupported } = useLiquidGlass(tagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: fullPortfolioPillLiquidGlassFilter, isSupported: isFullPortfolioPillSupported } = useLiquidGlass(fullPortfolioPillRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
+  const { filter: mobileFullPortfolioPillLiquidGlassFilter, isSupported: isMobileFullPortfolioPillSupported } = useLiquidGlass(mobileFullPortfolioPillRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: mobileTagLiquidGlassFilter, isSupported: isMobileTagSupported } = useLiquidGlass(mobileTagRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: pillLiquidGlassFilter, isSupported: isPillSupported } = useLiquidGlass(pillRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: contactBtnLiquidGlassFilter, isSupported: isContactBtnSupported } = useLiquidGlass(contactBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
   const { filter: viewWorkBtnLiquidGlassFilter, isSupported: isViewWorkBtnSupported } = useLiquidGlass(viewWorkBtnRef, { blur: 2, chromaticAberration: 2, strength: 50, depth: 6, brightness: 1.1, saturate: 1.5 });
 
   const tagGlassClasses = isTagSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
+  const fullPortfolioPillGlassClasses = isFullPortfolioPillSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
+  const mobileFullPortfolioPillGlassClasses = isMobileFullPortfolioPillSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
   const mobileTagGlassClasses = isMobileTagSupported ? "bg-slate-950/40" : "bg-slate-950/80 backdrop-blur-md";
   const pillGlassClasses = isPillSupported ? "bg-white/5 dark:bg-black/5" : "bg-white/60 dark:bg-black/40 backdrop-blur-md";
   const contactBtnGlassClasses = isContactBtnSupported ? "bg-white/10 hover:bg-white/20" : "bg-white/10 hover:bg-white/20 backdrop-blur-md";
@@ -268,11 +274,12 @@ export default function Home() {
                   <Button
                     ref={viewWorkBtnRef}
                     size="lg"
-                    className={`flex items-center justify-center gap-2 rounded-full px-8 text-base h-14 text-primary-foreground shadow-[0_0_20px_-5px_rgba(75,120,216,0.3)] hover:shadow-[0_0_30px_-5px_rgba(75,120,216,0.5)] transition-all duration-300 ${viewWorkBtnGlassClasses}`}
+                    className="flex items-center justify-center gap-2.5 rounded-full px-7 text-base font-semibold h-14 text-white bg-blue-600/40 hover:bg-blue-500/55 border border-blue-400/45 shadow-[0_0_25px_-2px_rgba(59,130,246,0.5)] hover:shadow-[0_0_35px_0px_rgba(59,130,246,0.7)] transition-all duration-300 group"
                     style={isViewWorkBtnSupported ? { backdropFilter: viewWorkBtnLiquidGlassFilter, WebkitBackdropFilter: viewWorkBtnLiquidGlassFilter } : {}}
                     onClick={() => trackEvent("cta_click", { location: "home_hero", label: "view_my_work", destination: "/portfolio" })}
                   >
-                    {messages.hero.ctaViewWork} <ArrowRight className="h-4 w-4" />
+                    <span>Explore Portfolio</span>
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform text-blue-100 ml-1" />
                   </Button>
                 </Link>
                 <Link href="/contact">
@@ -289,13 +296,12 @@ export default function Home() {
                 </Link>
               </div>
 
-
             </div>
           </div>
 
           {/* Desktop-Only Project Tag (Right Side) */}
           <div className="hidden md:flex flex-col items-end md:w-[45%] lg:w-[40%] animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
-            <Link href={heroSlides[currentSlide].link}>
+            <Link href={heroSlides[currentSlide].link} className="w-full">
             <div 
               ref={tagRef}
               className={`flex flex-col gap-2 lg:gap-3 rounded-2xl p-3 md:p-4 lg:p-5 shadow-2xl cursor-pointer hover:border-white/20 transition-all group w-full max-w-full border border-transparent hover:bg-white/5 ${tagGlassClasses}`}
