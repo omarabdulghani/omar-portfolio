@@ -89,7 +89,7 @@ export default function Contact() {
                     <div>
                       <p className="text-sm text-muted-foreground">{messages.contact.info.callMe}</p>
                       <a href="tel:+31636495599" className="text-lg font-bold hover:text-primary transition-colors" onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "phone" })}>
-                        +31 6364 9 55 99
+                        <span dir="ltr" className="inline-block">+31 6364 9 55 99</span>
                       </a>
                     </div>
                   </CardContent>
@@ -103,9 +103,15 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">{messages.contact.info.location}</p>
-                      <p className="text-lg font-bold">
+                      <a 
+                        href="https://maps.app.goo.gl/rbMun3x4J7NGmnP17" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-lg font-bold hover:text-primary transition-colors block"
+                        onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "map_location" })}
+                      >
                         {messages.contact.info.cityCountry}
-                      </p>
+                      </a>
                     </div>
                   </CardContent>
                 </Card>

@@ -33,6 +33,7 @@ export default function Navigation() {
   const languageOptions = [
     { code: "en" as const, label: "English" },
     { code: "nl" as const, label: "Nederlands" },
+    { code: "ar" as const, label: "عربي" },
   ];
 
   useEffect(() => {
@@ -59,27 +60,23 @@ export default function Navigation() {
     const handlePointerDown = (event: MouseEvent) => {
       if (
         isLanguageMenuOpen &&
-        !desktopLanguageMenuRef.current?.contains(event.target as Node) &&
-        !mobileLanguageMenuRef.current?.contains(event.target as Node)
+        desktopLanguageMenuRef.current &&
+        !desktopLanguageMenuRef.current.contains(event.target as Node) &&
+        mobileLanguageMenuRef.current &&
+        !mobileLanguageMenuRef.current.contains(event.target as Node)
       ) {
         setIsLanguageMenuOpen(false);
       }
     };
 
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsLanguageMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("keydown", handleEscape);
-    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, [isLanguageMenuOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+    setIsLanguageMenuOpen(false);
+  }, [location]);
 
   const navLinks = [
     { name: messages.nav.home, href: "/" },
@@ -88,20 +85,21 @@ export default function Navigation() {
     { name: messages.nav.skills, href: "/skills" },
     { name: messages.nav.contact, href: "/contact" },
   ];
-  const glassSurfaceClasses = scrolled 
-    ? (isDesktopNavSupported ? "bg-slate-950/60 dark:bg-slate-950/60" : "bg-slate-950/90 backdrop-blur-md") 
-    : (isDesktopNavSupported ? "bg-transparent" : "bg-slate-950/40 backdrop-blur-md");
-    
-  const mobileGlassSurfaceClasses = isMobileMenuSupported 
-    ? "bg-slate-950/60 dark:bg-slate-950/60" 
-    : "bg-slate-950/90 backdrop-blur-md";
+  
+  const glassSurfaceClasses = isDesktopNavSupported
+    ? "bg-slate-950/40 dark:bg-slate-950/40 border-white/10 dark:border-white/5"
+    : "bg-slate-950/80 dark:bg-slate-950/80 backdrop-blur-xl border-white/10 dark:border-white/5";
+
+  const mobileMenuGlassClasses = isMobileMenuSupported
+    ? "bg-slate-950/60 dark:bg-slate-950/60 border-white/10 dark:border-white/5"
+    : "bg-slate-950/90 dark:bg-slate-950/90 backdrop-blur-2xl border-white/10 dark:border-white/5";
 
   const desktopLetsTalkGlassClasses = isDesktopLetsTalkSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
   const mobileLetsTalkGlassClasses = isMobileLetsTalkSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
 
   const languageButtonLabel = language.toUpperCase();
 
-  const handleLanguageSelect = (nextLanguage: "en" | "nl") => {
+  const handleLanguageSelect = (nextLanguage: "en" | "nl" | "ar") => {
     setLanguage(nextLanguage);
     setIsLanguageMenuOpen(false);
   };

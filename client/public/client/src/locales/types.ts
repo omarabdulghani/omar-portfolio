@@ -1,4 +1,4 @@
-export type Language = "en" | "nl";
+export type Language = "en" | "nl" | "ar";
 
 export interface LocaleMessages {
   nav: {
@@ -605,6 +605,26 @@ export interface LocaleMessages {
     uxResearch: string;
     prototyping: string;
     userStrategy: string;
+  };
+  heroSlides: {
+    viewProject: string;
+    independentProject: string;
+    categories: {
+      uxUiProductDesign: string;
+      aiProductArchitecture: string;
+      webOptimizationUxUi: string;
+      brandActivation: string;
+    };
+    slides: {
+      pphe: { title: string; description: string; category: string };
+      theraNeck: { title: string; description: string; category: string };
+      hallenCity: { title: string; description: string; category: string };
+      jobScout: { title: string; description: string; category: string };
+      patronApp: { title: string; description: string; category: string };
+      moesTuinen: { title: string; description: string; category: string };
+      moonlit: { title: string; description: string; category: string };
+      amstelhof: { title: string; description: string; category: string };
+    };
   };
 }
 

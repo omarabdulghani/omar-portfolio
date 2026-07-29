@@ -665,12 +665,12 @@ export const en: LocaleMessages = {
     },
   },
   hero: {
-    available: "Available for new projects",
+    available: "Actively looking for full-time opportunities",
     title: "Hello, I'm",
     name: "Omar Abdulghani",
     subtitleRole: "Tech-Driven Creative Specialist",
     subtitleRest:
-      "combining full-stack web development, AI automation, and UX/UI design to build",
+      "A Creative Technologist blending development, AI, and design into scalable digital products.",
     subtitleEnding: "scalable digital products.",
     ctaViewWork: "View My Work",
     ctaContact: "Contact Me",
@@ -715,6 +715,58 @@ export const en: LocaleMessages = {
     uxResearch: "UX Research",
     prototyping: "Prototyping",
     userStrategy: "User Strategy",
+  },
+  heroSlides: {
+    viewProject: "VIEW PROJECT",
+    independentProject: "Independent Project",
+    categories: {
+      uxUiProductDesign: "UX/UI & Product Design",
+      aiProductArchitecture: "AI Product Architecture",
+      webOptimizationUxUi: "Web Optimization & UX/UI",
+      brandActivation: "Brand Activation",
+    },
+    slides: {
+      pphe: {
+        title: "PPHE Hotel Group",
+        description: "Enhanced UI/UX for global hotel brands.",
+        category: "Web Optimization & UX/UI",
+      },
+      theraNeck: {
+        title: "TheraNeck | E-commerce Product",
+        description: "End-to-end e-commerce concept validation.",
+        category: "AI Product Architecture",
+      },
+      hallenCity: {
+        title: "HallenCity",
+        description: "An inclusive, all-in-one cinema experience app concept.",
+        category: "UX/UI & Product Design",
+      },
+      jobScout: {
+        title: "Job Scout",
+        description: "The job hunt made effortless.",
+        category: "AI Product Architecture",
+      },
+      patronApp: {
+        title: "PatronApp",
+        description: "A whole new interactive music experience.",
+        category: "AI Product Architecture",
+      },
+      moesTuinen: {
+        title: "MOES Tuinen",
+        description: "An integrated digital and physical brand activation.",
+        category: "Brand Activation",
+      },
+      moonlit: {
+        title: "Moonlit Firefly Bloom",
+        description: "An enchanting and cozy arcade game.",
+        category: "UX/UI & Product Design",
+      },
+      amstelhof: {
+        title: "Amstelhof Connect",
+        description: "Connecting a vibrant health club community.",
+        category: "UX/UI & Product Design",
+      },
+    },
   },
 };
 
