@@ -96,12 +96,20 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin size={20} className="text-primary shrink-0 mt-1" />
-                <span>{messages.footer.cityCountry}</span>
+                <a 
+                  href="https://maps.app.goo.gl/rbMun3x4J7NGmnP17" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-foreground transition-colors"
+                  onClick={() => trackEvent("contact_link_click", { location: "footer", method: "map_location" })}
+                >
+                  {messages.footer.cityCountry}
+                </a>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={20} className="text-primary shrink-0" />
                 <a href="tel:+31636495599" className="hover:text-foreground transition-colors" onClick={() => trackEvent("contact_link_click", { location: "footer", method: "phone" })}>
-                  +31 6364 9 55 99
+                  <span dir="ltr" className="inline-block">+31 6364 9 55 99</span>
                 </a>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">

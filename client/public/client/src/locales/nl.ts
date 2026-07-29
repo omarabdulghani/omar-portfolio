@@ -687,7 +687,7 @@ export const nl: LocaleMessages = {
     name: "Omar Abdulghani",
     subtitleRole: "Technologiegedreven Creatieve Specialist",
     subtitleRest:
-      "die full-stack webontwikkeling, AI-automatisering en UX/UI-design combineert om",
+      "Een creatieve technoloog die ontwikkeling, AI en design combineert om schaalbare digitale producten te bouwen.",
     subtitleEnding: "schaalbare digitale producten te bouwen.",
     ctaViewWork: "Bekijk mijn werk",
     ctaContact: "Neem contact op",
@@ -732,6 +732,58 @@ export const nl: LocaleMessages = {
     uxResearch: "UX-onderzoek",
     prototyping: "Prototyping",
     userStrategy: "Gebruikersstrategie",
+  },
+  heroSlides: {
+    viewProject: "Bekijk Project",
+    independentProject: "Onafhankelijk Project",
+    categories: {
+      uxUiProductDesign: "UX/UI & Product Design",
+      aiProductArchitecture: "AI Product Architecture",
+      webOptimizationUxUi: "Web Optimalisatie & UX/UI",
+      brandActivation: "Brand Activation",
+    },
+    slides: {
+      pphe: {
+        title: "PPHE Hotel Group",
+        description: "Verbeterde UI/UX voor wereldwijde hotelmerken.",
+        category: "Web Optimalisatie & UX/UI",
+      },
+      theraNeck: {
+        title: "TheraNeck | E-commerce Product",
+        description: "End-to-end e-commerce conceptvalidatie.",
+        category: "AI Product Architecture",
+      },
+      hallenCity: {
+        title: "HallenCity",
+        description: "Een inclusief, alles-in-één bioscoopervaring app-concept.",
+        category: "UX/UI & Product Design",
+      },
+      jobScout: {
+        title: "Job Scout",
+        description: "De zoektocht naar een baan moeiteloos gemaakt.",
+        category: "AI Product Architecture",
+      },
+      patronApp: {
+        title: "PatronApp",
+        description: "Een geheel nieuwe interactieve muziekervaring.",
+        category: "AI Product Architecture",
+      },
+      moesTuinen: {
+        title: "MOES Tuinen",
+        description: "Een geïntegreerde digitale en fysieke merkactivatie.",
+        category: "Brand Activation",
+      },
+      moonlit: {
+        title: "Moonlit Firefly Bloom",
+        description: "Een betoverend en gezellig arcadespel.",
+        category: "UX/UI & Product Design",
+      },
+      amstelhof: {
+        title: "Amstelhof Connect",
+        description: "Het verbinden van een levendige sportschoolcommunity.",
+        category: "UX/UI & Product Design",
+      },
+    },
   },
 };
 

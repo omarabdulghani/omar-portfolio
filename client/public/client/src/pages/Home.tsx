@@ -12,6 +12,7 @@ import { useLiquidGlass } from "@/hooks/useLiquidGlass";
 
 export default function Home() {
   const { language, messages } = useLanguage();
+  const isAr = language === "ar";
   const cvResumeHref =
     language === "nl"
       ? "/ATS_CV_Omar_Abdulghani_NL_v2.pdf"
@@ -39,9 +40,25 @@ export default function Home() {
       const isHallenCity = p.id === "hallencity";
       const hasVideo = isPatronApp || isJobScout || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE || isTheraNeck || isHallenCity;
       
+      const slideData = isPPHE
+        ? messages.heroSlides.slides.pphe
+        : isTheraNeck
+        ? messages.heroSlides.slides.theraNeck
+        : isHallenCity
+        ? messages.heroSlides.slides.hallenCity
+        : isJobScout
+        ? messages.heroSlides.slides.jobScout
+        : isPatronApp
+        ? messages.heroSlides.slides.patronApp
+        : isMoesTuinen
+        ? messages.heroSlides.slides.moesTuinen
+        : isMoonlit
+        ? messages.heroSlides.slides.moonlit
+        : messages.heroSlides.slides.amstelhof;
+      
       return {
         id: p.id,
-        title: p.title,
+        title: slideData?.title || p.title,
         logo: isAmstelhof 
           ? "/images/amstelhof-connect gallery/amstelhof-logo dark mode.png" 
           : isPatronApp
@@ -56,22 +73,8 @@ export default function Home() {
         secondaryLogo: isPPHE
           ? "/images/pphe-hotel-group gallery/artotel-logo-png_seeklogo-342919.png"
           : undefined,
-        category: p.category,
-        description: isPatronApp 
-          ? "A whole new interactive music experience."
-          : isJobScout
-          ? "The job hunt made effortless."
-          : isMoonlit
-          ? "An enchanting and cozy arcade game."
-          : isAmstelhof
-          ? "Connecting a vibrant health club community."
-          : isPPHE
-          ? "Enhanced UI/UX for global hotel brands."
-          : isTheraNeck
-          ? "End-to-end e-commerce concept validation."
-          : isHallenCity
-          ? "An inclusive, all-in-one cinema experience app concept."
-          : p.description,
+        category: slideData?.category || p.category,
+        description: slideData?.description || p.description,
         type: hasVideo ? ("video" as const) : ("image" as const),
         src: isPatronApp
           ? "/images/patronapp gallery/PatronApp Promo 1.mp4"
@@ -252,19 +255,19 @@ export default function Home() {
           <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 250px, rgba(2,6,23,0.3) 500px, rgba(2,6,23,0) 800px)' }} />
         </div>
 
-        <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-4 md:mb-0">
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start md:w-[50%] lg:w-[55%]">
+        <div className={`container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full mb-4 md:mb-0 ${isAr ? "text-right md:text-right" : "text-center md:text-left"}`}>
+          <div className={`space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col md:w-[50%] lg:w-[55%] ${isAr ? "items-start md:items-start text-right" : "items-center md:items-start"}`}>
 
-            <div className="mt-6 md:mt-0 w-full">
-              <div className="relative md:block">
-                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md flex flex-col items-center md:items-start">
+            <div className={`mt-6 md:mt-0 w-full flex flex-col ${isAr ? "items-start md:items-start text-right" : "items-center md:items-start"}`}>
+              <div className="relative md:block w-full">
+                <h1 className={`text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md flex flex-col w-full ${isAr ? "items-start md:items-start text-right" : "items-center md:items-start text-left"}`}>
                   <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md">
                     {messages.hero.title}
                   </span>
                   <div 
                     aria-label="Omar Abdulghani"
                     role="img"
-                    className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 mt-3 -ml-2 sm:-ml-3 md:-ml-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md"
+                    className={`h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 mt-3 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md ${isAr ? "ml-0 -mr-3 sm:-mr-4 md:-mr-4" : "-ml-2 sm:-ml-3 md:-ml-4 mr-0"}`}
                     style={{
                       width: 'auto',
                       aspectRatio: '557.45 / 154.88',
@@ -274,18 +277,18 @@ export default function Home() {
                       WebkitMaskSize: 'contain',
                       maskRepeat: 'no-repeat',
                       WebkitMaskRepeat: 'no-repeat',
-                      maskPosition: 'left center',
-                      WebkitMaskPosition: 'left center'
+                      maskPosition: isAr ? 'right center' : 'left center',
+                      WebkitMaskPosition: isAr ? 'right center' : 'left center'
                     }}
                   />
                 </h1>
               </div>
 
-              <p className="mt-4 md:mt-6 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-xl text-balance leading-relaxed drop-shadow-sm dark:drop-shadow-md mx-auto md:mx-0">
-                A Creative Technologist blending development, AI, and design into scalable digital products.
+              <p className={`mt-4 md:mt-6 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-xl text-balance leading-relaxed drop-shadow-sm dark:drop-shadow-md w-full ${isAr ? "mr-0 ml-auto text-right md:text-right" : "mx-auto md:mx-0 text-left md:text-left"}`}>
+                {messages.hero.subtitleRest}
               </p>
 
-              <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-8 md:mt-12 justify-center md:justify-start items-center md:items-start">
+              <div className={`flex flex-col md:flex-row flex-wrap gap-4 mt-8 md:mt-12 w-full ${isAr ? "justify-start md:justify-start items-start md:items-start text-right" : "justify-center md:justify-start items-center md:items-start"}`}>
                 <Link href="/portfolio">
                   <Button
                     ref={viewWorkBtnRef}
@@ -294,8 +297,8 @@ export default function Home() {
                     style={isViewWorkBtnSupported ? { backdropFilter: viewWorkBtnLiquidGlassFilter, WebkitBackdropFilter: viewWorkBtnLiquidGlassFilter } : {}}
                     onClick={() => trackEvent("cta_click", { location: "home_hero", label: "view_my_work", destination: "/portfolio" })}
                   >
-                    <span>Explore Portfolio</span>
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform text-blue-100 ml-1" />
+                    <span>{messages.hero.ctaViewWork}</span>
+                    <ArrowRight className={`h-4 w-4 group-hover:translate-x-1 transition-transform text-blue-100 ${isAr ? "rotate-180 group-hover:-translate-x-1 mr-1 ml-0" : "ml-1 mr-0"}`} />
                   </Button>
                 </Link>
                 <Link href="/contact">
@@ -353,11 +356,11 @@ export default function Home() {
                             )}
                           </>
                         ) : (
-                          <span className="text-white/80 text-xs border border-white/20 rounded-full px-3 py-1 font-medium">Independent Project</span>
+                          <span className="text-white/80 text-xs border border-white/20 rounded-full px-3 py-1 font-medium">{messages.heroSlides.independentProject}</span>
                         )}
                       </div>
-                      <span className="text-white text-xs lg:text-sm font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform whitespace-nowrap">
-                        View Project <ArrowRight className="w-4 h-4" />
+                      <span className="text-white text-xs lg:text-sm font-bold uppercase tracking-wider flex items-center gap-1 whitespace-nowrap">
+                        {messages.heroSlides.viewProject} <ArrowRight className={`w-4 h-4 transition-transform ${isAr ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"}`} />
                       </span>
                     </div>
                   </div>
@@ -476,7 +479,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </span>
-              Actively looking for full-time opportunities
+              {messages.hero.available}
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">{messages.sections.ctaTitle}</h2>
