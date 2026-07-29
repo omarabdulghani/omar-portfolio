@@ -211,7 +211,7 @@ export default function Home() {
   return (
     <Layout>
       <section 
-        className="relative min-h-[85svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden -mt-[64px] md:-mt-[80px] pt-[calc(4rem+64px)] md:pt-[calc(5rem+80px)] pb-16 md:pb-32 touch-pan-y"
+        className="relative min-h-[100svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden -mt-[64px] md:-mt-[80px] pt-[calc(3rem+64px)] md:pt-[calc(5rem+80px)] pb-6 md:pb-32 touch-pan-y"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -244,7 +244,7 @@ export default function Home() {
             </div>
           ))}
           {/* Legibility Overlay Mask */}
-          <div className="absolute inset-0 z-20 bg-slate-950/85 md:bg-transparent md:bg-gradient-to-r md:from-slate-950 md:via-slate-950/80 md:to-transparent" />
+          <div className="absolute inset-0 z-20 bg-slate-950/45 md:bg-transparent md:bg-gradient-to-r md:from-slate-950 md:via-slate-950/80 md:to-transparent" />
           {/* Bottom Edge Blend — seamlessly blends the video into the section below it */}
           <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 z-20 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
           
@@ -252,16 +252,32 @@ export default function Home() {
           <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 250px, rgba(2,6,23,0.3) 500px, rgba(2,6,23,0) 800px)' }} />
         </div>
 
-        <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-24 md:mb-0">
+        <div className="container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full text-center md:text-left mb-4 md:mb-0">
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col items-center md:items-start md:w-[50%] lg:w-[55%]">
 
             <div className="mt-6 md:mt-0 w-full">
               <div className="relative md:block">
-                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md">
-                  {messages.hero.title} <br />
-                  <span className="inline-block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60">
-                    {messages.hero.name}
+                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md flex flex-col items-center md:items-start">
+                  <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md">
+                    {messages.hero.title}
                   </span>
+                  <div 
+                    aria-label="Omar Abdulghani"
+                    role="img"
+                    className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 mt-3 -ml-2 sm:-ml-3 md:-ml-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md"
+                    style={{
+                      width: 'auto',
+                      aspectRatio: '557.45 / 154.88',
+                      maskImage: 'url(/asset-3.svg)',
+                      WebkitMaskImage: 'url(/asset-3.svg)',
+                      maskSize: 'contain',
+                      WebkitMaskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'left center',
+                      WebkitMaskPosition: 'left center'
+                    }}
+                  />
                 </h1>
               </div>
 
@@ -386,7 +402,7 @@ export default function Home() {
       </section>
 
       {/* Value Proposition */}
-      <section className="relative py-24 bg-[#faf9fc] dark:bg-slate-950/50 overflow-hidden">
+      <section className="relative py-10 md:py-24 bg-[#faf9fc] dark:bg-slate-950/50 overflow-hidden">
         {/* Minimal Animated Fluid Aura Background */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 pointer-events-none flex items-center justify-center opacity-60 dark:opacity-30">
           <div className="absolute w-[60vw] h-[30vw] min-w-[600px] min-h-[300px] rounded-[100%] bg-primary/20 dark:bg-primary/10 blur-[120px] animate-[spin_30s_linear_infinite]" />
