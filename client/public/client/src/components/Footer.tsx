@@ -15,8 +15,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <Link href="/">
-              <a className="text-2xl font-bold font-heading tracking-tight mb-4 block">
-                OMAR<span className="text-primary">.</span>
+              <a className="group relative flex items-center shrink-0 mb-4 w-max">
+                <img 
+                  src="/logo/vectorised-760f92c0.svg" 
+                  alt="OMAR Logo" 
+                  className="h-6 md:h-7 w-auto shrink-0" 
+                />
+                <img 
+                  src="/logo/on%20hover.svg" 
+                  alt="OMAR Logo Hover" 
+                  className="absolute left-0 top-0 h-6 md:h-7 w-auto transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
+                />
               </a>
             </Link>
             <p className="text-muted-foreground max-w-md mb-6">
