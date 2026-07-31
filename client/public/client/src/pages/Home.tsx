@@ -252,19 +252,19 @@ export default function Home() {
           <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(2,6,23,1) 0%, rgba(2,6,23,1) 250px, rgba(2,6,23,0.3) 500px, rgba(2,6,23,0) 800px)' }} />
         </div>
 
-        <div className={`container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full mb-4 md:mb-0 ${isAr ? "text-right md:text-right" : "text-center md:text-left"}`}>
-          <div className={`space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col md:w-[50%] lg:w-[55%] ${isAr ? "items-start md:items-start text-right" : "items-center md:items-start"}`}>
+        <div className={`container relative z-30 flex flex-col md:flex-row items-start justify-between gap-12 w-full mb-4 md:mb-0 ${isAr ? "text-right" : "text-left"}`}>
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700 w-full flex flex-col md:w-[50%] lg:w-[55%] items-start">
 
-            <div className={`mt-6 md:mt-0 w-full flex flex-col ${isAr ? "items-start md:items-start text-right" : "items-center md:items-start"}`}>
-              <div className="relative md:block w-full">
-                <h1 className={`text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md flex flex-col w-full ${isAr ? "items-start md:items-start text-right" : "items-center md:items-start text-left"}`}>
+            <div className="mt-6 md:mt-0 w-full flex flex-col items-start">
+              <div className="relative block w-full">
+                <h1 className={`text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md flex flex-col w-full items-start ${isAr ? "text-right" : "text-left"}`}>
                   <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md">
                     {messages.hero.title}
                   </span>
                   <div 
                     aria-label="Omar Abdulghani"
                     role="img"
-                    className={`h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 mt-3 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md ${isAr ? "ml-0 -mr-3 sm:-mr-4 md:-mr-4" : "-ml-2 sm:-ml-3 md:-ml-4 mr-0"}`}
+                    className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 mt-3 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-white/60 drop-shadow-sm dark:drop-shadow-md w-full ml-0 mr-0"
                     style={{
                       width: 'auto',
                       aspectRatio: '557.45 / 154.88',
@@ -281,11 +281,11 @@ export default function Home() {
                 </h1>
               </div>
 
-              <p className={`mt-4 md:mt-6 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-xl text-balance leading-relaxed drop-shadow-sm dark:drop-shadow-md w-full ${isAr ? "mr-0 ml-auto text-right md:text-right" : "mx-auto md:mx-0 text-left md:text-left"}`}>
+              <p className={`mt-4 md:mt-6 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-xl text-balance leading-relaxed drop-shadow-sm dark:drop-shadow-md w-full ${isAr ? "text-right" : "text-left"}`}>
                 {messages.hero.subtitleRest}
               </p>
 
-              <div className={`flex flex-col md:flex-row flex-wrap gap-4 mt-8 md:mt-12 w-full ${isAr ? "justify-start md:justify-start items-start md:items-start text-right" : "justify-center md:justify-start items-center md:items-start"}`}>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 md:mt-12 w-full justify-start items-start">
                 <Link href="/portfolio">
                   <Button
                     ref={viewWorkBtnRef}
