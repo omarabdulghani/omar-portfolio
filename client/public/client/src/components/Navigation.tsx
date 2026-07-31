@@ -17,6 +17,7 @@ export default function Navigation() {
   const [location] = useLocation();
   const { theme } = useTheme();
   const { language, setLanguage, messages } = useLanguage();
+  const isAr = language === "ar";
   const navRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const desktopLetsTalkRef = useRef<HTMLButtonElement>(null);
@@ -167,7 +168,10 @@ export default function Navigation() {
               </button>
               {isLanguageMenuOpen && (
                 <div
-                  className="absolute right-0 top-[calc(100%+0.5rem)] z-50 min-w-[150px] rounded-2xl border border-transparent bg-white p-1.5 shadow-[0_18px_40px_-24px_rgba(15,23,42,0.28)] backdrop-blur-md space-y-1.5 dark:border-border/40 dark:bg-background"
+                  className={cn(
+                    "absolute top-[calc(100%+0.5rem)] z-50 min-w-[150px] rounded-2xl border border-transparent bg-white p-1.5 shadow-[0_18px_40px_-24px_rgba(15,23,42,0.28)] backdrop-blur-md space-y-1.5 dark:border-border/40 dark:bg-background",
+                    isAr ? "left-0 right-auto" : "right-0"
+                  )}
                 >
                   {languageOptions.map((option) => (
                     <button
@@ -221,7 +225,10 @@ export default function Navigation() {
               </button>
               {isLanguageMenuOpen && (
                 <div
-                  className="absolute right-0 top-[calc(100%+0.5rem)] z-50 min-w-[150px] rounded-2xl border border-transparent bg-white p-1.5 shadow-[0_18px_40px_-24px_rgba(15,23,42,0.28)] backdrop-blur-md space-y-1.5 dark:border-border/40 dark:bg-background"
+                  className={cn(
+                    "absolute top-[calc(100%+0.5rem)] z-50 min-w-[150px] rounded-2xl border border-transparent bg-white p-1.5 shadow-[0_18px_40px_-24px_rgba(15,23,42,0.28)] backdrop-blur-md space-y-1.5 dark:border-border/40 dark:bg-background",
+                    isAr ? "left-0 right-auto" : "right-0"
+                  )}
                 >
                   {languageOptions.map((option) => (
                     <button
