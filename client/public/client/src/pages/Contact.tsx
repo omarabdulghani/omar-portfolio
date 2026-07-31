@@ -11,7 +11,8 @@ import { toast } from "sonner";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { messages } = useLanguage();
+  const { language, messages } = useLanguage();
+  const isAr = language === "ar";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -150,7 +151,7 @@ export default function Contact() {
                     "Sending..."
                   ) : (
                     <>
-                      {messages.contact.form.submit} <Send className="ml-2 h-4 w-4" />
+                      {messages.contact.form.submit} <Send className={isAr ? "mr-2 h-4 w-4 rotate-180" : "ml-2 h-4 w-4"} />
                     </>
                   )}
                 </Button>

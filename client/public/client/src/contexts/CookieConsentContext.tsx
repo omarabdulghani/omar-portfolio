@@ -16,6 +16,7 @@ import {
   type CookieConsentPreferences,
 } from "@/lib/cookie-consent";
 import { syncAnalyticsConsent, trackEvent, trackPageView } from "@/lib/analytics";
+import { useLanguage } from "@/lib/i18n";
 import {
   Check,
   ChevronRight,
@@ -52,6 +53,8 @@ function getInitialConsentState() {
 }
 
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
+  const { messages, language } = useLanguage();
+  const isAr = language === "ar";
   const initialState = useMemo(() => getInitialConsentState(), []);
   const [preferences, setPreferences] = useState<CookieConsentPreferences>(
     initialState.preferences
@@ -112,16 +115,13 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
               <div className="max-w-3xl">
                 <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                   <Cookie className="h-3.5 w-3.5" />
-                  Cookie Preferences
+                  {messages.cookieConsent?.banner.tag || "Cookie Preferences"}
                 </div>
                 <h2 className="text-xl font-heading font-bold text-foreground md:text-2xl">
-                  This site uses necessary storage and optional analytics.
+                  {messages.cookieConsent?.banner.heading || "This site uses necessary storage and optional analytics."}
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-[0.96rem]">
-                  Necessary storage keeps your theme and privacy choices
-                  available. If you agree, we will also activate privacy-focused
-                  analytics to understand which pages and actions visitors find
-                  most useful.
+                  {messages.cookieConsent?.banner.description || "Necessary storage keeps your theme and privacy choices available. If you agree, we will also activate privacy-focused analytics to understand which pages and actions visitors find most useful."}
                 </p>
               </div>
 
@@ -132,7 +132,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                   onClick={openSettings}
                 >
                   <Settings2 className="h-4 w-4" />
-                  Cookie Settings
+                  {messages.cookieConsent?.banner.settingsButton || "Cookie Settings"}
                 </Button>
                 <Button
                   className="h-12 rounded-full px-7 text-sm font-semibold shadow-[0_0_24px_-12px_rgba(75,120,216,0.7)]"
@@ -144,7 +144,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                   }
                 >
                   <Check className="h-4 w-4" />
-                  Yes, I agree
+                  {messages.cookieConsent?.banner.agreeButton || "Yes, I agree"}
                 </Button>
               </div>
             </div>
@@ -162,19 +162,16 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
 
             <div className="relative flex max-h-[90vh] flex-col">
               <div className="border-b border-border/50 px-6 py-6 md:px-8">
-                <DialogHeader className="space-y-3 text-left">
+                <DialogHeader className={cn("space-y-3", isAr ? "text-right" : "text-left")}>
                   <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                     <ShieldCheck className="h-3.5 w-3.5" />
-                    Privacy Overview
+                    {messages.cookieConsent?.modal.privacyOverviewTag || "Privacy Overview"}
                   </div>
                   <DialogTitle className="font-heading text-2xl md:text-3xl">
-                    Cookie Settings
+                    {messages.cookieConsent?.modal.title || "Cookie Settings"}
                   </DialogTitle>
                   <DialogDescription className="max-w-3xl text-sm leading-6 text-muted-foreground md:text-[0.96rem]">
-                    This website uses a small amount of browser storage so core
-                    features continue to work, and it can optionally enable
-                    privacy-focused analytics. We only activate analytics after you
-                    opt in.
+                    {messages.cookieConsent?.modal.description || "This website uses a small amount of browser storage so core features continue to work, and it can optionally enable privacy-focused analytics. We only activate analytics after you opt in."}
                   </DialogDescription>
                 </DialogHeader>
               </div>
@@ -185,20 +182,15 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <h3 className="text-lg font-semibold text-foreground">
-                          Strictly Necessary Cookies
+                          {messages.cookieConsent?.modal.necessary.title || "Strictly Necessary Cookies"}
                         </h3>
                         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-                          Strictly necessary storage keeps the website working and
-                          remembers choices you explicitly make, such as your
-                          cookie preferences and light or dark theme selection.
-                          These items are always enabled, may be anonymized where
-                          possible, and are not used to track your browsing across
-                          other websites.
+                          {messages.cookieConsent?.modal.necessary.description || "Strictly necessary storage keeps the website working and remembers choices you explicitly make, such as your cookie preferences and light or dark theme selection. These items are always enabled, may be anonymized where possible, and are not used to track your browsing across other websites."}
                         </p>
                       </div>
                       <div className="flex min-w-[104px] flex-col items-end gap-2">
                         <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                          Always on
+                          {messages.cookieConsent?.modal.necessary.alwaysOn || "Always on"}
                         </span>
                         <Switch
                           checked
@@ -213,14 +205,10 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <h3 className="text-lg font-semibold text-foreground">
-                          3rd Party Cookies
+                          {messages.cookieConsent?.modal.thirdParty.title || "3rd Party Cookies"}
                         </h3>
                         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-                          When enabled, this site loads Umami Cloud to count
-                          visitors, measure page views, understand important button
-                          clicks, and see general device and location patterns. This
-                          helps improve the website experience and understand which
-                          sections visitors find most interesting and useful.
+                          {messages.cookieConsent?.modal.thirdParty.description || "When enabled, this site loads Umami Cloud to count visitors, measure page views, understand important button clicks, and see general device and location patterns. This helps improve the website experience and understand which sections visitors find most interesting and useful."}
                         </p>
                       </div>
                       <div className="flex min-w-[104px] flex-col items-end gap-2">
@@ -230,7 +218,9 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                             draftAnalytics ? "text-primary" : "text-muted-foreground"
                           )}
                         >
-                          {draftAnalytics ? "Enabled" : "Disabled"}
+                          {draftAnalytics
+                            ? (messages.cookieConsent?.modal.thirdParty.enabled || "Enabled")
+                            : (messages.cookieConsent?.modal.thirdParty.disabled || "Disabled")}
                         </span>
                         <Switch
                           checked={draftAnalytics}
@@ -243,14 +233,14 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
 
                   <section className="rounded-3xl border border-dashed border-border/60 bg-card/40 p-5">
                     <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                      Cookie Policy
+                      {messages.cookieConsent?.modal.policy.tag || "Cookie Policy"}
                     </h3>
                     <a
                       href="/cookie-policy"
                       className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
                     >
-                      More information about our Cookie Policy
-                      <ChevronRight className="h-4 w-4" />
+                      <span>{messages.cookieConsent?.modal.policy.moreInfo || "More information about our Cookie Policy"}</span>
+                      <ChevronRight className={cn("h-4 w-4", isAr ? "rotate-180" : "")} />
                     </a>
                   </section>
                 </div>
@@ -259,7 +249,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
               <div className="border-t border-border/50 px-6 py-5 md:px-8">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                   <div className="text-xs text-muted-foreground whitespace-nowrap">
-                    Privacy controls for GDPR compliance
+                    {messages.cookieConsent?.modal.footer.gdprNotice || "Privacy controls for GDPR compliance"}
                   </div>
 
                   <DialogFooter className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-end">
@@ -274,7 +264,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                         )
                       }
                     >
-                      Enable All
+                      {messages.cookieConsent?.modal.footer.enableAll || "Enable All"}
                     </Button>
                     <Button
                       type="button"
@@ -287,7 +277,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                         )
                       }
                     >
-                      Reject All
+                      {messages.cookieConsent?.modal.footer.rejectAll || "Reject All"}
                     </Button>
                     <Button
                       type="button"
@@ -299,7 +289,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
                         )
                       }
                     >
-                      Save Changes
+                      {messages.cookieConsent?.modal.footer.saveChanges || "Save Changes"}
                     </Button>
                   </DialogFooter>
                 </div>

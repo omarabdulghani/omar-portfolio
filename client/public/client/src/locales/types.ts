@@ -89,7 +89,7 @@ export interface LocaleMessages {
           paragraph1: string;
           paragraph2: string;
         };
-        crossCulturalExperience: {
+        crossCulturalExperience?: {
           title: string;
           paragraph1: string;
           paragraph2: string;
@@ -104,7 +104,7 @@ export interface LocaleMessages {
           paragraph1: string;
           paragraph2: string;
         };
-        aiPrototyping: {
+        aiPrototyping?: {
           title: string;
           paragraph1: string;
           paragraph2: string;
@@ -112,8 +112,9 @@ export interface LocaleMessages {
         focusToday: {
           title: string;
           paragraph1: string;
+          paragraph2?: string;
         };
-        languages: {
+        languages?: {
           title: string;
           paragraph1: string;
         };
@@ -203,50 +204,33 @@ export interface LocaleMessages {
       digitalMarketingGrowth: {
         title: string;
         skills: {
-          digitalMarketingStrategyPlanning: string;
-          seoTechnicalOnPage: string;
-          socialMediaMarketing: string;
-          contentStrategyCampaignMessaging: string;
-          brandStorytelling: string;
-          brandActivationExperientialConcepts: string;
-          conversionOptimization: string;
-          performanceTrackingReporting: string;
+          frontendDevelopment: string;
+          backendArchitecture: string;
+          apiIntegration: string;
+          versionControl: string;
+          databaseManagement: string;
+          performanceOptimization: string;
         };
       };
       researchStrategy: {
         title: string;
         skills: {
-          userInterviewsSurveyDesign: string;
-          qualitativeQuantitativeAnalysis: string;
-          marketCompetitorResearch: string;
-          personaJourneyEmpathyMapping: string;
-          valueCreationPositioningStrategy: string;
-          evidenceBasedDecisionMaking: string;
-        };
-      };
-      businessPlanningDelivery: {
-        title: string;
-        skills: {
-          conceptCreationIdeasToExperiences: string;
-          projectStakeholderManagement: string;
-          clientBriefingDebriefing: string;
+          productStrategyPositioning: string;
+          userResearchTesting: string;
           crossFunctionalCollaboration: string;
-          exportMarketEntryPlanning: string;
-          financialPlanningBudgetStructuring: string;
-          kpiSmartGoalFrameworks: string;
-          clientFacingPresentationDocumentation: string;
-          htmlCssFundamentals: string;
-          sqlFundamentals: string;
+          projectStakeholderManagement: string;
+          processAutomation: string;
+          evidenceBasedDecisionMaking: string;
         };
       };
       aiAssistedCreation: {
         title: string;
         skills: {
+          claudeCursorCodex: string;
+          promptDrivenDevelopment: string;
+          apiAutomationPipelines: string;
+          rapidIterationMvp: string;
           vibeCoding: string;
-          aiAssistedWebsiteAppPrototyping: string;
-          rapidIterationIdeaToMvp: string;
-          promptDrivenDevelopmentWorkflows: string;
-          creativeExperimentationAiTools: string;
         };
       };
     };
@@ -324,6 +308,8 @@ export interface LocaleMessages {
       uxUiProductDesign: string;
       digitalMarketingEcommerce: string;
       creativeStrategyBranding: string;
+      brandActivation?: string;
+      webOptimizationUxUi?: string;
     };
     projects: {
       theraNeckEcommerce: { description: string };
@@ -340,6 +326,8 @@ export interface LocaleMessages {
       moonlit: { description: string };
     };
     tags: {
+      uxUi: string;
+      uxUiDesign?: string;
       eCommerce: string;
       productValidation: string;
       behaviouralAnalytics: string;
@@ -367,6 +355,13 @@ export interface LocaleMessages {
       posterDesign: string;
       musicStrategy: string;
       valueCreation: string;
+      python: string;
+      frontendUiUx: string;
+      multiLlmRouting: string;
+      aiAssisted: string;
+      typeScript: string;
+      engineArchitecture: string;
+      productDesign: string;
     };
   };
   projectDetails: {
@@ -385,6 +380,10 @@ export interface LocaleMessages {
       myRole: string;
       toolsUsed: string;
       projectGallery: string;
+      project?: string;
+      coreEngineeringMetrics?: string;
+      viewGithubRepo?: string;
+      viewAdobeXdPrototype?: string;
       gallerySections: {
         videos: string;
         images: string;
@@ -410,6 +409,7 @@ export interface LocaleMessages {
       };
     };
     moesTuinen: {
+      title?: string;
       subtitle: string;
       description: string;
       challenge: string;
@@ -434,11 +434,13 @@ export interface LocaleMessages {
       };
     };
     amstelhofConnect: {
+      title?: string;
       subtitle: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       primaryActionLabel: string;
       demoVideoLabel: string;
       galleryTitles: {
@@ -448,11 +450,13 @@ export interface LocaleMessages {
       };
     };
     patronApp: {
+      title?: string;
       subtitle: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       primaryActionLabel: string;
       demoVideoLabel: string;
       galleryTitles: {
@@ -464,11 +468,13 @@ export interface LocaleMessages {
       };
     };
     ppheHotel: {
+      title?: string;
       subtitle: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       galleryTitles: {
         bookingPanelImprovement: string;
         parkPlazaPanelImprovement: string;
@@ -480,21 +486,25 @@ export interface LocaleMessages {
       };
     };
     proDetailing: {
+      title?: string;
       subtitle: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       galleryTitles: {
         improvedUiUxVisual: string;
       };
     };
     hallenCity: {
+      title?: string;
       subtitle: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       galleryTitles: {
         appVisual: string;
       };
@@ -506,6 +516,7 @@ export interface LocaleMessages {
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       galleryTitles: {
         designedPoster: string;
         brandPositioningReport: string;
@@ -520,6 +531,7 @@ export interface LocaleMessages {
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       galleryTitles: {
         dataAnalysisReport: string;
         valueCreationReport1: string;
@@ -533,6 +545,7 @@ export interface LocaleMessages {
       challenge: string;
       solution: string;
       impact: string;
+      role?: string;
       galleryTitles: {
         exportResearch: string;
         exportPlan: string;
@@ -543,11 +556,17 @@ export interface LocaleMessages {
       title: string;
       subtitle: string;
       role: string;
+      primaryActionLabel?: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
       ethics: string;
+      galleryTitles?: {
+        darkModeDashboard: string;
+        dataPipelineDashboard: string;
+        apiParsingRecords: string;
+      };
     };
     moonlit: {
       title: string;
@@ -624,6 +643,41 @@ export interface LocaleMessages {
       moesTuinen: { title: string; description: string; category: string };
       moonlit: { title: string; description: string; category: string };
       amstelhof: { title: string; description: string; category: string };
+    };
+  };
+  cookieConsent?: {
+    banner: {
+      tag: string;
+      heading: string;
+      description: string;
+      settingsButton: string;
+      agreeButton: string;
+    };
+    modal: {
+      privacyOverviewTag: string;
+      title: string;
+      description: string;
+      necessary: {
+        title: string;
+        description: string;
+        alwaysOn: string;
+      };
+      thirdParty: {
+        title: string;
+        description: string;
+        enabled: string;
+        disabled: string;
+      };
+      policy: {
+        tag: string;
+        moreInfo: string;
+      };
+      footer: {
+        gdprNotice: string;
+        enableAll: string;
+        rejectAll: string;
+        saveChanges: string;
+      };
     };
   };
 }

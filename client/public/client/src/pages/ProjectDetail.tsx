@@ -714,7 +714,8 @@ export default function ProjectDetail() {
   const [match, params] = useRoute("/portfolio/:id");
   const [, setLocation] = useLocation();
   const galleryRef = useRef<ProjectGalleryHandle>(null);
-  const { messages } = useLanguage();
+  const { language, messages } = useLanguage();
+  const isAr = language === "ar";
   const baseProjects = useProjects();
   const projectId = params?.id;
   const rawProject = projectId ? projectsData[projectId] : undefined;
@@ -784,7 +785,7 @@ export default function ProjectDetail() {
 
           const translatedTitles: Record<string, string> = {
             "Storefront Hero":
-              messages.projectDetails.theraNeckEcommerce.galleryTitles.storefrontHero,
+              messages.projectDetails.theraNeckEcommerce.galleryTitles?.storefrontHero ?? item.title,
           };
 
           const nextTitle = item.title ? translatedTitles[item.title] ?? item.title : item.title;
@@ -810,19 +811,19 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
-            "Introduction Video": messages.projectDetails.moesTuinen.galleryTitles.introductionVideo,
-            "Pop-up Stand Design Video": messages.projectDetails.moesTuinen.galleryTitles.popUpStandDesignVideo,
-            "Meet Cansu": messages.projectDetails.moesTuinen.galleryTitles.meetCansu,
-            "Meet Jasper": messages.projectDetails.moesTuinen.galleryTitles.meetJasper,
-            "Meet Margret": messages.projectDetails.moesTuinen.galleryTitles.meetMargret,
-            "Meet Sascha": messages.projectDetails.moesTuinen.galleryTitles.meetSascha,
-            "Grow Kit Giveaway": messages.projectDetails.moesTuinen.galleryTitles.growKitGiveaway,
-            "Grow Kit Giveaway Production": messages.projectDetails.moesTuinen.galleryTitles.growKitGiveawayProduction,
-            "Grow Kit Contents": messages.projectDetails.moesTuinen.galleryTitles.growKitContents,
-            "Pop-up Stand Design": messages.projectDetails.moesTuinen.galleryTitles.popUpStandDesign,
-            "Poster Design": messages.projectDetails.moesTuinen.galleryTitles.posterDesign,
-            "Deliverables, Project Timeline & Budget": messages.projectDetails.moesTuinen.galleryTitles.deliverablesTimelineBudget,
+          const translatedTitles: Record<string, string | undefined> = {
+            "Introduction Video": messages.projectDetails.moesTuinen.galleryTitles?.introductionVideo,
+            "Pop-up Stand Design Video": messages.projectDetails.moesTuinen.galleryTitles?.popUpStandDesignVideo,
+            "Meet Cansu": messages.projectDetails.moesTuinen.galleryTitles?.meetCansu,
+            "Meet Jasper": messages.projectDetails.moesTuinen.galleryTitles?.meetJasper,
+            "Meet Margret": messages.projectDetails.moesTuinen.galleryTitles?.meetMargret,
+            "Meet Sascha": messages.projectDetails.moesTuinen.galleryTitles?.meetSascha,
+            "Grow Kit Giveaway": messages.projectDetails.moesTuinen.galleryTitles?.growKitGiveaway,
+            "Grow Kit Giveaway Production": messages.projectDetails.moesTuinen.galleryTitles?.growKitGiveawayProduction,
+            "Grow Kit Contents": messages.projectDetails.moesTuinen.galleryTitles?.growKitContents,
+            "Pop-up Stand Design": messages.projectDetails.moesTuinen.galleryTitles?.popUpStandDesign,
+            "Poster Design": messages.projectDetails.moesTuinen.galleryTitles?.posterDesign,
+            "Deliverables, Project Timeline & Budget": messages.projectDetails.moesTuinen.galleryTitles?.deliverablesTimelineBudget,
           };
 
           return {
@@ -844,10 +845,10 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
-            "Members Center": messages.projectDetails.amstelhofConnect.galleryTitles.membersCenter,
-            "Main Dashboard": messages.projectDetails.amstelhofConnect.galleryTitles.mainDashboard,
-            "Amstelhof Connect End Presentation": messages.projectDetails.amstelhofConnect.galleryTitles.endPresentation,
+          const translatedTitles: Record<string, string | undefined> = {
+            "Members Center": messages.projectDetails.amstelhofConnect.galleryTitles?.membersCenter,
+            "Main Dashboard": messages.projectDetails.amstelhofConnect.galleryTitles?.mainDashboard,
+            "Amstelhof Connect End Presentation": messages.projectDetails.amstelhofConnect.galleryTitles?.endPresentation,
           };
 
           return {
@@ -869,12 +870,12 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
-            "PatronApp Promo 1": messages.projectDetails.patronApp.galleryTitles.promo1,
-            "PatronApp Promo 2": messages.projectDetails.patronApp.galleryTitles.promo2,
-            "PatronApp Visual": messages.projectDetails.patronApp.galleryTitles.visual,
-            "End Report - PatronApp": messages.projectDetails.patronApp.galleryTitles.endReport,
-            "Debriefing Report": messages.projectDetails.patronApp.galleryTitles.debriefingReport,
+          const translatedTitles: Record<string, string | undefined> = {
+            "PatronApp Promo 1": messages.projectDetails.patronApp.galleryTitles?.promo1,
+            "PatronApp Promo 2": messages.projectDetails.patronApp.galleryTitles?.promo2,
+            "PatronApp Visual": messages.projectDetails.patronApp.galleryTitles?.visual,
+            "End Report - PatronApp": messages.projectDetails.patronApp.galleryTitles?.endReport,
+            "Debriefing Report": messages.projectDetails.patronApp.galleryTitles?.debriefingReport,
           };
 
           return {
@@ -894,21 +895,21 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
+          const translatedTitles: Record<string, string | undefined> = {
             "Booking Panel Improvement":
-              messages.projectDetails.ppheHotel.galleryTitles.bookingPanelImprovement,
+              messages.projectDetails.ppheHotel.galleryTitles?.bookingPanelImprovement,
             "Park Plaza M&E Panel Improvement":
-              messages.projectDetails.ppheHotel.galleryTitles.parkPlazaPanelImprovement,
+              messages.projectDetails.ppheHotel.galleryTitles?.parkPlazaPanelImprovement,
             "art'otel Booking Panel Mobile Improvement":
-              messages.projectDetails.ppheHotel.galleryTitles.artotelBookingPanelMobileImprovement,
+              messages.projectDetails.ppheHotel.galleryTitles?.artotelBookingPanelMobileImprovement,
             "art'otel Destinations Desktop Improvement":
-              messages.projectDetails.ppheHotel.galleryTitles.artotelDestinationsDesktopImprovement,
+              messages.projectDetails.ppheHotel.galleryTitles?.artotelDestinationsDesktopImprovement,
             "art'otel Destinations Mobile Improvement":
-              messages.projectDetails.ppheHotel.galleryTitles.artotelDestinationsMobileImprovement,
+              messages.projectDetails.ppheHotel.galleryTitles?.artotelDestinationsMobileImprovement,
             "Personal Development Report 1":
-              messages.projectDetails.ppheHotel.galleryTitles.personalDevelopmentReport1,
+              messages.projectDetails.ppheHotel.galleryTitles?.personalDevelopmentReport1,
             "Personal Development Report 2":
-              messages.projectDetails.ppheHotel.galleryTitles.personalDevelopmentReport2,
+              messages.projectDetails.ppheHotel.galleryTitles?.personalDevelopmentReport2,
           };
 
           return {
@@ -928,9 +929,9 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
+          const translatedTitles: Record<string, string | undefined> = {
             "Imrpoved UI/UX visual":
-              messages.projectDetails.proDetailing.galleryTitles.improvedUiUxVisual,
+              messages.projectDetails.proDetailing.galleryTitles?.improvedUiUxVisual,
           };
 
           return {
@@ -950,9 +951,9 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
+          const translatedTitles: Record<string, string | undefined> = {
             "HallenCity+ App Visual":
-              messages.projectDetails.hallenCity.galleryTitles.appVisual,
+              messages.projectDetails.hallenCity.galleryTitles?.appVisual,
           };
 
           return {
@@ -973,15 +974,15 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
+          const translatedTitles: Record<string, string | undefined> = {
             "Burning Man's Designed Poster":
-              messages.projectDetails.burningManCampaign.galleryTitles.designedPoster,
+              messages.projectDetails.burningManCampaign.galleryTitles?.designedPoster,
             "Brand Positioning Report":
-              messages.projectDetails.burningManCampaign.galleryTitles.brandPositioningReport,
+              messages.projectDetails.burningManCampaign.galleryTitles?.brandPositioningReport,
             "Event Promotion Research":
-              messages.projectDetails.burningManCampaign.galleryTitles.eventPromotionResearch,
+              messages.projectDetails.burningManCampaign.galleryTitles?.eventPromotionResearch,
             "Socially Engaged Event Research":
-              messages.projectDetails.burningManCampaign.galleryTitles.sociallyEngagedEventResearch,
+              messages.projectDetails.burningManCampaign.galleryTitles?.sociallyEngagedEventResearch,
           };
 
           return {
@@ -1002,13 +1003,13 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
+          const translatedTitles: Record<string, string | undefined> = {
             "Data Analysis Report (Arcando)":
-              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles.dataAnalysisReport,
+              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles?.dataAnalysisReport,
             "Value Creation Report 1":
-              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles.valueCreationReport1,
+              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles?.valueCreationReport1,
             "Value Creation Report 2":
-              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles.valueCreationReport2,
+              messages.projectDetails.streamingEmotionsValuePlan.galleryTitles?.valueCreationReport2,
           };
 
           return {
@@ -1029,13 +1030,13 @@ export default function ProjectDetail() {
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
+          const translatedTitles: Record<string, string | undefined> = {
             "Export Research":
-              messages.projectDetails.beexExportStrategy.galleryTitles.exportResearch,
+              messages.projectDetails.beexExportStrategy.galleryTitles?.exportResearch,
             "Export Plan":
-              messages.projectDetails.beexExportStrategy.galleryTitles.exportPlan,
+              messages.projectDetails.beexExportStrategy.galleryTitles?.exportPlan,
             "Financial Export Plan (Excel File)":
-              messages.projectDetails.beexExportStrategy.galleryTitles.financialExportPlan,
+              messages.projectDetails.beexExportStrategy.galleryTitles?.financialExportPlan,
           };
 
           return {
@@ -1055,6 +1056,23 @@ export default function ProjectDetail() {
         solution: messages.projectDetails.jobScout.solution,
         impact: messages.projectDetails.jobScout.impact,
         ethics: messages.projectDetails.jobScout.ethics,
+        gallery: project.gallery?.map((item: any) => {
+          if (!item || typeof item === "string") return item;
+
+          const translatedTitles: Record<string, string> = {
+            "Dark Mode Dashboard":
+              messages.projectDetails.jobScout.galleryTitles?.darkModeDashboard ?? item.title,
+            "Data Pipeline Dashboard":
+              messages.projectDetails.jobScout.galleryTitles?.dataPipelineDashboard ?? item.title,
+            "API Parsing Records":
+              messages.projectDetails.jobScout.galleryTitles?.apiParsingRecords ?? item.title,
+          };
+
+          return {
+            ...item,
+            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+          };
+        }),
       }
     : isMoonlit
     ? {
@@ -1069,6 +1087,15 @@ export default function ProjectDetail() {
         metrics: messages.projectDetails.moonlit.metrics,
       }
     : project;
+
+  // Auto-translate common CTA labels for Arabic if present
+  if (isAr && localizedProject.primaryActionLabel) {
+    if (localizedProject.primaryActionLabel.includes("GitHub")) {
+      localizedProject.primaryActionLabel = messages.projectDetails.common.viewGithubRepo || "عرض مستودع GitHub";
+    } else if (localizedProject.primaryActionLabel.includes("Adobe XD")) {
+      localizedProject.primaryActionLabel = messages.projectDetails.common.viewAdobeXdPrototype || "عرض النموذج الأولي في Adobe XD";
+    }
+  }
 
   return (
     <Layout>
@@ -1086,7 +1113,7 @@ export default function ProjectDetail() {
               className="inline-flex items-center text-white/80 hover:text-primary mb-6 transition-colors"
               onClick={() => trackEvent("nav_click", { location: "project_detail_hero", destination: "/portfolio" })}
             >
-              <ArrowLeft className="mr-2 h-4 w-4" /> {hasLocalizedProjectCopy ? messages.projectDetails.common.backToPortfolio : "Back to Portfolio"}
+              <ArrowLeft className={`h-4 w-4 ${isAr ? "rotate-180 ml-2" : "mr-2"}`} /> {hasLocalizedProjectCopy ? messages.projectDetails.common.backToPortfolio : "Back to Portfolio"}
             </a>
           </Link>
           <div className="flex flex-wrap gap-3 mb-4">
@@ -1194,11 +1221,9 @@ export default function ProjectDetail() {
             {localizedProject.ethics ? (
               <div>
                 <h2 className="text-2xl font-heading font-bold mb-4">
-                  {projectId === "job-scout" 
-                    ? "Privacy-First Architecture & Platform Safety" 
-                    : hasLocalizedProjectCopy 
-                      ? messages.projectDetails.common.ethics 
-                      : "Ethical Engineering & Compliance"}
+                  {hasLocalizedProjectCopy 
+                    ? messages.projectDetails.common.ethics 
+                    : (projectId === "job-scout" ? "Privacy-First Architecture & Platform Safety" : "Ethical Engineering & Compliance")}
                 </h2>
                 <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
                   {renderRichText(localizedProject.ethics)}
@@ -1211,7 +1236,7 @@ export default function ProjectDetail() {
                 {project.deviceMockups.map((mockup: any, index: number) => (
                   <div key={index} className="space-y-6">
                     <h2 className="text-2xl font-heading font-bold">
-                      {mockup.title || "Prototype Preview"}
+                      {mockup.title || (hasLocalizedProjectCopy ? messages.projectDetails.common.prototypePreview : "Prototype Preview")}
                     </h2>
                     <DeviceMockup
                       type={mockup.type}
@@ -1247,9 +1272,7 @@ export default function ProjectDetail() {
             ) : project.deviceMockup ? (
               <div className="space-y-6">
                 <h2 className="text-2xl font-heading font-bold">
-                  {(isAmstelhofConnect || isPatronApp || isProDetailing || isHallenCity)
-                    ? messages.projectDetails.common.prototypePreview
-                    : "Prototype Preview"}
+                  {hasLocalizedProjectCopy ? messages.projectDetails.common.prototypePreview : "Prototype Preview"}
                 </h2>
                 <DeviceMockup
                   type={project.deviceMockup.type}
@@ -1298,7 +1321,7 @@ export default function ProjectDetail() {
 
             {localizedProject.galleryDesktop && localizedProject.galleryDesktop.length > 0 && (
               <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-bold">Desktop Experience</h2>
+                <h2 className="text-2xl font-heading font-bold">{isAr ? "معرض صور سطح المكتب" : "Desktop Experience"}</h2>
                 <ProjectGallery
                   items={localizedProject.galleryDesktop as ProjectGalleryMedia[]}
                   fallbackPoster={localizedProject.image}
@@ -1308,7 +1331,7 @@ export default function ProjectDetail() {
 
             {localizedProject.galleryMobile && localizedProject.galleryMobile.length > 0 && (
               <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-bold">Mobile Experience</h2>
+                <h2 className="text-2xl font-heading font-bold">{isAr ? "معرض صور الهواتف" : "Mobile Experience"}</h2>
                 <ProjectGallery
                   items={localizedProject.galleryMobile as ProjectGalleryMedia[]}
                   fallbackPoster={localizedProject.image}
@@ -1326,7 +1349,7 @@ export default function ProjectDetail() {
                   {isTheraNeckEcommerce
                     ? messages.projectDetails.common.website
                     : (isMoonlit || isJobScout)
-                    ? "PROJECT"
+                    ? messages.projectDetails.common.project
                     : hasLocalizedProjectCopy
                     ? messages.projectDetails.common.client
                     : "Client"}
@@ -1435,7 +1458,9 @@ export default function ProjectDetail() {
 
               {localizedProject.metrics && (
                 <div>
-                  <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Core Engineering Metrics</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+                    {hasLocalizedProjectCopy ? messages.projectDetails.common.coreEngineeringMetrics : "Core Engineering Metrics"}
+                  </h3>
                   <ul className="space-y-1.5 border border-white/10 p-3 rounded bg-secondary/20">
                     {localizedProject.metrics.map((metric: string) => (
                       <li key={metric} className="text-sm text-foreground flex items-start gap-2">

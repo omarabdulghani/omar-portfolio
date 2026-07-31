@@ -317,6 +317,8 @@ export const en: LocaleMessages = {
       uxUiProductDesign: "UX/UI & Product Design",
       digitalMarketingEcommerce: "Digital Marketing & E-Commerce",
       creativeStrategyBranding: "Creative Strategy & Branding",
+      brandActivation: "Brand Activation",
+      webOptimizationUxUi: "Web Optimization & UX/UI",
     },
     projects: {
       theraNeckEcommerce: {
@@ -369,6 +371,7 @@ export const en: LocaleMessages = {
       },
     },
     tags: {
+      uxUi: "UX/UI Design",
       uxUiDesign: "UX/UI Design",
       eCommerce: "E-commerce",
       productValidation: "Product Validation",
@@ -397,6 +400,13 @@ export const en: LocaleMessages = {
       posterDesign: "Poster Design",
       musicStrategy: "Music Strategy",
       valueCreation: "Value Creation",
+      python: "Python",
+      frontendUiUx: "Frontend UI/UX",
+      multiLlmRouting: "Multi-LLM Routing",
+      aiAssisted: "AI-Assisted",
+      typeScript: "TypeScript",
+      engineArchitecture: "Engine Architecture",
+      productDesign: "Product Design",
     },
   },
   projectDetails: {
@@ -415,6 +425,8 @@ export const en: LocaleMessages = {
       myRole: "My Role",
       toolsUsed: "Tools Used",
       projectGallery: "Project Gallery",
+      viewGithubRepo: "View GitHub Repository",
+      viewAdobeXdPrototype: "View Adobe XD Prototype",
       gallerySections: {
         videos: "Videos",
         images: "Images",
@@ -648,6 +660,11 @@ export const en: LocaleMessages = {
         "Transformed a manual, fatigue-inducing search process into a high-fidelity visual workspace. Built a resilient pipeline that categorizes opportunities into 'Apply First,' 'Good Options,' and 'Rejected' using strict threshold logic, drastically reducing time spent reading unqualified listings while maintaining a clean, duplicate-free database across runs.",
       ethics:
         "Engineered with strict security boundaries. The application never collects or stores third-party credentials, relying entirely on manual, human-in-the-loop browser authentication. To respect platform integrity, the system utilizes human-mimicking pacing, does not bypass CAPTCHAs or rate-limits, and pauses for explicit user review before any final application submissions.",
+      galleryTitles: {
+        darkModeDashboard: "Dark Mode Dashboard",
+        dataPipelineDashboard: "Data Pipeline Dashboard",
+        apiParsingRecords: "API Parsing Records",
+      },
     },
     moonlit: {
       title: "Moonlit Firefly Bloom",
@@ -765,6 +782,45 @@ export const en: LocaleMessages = {
         title: "Amstelhof Connect",
         description: "Connecting a vibrant health club community.",
         category: "UX/UI & Product Design",
+      },
+    },
+  },
+  cookieConsent: {
+    banner: {
+      tag: "Cookie Preferences",
+      heading: "This site uses necessary storage and optional analytics.",
+      description:
+        "Necessary storage keeps your theme and privacy choices available. If you agree, we will also activate privacy-focused analytics to understand which pages and actions visitors find most useful.",
+      settingsButton: "Cookie Settings",
+      agreeButton: "Yes, I agree",
+    },
+    modal: {
+      privacyOverviewTag: "Privacy Overview",
+      title: "Cookie Settings",
+      description:
+        "This website uses a small amount of browser storage so core features continue to work, and it can optionally enable privacy-focused analytics. We only activate analytics after you opt in.",
+      necessary: {
+        title: "Strictly Necessary Cookies",
+        description:
+          "Strictly necessary storage keeps the website working and remembers choices you explicitly make, such as your cookie preferences and light or dark theme selection. These items are always enabled, may be anonymized where possible, and are not used to track your browsing across other websites.",
+        alwaysOn: "Always on",
+      },
+      thirdParty: {
+        title: "3rd Party Cookies",
+        description:
+          "When enabled, this site loads Umami Cloud to count visitors, measure page views, understand important button clicks, and see general device and location patterns. This helps improve the website experience and understand which sections visitors find most interesting and useful.",
+        enabled: "Enabled",
+        disabled: "Disabled",
+      },
+      policy: {
+        tag: "Cookie Policy",
+        moreInfo: "More information about our Cookie Policy",
+      },
+      footer: {
+        gdprNotice: "Privacy controls for GDPR compliance",
+        enableAll: "Enable All",
+        rejectAll: "Reject All",
+        saveChanges: "Save Changes",
       },
     },
   },

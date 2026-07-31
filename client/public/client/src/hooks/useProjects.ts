@@ -18,27 +18,27 @@ export function useProjects(): ProjectMetadata[] {
   return [
     {
       id: "job-scout",
-      title: "Job Scout",
+      title: messages.projectDetails.jobScout?.title || "Job Scout",
       categoryValue: "software-engineering",
       category: messages.portfolio.filters.softwareEngineering,
       image: "/images/job-scout-gallery/thumbnail.png",
       description: messages.portfolio.projects.jobScout.description,
-      tags: ["Python", "Frontend UI/UX", "Multi-LLM Routing", "AI-Assisted"],
+      tags: [messages.portfolio.tags.python, messages.portfolio.tags.frontendUiUx, messages.portfolio.tags.multiLlmRouting, messages.portfolio.tags.aiAssisted],
       tagValues: ["python", "frontend", "multi-llm", "ai-assisted"]
     },
     {
       id: "moonlit-firefly-bloom",
-      title: "Moonlit Firefly Bloom",
+      title: messages.projectDetails.moonlit?.title || "Moonlit Firefly Bloom",
       categoryValue: "software-engineering",
       category: messages.portfolio.filters.softwareEngineering,
       image: "/images/moonlit-gallery/moonlit cover.jpg",
       description: messages.portfolio.projects.moonlit.description,
-      tags: ["TypeScript", "Engine Architecture", "AI-Assisted", "Product Design"],
+      tags: [messages.portfolio.tags.typeScript, messages.portfolio.tags.engineArchitecture, messages.portfolio.tags.aiAssisted, messages.portfolio.tags.productDesign],
       tagValues: ["typescript", "engine-architecture", "ai-assisted", "product-design"]
     },
     {
       id: "patronapp",
-      title: "PatronApp",
+      title: messages.projectDetails.patronApp?.title || "PatronApp",
       categoryValue: "ux-ui-product-design",
       category: messages.portfolio.filters.uxUiProductDesign,
       image: "/images/project-patronapp.jpg",
@@ -48,17 +48,17 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "amstelhof-connect",
-      title: "Amstelhof Connect",
+      title: messages.projectDetails.amstelhofConnect?.title || "Amstelhof Connect",
       categoryValue: "ux-ui-product-design",
       category: messages.portfolio.filters.uxUiProductDesign,
       image: "/images/project-amstelhof-connect.jpg",
       description: messages.portfolio.projects.amstelhofConnect.description,
-      tags: [messages.portfolio.tags.uxUiDesign, messages.portfolio.tags.appConcept, messages.portfolio.tags.processOptimization],
+      tags: [messages.portfolio.tags.uxUi, messages.portfolio.tags.appConcept, messages.portfolio.tags.processOptimization],
       tagValues: ["ux-ui-design", "app-concept", "process-optimization"]
     },
     {
       id: "hallencity",
-      title: "HallenCity+",
+      title: messages.projectDetails.hallenCity?.title || "HallenCity+",
       categoryValue: "ux-ui-product-design",
       category: messages.portfolio.filters.uxUiProductDesign,
       image: "/images/hallen-city-app.png",
@@ -69,7 +69,7 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "theraneck-ecommerce",
-      title: messages.projectDetails.theraNeckEcommerce.title,
+      title: messages.projectDetails.theraNeckEcommerce?.title || "TheraNeck | E-commerce Product",
       categoryValue: "software-engineering",
       category: messages.portfolio.filters.softwareEngineering,
       image: "/images/theraneck-gallery/theraneck%20thumbnail-updated.jpg",
@@ -79,15 +79,15 @@ export function useProjects(): ProjectMetadata[] {
         messages.portfolio.tags.productValidation,
         messages.portfolio.tags.conversionOptimization,
         messages.portfolio.tags.behaviouralAnalytics,
-        "AI-Assisted"
+        messages.portfolio.tags.aiAssisted
       ],
       tagValues: ["e-commerce", "product-validation", "conversion-optimization", "behavioural-analytics", "ai-assisted"],
     },
     {
       id: "moes-tuinen",
-      title: "MOES Tuinen",
+      title: messages.projectDetails.moesTuinen?.title || "MOES Tuinen",
       categoryValue: "brand-activation",
-      category: "Brand Activation",
+      category: messages.portfolio.filters.brandActivation || "Brand Activation",
       image: "/images/project-moes-tuinen.jpg",
       description: messages.portfolio.projects.moesTuinen.description,
       tags: [messages.portfolio.tags.brandActivation, messages.portfolio.tags.socialMedia, messages.portfolio.tags.digitalMarketing],
@@ -95,9 +95,9 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "pphe-hotel",
-      title: "PPHE Hotel Group",
+      title: messages.projectDetails.ppheHotel?.title || "PPHE Hotel Group",
       categoryValue: "web-optimization-ux",
-      category: "Web Optimization & UX/UI",
+      category: messages.portfolio.filters.webOptimizationUxUi || "Web Optimization & UX/UI",
       image: "/images/pphe-project.jpg",
       description: messages.portfolio.projects.ppheHotel.description,
       tags: [messages.portfolio.tags.webDesign, messages.portfolio.tags.conversionOptimization, messages.portfolio.tags.analytics],
@@ -105,7 +105,7 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "pro-detailing",
-      title: "Pro Detailing",
+      title: messages.projectDetails.proDetailing?.title || "Pro Detailing",
       categoryValue: "digital-marketing-ecommerce",
       category: messages.portfolio.filters.digitalMarketingEcommerce,
       image: "/images/pro-detaling-project.jpg",
@@ -115,7 +115,7 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "burning-man-campaign",
-      title: "Burning Man Brand Positioning",
+      title: messages.projectDetails.burningManCampaign?.title || "Burning Man Brand Positioning",
       categoryValue: "creative-strategy-branding",
       category: messages.portfolio.filters.creativeStrategyBranding,
       image: "/images/burningman.jpg",
@@ -125,7 +125,7 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "streaming-emotions-value-plan",
-      title: "Jacob Drescher Value Plan",
+      title: messages.projectDetails.streamingEmotionsValuePlan?.title || "Jacob Drescher Value Plan",
       categoryValue: "creative-strategy-branding",
       category: messages.portfolio.filters.creativeStrategyBranding,
       image: "/images/jacobdrescher.jpg",
@@ -135,7 +135,7 @@ export function useProjects(): ProjectMetadata[] {
     },
     {
       id: "beex-export-strategy",
-      title: "BEEX Export Strategy",
+      title: messages.projectDetails.beexExportStrategy?.title || "BEEX Export Strategy",
       categoryValue: "creative-strategy-branding",
       category: messages.portfolio.filters.creativeStrategyBranding,
       image: "/images/beex.jpg",

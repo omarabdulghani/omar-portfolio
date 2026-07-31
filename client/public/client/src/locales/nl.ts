@@ -232,21 +232,6 @@ export const nl: LocaleMessages = {
           evidenceBasedDecisionMaking: "Data-gedreven Besluitvorming",
         },
       },
-      businessPlanningDelivery: {
-        title: "Business, Planning & Delivery",
-        skills: {
-          conceptCreationIdeasToExperiences: "Conceptontwikkeling (van ideeën naar ervaringen)",
-          projectStakeholderManagement: "Project- & stakeholdermanagement",
-          clientBriefingDebriefing: "Client briefing & debriefing",
-          crossFunctionalCollaboration: "Cross-functionele samenwerking",
-          exportMarketEntryPlanning: "Export- en markttoetredingsplanning",
-          financialPlanningBudgetStructuring: "Financiële planning & budgetstructurering",
-          kpiSmartGoalFrameworks: "KPI- en SMART-doelstellingen",
-          clientFacingPresentationDocumentation: "Klantgerichte presentaties & documentatie",
-          htmlCssFundamentals: "HTML & CSS basis",
-          sqlFundamentals: "SQL basis",
-        },
-      },
       aiAssistedCreation: {
         title: "AI Automatisering & Engineering",
         skills: {
@@ -330,10 +315,12 @@ export const nl: LocaleMessages = {
     },
     filters: {
       all: "Alles",
-      softwareEngineering: "AI Product Architecture",
-      uxUiProductDesign: "UX/UI & Product Design",
-      digitalMarketingEcommerce: "Digitale Marketing & E-commerce",
+      softwareEngineering: "AI-productarchitectuur",
+      uxUiProductDesign: "UX/UI & Productontwerp",
+      digitalMarketingEcommerce: "Digitale Marketing & E-Commerce",
       creativeStrategyBranding: "Creatieve Strategie & Branding",
+      brandActivation: "Merkactivatie",
+      webOptimizationUxUi: "Web-optimalisatie & UX/UI",
     },
     projects: {
       theraNeckEcommerce: {
@@ -386,6 +373,7 @@ export const nl: LocaleMessages = {
       },
     },
     tags: {
+      uxUi: "UX/UI Design",
       uxUiDesign: "UX/UI Design",
       eCommerce: "E-commerce",
       productValidation: "Productvalidatie",
@@ -414,6 +402,13 @@ export const nl: LocaleMessages = {
       posterDesign: "Poster design",
       musicStrategy: "Muziekstrategie",
       valueCreation: "Waardecreatie",
+      python: "Python",
+      frontendUiUx: "Frontend UI/UX",
+      multiLlmRouting: "Multi-LLM Routing",
+      aiAssisted: "AI-Assisted",
+      typeScript: "TypeScript",
+      engineArchitecture: "Engine-architectuur",
+      productDesign: "Productdesign",
     },
   },
   projectDetails: {
@@ -432,6 +427,8 @@ export const nl: LocaleMessages = {
       myRole: "MIJN ROL",
       toolsUsed: "GEBRUIKTE TOOLS",
       projectGallery: "Projectgalerij",
+      viewGithubRepo: "Bekijk GitHub Repository",
+      viewAdobeXdPrototype: "Bekijk Adobe XD Prototype",
       gallerySections: {
         videos: "Video's",
         images: "Afbeeldingen",
@@ -665,6 +662,11 @@ export const nl: LocaleMessages = {
         "Transformeerde een handmatig, vermoeiend zoekproces tot een high-fidelity visuele workspace. Bouwde een veerkrachtige pijplijn die kansen categoriseert in 'Apply First', 'Good Options' en 'Rejected' met behulp van strikte drempelwaarden, waardoor de tijd besteed aan het lezen van ongekwalificeerde vacatures drastisch werd verminderd en een schone database zonder duplicaten behouden blijft.",
       ethics:
         "Ontworp met strikte veiligheidsgrenzen. De applicatie verzamelt of bewaart nooit inloggegevens van derden en vertrouwt volledig op handmatige, human-in-the-loop browser authenticatie. Om de integriteit van de platformen te respecteren, maakt het systeem gebruik van menselijk tempo, worden CAPTCHA's of snelheidslimieten niet omzeild en pauzeert het voor expliciete goedkeuring van de gebruiker vóór elke definitieve sollicitatie.",
+      galleryTitles: {
+        darkModeDashboard: "Dark Mode Dashboard",
+        dataPipelineDashboard: "Data Pipeline Dashboard",
+        apiParsingRecords: "API Parsing Records",
+      },
     },
     moonlit: {
       title: "Moonlit Firefly Bloom",
@@ -782,6 +784,45 @@ export const nl: LocaleMessages = {
         title: "Amstelhof Connect",
         description: "Het verbinden van een levendige sportschoolcommunity.",
         category: "UX/UI & Product Design",
+      },
+    },
+  },
+  cookieConsent: {
+    banner: {
+      tag: "Cookie-voorkeuren",
+      heading: "Deze site gebruikt noodzakelijke opslag en optionele analyse.",
+      description:
+        "Noodzakelijke opslag bewaart uw thema- en privacykeuzes. Als u akkoord gaat, activeren we ook privacygerichte analyses om te begrijpen welke pagina's en acties bezoekers het meest nuttig vinden.",
+      settingsButton: "Cookie-instellingen",
+      agreeButton: "Ja, ik ga akkoord",
+    },
+    modal: {
+      privacyOverviewTag: "Privacy-overzicht",
+      title: "Cookie-instellingen",
+      description:
+        "Deze website gebruikt een kleine hoeveelheid browseropslag zodat kernfuncties blijven werken, en kan optioneel privacygerichte analyses inschakelen. We activeren analyses pas nadat u hier expliciet voor kiest.",
+      necessary: {
+        title: "Strikt noodzakelijke cookies",
+        description:
+          "Strikt noodzakelijke opslag houdt de website werkend en onthoudt keuzes die u expliciet maakt, zoals uw cookievoorkeuren en thema-selectie. Deze items zijn altijd ingeschakeld en worden niet gebruikt om uw surfgedrag te volgen.",
+        alwaysOn: "Altijd aan",
+      },
+      thirdParty: {
+        title: "Cookies van derden",
+        description:
+          "Wanneer ingeschakeld, laadt deze site Umami Cloud om bezoekers te tellen, paginaweergaven te meten, en algemene apparaatpatronen te zien. Dit helpt de website-ervaring te verbeteren.",
+        enabled: "Ingeschakeld",
+        disabled: "Uitgeschakeld",
+      },
+      policy: {
+        tag: "Cookiebeleid",
+        moreInfo: "Meer informatie over ons Cookiebeleid",
+      },
+      footer: {
+        gdprNotice: "Privacybesturingselementen voor AVG-naleving",
+        enableAll: "Alles inschakelen",
+        rejectAll: "Alles weigeren",
+        saveChanges: "Wijzigingen opslaan",
       },
     },
   },
