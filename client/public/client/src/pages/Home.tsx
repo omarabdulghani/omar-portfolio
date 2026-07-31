@@ -13,10 +13,7 @@ import { useLiquidGlass } from "@/hooks/useLiquidGlass";
 export default function Home() {
   const { language, messages } = useLanguage();
   const isAr = language === "ar";
-  const cvResumeHref =
-    language === "nl"
-      ? "/ATS_CV_Omar_Abdulghani_NL_v2.pdf"
-      : "/ATS_CV_Omar_Abdulghani_v2.pdf";
+  const cvResumeHref = "/ATS_CV_Omar_Abdulghani_v3.pdf";
 
   const allProjects = useProjects();
 
