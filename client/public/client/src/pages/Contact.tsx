@@ -104,11 +104,22 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">{messages.contact.info.location}</p>
+                      {/* Desktop Map Location Link */}
                       <a 
                         href="https://maps.app.goo.gl/rbMun3x4J7NGmnP17" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-lg font-bold hover:text-primary transition-colors block"
+                        className="hidden md:block text-lg font-bold hover:text-primary transition-colors"
+                        onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "map_location" })}
+                      >
+                        {messages.contact.info.cityCountry}
+                      </a>
+                      {/* Mobile Map Location Link */}
+                      <a 
+                        href="https://www.google.com/maps/place/Amstelveen/@52.2862169,4.85211,11z/data=!4m6!3m5!1s0x47c5e1d0cb4f622f:0x5c353213b0ca77a9!8m2!3d52.3114207!4d4.870087!16s%2Fg%2F11bc5h1s0g?g_ep=Eg1tbF8yMDI2MDcyOF8wIOC7DCoASAJQAg%3D%3D" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="block md:hidden text-lg font-bold hover:text-primary transition-colors"
                         onClick={() => trackEvent("contact_link_click", { location: "contact_page", method: "map_location" })}
                       >
                         {messages.contact.info.cityCountry}

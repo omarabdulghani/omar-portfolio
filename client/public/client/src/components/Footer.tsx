@@ -96,11 +96,22 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin size={20} className="text-primary shrink-0 mt-1" />
+                {/* Desktop Map Location Link */}
                 <a 
                   href="https://maps.app.goo.gl/rbMun3x4J7NGmnP17" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="hover:text-foreground transition-colors"
+                  className="hidden md:inline hover:text-foreground transition-colors"
+                  onClick={() => trackEvent("contact_link_click", { location: "footer", method: "map_location" })}
+                >
+                  {messages.footer.cityCountry}
+                </a>
+                {/* Mobile Map Location Link */}
+                <a 
+                  href="https://www.google.com/maps/place/Amstelveen/@52.2862169,4.85211,11z/data=!4m6!3m5!1s0x47c5e1d0cb4f622f:0x5c353213b0ca77a9!8m2!3d52.3114207!4d4.870087!16s%2Fg%2F11bc5h1s0g?g_ep=Eg1tbF8yMDI2MDcyOF8wIOC7DCoASAJQAg%3D%3D" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline md:hidden hover:text-foreground transition-colors"
                   onClick={() => trackEvent("contact_link_click", { location: "footer", method: "map_location" })}
                 >
                   {messages.footer.cityCountry}
