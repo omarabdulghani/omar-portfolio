@@ -1,7 +1,7 @@
 import { useEffect, useState, RefObject } from 'react';
 import { getDisplacementFilter } from '../utils/liquidGlass';
 
-export function useLiquidGlass(ref: RefObject<HTMLElement>, options: {
+export function useLiquidGlass(ref: RefObject<HTMLElement | null>, options: {
     depth?: number;
     strength?: number;
     chromaticAberration?: number;

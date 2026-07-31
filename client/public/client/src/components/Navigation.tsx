@@ -90,9 +90,9 @@ export default function Navigation() {
     ? "bg-slate-950/40 dark:bg-slate-950/40 border-white/10 dark:border-white/5"
     : "bg-slate-950/80 dark:bg-slate-950/80 backdrop-blur-xl border-white/10 dark:border-white/5";
 
-  const mobileMenuGlassClasses = isMobileMenuSupported
-    ? "bg-slate-950/60 dark:bg-slate-950/60 border-white/10 dark:border-white/5"
-    : "bg-slate-950/90 dark:bg-slate-950/90 backdrop-blur-2xl border-white/10 dark:border-white/5";
+  const mobileGlassSurfaceClasses = isMobileMenuSupported
+    ? "bg-slate-950/80 dark:bg-slate-950/80 border-white/10 dark:border-white/5"
+    : "bg-slate-950/95 dark:bg-slate-950/95 backdrop-blur-2xl border-white/10 dark:border-white/5";
 
   const desktopLetsTalkGlassClasses = isDesktopLetsTalkSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";
   const mobileLetsTalkGlassClasses = isMobileLetsTalkSupported ? "bg-primary/50 hover:bg-primary/60" : "bg-primary/70 hover:bg-primary/80 backdrop-blur-md";

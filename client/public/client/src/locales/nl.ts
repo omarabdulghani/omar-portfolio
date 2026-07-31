@@ -9,7 +9,7 @@ export const nl: LocaleMessages = {
     portfolio: "Portfolio",
     skills: "Vaardigheden",
     contact: "Contact",
-    letsTalk: "Let's Talk",
+    letsTalk: "Laten we praten",
   },
   footer: {
     description:
