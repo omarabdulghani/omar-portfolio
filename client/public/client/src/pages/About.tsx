@@ -209,7 +209,7 @@ export default function About() {
                           <p className="text-[14px] font-semibold leading-tight text-foreground xl:text-[15px]">
                             {step.title}
                           </p>
-                          <p className="mt-0.5 text-[12px] leading-snug text-muted-foreground [text-wrap:balance]">
+                          <p className="mt-2 text-[12px] leading-snug text-muted-foreground [text-wrap:balance]">
                             {step.description}
                           </p>
                         </div>
