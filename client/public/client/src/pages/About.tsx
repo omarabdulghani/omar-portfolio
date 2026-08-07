@@ -170,7 +170,7 @@ export default function About() {
               <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-3xl -z-10" />
               <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-white/10 shadow-xl dark:shadow-[0_20px_70px_-45px_rgba(59,130,246,0.3)]">
                 <img
-                  src="/images/about-me.jpg"
+                  src="/mypic.jpg"
                   alt="Omar Abdulghani"
                   className="w-full h-auto object-cover"
                 />
