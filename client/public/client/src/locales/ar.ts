@@ -14,8 +14,7 @@ export const ar: LocaleMessages = {
   },
   footer: {
     ...en.footer,
-    description:
-      "متخصص إبداعي تقني، يبني منتجات متكاملة (Full-stack)، يؤتمت مسارات العمل باستخدام الذكاء الاصطناعي، ويصمم تجارب وواجهات مستخدم (UX/UI) بديهية.",
+    description: "تقني إبداعي ومصمم منتجات يبني تجارب تفاعلية ونماذج أولية مدعومة بالذكاء الاصطناعي وتصاميم UX/UI سهلة الاستخدام.",
     quickLinks: "روابط سريعة",
     home: "الرئيسية",
     aboutMe: "نبذة عني",
@@ -32,9 +31,8 @@ export const ar: LocaleMessages = {
     available: "أبحث بنشاط عن فرص عمل بدوام كامل",
     title: "مرحباً، أنا",
     name: "عمر عبد الغني",
-    subtitleRole: "تقني مبدع",
-    subtitleRest:
-      "أدمج بين التطوير، والذكاء الاصطناعي، والتصميم لابتكار منتجات رقمية قابلة للتوسع.",
+    subtitleRole: "تقني إبداعي ومصمم منتجات",
+    subtitleRest: "تقني إبداعي ومصمم منتجات يحوّل الأفكار إلى تجارب عملية، من المفهوم وتجربة المستخدم إلى نماذج أولية تُبنى بالذكاء الاصطناعي.",
     ctaViewWork: "استكشف مشاريعي",
     ctaContact: "تواصل معي",
     download: "تحميل",
@@ -51,16 +49,16 @@ export const ar: LocaleMessages = {
   cards: {
     ...en.cards,
     conceptDevelopment: {
-      title: "تطوير الويب و Full-Stack",
-      body: "بناء منتجات رقمية قوية تُترجم المتطلبات المعقدة إلى هيكليات قابلة للتوسع، وربط سلس لـ API، وكود برمجي\u00A0فعّال.",
+      title: "التكنولوجيا الإبداعية والنماذج الأولية",
+      body: "أحوّل الأفكار إلى أشياء عملية يمكن للناس تجربتها، من النماذج الأولية التفاعلية إلى الألعاب والتجارب الغامرة، تُبنى بسرعة بمساعدة وكلاء البرمجة بالذكاء الاصطناعي وتُختبر حتى تصبح كما يجب.",
     },
     uxUi: {
       title: "تصميم UX/UI واستراتيجية المنتجات الرقمية",
       body: "تصميم تجارب رقمية بديهية مبنية على أبحاث المستخدم، وتحليل السلوك، والتفكير الاستراتيجي. أُحّول الأفكار المعقدة إلى واجهات واضحة تتمحور حول المستخدم، وتحقق التوازن بين الوظائف، وسهولة الاستخدام، والهوية البصرية.",
     },
     creativeTechnology: {
-      title: "أتمتة الذكاء الاصطناعي ومسارات العمل (Workflows)",
-      body: "تبسيط عمليات التطوير والتشغيل من خلال مسارات مؤتمتة (Automated pipelines)، والتطوير الموجه بالأوامر (Prompt-driven development)، وأدوات الذكاء الاصطناعي المتقدمة (Cursor, Claude Code, Codex).",
+      title: "المفاهيم والحملات والفيديو",
+      body: "من البحث واستراتيجية العلامة التجارية إلى أفكار الحملات وسلاسل الفيديو القصيرة التي تقرّب العلامة التجارية من جمهورها.",
     },
   },
   heroSlides: {
@@ -73,6 +71,11 @@ export const ar: LocaleMessages = {
       brandActivation: "تفعيل العلامة التجارية",
     },
     slides: {
+      balconyX: {
+        title: "Balcony X 2.0",
+        description: "عالم اجتماعي في الواقع الافتراضي لقضاء الوقت معاً.",
+        category: "التكنولوجيا الإبداعية",
+      },
       pphe: {
         title: "PPHE Hotel Group",
         description: "تحسين واجهة وتجربة المستخدم (UI/UX) لعلامات فندقية عالمية.",
@@ -114,10 +117,9 @@ export const ar: LocaleMessages = {
     hero: {
       badge: "نبذة عني",
       titlePrefix: "الربط بين التصميم و",
-      titleHighlight: "تطوير Full-Stack",
+      titleHighlight: "التكنولوجيا",
       name: "عمر عبد الغني",
-      description:
-        "تحويل الأفكار إلى **تجارب رقمية ذات قيمة**، بدايةً من **تصميم UX/UI** وصولاً إلى **تطوير Full-Stack والأتمتة بالذكاء الاصطناعي**. أجمع بين **البحث، الإبداع، والتكنولوجيا** لبناء منتجات قابلة للتوسع تتواصل بفعالية مع المستخدمين وتبسط **مسارات العمل الرقمية**.",
+      description: "تحويل الأفكار إلى **تجارب رقمية هادفة**، من **تصميم UX/UI** ومفاهيم الحملات إلى نماذج أولية تفاعلية تعمل فعلاً. أجمع بين **البحث والإبداع والتكنولوجيا** لبناء منتجات تتواصل مع أشخاص من ثقافات مختلفة.",
       ctaViewWork: "استكشف مشاريعي",
       ctaDownloadCv: "تحميل السيرة الذاتية",
     },
@@ -134,11 +136,11 @@ export const ar: LocaleMessages = {
         },
         prototype: {
           title: "البناء",
-          description: "تطوير Full-Stack وتوزيع التطبيقات",
+          description: "نماذج أولية بمساعدة الذكاء الاصطناعي",
         },
         testIterate: {
-          title: "الأتمتة",
-          description: "تكامل الذكاء الاصطناعي و APIs",
+          title: "الاختبار",
+          description: "الاختبار والتحسين",
         },
         deliver: {
           title: "التسليم",
@@ -150,9 +152,8 @@ export const ar: LocaleMessages = {
       focusTitle: "ما أركز عليه",
       focusItems: {
         brandStrategy: {
-          title: "تطوير الويب و Full-Stack",
-          description:
-            "بناء منتجات رقمية قوية تُترجم المتطلبات المعقدة إلى **هيكليات قابلة للتوسع**، وربط سلس لـ **APIs**، وكود برمجي **فعّال**.",
+          title: "التكنولوجيا الإبداعية والنماذج الأولية",
+          description: "أحوّل الأفكار إلى **أشياء عملية يمكن للناس تجربتها**، من النماذج الأولية التفاعلية إلى الألعاب والتجارب الغامرة، تُبنى بسرعة بمساعدة **وكلاء البرمجة بالذكاء الاصطناعي** وتُختبر حتى تصبح كما يجب.",
         },
         uxUiDesign: {
           title: "تصميم UX/UI والمنتجات الرقمية",
@@ -160,9 +161,8 @@ export const ar: LocaleMessages = {
             "تصميم **تجارب رقمية بديهية** تربط **احتياجات المستخدم** بالتفكير الاستراتيجي وتصميم التفاعلات.",
         },
         aiPrototyping: {
-          title: "أتمتة الذكاء الاصطناعي ومسارات العمل",
-          description:
-            "تبسيط عمليات التطوير والتشغيل من خلال **مسارات مؤتمتة، وتطوير موجه بالأوامر، وأدوات ذكاء اصطناعي متقدمة** (Cursor, Claude Code, Codex).",
+          title: "المفاهيم والحملات والفيديو",
+          description: "من **البحث واستراتيجية العلامة التجارية** إلى **أفكار الحملات** و**سلاسل الفيديو القصيرة** التي تقرّب العلامة التجارية من جمهورها.",
         },
       },
       highlightsTitle: "أبرز المحطات",
@@ -199,10 +199,8 @@ export const ar: LocaleMessages = {
         },
         focusToday: {
           title: "تركيزي اليوم وتطوير الذكاء الاصطناعي",
-          paragraph1:
-            "أركز اليوم على بناء تطبيقات ويب قابلة للتوسع وتبسيط مسارات العمل الرقمية. أدمج **التطوير المدعوم بالذكاء الاصطناعي** باستخدام أدوات مثل **Cursor و Claude Code و Codex** لبناء وأتمتة منتجات Full-stack بسرعة فائقة.",
-          paragraph2:
-            "مع وجود أساس تقني قوي، أتعامل مع هذه الأدوات عن **فهم عميق للأنظمة والواجهات (APIs) التي تقف خلفها**.",
+          paragraph1: "اليوم، أربط بين تصميم المنتجات والهندسة من خلال **سير عمل قائم على الذكاء الاصطناعي**: أتولى المفهوم وتجربة المستخدم ومعيار الجودة، وأوجّه وكلاء البرمجة (**Claude Code وOpenAI Codex وCursor وGoogle Antigravity**) عبر دورات سريعة من البناء والاختبار وضمان الجودة. من أعمالي الأخيرة **Balcony X 2.0**، وهو عالم اجتماعي حيّ في الواقع الافتراضي، و**Moonlit Firefly Bloom**، وهي لعبة تعمل في المتصفح.",
+          paragraph2: "تساعدني دراستي لتقنية المعلومات لمدة عامين على فهم ما تنتجه هذه الأدوات، فأستطيع **مراجعة النتيجة واختبارها وتحسينها** بدلاً من قبولها دون تفكير.",
         },
       },
       closingLine:
@@ -276,8 +274,7 @@ export const ar: LocaleMessages = {
     hero: {
       titlePrefix: "المهارات و",
       titleHighlight: "الخبرات",
-      description:
-        "مزيج عملي من تطوير الويب المتكامل (Full-Stack)، وتصميم UX/UI، وأتمتة الذكاء الاصطناعي، تم بناؤه من خلال مشاريع حقيقية للعملاء تشمل مفاهيم المنتجات، وتكامل واجهات البرمجة (APIs)، ومسارات العمل الرقمية.",
+      description: "مزيج عملي من تصميم UX/UI والتكنولوجيا الإبداعية والبناء بمساعدة الذكاء الاصطناعي، اكتسبته من خلال مشاريع حقيقية مع عملاء، وعالم واقع افتراضي منشور، ومنتجاتي الخاصة.",
     },
     labels: {
       coreCompetencies: "الكفاءات الأساسية",
@@ -296,35 +293,35 @@ export const ar: LocaleMessages = {
         },
       },
       digitalMarketingGrowth: {
-        title: "تطوير الويب والهندسة البرمجية",
+        title: "التكنولوجيا الإبداعية والنماذج الأولية",
         skills: {
-          frontendDevelopment: "تطوير الواجهة الأمامية (React, TypeScript)",
-          backendArchitecture: "هيكلية الواجهة الخلفية و APIs",
-          apiIntegration: "إدارة وتكامل واجهات البرمجة (APIs)",
+          frontendDevelopment: "النماذج الأولية التفاعلية (React, TypeScript)",
+          backendArchitecture: "نماذج 3D والواقع الافتراضي (Unity، بمساعدة الذكاء الاصطناعي)",
+          apiIntegration: "ألعاب المتصفح (HTML5 Canvas)",
           versionControl: "إدارة النسخ (Git & GitHub)",
-          databaseManagement: "إدارة قواعد البيانات (SQL)",
-          performanceOptimization: "تحسين الأداء ومحركات البحث (SEO)",
+          databaseManagement: "أساسيات SQL",
+          performanceOptimization: "أداء الويب وتحسين محركات البحث (SEO)",
         },
       },
       researchStrategy: {
-        title: "الاستراتيجية الرقمية ومسارات العمل",
+        title: "المفهوم والاستراتيجية",
         skills: {
           productStrategyPositioning: "استراتيجية المنتج والتموضع",
           userResearchTesting: "أبحاث المستخدم واختبارات القابلية للاستخدام",
           crossFunctionalCollaboration: "التعاون بين الفرق متعددة التخصصات",
           projectStakeholderManagement: "إدارة المشاريع وأصحاب المصلحة",
-          processAutomation: "أتمتة العمليات ورفع الكفاءة",
-          evidenceBasedDecisionMaking: "اتخاذ القرارات المبنية على الأدلة",
+          processAutomation: "مفاهيم الحملات",
+          evidenceBasedDecisionMaking: "مفهوم الفيديو وإخراجه",
         },
       },
       aiAssistedCreation: {
-        title: "أتمتة الذكاء الاصطناعي والهندسة",
+        title: "الإبداع بمساعدة الذكاء الاصطناعي",
         skills: {
           claudeCursorCodex: "مسارات عمل Claude Code و Cursor و Codex",
           promptDrivenDevelopment: "التطوير الموجه بالأوامر البرمجية",
-          apiAutomationPipelines: "مسارات أتمتة APIs",
+          apiAutomationPipelines: "دورات البناء والاختبار وضمان الجودة بالذكاء الاصطناعي",
           rapidIterationMvp: "التكرار السريع من الفكرة إلى MVP",
-          vibeCoding: "البرمجة التفاعلية بالذكاء الاصطناعي (Vibe Coding)",
+          vibeCoding: "توجيه وكلاء البرمجة بالذكاء الاصطناعي",
         },
       },
     },
@@ -338,7 +335,7 @@ export const ar: LocaleMessages = {
       googleFundamentalsDigitalMarketing: "شهادة أساسيات التسويق الرقمي من Google",
       startupCampusEntrepreneurship: "شهادة ريادة الأعمال من StartUP Campus",
       ieltsEnglishLanguageTesting: "شهادة اختبار اللغة الإنجليزية (IELTS)",
-      dutchLanguageCertificate: "شهادة اللغة الهولندية (B1-B2)",
+      dutchLanguageCertificate: "شهادة اللغة الهولندية (B1)",
     },
     languages: {
       arabic: {
@@ -351,7 +348,7 @@ export const ar: LocaleMessages = {
       },
       dutch: {
         name: "الهولندية",
-        level: "B1-B2",
+        level: "B1",
       },
     },
     softSkills: {

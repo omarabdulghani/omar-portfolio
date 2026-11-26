@@ -646,6 +646,7 @@ export interface LocaleMessages {
       brandActivation: string;
     };
     slides: {
+      balconyX: { title: string; description: string; category: string };
       pphe: { title: string; description: string; category: string };
       theraNeck: { title: string; description: string; category: string };
       hallenCity: { title: string; description: string; category: string };

@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Blocks,
+  Clapperboard,
   Briefcase,
   CheckCircle2,
   Download,
@@ -60,7 +61,7 @@ export default function About() {
   const focusItems = [
     { icon: Sparkles, ...messages.about.overview.focusItems.brandStrategy },
     { icon: Palette, ...messages.about.overview.focusItems.uxUiDesign },
-    { icon: Blocks, ...messages.about.overview.focusItems.aiPrototyping },
+    { icon: Clapperboard, ...messages.about.overview.focusItems.aiPrototyping },
   ];
 
   const highlightItems = [

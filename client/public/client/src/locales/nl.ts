@@ -12,8 +12,7 @@ export const nl: LocaleMessages = {
     letsTalk: "Laten we praten",
   },
   footer: {
-    description:
-      "Een door technologie gedreven creatieve specialist die full-stack producten bouwt, workflows automatiseert met AI en intuïtieve UX/UI-designs ontwerpt.",
+    description: "Een Creative Technologist en Product Designer die interactieve ervaringen, AI-gestuurde prototypes en intuïtieve UX/UI-ontwerpen bouwt.",
     quickLinks: "Snelle links",
     home: "Home",
     aboutMe: "Over mij",
@@ -29,10 +28,9 @@ export const nl: LocaleMessages = {
     hero: {
       badge: "Over mij",
       titlePrefix: "Bruggen slaan tussen design &",
-      titleHighlight: "Full-Stack Development",
+      titleHighlight: "technologie",
       name: "Omar Abdulghani",
-      description:
-        "Ideeën omzetten in **betekenisvolle digitale ervaringen**, van **UX/UI design** tot full-stack development en AI-automatisering. Ik combineer **onderzoek, creativiteit en technologie** om schaalbare producten te bouwen die aansluiten bij gebruikers en **digitale workflows** stroomlijnen.",
+      description: "Ideeën omzetten in **betekenisvolle digitale ervaringen**, van **UX/UI-design** en campagneconcepten tot werkende interactieve prototypes. Ik combineer **onderzoek, creativiteit en technologie** om producten te bouwen die aansluiten bij mensen uit verschillende culturen.",
       ctaViewWork: "Bekijk mijn werk",
       ctaDownloadCv: "Download CV",
     },
@@ -48,12 +46,12 @@ export const nl: LocaleMessages = {
           description: "UX/UI & Prototyping",
         },
         prototype: {
-          title: "Ontwikkelen",
-          description: "Full-Stack Bouw",
+          title: "Bouwen",
+          description: "AI-ondersteunde prototypes",
         },
         testIterate: {
-          title: "Automatiseren",
-          description: "AI & API Integratie",
+          title: "Testen",
+          description: "Testen & verbeteren",
         },
         deliver: {
           title: "Opleveren",
@@ -65,9 +63,8 @@ export const nl: LocaleMessages = {
       focusTitle: "Waar ik mij op focus",
       focusItems: {
         brandStrategy: {
-          title: "Web & Full-Stack Development",
-          description:
-            "Robuuste digitale producten bouwen die complexe vereisten vertalen naar **schaalbare architecturen**, naadloze **API-integraties** en efficiënte code.",
+          title: "Creatieve technologie & prototyping",
+          description: "Ik zet ideeën om in **werkende dingen die mensen kunnen uitproberen**, van interactieve prototypes tot games en immersieve ervaringen, snel gebouwd met **AI-codeeragents** en getest tot ze goed voelen.",
         },
         uxUiDesign: {
           title: "UX/UI & Digitaal Productdesign",
@@ -75,9 +72,8 @@ export const nl: LocaleMessages = {
             "Het ontwerpen van **intuïtieve digitale ervaringen** die **gebruikersbehoeften** verbinden met helder **productdenken en interactieontwerp**.",
         },
         aiPrototyping: {
-          title: "AI-automatisering & Workflows",
-          description:
-            "Ontwikkelings- en operationele processen stroomlijnen door **geautomatiseerde pijplijnen, prompt-gedreven ontwikkeling en geavanceerde AI-tools** (Cursor, Claude Code, Codex).",
+          title: "Concepten, campagnes & video",
+          description: "Van **onderzoek en merkstrategie** tot **campagne-ideeën** en **korte videoseries** die een merk dichter bij zijn publiek brengen.",
         },
       },
       highlightsTitle: "Highlights",
@@ -114,10 +110,8 @@ export const nl: LocaleMessages = {
         },
         focusToday: {
           title: "Huidige Focus & AI-ontwikkeling",
-          paragraph1:
-            "Vandaag de dag focus ik me op het bouwen van schaalbare webapplicaties en het stroomlijnen van digitale workflows. Ik integreer **AI-ondersteunde ontwikkeling** met tools zoals **Cursor, Claude Code en Codex** om snel full-stack producten te bouwen en te automatiseren.",
-          paragraph2:
-            "Met een sterke technische basis benader ik deze tools met een **goed begrip van de onderliggende systemen en API's**."
+          paragraph1: "Vandaag verbind ik productdesign en engineering via **AI-native workflows**: ik ben verantwoordelijk voor het concept, de UX en de kwaliteitslat, en stuur codeeragents (**Claude Code, OpenAI Codex, Cursor, Google Antigravity**) aan in snelle cycli van bouwen, testen en QA. Recent werk is onder meer **Balcony X 2.0**, een live sociale VR-wereld, en **Moonlit Firefly Bloom**, een browsergame.",
+          paragraph2: "Dankzij mijn twee jaar IT-opleiding begrijp ik wat deze tools maken, zodat ik **het resultaat kan controleren, testen en verbeteren** in plaats van het blind over te nemen.",
         },
       },
       closingLine:
@@ -191,8 +185,7 @@ export const nl: LocaleMessages = {
     hero: {
       titlePrefix: "Vaardigheden &",
       titleHighlight: "Expertise",
-      description:
-        "Een praktische mix van full-stack webontwikkeling, UX/UI design en AI-automatisering, opgebouwd door echte klantprojecten rond productconcepten, API-integraties en digitale workflows.",
+      description: "Een praktische mix van UX/UI-design, creatieve technologie en AI-ondersteund bouwen, ontwikkeld via echte klantprojecten, een live VR-wereld en mijn eigen producten.",
     },
     labels: {
       coreCompetencies: "Kernvaardigheden",
@@ -211,35 +204,35 @@ export const nl: LocaleMessages = {
         },
       },
       digitalMarketingGrowth: {
-        title: "Web & Full-Stack Development",
+        title: "Creatieve technologie & prototyping",
         skills: {
-          frontendDevelopment: "Frontend Ontwikkeling (React, TypeScript)",
-          backendArchitecture: "Backend Architectuur & API's",
-          apiIntegration: "API Integratie & Beheer",
+          frontendDevelopment: "Interactieve prototypes (React, TypeScript)",
+          backendArchitecture: "3D- & VR-prototypes (Unity, AI-ondersteund)",
+          apiIntegration: "Browsergames (HTML5 Canvas)",
           versionControl: "Versiebeheer (Git & GitHub)",
-          databaseManagement: "Databasebeheer (SQL)",
-          performanceOptimization: "Prestatie & SEO Optimalisatie",
+          databaseManagement: "SQL-basis",
+          performanceOptimization: "Webprestaties & SEO",
         },
       },
       researchStrategy: {
-        title: "Digitale Strategie & Workflows",
+        title: "Concept & strategie",
         skills: {
           productStrategyPositioning: "Productstrategie & Positionering",
           userResearchTesting: "Gebruikersonderzoek & Usability Testing",
           crossFunctionalCollaboration: "Cross-functionele Samenwerking",
           projectStakeholderManagement: "Project- & Stakeholdermanagement",
-          processAutomation: "Procesautomatisering & Efficiëntie",
-          evidenceBasedDecisionMaking: "Data-gedreven Besluitvorming",
+          processAutomation: "Campagneconcepten",
+          evidenceBasedDecisionMaking: "Videoconcept & regie",
         },
       },
       aiAssistedCreation: {
-        title: "AI Automatisering & Engineering",
+        title: "AI-ondersteund creëren",
         skills: {
           claudeCursorCodex: "Claude Code, Cursor & Codex Workflows",
           promptDrivenDevelopment: "Prompt-gedreven Ontwikkeling",
-          apiAutomationPipelines: "API Automatisering & Pijplijnen",
+          apiAutomationPipelines: "AI-cycli voor bouwen, testen & QA",
           rapidIterationMvp: "Snelle Iteratie van Idee naar MVP",
-          vibeCoding: "Vibe Coding & AI Orkestratie",
+          vibeCoding: "AI-codeeragents aansturen",
         },
       },
     },
@@ -253,7 +246,7 @@ export const nl: LocaleMessages = {
       googleFundamentalsDigitalMarketing: "Google Fundamentals of Digital Marketing",
       startupCampusEntrepreneurship: "StartUP Campus - Ondernemerschap",
       ieltsEnglishLanguageTesting: "IELTS (Engelse taaltest)",
-      dutchLanguageCertificate: "Nederlands taalcertificaat (B1-B2)",
+      dutchLanguageCertificate: "Nederlands taalcertificaat (B1)",
     },
     languages: {
       arabic: {
@@ -266,7 +259,7 @@ export const nl: LocaleMessages = {
       },
       dutch: {
         name: "Nederlands",
-        level: "B1-B2",
+        level: "B1",
       },
     },
     softSkills: {
@@ -695,9 +688,8 @@ export const nl: LocaleMessages = {
     available: "Beschikbaar voor nieuwe projecten",
     title: "Hallo, ik ben",
     name: "Omar Abdulghani",
-    subtitleRole: "Technologiegedreven Creatieve Specialist",
-    subtitleRest:
-      "Een creatieve technoloog die ontwikkeling, AI en design combineert om schaalbare digitale producten te bouwen.",
+    subtitleRole: "Creative Technologist & Product Designer",
+    subtitleRest: "Een Creative Technologist en Product Designer die ideeën omzet in werkende ervaringen, van concept en UX tot prototypes gebouwd met AI.",
     subtitleEnding: "schaalbare digitale producten te bouwen.",
     ctaViewWork: "Bekijk mijn werk",
     ctaContact: "Neem contact op",
@@ -717,9 +709,8 @@ export const nl: LocaleMessages = {
   },
   cards: {
     conceptDevelopment: {
-      title: "Web & Full-Stack Development",
-      body:
-        "Robuuste digitale producten bouwen die complexe vereisten vertalen naar schaalbare architecturen, naadloze API-integraties en efficiënte code.",
+      title: "Creatieve technologie & prototyping",
+      body: "Ik zet ideeën om in werkende dingen die mensen kunnen uitproberen, van interactieve prototypes tot games en immersieve ervaringen, snel gebouwd met AI-codeeragents en getest tot ze goed voelen.",
     },
     uxUi: {
       title: "UX/UI Design & Digitale Productstrategie",
@@ -727,9 +718,8 @@ export const nl: LocaleMessages = {
         "Ik ontwerp intuïtieve digitale ervaringen op basis van gebruikersonderzoek, gedrag en strategisch denken. Complexe ideeën vertaal ik naar duidelijke, gebruiksvriendelijke interfaces die functionaliteit, gebruiksgemak en visuele identiteit in balans brengen.",
     },
     creativeTechnology: {
-      title: "AI Automatisering & Workflows",
-      body:
-        "Ontwikkelings- en operationele processen stroomlijnen door geautomatiseerde pijplijnen, prompt-gedreven ontwikkeling en geavanceerde AI-tools (Cursor, Claude Code, Codex).",
+      title: "Concepten, campagnes & video",
+      body: "Van onderzoek en merkstrategie tot campagne-ideeën en korte videoseries die een merk dichter bij zijn publiek brengen.",
     },
   },
   tags: {
@@ -753,6 +743,11 @@ export const nl: LocaleMessages = {
       brandActivation: "Brand Activation",
     },
     slides: {
+      balconyX: {
+        title: "Balcony X 2.0",
+        description: "Een sociale VR-wereld om samen te chillen.",
+        category: "Creatieve technologie",
+      },
       pphe: {
         title: "PPHE Hotel Group",
         description: "Verbeterde UI/UX voor wereldwijde hotelmerken.",

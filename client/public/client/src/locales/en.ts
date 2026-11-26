@@ -10,8 +10,7 @@ export const en: LocaleMessages = {
     letsTalk: "Let's Talk",
   },
   footer: {
-    description:
-      "A Tech-Driven Creative Specialist building full-stack products, automating workflows with AI, and crafting intuitive UX/UI designs.",
+    description: "A Creative Technologist and Product Designer building interactive experiences, AI-powered prototypes and intuitive UX/UI designs.",
     quickLinks: "Quick Links",
     home: "Home",
     aboutMe: "About Me",
@@ -27,10 +26,9 @@ export const en: LocaleMessages = {
     hero: {
       badge: "About Me",
       titlePrefix: "Bridging Design &",
-      titleHighlight: "Full-Stack Development",
+      titleHighlight: "Technology",
       name: "Omar Abdulghani",
-      description:
-        "Turning ideas into **meaningful digital experiences**, from **UX/UI design** to full-stack development and AI automation. I combine **research, creativity, and technology** to build scalable products that connect with users and streamline **digital workflows**.",
+      description: "Turning ideas into **meaningful digital experiences**, from **UX/UI design** and campaign concepts to working interactive prototypes. I combine **research, creativity, and technology** to build products that connect with people from different cultures.",
       ctaViewWork: "View My Work",
       ctaDownloadCv: "Download CV",
     },
@@ -46,12 +44,12 @@ export const en: LocaleMessages = {
           description: "UX/UI & Prototyping",
         },
         prototype: {
-          title: "Develop",
-          description: "Full-Stack Build",
+          title: "Build",
+          description: "AI-Assisted Prototypes",
         },
         testIterate: {
-          title: "Automate",
-          description: "AI & API Integration",
+          title: "Test",
+          description: "Test & Iterate",
         },
         deliver: {
           title: "Deliver",
@@ -63,9 +61,8 @@ export const en: LocaleMessages = {
       focusTitle: "What I Focus On",
       focusItems: {
         brandStrategy: {
-          title: "Web & Full-Stack Development",
-          description:
-            "Building robust digital products that translate complex requirements into **scalable architectures**, seamless **API integrations**, and efficient code.",
+          title: "Creative Technology & Prototyping",
+          description: "I turn ideas into **working things people can try**, from interactive prototypes to games and immersive experiences, built quickly with **AI coding agents** and tested until they feel right.",
         },
         uxUiDesign: {
           title: "UX/UI & Digital Product Design",
@@ -73,9 +70,8 @@ export const en: LocaleMessages = {
             "Designing **intuitive digital experiences** that connect **user needs** with clear **product thinking and interaction design**.",
         },
         aiPrototyping: {
-          title: "AI Automation & Workflows",
-          description:
-            "Streamlining development and operational processes through **automated pipelines, prompt-driven development, and advanced AI tools** (Cursor, Claude Code, Codex).",
+          title: "Concepts, Campaigns & Video",
+          description: "From **research and brand strategy** to **campaign ideas** and **short video series** that bring a brand closer to its audience.",
         },
       },
       highlightsTitle: "Highlights",
@@ -112,10 +108,8 @@ export const en: LocaleMessages = {
         },
         focusToday: {
           title: "Current Focus & AI Development",
-          paragraph1:
-            "Today, I focus on building scalable web applications and streamlining digital workflows. I deeply integrate **AI-assisted development** using tools such as **Cursor, Claude Code, and Codex** to rapidly build and automate full-stack products.",
-          paragraph2:
-            "With a strong technical foundation, I approach these tools with a **solid understanding of the systems and APIs behind them**."
+          paragraph1: "Today, I bridge product design and engineering through **AI-native workflows**: I own the concept, UX and quality bar, and direct coding agents (**Claude Code, OpenAI Codex, Cursor, Google Antigravity**) through rapid build, test and QA cycles. Recent work includes **Balcony X 2.0**, a live social VR world, and **Moonlit Firefly Bloom**, a browser game.",
+          paragraph2: "My two years of IT study help me understand what these tools produce, so I can **review, test and improve the result** instead of accepting it blindly.",
         },
       },
       closingLine:
@@ -189,8 +183,7 @@ export const en: LocaleMessages = {
     hero: {
       titlePrefix: "Skills &",
       titleHighlight: "Expertise",
-      description:
-        "A practical blend of full-stack web development, UX/UI design, and AI automation built through real client projects across product concepts, API integrations, and digital workflows.",
+      description: "A practical blend of UX/UI design, creative technology and AI-assisted building, developed through real client projects, a live VR world and my own products.",
     },
     labels: {
       coreCompetencies: "Core Competencies",
@@ -209,35 +202,35 @@ export const en: LocaleMessages = {
         },
       },
       digitalMarketingGrowth: {
-        title: "Web & Full-Stack Development",
+        title: "Creative Technology & Prototyping",
         skills: {
-          frontendDevelopment: "Frontend Development (React, TypeScript)",
-          backendArchitecture: "Backend Architecture & APIs",
-          apiIntegration: "API Integration & Management",
+          frontendDevelopment: "Interactive Prototyping (React, TypeScript)",
+          backendArchitecture: "3D & VR Prototyping (Unity, AI-assisted)",
+          apiIntegration: "Browser Games (HTML5 Canvas)",
           versionControl: "Version Control (Git & GitHub)",
-          databaseManagement: "Database Management (SQL)",
-          performanceOptimization: "Performance & SEO Optimization",
+          databaseManagement: "SQL Basics",
+          performanceOptimization: "Web Performance & SEO",
         },
       },
       researchStrategy: {
-        title: "Digital Strategy & Workflows",
+        title: "Concept & Strategy",
         skills: {
           productStrategyPositioning: "Product Strategy & Positioning",
           userResearchTesting: "User Research & Usability Testing",
           crossFunctionalCollaboration: "Cross-Functional Collaboration",
           projectStakeholderManagement: "Project & Stakeholder Management",
-          processAutomation: "Process Automation & Efficiency",
-          evidenceBasedDecisionMaking: "Evidence-Based Decision Making",
+          processAutomation: "Campaign Concepts",
+          evidenceBasedDecisionMaking: "Video Concept & Direction",
         },
       },
       aiAssistedCreation: {
-        title: "AI Automation & Engineering",
+        title: "AI-Assisted Creation",
         skills: {
           claudeCursorCodex: "Claude Code, Cursor & Codex Workflows",
           promptDrivenDevelopment: "Prompt-Driven Development",
-          apiAutomationPipelines: "API Automation & Pipelines",
+          apiAutomationPipelines: "AI Build, Test & QA Cycles",
           rapidIterationMvp: "Rapid Iteration from Idea to MVP",
-          vibeCoding: "Vibe Coding & AI Orchestration",
+          vibeCoding: "Directing AI Coding Agents",
         },
       },
     },
@@ -251,7 +244,7 @@ export const en: LocaleMessages = {
       googleFundamentalsDigitalMarketing: "Google Fundamentals of Digital Marketing",
       startupCampusEntrepreneurship: "StartUP Campus - Entrepreneurship",
       ieltsEnglishLanguageTesting: "IELTS (English Language Testing)",
-      dutchLanguageCertificate: "Dutch Language Certificate (B1-B2)",
+      dutchLanguageCertificate: "Dutch Language Certificate (B1)",
     },
     languages: {
       arabic: {
@@ -264,7 +257,7 @@ export const en: LocaleMessages = {
       },
       dutch: {
         name: "Dutch",
-        level: "B1-B2",
+        level: "B1",
       },
     },
     softSkills: {
@@ -693,9 +686,8 @@ export const en: LocaleMessages = {
     available: "Actively looking for full-time opportunities",
     title: "Hello, I'm",
     name: "Omar Abdulghani",
-    subtitleRole: "Tech-Driven Creative Specialist",
-    subtitleRest:
-      "A Creative Technologist blending development, AI, and design into scalable digital products.",
+    subtitleRole: "Creative Technologist & Product Designer",
+    subtitleRest: "A Creative Technologist and Product Designer turning ideas into working experiences, from concept and UX to prototypes built with AI.",
     subtitleEnding: "scalable digital products.",
     ctaViewWork: "View My Work",
     ctaContact: "Contact Me",
@@ -715,9 +707,8 @@ export const en: LocaleMessages = {
   },
   cards: {
     conceptDevelopment: {
-      title: "Web & Full-Stack Development",
-      body:
-        "Building robust digital products that translate complex requirements into scalable architectures, seamless API integrations, and efficient code.",
+      title: "Creative Technology & Prototyping",
+      body: "I turn ideas into working things people can try, from interactive prototypes to games and immersive experiences, built quickly with AI coding agents and tested until they feel right.",
     },
     uxUi: {
       title: "UX/UI Design & Digital Product Strategy",
@@ -725,9 +716,8 @@ export const en: LocaleMessages = {
         "Designing intuitive digital experiences grounded in user research, behavior, and strategic thinking. I transform complex ideas into clear, user-centered interfaces that balance functionality, usability, and visual identity.",
     },
     creativeTechnology: {
-      title: "AI Automation & Workflows",
-      body:
-        "Streamlining development and operational processes through automated pipelines, prompt-driven development, and advanced AI tools (Cursor, Claude Code, Codex).",
+      title: "Concepts, Campaigns & Video",
+      body: "From research and brand strategy to campaign ideas and short video series that bring a brand closer to its audience.",
     },
   },
   tags: {
@@ -751,6 +741,11 @@ export const en: LocaleMessages = {
       brandActivation: "Brand Activation",
     },
     slides: {
+      balconyX: {
+        title: "Balcony X 2.0",
+        description: "A social VR world for hanging out together.",
+        category: "Creative Technology",
+      },
       pphe: {
         title: "PPHE Hotel Group",
         description: "Enhanced UI/UX for global hotel brands.",

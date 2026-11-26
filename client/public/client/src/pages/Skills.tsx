@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/lib/i18n";
-import { Palette, Megaphone, Search, Award, Users, Briefcase, Globe, Bot } from "lucide-react";
+import { Palette, Sparkles, Search, Award, Users, Briefcase, Globe, Bot } from "lucide-react";
 
 export default function Skills() {
   const { language, messages } = useLanguage();
@@ -23,7 +23,7 @@ export default function Skills() {
     },
     {
       title: messages.skills.categories.digitalMarketingGrowth.title,
-      icon: <Megaphone className="w-6 h-6 text-primary" />,
+      icon: <Sparkles className="w-6 h-6 text-primary" />,
       skills: [
         messages.skills.categories.digitalMarketingGrowth.skills.frontendDevelopment,
         messages.skills.categories.digitalMarketingGrowth.skills.backendArchitecture,
@@ -33,15 +33,16 @@ export default function Skills() {
         messages.skills.categories.digitalMarketingGrowth.skills.performanceOptimization
       ],
       tools: [
+        "Unity",
         "React",
         "TypeScript",
         "Node.js",
+        "Next.js",
         "Tailwind CSS",
-        "SQL",
+        "HTML5 Canvas",
         "REST APIs",
-        "Git & GitHub",
         "Vite",
-        "Next.js"
+        "Git & GitHub"
       ]
     },
     {
@@ -55,7 +56,7 @@ export default function Skills() {
         messages.skills.categories.researchStrategy.skills.processAutomation,
         messages.skills.categories.researchStrategy.skills.evidenceBasedDecisionMaking
       ],
-      tools: ["Miro", "Notion", "Jira", "Asana", "Trello", "Google Workspace"]
+      tools: ["Miro", "Notion", "Jira", "Asana", "Trello", "CapCut", "Google Workspace"]
     },
     {
       title: messages.skills.categories.aiAssistedCreation.title,
@@ -67,7 +68,7 @@ export default function Skills() {
         messages.skills.categories.aiAssistedCreation.skills.rapidIterationMvp,
         messages.skills.categories.aiAssistedCreation.skills.vibeCoding
       ],
-      tools: ["Cursor", "Claude Code", "OpenAI Codex", "Vercel", "GitHub Actions"]
+      tools: ["Claude Code", "Cursor", "OpenAI Codex", "Google Antigravity", "Gemini", "Suno", "Higgsfield", "Vercel", "GitHub Actions"]
     }
   ];
 

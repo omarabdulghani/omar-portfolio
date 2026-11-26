@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Download, ExternalLink, ChevronRight, ChevronLeft, Play, Pause, Sparkles, FolderKanban, Layers, Briefcase, LayoutGrid } from "lucide-react";
+import { ArrowRight, Download, ExternalLink, ChevronRight, ChevronLeft, Play, Pause, Sparkles, FolderKanban, Layers, Briefcase, LayoutGrid, Clapperboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
@@ -17,7 +17,7 @@ export default function Home() {
 
   const allProjects = useProjects();
 
-  const featuredIds = ["moonlit-firefly-bloom", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel", "theraneck-ecommerce", "hallencity"];
+  const featuredIds = ["moonlit-firefly-bloom", "balcony-x", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel", "theraneck-ecommerce", "hallencity"];
   const featuredProjects = featuredIds
     .map(id => allProjects.find(p => p.id === id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -29,6 +29,7 @@ export default function Home() {
       
       const isPatronApp = p.id === "patronapp";
       const isMoonlit = p.id === "moonlit-firefly-bloom";
+      const isBalconyX = p.id === "balcony-x";
       const isAmstelhof = p.id === "amstelhof-connect";
       const isMoesTuinen = p.id === "moes-tuinen";
       const isPPHE = p.id === "pphe-hotel";
@@ -36,7 +37,9 @@ export default function Home() {
       const isHallenCity = p.id === "hallencity";
       const hasVideo = isPatronApp || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE || isTheraNeck || isHallenCity;
       
-      const slideData = isPPHE
+      const slideData = isBalconyX
+        ? messages.heroSlides.slides.balconyX
+        : isPPHE
         ? messages.heroSlides.slides.pphe
         : isTheraNeck
         ? messages.heroSlides.slides.theraNeck
@@ -413,7 +416,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white mb-6 bg-primary/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" /><path d="m9 12 2 2 4-4" /></svg>
+                  <Sparkles className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight [text-wrap:balance] mb-3 text-slate-900 dark:text-white transition-colors group-hover:text-primary">
                   {messages.cards.conceptDevelopment.title}
@@ -428,7 +431,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white mb-6 bg-primary/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+                  <LayoutGrid className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight [text-wrap:balance] mb-3 text-slate-900 dark:text-white transition-colors group-hover:text-primary">
                   {messages.cards.uxUi.title}
@@ -443,7 +446,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white mb-6 bg-primary/10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:shadow-[0_0_25px_rgba(var(--primary),0.3)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+                  <Clapperboard className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight [text-wrap:balance] mb-3 text-slate-900 dark:text-white transition-colors group-hover:text-primary">
                   {messages.cards.creativeTechnology.title}
