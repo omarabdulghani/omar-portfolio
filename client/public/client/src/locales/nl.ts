@@ -689,7 +689,7 @@ export const nl: LocaleMessages = {
     title: "Hallo, ik ben",
     name: "Omar Abdulghani",
     subtitleRole: "Creative Technologist & Product Designer",
-    subtitleRest: "Een Creative Technologist en Product Designer die ideeën omzet in werkende producten en ervaringen, van concept en UX tot lancering, gebouwd met AI.",
+    subtitleRest: "Een Creative Technologist en Product Designer die concepten omzet in werkende producten en ervaringen, van onderzoek en UX-design tot prototyping en lancering.",
     subtitleEnding: "schaalbare digitale producten te bouwen.",
     ctaViewWork: "Bekijk mijn werk",
     ctaContact: "Neem contact op",

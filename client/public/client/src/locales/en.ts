@@ -687,7 +687,7 @@ export const en: LocaleMessages = {
     title: "Hello, I'm",
     name: "Omar Abdulghani",
     subtitleRole: "Creative Technologist & Product Designer",
-    subtitleRest: "A Creative Technologist and Product Designer turning ideas into working products and experiences, from concept and UX to launch, built with AI.",
+    subtitleRest: "A Creative Technologist and Product Designer turning concepts into working products and experiences, from research and UX design to prototyping and launch.",
     subtitleEnding: "scalable digital products.",
     ctaViewWork: "View My Work",
     ctaContact: "Contact Me",
