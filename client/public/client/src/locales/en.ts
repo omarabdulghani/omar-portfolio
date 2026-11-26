@@ -28,7 +28,7 @@ export const en: LocaleMessages = {
       titlePrefix: "Bridging Design &",
       titleHighlight: "Technology",
       name: "Omar Abdulghani",
-      description: "Turning ideas into **meaningful digital experiences**, from **UX/UI design** and campaign concepts to working interactive prototypes. I combine **research, creativity, and technology** to build products that connect with people from different cultures.",
+      description: "Turning ideas into **meaningful digital experiences**, from **UX/UI design** and campaign concepts to live, working products. I combine **research, creativity, and technology** to build products that connect with people from different cultures.",
       ctaViewWork: "View My Work",
       ctaDownloadCv: "Download CV",
     },
@@ -45,7 +45,7 @@ export const en: LocaleMessages = {
         },
         prototype: {
           title: "Build",
-          description: "AI-Assisted Prototypes",
+          description: "With AI Coding Agents",
         },
         testIterate: {
           title: "Test",
@@ -61,8 +61,8 @@ export const en: LocaleMessages = {
       focusTitle: "What I Focus On",
       focusItems: {
         brandStrategy: {
-          title: "Creative Technology & Prototyping",
-          description: "I turn ideas into **working things people can try**, from interactive prototypes to games and immersive experiences, built quickly with **AI coding agents** and tested until they feel right.",
+          title: "Creative Technology & AI-Built Products",
+          description: "I take ideas **from concept to launch**: web apps, games and immersive experiences, built with **AI coding agents** and tested until they feel right.",
         },
         uxUiDesign: {
           title: "UX/UI & Digital Product Design",
@@ -687,7 +687,7 @@ export const en: LocaleMessages = {
     title: "Hello, I'm",
     name: "Omar Abdulghani",
     subtitleRole: "Creative Technologist & Product Designer",
-    subtitleRest: "A Creative Technologist and Product Designer turning ideas into working experiences, from concept and UX to prototypes built with AI.",
+    subtitleRest: "A Creative Technologist and Product Designer turning ideas into working products and experiences, from concept and UX to launch, built with AI.",
     subtitleEnding: "scalable digital products.",
     ctaViewWork: "View My Work",
     ctaContact: "Contact Me",
@@ -707,8 +707,8 @@ export const en: LocaleMessages = {
   },
   cards: {
     conceptDevelopment: {
-      title: "Creative Technology & Prototyping",
-      body: "I turn ideas into working things people can try, from interactive prototypes to games and immersive experiences, built quickly with AI coding agents and tested until they feel right.",
+      title: "Creative Technology & AI-Built Products",
+      body: "I take ideas from concept to launch: web apps, games and immersive experiences, built with AI coding agents and tested until they feel right.",
     },
     uxUi: {
       title: "UX/UI Design & Digital Product Strategy",

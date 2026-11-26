@@ -30,7 +30,7 @@ export const nl: LocaleMessages = {
       titlePrefix: "Bruggen slaan tussen design &",
       titleHighlight: "technologie",
       name: "Omar Abdulghani",
-      description: "Ideeën omzetten in **betekenisvolle digitale ervaringen**, van **UX/UI-design** en campagneconcepten tot werkende interactieve prototypes. Ik combineer **onderzoek, creativiteit en technologie** om producten te bouwen die aansluiten bij mensen uit verschillende culturen.",
+      description: "Ideeën omzetten in **betekenisvolle digitale ervaringen**, van **UX/UI-design** en campagneconcepten tot live, werkende producten. Ik combineer **onderzoek, creativiteit en technologie** om producten te bouwen die aansluiten bij mensen uit verschillende culturen.",
       ctaViewWork: "Bekijk mijn werk",
       ctaDownloadCv: "Download CV",
     },
@@ -47,7 +47,7 @@ export const nl: LocaleMessages = {
         },
         prototype: {
           title: "Bouwen",
-          description: "AI-ondersteunde prototypes",
+          description: "Met AI-codeeragents",
         },
         testIterate: {
           title: "Testen",
@@ -63,8 +63,8 @@ export const nl: LocaleMessages = {
       focusTitle: "Waar ik mij op focus",
       focusItems: {
         brandStrategy: {
-          title: "Creatieve technologie & prototyping",
-          description: "Ik zet ideeën om in **werkende dingen die mensen kunnen uitproberen**, van interactieve prototypes tot games en immersieve ervaringen, snel gebouwd met **AI-codeeragents** en getest tot ze goed voelen.",
+          title: "Creatieve technologie & AI-gebouwde producten",
+          description: "Ik breng ideeën **van concept tot lancering**: webapps, games en immersieve ervaringen, gebouwd met **AI-codeeragents** en getest tot ze goed voelen.",
         },
         uxUiDesign: {
           title: "UX/UI & Digitaal Productdesign",
@@ -689,7 +689,7 @@ export const nl: LocaleMessages = {
     title: "Hallo, ik ben",
     name: "Omar Abdulghani",
     subtitleRole: "Creative Technologist & Product Designer",
-    subtitleRest: "Een Creative Technologist en Product Designer die ideeën omzet in werkende ervaringen, van concept en UX tot prototypes gebouwd met AI.",
+    subtitleRest: "Een Creative Technologist en Product Designer die ideeën omzet in werkende producten en ervaringen, van concept en UX tot lancering, gebouwd met AI.",
     subtitleEnding: "schaalbare digitale producten te bouwen.",
     ctaViewWork: "Bekijk mijn werk",
     ctaContact: "Neem contact op",
@@ -709,8 +709,8 @@ export const nl: LocaleMessages = {
   },
   cards: {
     conceptDevelopment: {
-      title: "Creatieve technologie & prototyping",
-      body: "Ik zet ideeën om in werkende dingen die mensen kunnen uitproberen, van interactieve prototypes tot games en immersieve ervaringen, snel gebouwd met AI-codeeragents en getest tot ze goed voelen.",
+      title: "Creatieve technologie & AI-gebouwde producten",
+      body: "Ik breng ideeën van concept tot lancering: webapps, games en immersieve ervaringen, gebouwd met AI-codeeragents en getest tot ze goed voelen.",
     },
     uxUi: {
       title: "UX/UI Design & Digitale Productstrategie",
