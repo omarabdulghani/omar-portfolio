@@ -28,14 +28,13 @@ export default function Home() {
       if (!p) return null;
       
       const isPatronApp = p.id === "patronapp";
-      const isJobScout = p.id === "job-scout";
       const isMoonlit = p.id === "moonlit-firefly-bloom";
       const isAmstelhof = p.id === "amstelhof-connect";
       const isMoesTuinen = p.id === "moes-tuinen";
       const isPPHE = p.id === "pphe-hotel";
       const isTheraNeck = p.id === "theraneck-ecommerce";
       const isHallenCity = p.id === "hallencity";
-      const hasVideo = isPatronApp || isJobScout || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE || isTheraNeck || isHallenCity;
+      const hasVideo = isPatronApp || isMoonlit || isAmstelhof || isMoesTuinen || isPPHE || isTheraNeck || isHallenCity;
       
       const slideData = isPPHE
         ? messages.heroSlides.slides.pphe
@@ -43,8 +42,6 @@ export default function Home() {
         ? messages.heroSlides.slides.theraNeck
         : isHallenCity
         ? messages.heroSlides.slides.hallenCity
-        : isJobScout
-        ? messages.heroSlides.slides.jobScout
         : isPatronApp
         ? messages.heroSlides.slides.patronApp
         : isMoesTuinen
@@ -75,8 +72,6 @@ export default function Home() {
         type: hasVideo ? ("video" as const) : ("image" as const),
         src: isPatronApp
           ? "/images/patronapp gallery/PatronApp Promo 1.mp4"
-          : isJobScout
-          ? "/images/job-scout-gallery/Job_Scout_dashboard_showcase_202607201923.mp4"
           : isMoonlit
           ? "/images/moonlit-gallery/Video_promo_for_game_project_202607201943.mp4"
           : isAmstelhof

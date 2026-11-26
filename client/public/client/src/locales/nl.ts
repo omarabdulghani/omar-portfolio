@@ -368,10 +368,6 @@ export const nl: LocaleMessages = {
         description:
           "Strategie voor toetreding tot de Belgische markt, gebaseerd op exportonderzoek, financiële planning en operationele positionering.",
       },
-      jobScout: {
-        description:
-          "Een lokale, GUI-first AI-workspace gebouwd om professionele kansen programmatisch te extraheren, analyseren en evalueren aan de hand van een strikt heuristisch profiel.",
-      },
       moonlit: {
         description:
           "Een zero-dependency TypeScript 2D-engine die een 'Soothing Arcade'-ervaring aandrijft. Voorzien van een op maat gemaakte snapshot-architectuur en AI-ondersteunde asset-pipelines.",
@@ -410,7 +406,7 @@ export const nl: LocaleMessages = {
       python: "Python",
       frontendUiUx: "Frontend UI/UX",
       multiLlmRouting: "Multi-LLM Routing",
-      aiAssisted: "AI-Assisted",
+      aiAssisted: "AI-ondersteund",
       typeScript: "TypeScript",
       engineArchitecture: "Engine-architectuur",
       productDesign: "Productdesign",
@@ -431,6 +427,7 @@ export const nl: LocaleMessages = {
       prototypePreview: "Prototypepreview",
       website: "Website",
       client: "KLANT",
+      project: "Project",
       year: "JAAR",
       myRole: "MIJN ROL",
       toolsUsed: "GEBRUIKTE TOOLS",
@@ -656,24 +653,27 @@ export const nl: LocaleMessages = {
         financialExportPlan: "Financieel exportplan (Excel-bestand)",
       },
     },
-    jobScout: {
-      title: "Job Scout",
-      subtitle: "AI-Gedreven Automatisering & Job Discovery Tool",
-      role: "AI Product Architect & UI/UX Director",
-      description:
-        "Job Scout is een zelf-geïnitieerde, lokale AI-gestuurde workspace die is ontwikkeld om het zoekproces naar werk te optimaliseren door professionele kansen programmatisch te extraheren, analyseren en filteren.",
-      challenge:
-        "Het handmatig filteren van honderden dagelijkse vacatures zorgt voor operationele vermoeidheid. Bestaande filters zijn vaak onnauwkeurig en evalueren niet hoe specifiek technische vaardigheden aansluiten op complexe functie-eisen.",
-      solution:
-        "Stuurde de end-to-end ontwikkeling aan van een lokale, GUI-first workspace voor het zoeken naar werk met behulp van AI-codeeragenten. Ontwierp een compleet vanilla JS/CSS frontend-dashboard met Kanban-stijl job tracking, een carrièretaxonomie (Primary, Bridge, Fallback) en real-time AI-budgetbewaking. De backend orkestreert een multi-provider AI-score-engine om vacatures te evalueren tegen een strikt, deterministisch heuristisch profiel.",
-      impact:
-        "Transformeerde een handmatig, vermoeiend zoekproces tot een high-fidelity visuele workspace. Bouwde een veerkrachtige pijplijn die kansen categoriseert in 'Apply First', 'Good Options' en 'Rejected' met behulp van strikte drempelwaarden, waardoor de tijd besteed aan het lezen van ongekwalificeerde vacatures drastisch werd verminderd en een schone database zonder duplicaten behouden blijft.",
-      ethics:
-        "Ontworp met strikte veiligheidsgrenzen. De applicatie verzamelt of bewaart nooit inloggegevens van derden en vertrouwt volledig op handmatige, human-in-the-loop browser authenticatie. Om de integriteit van de platformen te respecteren, maakt het systeem gebruik van menselijk tempo, worden CAPTCHA's of snelheidslimieten niet omzeild en pauzeert het voor expliciete goedkeuring van de gebruiker vóór elke definitieve sollicitatie.",
+    balconyX: {
+      title: "Balcony X 2.0",
+      subtitle: "Een sociale VR-wereld om samen video's te kijken, te spelen en te chillen",
+      role: "Concept, wereldontwerp & AI-gestuurde bouw",
+      client: "Eigen initiatief · Altspace",
+      primaryActionLabel: "Bezoek de wereld op Altspace",
+      description: "Balcony X 2.0 is een **live sociale VR-wereld** op Altspace: een dakterras en balkon boven een stad bij nacht, waar vrienden samenkomen om samen video's te kijken, te spelen en gewoon te chillen.\n\nHet is een nieuwe versie van de originele Balcony X uit het eerste AltspaceVR, met een frisse look en nieuwe functies. Ik bedacht het concept, de sfeer en elke interactie, en bouwde de wereld daarna in **Unity** met de Altspace Creator SDK. Voor de scripts en het scènewerk stuurde ik AI-codeeragents aan.",
+      challenge: "Sociale VR-ruimtes voelen vaak leeg of verwarrend: mensen komen binnen, weten niet wat ze moeten doen en vertrekken weer. De uitdaging was een plek te ontwerpen die **vanaf het eerste moment gezellig en levendig voelt**, groepen vrienden **makkelijke gedeelde activiteiten** biedt en toch soepel draait op standalone VR-headsets met strenge prestatiegrenzen.",
+      solution: "- **Samen kijken:** videoprojectoren op het balkon en het dakterras, plus een tv in de lounge en een scherm in de lift, zodat een groep samen kan kijken\n- **Eén bedieningscentrum:** een Balcony World Kiosk waarmee bezoekers de projectoren, droneshows, spellen en het weer bedienen, zodat niemand uitleg nodig heeft\n- **Sfeer:** weersveranderingen (helder, mist, regen, sneeuw), lichtslingers, een open haard op het dak en een skyline van de stad\n- **Dingen om te ontdekken:** een bespeelbare piano, een lift en kleine details die verkennen belonen\n- **Prestaties:** baked lighting en geoptimaliseerde assets, zodat de wereld soepel blijft draaien in VR",
+      impact: "Balcony X 2.0 is **gepubliceerd en live**. Het is mijn eerste complete VR-wereld. Ik leerde hoe ik een grote creatieve bouw met veel onderdelen aanstuur, van idee tot release: ontwerpen voor groepen in plaats van losse gebruikers, sfeer in balans brengen met de prestaties van een headset, en functies vindbaar maken zonder handleiding.\n\nHet is de basis voor mijn volgende wereld, **A Damascene House**: een rustige VR-versie van een traditioneel Damasceens huis met binnenplaats.",
       galleryTitles: {
-        darkModeDashboard: "Dark Mode Dashboard",
-        dataPipelineDashboard: "Data Pipeline Dashboard",
-        apiParsingRecords: "API Parsing Records",
+        projector: "Balkonprojector",
+        rooftopFireplace: "Open haard op het dak",
+        balconyLounge: "Balkonlounge",
+        tables: "Zitgedeeltes",
+        weatherSnow: "Weer: sneeuw",
+        weatherRain: "Weer: regen",
+        weatherFog: "Weer: mist",
+        piano: "Bespeelbare piano",
+        elevator: "Lift",
+        elevatorDisplay: "Liftscherm",
       },
     },
     moonlit: {
@@ -767,11 +767,6 @@ export const nl: LocaleMessages = {
         title: "HallenCity",
         description: "Een inclusief, alles-in-één bioscoopervaring app-concept.",
         category: "UX/UI & Product Design",
-      },
-      jobScout: {
-        title: "Job Scout",
-        description: "De zoektocht naar een baan moeiteloos gemaakt.",
-        category: "AI Product Architecture",
       },
       patronApp: {
         title: "PatronApp",

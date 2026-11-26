@@ -324,7 +324,6 @@ export interface LocaleMessages {
       burningManCampaign: { description: string };
       streamingEmotionsValuePlan: { description: string };
       beexExportStrategy: { description: string };
-      jobScout: { description: string };
       moonlit: { description: string };
     };
     tags: {
@@ -557,20 +556,27 @@ export interface LocaleMessages {
         financialExportPlan: string;
       };
     };
-    jobScout: {
+    balconyX: {
       title: string;
       subtitle: string;
       role: string;
-      primaryActionLabel?: string;
+      client: string;
+      primaryActionLabel: string;
       description: string;
       challenge: string;
       solution: string;
       impact: string;
-      ethics: string;
-      galleryTitles?: {
-        darkModeDashboard: string;
-        dataPipelineDashboard: string;
-        apiParsingRecords: string;
+      galleryTitles: {
+        projector: string;
+        rooftopFireplace: string;
+        balconyLounge: string;
+        tables: string;
+        weatherSnow: string;
+        weatherRain: string;
+        weatherFog: string;
+        piano: string;
+        elevator: string;
+        elevatorDisplay: string;
       };
     };
     moonlit: {
@@ -643,7 +649,6 @@ export interface LocaleMessages {
       pphe: { title: string; description: string; category: string };
       theraNeck: { title: string; description: string; category: string };
       hallenCity: { title: string; description: string; category: string };
-      jobScout: { title: string; description: string; category: string };
       patronApp: { title: string; description: string; category: string };
       moesTuinen: { title: string; description: string; category: string };
       moonlit: { title: string; description: string; category: string };

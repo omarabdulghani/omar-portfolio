@@ -746,7 +746,7 @@ export default function ProjectDetail() {
   const isBurningManCampaign = projectId === "burning-man-campaign";
   const isStreamingEmotionsValuePlan = projectId === "streaming-emotions-value-plan";
   const isBeexExportStrategy = projectId === "beex-export-strategy";
-  const isJobScout = projectId === "job-scout";
+  const isBalconyX = projectId === "balcony-x";
   const isMoonlit = projectId === "moonlit-firefly-bloom";
   const hasLocalizedProjectCopy =
     isTheraNeckEcommerce ||
@@ -759,7 +759,7 @@ export default function ProjectDetail() {
     isBurningManCampaign ||
     isStreamingEmotionsValuePlan ||
     isBeexExportStrategy ||
-    isJobScout ||
+    isBalconyX ||
     isMoonlit;
 
   useEffect(() => {
@@ -1056,32 +1056,40 @@ export default function ProjectDetail() {
           };
         }),
       }
-    : isJobScout
+    : isBalconyX
     ? {
         ...project,
-        title: messages.projectDetails.jobScout.title,
-        subtitle: messages.projectDetails.jobScout.subtitle,
-        role: messages.projectDetails.jobScout.role,
-        description: messages.projectDetails.jobScout.description,
-        challenge: messages.projectDetails.jobScout.challenge,
-        solution: messages.projectDetails.jobScout.solution,
-        impact: messages.projectDetails.jobScout.impact,
-        ethics: messages.projectDetails.jobScout.ethics,
+        title: messages.projectDetails.balconyX.title,
+        subtitle: messages.projectDetails.balconyX.subtitle,
+        role: messages.projectDetails.balconyX.role,
+        client: messages.projectDetails.balconyX.client,
+        primaryActionLabel: messages.projectDetails.balconyX.primaryActionLabel,
+        description: messages.projectDetails.balconyX.description,
+        challenge: messages.projectDetails.balconyX.challenge,
+        solution: messages.projectDetails.balconyX.solution,
+        impact: messages.projectDetails.balconyX.impact,
         gallery: project.gallery?.map((item: any) => {
           if (!item || typeof item === "string") return item;
 
-          const translatedTitles: Record<string, string> = {
-            "Dark Mode Dashboard":
-              messages.projectDetails.jobScout.galleryTitles?.darkModeDashboard ?? item.title,
-            "Data Pipeline Dashboard":
-              messages.projectDetails.jobScout.galleryTitles?.dataPipelineDashboard ?? item.title,
-            "API Parsing Records":
-              messages.projectDetails.jobScout.galleryTitles?.apiParsingRecords ?? item.title,
+          const translatedTitles: Record<string, string | undefined> = {
+            "Balcony Projector": messages.projectDetails.balconyX.galleryTitles?.projector,
+            "Rooftop Fireplace": messages.projectDetails.balconyX.galleryTitles?.rooftopFireplace,
+            "Balcony Lounge": messages.projectDetails.balconyX.galleryTitles?.balconyLounge,
+            "Table Areas": messages.projectDetails.balconyX.galleryTitles?.tables,
+            "Weather: Snow": messages.projectDetails.balconyX.galleryTitles?.weatherSnow,
+            "Weather: Rain": messages.projectDetails.balconyX.galleryTitles?.weatherRain,
+            "Weather: Fog": messages.projectDetails.balconyX.galleryTitles?.weatherFog,
+            "Playable Piano": messages.projectDetails.balconyX.galleryTitles?.piano,
+            "Elevator": messages.projectDetails.balconyX.galleryTitles?.elevator,
+            "Elevator Display": messages.projectDetails.balconyX.galleryTitles?.elevatorDisplay,
           };
+
+          const nextTitle = item.title ? translatedTitles[item.title] ?? item.title : item.title;
 
           return {
             ...item,
-            title: item.title ? translatedTitles[item.title] ?? item.title : item.title,
+            title: nextTitle,
+            alt: nextTitle ?? item.alt,
           };
         }),
       }
@@ -1234,7 +1242,7 @@ export default function ProjectDetail() {
                 <h2 className="text-2xl font-heading font-bold mb-4">
                   {hasLocalizedProjectCopy 
                     ? messages.projectDetails.common.ethics 
-                    : (projectId === "job-scout" ? "Privacy-First Architecture & Platform Safety" : "Ethical Engineering & Compliance")}
+                    : "Ethical Engineering & Compliance"}
                 </h2>
                 <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
                   {renderRichText(localizedProject.ethics)}
@@ -1359,7 +1367,7 @@ export default function ProjectDetail() {
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">
                   {isTheraNeckEcommerce
                     ? messages.projectDetails.common.website
-                    : (isMoonlit || isJobScout)
+                    : (isMoonlit || isBalconyX)
                     ? messages.projectDetails.common.project
                     : hasLocalizedProjectCopy
                     ? messages.projectDetails.common.client
