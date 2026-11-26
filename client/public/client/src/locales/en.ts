@@ -45,7 +45,7 @@ export const en: LocaleMessages = {
         },
         prototype: {
           title: "Build",
-          description: "With AI Coding Agents",
+          description: "Prototypes & Products",
         },
         testIterate: {
           title: "Test",

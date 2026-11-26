@@ -136,7 +136,7 @@ export const ar: LocaleMessages = {
         },
         prototype: {
           title: "البناء",
-          description: "بمساعدة وكلاء البرمجة بالذكاء الاصطناعي",
+          description: "النماذج الأولية والمنتجات",
         },
         testIterate: {
           title: "الاختبار",
