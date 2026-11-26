@@ -559,31 +559,42 @@ const projectsData: Record<string, any> = {
       }
     ]
   },
-  "job-scout": {
-    title: "Job Scout",
-    subtitle: "Autonomous Sourcing Pipeline & Job Discovery Utility",
+  "balcony-x": {
+    title: "Balcony X 2.0",
+    subtitle: "A Social VR World for Watching, Playing and Hanging Out Together",
     year: "2026",
-    client: "Independent Project",
-    clientLogo: "/images/job-scout-gallery/logo-light.png",
-    clientLogoDark: "/images/job-scout-gallery/logo-dark.png",
-    clientLogoClass: "h-16 md:h-20",
-    primaryActionLabel: "View GitHub Repository",
-    primaryActionHref: "https://github.com/omarabdulghani/job-scout",
-    role: "AI Product Architect & UI/UX Director",
-    description: "Job Scout is a self-initiated, local AI-powered workspace developed to optimize the job search process by orchestrating autonomous browser pipelines to parse, structure, and filter live professional opportunities against complex profile criteria.",
-    challenge: "Manually filtering through hundreds of daily job listings introduces massive operational fatigue. Most platform filters are noisy and fail to evaluate how closely an applicant's deep technical skills map to complex, multi-layered job specifications.",
-    solution: "Directed the end-to-end development of a local, GUI-first job search workspace using AI coding agents. Designed a complete vanilla JS/CSS frontend dashboard featuring Kanban-style job tracking, career lane taxonomy (Primary, Bridge, Fallback), and real-time AI budget guards. The backend orchestrates a multi-provider AI scoring engine to evaluate job descriptions against a strict, deterministic heuristic profile.",
-    impact: "Transformed a manual, fatigue-inducing search process into a high-fidelity visual workspace. Built a resilient pipeline that categorizes opportunities into 'Apply First,' 'Good Options,' and 'Rejected' using strict threshold logic, drastically reducing time spent reading unqualified listings while maintaining a clean, duplicate-free database across runs.",
-    ethics: "Engineered with strict security boundaries. The application never collects or stores third-party credentials, relying entirely on manual, human-in-the-loop browser authentication. To respect platform integrity, the system utilizes human-mimicking pacing, does not bypass CAPTCHAs or rate-limits, and pauses for explicit user review before any final application submissions.",
-    tags: ["AI Product Architecture", "Frontend UI/UX", "Python"],
-    tools: ["Python", "Antigravity IDE", "Cursor", "Playwright", "SQLite", "Vanilla JS/CSS", "Multi-Provider LLM APIs (Gemini, Claude, Cerebras)"],
-    image: "/images/job-scout-gallery/hero.png",
+    client: "Self-Initiated · Altspace",
+    overviewLinkHref: "https://altvr.app/worlds/@balcony",
+    overviewLinkLabel: "altvr.app/worlds/@balcony",
+    primaryActionLabel: "Visit the World on Altspace",
+    primaryActionHref: "https://altvr.app/worlds/@balcony",
+    role: "Concept, World Design & AI-Directed Build",
+    description:
+      "Balcony X 2.0 is a **live social VR world** on Altspace: a rooftop and balcony above a night-time city where friends meet to watch videos together, play, and simply hang out.\n\nIt reimagines the original Balcony X from the first AltspaceVR with a fresh look and new features. I defined the concept, the mood and every interaction, then built it in **Unity** with the Altspace Creator SDK, directing AI coding agents for the scripting and scene work.",
+    challenge:
+      "Social VR spaces often feel empty or confusing: people arrive, don't know what to do, and leave. The challenge was to design a place that feels **cozy and alive the moment you arrive**, gives groups of friends **easy shared activities**, and still runs smoothly on standalone VR headsets with strict performance limits.",
+    solution:
+      "- **Shared watching:** video projectors on the balcony and the rooftop, plus a lounge TV and an elevator display, so a group can watch together\n- **One control center:** a Balcony World Kiosk where visitors control the projectors, drone shows, games and the weather, so nobody needs instructions\n- **Mood and atmosphere:** weather changes (clear, fog, rain, snow), string lights, a rooftop fireplace and a city skyline\n- **Things to discover:** a playable piano, an elevator and small details that reward exploring\n- **Performance:** baked lighting and optimized assets to keep the world smooth in VR",
+    impact:
+      "Balcony X 2.0 is **published and live**. It is my first complete VR world and taught me how to direct a large, multi-system creative build from idea to release: designing for groups instead of single users, balancing atmosphere with headset performance, and making features discoverable without a manual.\n\nIt is the foundation for my next world, **A Damascene House**: a calm VR recreation of a traditional Damascus courtyard house.",
+    tags: ["Social VR", "Unity", "World Design", "AI-Assisted"],
+    tools: ["Unity", "Altspace Creator SDK", "Claude Code", "Unity MCP", "Gemini", "Baked Lighting"],
+    image: "/images/balcony-x-gallery/hero.jpg",
     gallery: [
-      { src: "/images/job-scout-gallery/dashboard.png", title: "Data Pipeline Dashboard" },
-      { src: "/images/job-scout-gallery/dark-mode-dashboard.png", title: "Dark Mode Dashboard" },
-      { src: "/images/job-scout-gallery/logs.png", title: "API Parsing Records" }
+      { src: "/images/balcony-x-gallery/projector.jpg", title: "Balcony Projector" },
+      { src: "/images/balcony-x-gallery/rooftop-fireplace.jpg", title: "Rooftop Fireplace" },
+      { src: "/images/balcony-x-gallery/balcony-lounge.jpg", title: "Balcony Lounge" },
+      { src: "/images/balcony-x-gallery/tables.jpg", title: "Table Areas" },
+      { src: "/images/balcony-x-gallery/weather-snow.jpg", title: "Weather: Snow" },
+      { src: "/images/balcony-x-gallery/weather-rain.jpg", title: "Weather: Rain" },
+      { src: "/images/balcony-x-gallery/weather-fog.jpg", title: "Weather: Fog" },
+      { src: "/images/balcony-x-gallery/piano.jpg", title: "Playable Piano" },
+      { src: "/images/balcony-x-gallery/elevator.jpg", title: "Elevator" },
+      { src: "/images/balcony-x-gallery/elevator-display.jpg", title: "Elevator Display" }
     ]
   },
+  // "job-scout" was removed on purpose (2026-11-26): Omar's private job-search tool,
+  // not shown publicly because it collects LinkedIn data.
   "moonlit-firefly-bloom": {
     title: "Moonlit Firefly Bloom",
     subtitle: "Browser-Native 2D Canvas Engine & Interactive Experience",

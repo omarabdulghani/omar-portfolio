@@ -2,9 +2,10 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
-import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
-const plugins = [react(), tailwindcss(), vitePluginManusRuntime()];
+// The Manus runtime plugin was removed: it inlined ~367 KB (incl. a second React)
+// into every page and nothing in the site uses it.
+const plugins = [react(), tailwindcss()];
 
 export default defineConfig({
   plugins,

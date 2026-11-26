@@ -308,10 +308,12 @@ export interface LocaleMessages {
       uxUiProductDesign: string;
       digitalMarketingEcommerce: string;
       creativeStrategyBranding: string;
+      interactiveXr: string;
       brandActivation?: string;
       webOptimizationUxUi?: string;
     };
     projects: {
+      balconyX: { description: string };
       theraNeckEcommerce: { description: string };
       moesTuinen: { description: string };
       amstelhofConnect: { description: string };
@@ -362,6 +364,9 @@ export interface LocaleMessages {
       typeScript: string;
       engineArchitecture: string;
       productDesign: string;
+      unity: string;
+      socialVr: string;
+      worldDesign: string;
     };
   };
   projectDetails: {

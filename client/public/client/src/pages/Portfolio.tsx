@@ -12,6 +12,7 @@ export default function Portfolio() {
 
   const categories = [
     { value: "all", label: messages.portfolio.filters.all },
+    { value: "interactive-xr", label: messages.portfolio.filters.interactiveXr },
     { value: "software-engineering", label: messages.portfolio.filters.softwareEngineering },
     { value: "ux-ui-product-design", label: messages.portfolio.filters.uxUiProductDesign },
     { value: "digital-marketing-ecommerce", label: messages.portfolio.filters.digitalMarketingEcommerce },

@@ -17,14 +17,14 @@ export function useProjects(): ProjectMetadata[] {
 
   return [
     {
-      id: "job-scout",
-      title: messages.projectDetails.jobScout?.title || "Job Scout",
-      categoryValue: "software-engineering",
-      category: messages.portfolio.filters.softwareEngineering,
-      image: "/images/job-scout-gallery/thumbnail.png",
-      description: messages.portfolio.projects.jobScout.description,
-      tags: [messages.portfolio.tags.python, messages.portfolio.tags.frontendUiUx, messages.portfolio.tags.multiLlmRouting, messages.portfolio.tags.aiAssisted],
-      tagValues: ["python", "frontend", "multi-llm", "ai-assisted"]
+      id: "balcony-x",
+      title: "Balcony X 2.0",
+      categoryValue: "interactive-xr",
+      category: messages.portfolio.filters.interactiveXr,
+      image: "/images/balcony-x-gallery/card.jpg",
+      description: messages.portfolio.projects.balconyX.description,
+      tags: [messages.portfolio.tags.socialVr, messages.portfolio.tags.unity, messages.portfolio.tags.worldDesign, messages.portfolio.tags.aiAssisted],
+      tagValues: ["social-vr", "unity", "world-design", "ai-assisted"]
     },
     {
       id: "moonlit-firefly-bloom",

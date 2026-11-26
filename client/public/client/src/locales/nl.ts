@@ -319,10 +319,15 @@ export const nl: LocaleMessages = {
       uxUiProductDesign: "UX/UI & Productontwerp",
       digitalMarketingEcommerce: "Digitale Marketing & E-Commerce",
       creativeStrategyBranding: "Creatieve Strategie & Branding",
+      interactiveXr: "Interactieve & VR-ervaringen",
       brandActivation: "Merkactivatie",
       webOptimizationUxUi: "Web-optimalisatie & UX/UI",
     },
     projects: {
+      balconyX: {
+        description:
+          "Een live sociale VR-wereld op Altspace: een dakterras en balkon boven een stad bij nacht, waar vrienden samen video's kijken, spelletjes spelen, het weer veranderen en ontspannen.",
+      },
       theraNeckEcommerce: {
         description:
           "Zelf geïnitieerd e-commerce-experiment om vraag te valideren met een conversiegerichte storefront en smoke test voordat er wordt ingezet op een volledige operationele lancering.",
@@ -409,6 +414,9 @@ export const nl: LocaleMessages = {
       typeScript: "TypeScript",
       engineArchitecture: "Engine-architectuur",
       productDesign: "Productdesign",
+      unity: "Unity",
+      socialVr: "Sociale VR",
+      worldDesign: "Werelddesign",
     },
   },
   projectDetails: {

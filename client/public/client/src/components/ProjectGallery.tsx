@@ -382,6 +382,7 @@ const ProjectGallery = forwardRef<ProjectGalleryHandle, ProjectGalleryProps>(fun
           if (!context) throw new Error("Canvas context unavailable");
 
           await page.render({
+            canvas,
             canvasContext: context,
             viewport,
           }).promise;

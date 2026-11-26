@@ -317,10 +317,15 @@ export const en: LocaleMessages = {
       uxUiProductDesign: "UX/UI & Product Design",
       digitalMarketingEcommerce: "Digital Marketing & E-Commerce",
       creativeStrategyBranding: "Creative Strategy & Branding",
+      interactiveXr: "Interactive & VR Experiences",
       brandActivation: "Brand Activation",
       webOptimizationUxUi: "Web Optimization & UX/UI",
     },
     projects: {
+      balconyX: {
+        description:
+          "A live social VR world on Altspace: a rooftop and balcony above a night-time city where friends watch videos together, play, change the weather and hang out.",
+      },
       theraNeckEcommerce: {
         description:
           "Self-initiated e-commerce experiment to validate demand with a conversion-focused storefront and smoke test before committing to a full operational launch.",
@@ -407,6 +412,9 @@ export const en: LocaleMessages = {
       typeScript: "TypeScript",
       engineArchitecture: "Engine Architecture",
       productDesign: "Product Design",
+      unity: "Unity",
+      socialVr: "Social VR",
+      worldDesign: "World Design",
     },
   },
   projectDetails: {

@@ -13,11 +13,11 @@ import { useLiquidGlass } from "@/hooks/useLiquidGlass";
 export default function Home() {
   const { language, messages } = useLanguage();
   const isAr = language === "ar";
-  const cvResumeHref = "/ATS_CV_Omar_Abdulghani_v3.pdf";
+  const cvResumeHref = "/Omar_Abdulghani_CV.pdf";
 
   const allProjects = useProjects();
 
-  const featuredIds = ["job-scout", "moonlit-firefly-bloom", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel", "theraneck-ecommerce", "hallencity"];
+  const featuredIds = ["moonlit-firefly-bloom", "patronapp", "amstelhof-connect", "moes-tuinen", "pphe-hotel", "theraneck-ecommerce", "hallencity"];
   const featuredProjects = featuredIds
     .map(id => allProjects.find(p => p.id === id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));

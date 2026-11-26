@@ -44,7 +44,7 @@ function renderWithHighlights(text: string) {
 export default function About() {
   const { language, messages } = useLanguage();
   const isAr = language === "ar";
-  const cvResumeHref = "/ATS_CV_Omar_Abdulghani_v3.pdf";
+  const cvResumeHref = "/Omar_Abdulghani_CV.pdf";
   const heroTitleParts = messages.about.hero.titlePrefix.trim().split(" ");
   const heroTitleLeading = heroTitleParts.slice(0, -1).join(" ");
   const heroTitleJoiner = heroTitleParts[heroTitleParts.length - 1] ?? "";
@@ -302,7 +302,7 @@ export default function About() {
                   <h3 className="text-2xl font-heading font-bold">{section.title}</h3>
                   <div className="mt-4 space-y-4 text-base leading-7 text-muted-foreground">
                     {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{renderWithHighlights(paragraph)}</p>
+                      <p key={paragraph}>{renderWithHighlights(paragraph ?? "")}</p>
                     ))}
                   </div>
                 </CardContent>

@@ -409,10 +409,15 @@ export const ar: LocaleMessages = {
       uxUiProductDesign: "تصميم UX/UI والمنتجات",
       digitalMarketingEcommerce: "التسويق الرقمي والتجارة الإلكترونية",
       creativeStrategyBranding: "الاستراتيجية الإبداعية وبناء العلامة التجارية",
+      interactiveXr: "التجارب التفاعلية والواقع الافتراضي",
       brandActivation: "تفعيل العلامة التجارية",
       webOptimizationUxUi: "تحسين الويب وتصميم UX/UI",
     },
     projects: {
+      balconyX: {
+        description:
+          "عالم اجتماعي حيّ في الواقع الافتراضي على منصة Altspace: سطح وشرفة فوق مدينة ليلية، يلتقي فيها الأصدقاء لمشاهدة الفيديوهات معاً واللعب وتغيير الطقس وقضاء الوقت.",
+      },
       theraNeckEcommerce: {
         description:
           "مشروع ذاتي للتحقق من مفهوم التجارة الإلكترونية، صُمم لاكتساب خبرة عملية في إطلاق واختبار مفهوم منتج رقمي حقيقي في بيئة حية.",
@@ -499,6 +504,9 @@ export const ar: LocaleMessages = {
       typeScript: "TypeScript",
       engineArchitecture: "هيكلية المحرك",
       productDesign: "تصميم المنتجات",
+      unity: "Unity",
+      socialVr: "الواقع الافتراضي الاجتماعي",
+      worldDesign: "تصميم العوالم",
     },
   },
   projectDetails: {

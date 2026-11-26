@@ -163,7 +163,7 @@ export default function PdfFlipbookModal({
           const context = canvas.getContext("2d");
           if (!context) throw new Error("Could not render PDF page");
 
-          await page.render({ canvasContext: context, viewport }).promise;
+          await page.render({ canvas, canvasContext: context, viewport }).promise;
           renderedPages.push(canvas.toDataURL("image/jpeg", 0.9));
           page.cleanup();
         }
@@ -326,6 +326,15 @@ export default function PdfFlipbookModal({
                     showCover={false}
                     mobileScrollSupport
                     clickEventForward
+                    // Library defaults, made explicit to satisfy react-pageflip's required props.
+                    style={{}}
+                    startPage={0}
+                    startZIndex={0}
+                    autoSize
+                    useMouseEvents
+                    swipeDistance={30}
+                    showPageCorners
+                    disableFlipByClick={false}
                     className="mx-auto"
                     onFlip={(event: any) => setCurrentPage((event?.data ?? 0) + 1)}
                   >
